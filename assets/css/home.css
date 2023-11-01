@@ -1,0 +1,1008 @@
+/*Importamos las fuentes*/
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Anek+Gurmukhi&display=swap");
+
+/*Definimos variables*/
+:root {
+  --color-fondo: rgb(255, 0, 255);
+  --color-dos: rgb(134, 35, 134);
+  --color-tres: rgb(40, 255, 244);
+  --color-estrellas: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+}
+
+/*Definimos estilos generales*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/*Añadimos efecto scroll*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "lora", sans-serif;
+}
+
+/*Damos estilos a los contendores*/
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/*--ESTILOS DEL HERO Y NAV--*/
+
+/*Ponemos el fondo de la sesion hero*/
+.hero {
+  background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  color: #fff;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  grid-template-areas:
+    "nav"
+    "content";
+  min-height: 100vh;
+}
+
+/*Damos tamaño a la imagen del logotipo*/
+.img_nav {
+  width: 60px;
+}
+
+/*Damos estilos al nav en general*/
+.nav {
+  grid-area: nav;
+  display: grid;
+  justify-content: space-between;
+  grid-auto-flow: column;
+  gap: 1em;
+  align-items: center;
+  height: 90px;
+
+  /*Creamos variables que  corresponden a los iconos del 
+    menu*/
+  --img1: scale(1);
+  --img2: scale(0);
+}
+
+/*Al elemento hijo de nav, cuando este se active 
+cambiamos los iconos y agregamos un clip-path*/
+.nav:has(.dropdown:target) {
+  --img1: scale(0);
+  --img2: scale(1);
+
+  --clip: inset(0 0 0 0);
+}
+
+/*Damos estilos a las opciones del menu*/
+.nav_list {
+  list-style: none;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1em;
+}
+
+/*Damos color a las opciones del menu*/
+.nav_link {
+  color: white;
+  text-decoration: none;
+}
+
+/*Damos el efecto hover*/
+.nav_link:hover {
+  color: var(--color-tres);
+}
+
+/*Estilos generales del submenu*/
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  width: 75%;
+  max-width: 300px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 1em;
+
+  /*Damos GRID*/
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+
+  /*Scroll por si algo*/
+  overflow-y: auto;
+
+  /*Abrir y cerrar del subMenu jnto con una animacion*/
+  clip-path: var(--clip, inset(0 0 100% 100%));
+  transition: clip-path 0.5s;
+}
+
+/*Quitamos los estilos por defecto de los links*/
+.dropdown_list {
+  list-style: none;
+}
+
+/*Damos estilos a las opciones del menu*/
+.dropdown_link {
+  color: rgb(184, 187, 191);
+  padding: 1em 0.7em;
+  text-decoration: none;
+
+  /*Damos Flexbox*/
+  display: flex;
+  align-content: center;
+  gap: 0.6rem;
+
+  /*Estilos a las opciones como color y redondeo*/
+  position: relative;
+  background-color: var(--bg, transparent);
+  border-radius: 6px;
+}
+
+/*Alinamos el boton de ingresar del submenu*/
+.list-ingresar {
+  align-content: center;
+  align-items: center;
+}
+
+/*Estilos del menu desplegable dentro del submenu*/
+.dropdown_list:has(:checked) {
+  --rows: 1fr;
+  --rotate: rotate(180deg);
+  --bg: #28303b;
+}
+
+/*Estilos del checkbox*/
+.dropdown_check {
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/*Estilos de la flechas del menu despegable*/
+.dropdown_arrow {
+  margin-left: auto;
+  transform: var(--rotate, 0);
+  transition: 0.2s transform;
+}
+
+/*Estructura del submenu*/
+.dropdown_content {
+  display: grid;
+  grid-template-rows: var(--rows, 0fr);
+  transition: 0.5s grid-template-rows;
+}
+
+/*Evitamos que se rompa el menu despegable*/
+.dropdown_sub {
+  overflow: hidden;
+}
+
+/*Estilos de las opciones del menu despegable*/
+.dropdown_li {
+  width: 85%;
+  list-style: none;
+  margin-left: auto;
+}
+
+/*Estilos de los links del menu despegable*/
+.dropdown_anchor {
+  padding: 1em 0;
+  display: block;
+  color: #b6babe;
+  text-decoration: none;
+}
+
+/*Estilos de el boton ingresar del submenu*/
+.dropdown_list.list-ingresar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin-top: auto;
+  /* Empuja el elemento hacia abajo */
+  text-align: center;
+}
+
+/*Estilos del link de ingresar*/
+.link_ingresar {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.5s;
+}
+
+/*Estilos del boton del hero Ingresa YA*/
+.hero_btn {
+  text-decoration: none;
+  background-color: #fff;
+  color: var(--color-fondo);
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 500;
+  transition: background-color 0.5s;
+}
+
+/*Efecto hover del boton ingresar del nav*/
+.hero_btn:hover {
+  background-color: var(--color-tres);
+  color: #fff;
+}
+
+/*Ocultamos el icono del menu responsive y 
+damos cursor pointer*/
+.nav_menu {
+  display: none;
+  cursor: pointer;
+}
+
+/*Damos tamaño a los iconos del submenu*/
+.nav_icon {
+  width: 30px;
+}
+
+/*HERO MAIN*/
+.hero_main {
+  grid-area: content;
+  display: grid;
+  gap: 2em;
+  /*grid-template-columns: repeat(auto-fit, minmax(300px,1fr));*/
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+/*Estilos del titulo que esta en el hero*/
+.hero_title {
+  font-size: 3.6rem;
+  letter-spacing: 2px;
+}
+
+/*Estilos del parrafo del hero*/
+.hero_p {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/*Estilos del boton ingresar Ya! del hero*/
+.hero_cta {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 500;
+  transition: background-color 0.5s;
+}
+
+/*Efecto hover del boton ingresar Ya!*/
+.hero_cta:hover {
+  background-color: #fff;
+  color: var(--color-fondo);
+}
+
+/*Asigamos tamaño de la imagen del hero*/
+.hero_img {
+  width: 90%;
+}
+
+/*--FIN DE LOS ESTILOS DEL HERO Y NAV--*/
+
+/*--ESTILOS DEL QUIENES SOMOS--*/
+
+/*Estilos del contenedor de la sesion*/
+.sobreNosotros {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/*Asignamos areas */
+.sb_img {
+  width: 90%;
+  border-radius: 7px;
+  transition: transform 0.3s ease;
+  margin-bottom: 2em;
+}
+
+.sb_img:hover {
+  transform: translateY(-10px);
+}
+
+/*Estilos del h2 dentro del quienes somos*/
+.sb_title {
+  font-size: 3.6rem;
+  letter-spacing: 2px;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+/*Estilos del parrafo del quienes somos*/
+.sb_p {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+/*--FIN DE LOS ESTILOS DE QUIENES SOMOS--*/
+
+/*--ESTILOS DE SERVICIOS--*/
+
+/*Damos fondo a la sesion*/
+.servicios {
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+/*Agregamos padding arriba y abajo del contenedor*/
+.servicios {
+  padding: 2em 0;
+}
+
+/*Estilos del contenedor de las cartas*/
+.container-S {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.container-S p {
+  padding: 10px;
+}
+.containerServicios {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Estilos del titulo de servicios*/
+.s_title {
+  font-size: 3.9rem;
+  letter-spacing: 2px;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  padding-bottom: 1em;
+}
+
+.servicio_title {
+  font-size: 2rem;
+}
+
+/*Estilos a las cartas de los servicios*/
+#servicios .cartaServicios {
+  margin: 20px;
+  background-position: center center;
+  background-size: cover;
+  padding: 50px 0px;
+  border-radius: 10px;
+  width: 350px;
+  min-height: 360px;
+  transition: transform 0.3s ease;
+}
+
+#servicios .cartaServicios:hover {
+  transform: scale(1.05);
+}
+
+/*Estilos del boton de servicios*/
+.btn-servicios {
+  margin-top: 30px;
+  text-decoration: none;
+  background-image: linear-gradient(
+    -225deg,
+    #ac32e4 0%,
+    #7918f2 48%,
+    #4801ff 100%
+  );
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+
+/*Efecto hover del boton */
+.btn-servicios:hover {
+  font-size: 1.1rem;
+}
+
+/* Seleccionamos el primer hijo */
+.cartaServicios:nth-child(1) {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/images/home/CepilladoAlisado.jpeg);
+}
+
+/* Seleccionamos el segundo hijo */
+.cartaServicios:nth-child(2) {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/images/home/uñasAcrilico.jpg);
+}
+
+/* Seleccionamos el tercer hijo */
+.cartaServicios:nth-child(3) {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/images/home/Uñas\ Semis.jpg);
+}
+
+/* Seleccionamos el cuarto hijo */
+.cartaServicios:nth-child(4) {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/images/home/Manicure\ Pedicure.jpeg);
+}
+
+/* Seleccionamos el quinto hijo */
+.cartaServicios:nth-child(5) {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/images/home/Cejas.jpg);
+}
+
+/* Seleccionamos el sexto hijo */
+.cartaServicios:nth-child(6) {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/images/home/Cejas2.jpg);
+}
+
+/*--FIN DE ESTILOS DE SERVICIOS--*/
+
+/*--ESTILOS TESTIMONIOS--*/
+
+/*Estilos generales de sesion*/
+.testimonios {
+  min-height: 100vh;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-testimonios{
+  display: flex;
+ flex-direction: row;
+ flex-flow: row wrap;
+align-items: center;
+justify-content: center;
+}
+
+/*Estilos del titulo de la sesion*/
+.testimonios_title {
+  font-size: 3.6rem;
+  letter-spacing: 2px;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-bottom: 1em;
+}
+
+/*Estilos de la tarjeta*/
+.carta-Testimonios {
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  display: flex;
+  margin: 10px;
+  min-height: 250px;
+  width: 400px;
+}
+
+/*Estilos de la imagen de la tarjeta*/
+.img_testimonios {
+  width: 35%;
+  background-position: center center;
+  background-size: cover;
+}
+
+/*Estilos del titulo de la tarjeta*/
+.nombre_testimonio {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/*Estilos del parrafo de la tarjeta*/
+.testimonio_p {
+  text-align: center;
+  padding: 9px;
+}
+
+.textoCarta {
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*Estilos de las estrellas*/
+.calificacion {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px 20px;
+  gap: 4px;
+}
+
+/*Estilos de el input*/
+.calificacion input {
+  position: relative;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/*Apariencia de las estrellas*/
+.calificacion input::before {
+  content: "\f005";
+  position: absolute;
+  font-family: fontAwesome;
+  font-size: 1.3rem;
+  color: #ac32e4;
+  transition: 0.5s;
+}
+
+/*.calificacion input:hover ~ input::before,
+.calificacion input:hover::before,
+.calificacion input:checked ~ input::before,
+.calificacion input:checked::before{
+    color: #ac32e4;
+}*/
+
+/*--FIN ESTILOS TESTIMONIOS--*/
+
+/*--ESTILOS DE CONTACTO--*/
+
+/*Estilo generales*/
+.contacto {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+align-items: center;
+
+  
+  
+}
+
+/*Estilos del titulo*/
+.contacto_title {
+  font-size: 3.6rem;
+  letter-spacing: 2px;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+
+
+/*Estilos del parrafo*/
+.contacto_p {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/*Estilos del titulo de la direccion*/
+.contacto_title_direccion,
+.contacto_title_email,
+.contacto_title_telefono {
+  font-size: 2rem;
+  text-align: center;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+/*Estilos del formulario*/
+.form-Contacto {
+  display: flex;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  flex-direction: column;
+  padding: 0 7.3% 0 4.7%;
+  width: 100%;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2em;
+  min-width: 400px;
+  min-height: 400px;
+}
+
+.contacto_texto {
+  margin-bottom: 2em;
+  margin: 30PX;
+}
+
+/*Estilos del titulo del formulario*/
+.form_contacto_title {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.contacto_formulario {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  
+}
+
+.contacto_input-line {
+  margin-bottom: 45px;
+}
+
+.contacto_label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+/*Estilos del input*/
+.contacto_input {
+  height: 30px;
+  width: 100%;
+  outline: none;
+  padding: 5px 0;
+  border-bottom: 2px solid #ac32e4;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #fff;
+  background-color: transparent;
+}
+
+.contacto_input_textarea {
+  height: 100px;
+  outline: none;
+  padding: 5px 0;
+  border-bottom: 2px solid #ac32e4;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  color: #fff;
+  background-color: transparent;
+  resize: none;
+}
+
+/*Estilos del boton*/
+.contacto_submit-boton {
+  text-decoration: none;
+  color: #fff;
+  background-color: transparent;
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.5s;
+  margin-bottom: 1em;
+}
+
+/*Efecto hover del boton*/
+.contacto_submit-boton:hover {
+  background-color: #fff;
+  color: #ac32e4;
+}
+
+/*--FIN DE LOS ESTILOS DE CONTACTO--*/
+
+/*--ESTILOS DEL FOOTER--*/
+.footer {
+  min-height: 50vh;
+  background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(0, 0, 0, 0.25) 200%
+    );
+  width: 100%;
+}
+
+/*Agregamos estilos al grupo 1 del footer*/
+.contenedorFooter .grupo1 {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  align-content: space-between;
+  padding: 45px 0px;
+}
+
+/*Estilos de la imagen del contenedor de la imagen*/
+.container_img_footer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_img {
+  width: 250px;
+}
+
+/*Estilos de las cajas del grupo 1*/
+.footer .box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+/*Estilos del titulo de cada box*/
+.box h2 {
+  font-size: 2rem;
+  text-align: center;
+  background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-bottom: 1em;
+}
+
+/*Estilos del texto de los box*/
+.box p {
+  color: #fff;
+}
+
+/*Estilos de los iconos*/
+.redesSociales a {
+  width: 45px;
+  color: white;
+  height: 45px;
+  line-height: 45px;
+  background-color: #000;
+  border-radius: 5px;
+  transition: all 300ms ease;
+}
+
+/*Efecto hover links*/
+.redesSociales a:hover {
+  color: #ac32e4;
+}
+
+/*Estilos del copyrigth*/
+.footer .grupo2 {
+  padding: 15px 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.grupo2 small {
+  font-size: 1.5rem;
+}
+
+/*Estilos de los iconos*/
+
+/*--FIN DE LOS ESTILOS DEL FOOTER--*/
+/*Responsive*/
+
+@media (max-width: 800px) {
+  /*ESTILOS DEL HEADER*/
+
+  /*Quitamos boton */
+  .hero_btn {
+    display: none;
+  }
+
+  /*Quitamos la lista de opciones del menu*/
+  .nav_list {
+    display: none;
+  }
+
+  /*Definimos nuevas areas en el nav*/
+  .nav {
+    grid-template-areas: "title img";
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /*Asignamos area a al logotipo*/
+  .img_nav {
+    grid-area: title;
+  }
+
+  /*Asignamos area a el icono del menu*/
+  .nav_menu {
+    display: block;
+    grid-area: img;
+    position: relative;
+    z-index: 10;
+
+    transform: var(--img1);
+  }
+
+  /*Agregamos una animacion para el icono de cerrar*/
+  .nav_menu--second {
+    transform: var(--img2);
+  }
+
+  /*Damos display a los iconos de las opciones del menu*/
+  .nav_icon {
+    display: block;
+  }
+
+  /*Damos display al menu responsive*/
+  .dropdown {
+    display: block;
+  }
+
+  /*Definimos estructura del contenido de la sesion hero*/
+  .hero_main {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    text-align: center;
+  }
+
+  /*Separamos del borde*/
+  .hero_texts {
+    margin-bottom: 1em;
+  }
+
+  /*Asignamos fila a la imagen del hero*/
+  .hero_picture {
+    grid-row: 1/2;
+  }
+
+  /*Damos estilos a la imagen del hero*/
+  .hero_img {
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /*Damos estilos a el titulo del hero*/
+  .hero_title {
+    font-size: 2.9rem;
+  }
+
+  /*FIN DE LOS ESTILOS DEL HEADER*/
+
+  /*ESTILOS DE QUIENES SOMOS*/
+
+  /*Modificamos la estructura*/
+  .sobreNosotros {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .sb_title {
+    font-size: 2.9rem;
+  }
+
+  .container-SB {
+    grid-row: 1/2;
+  }
+
+  .sb_img {
+    max-width: 500px;
+  }
+
+  /*--FIN DE ESTILOS DE QUIENES SOMOS-*/
+
+  /*--ESTILOS DE SERVICIOS--*/
+  .s_title {
+    font-size: 2.6rem;
+  }
+
+  /*Quitamos los parrafos*/
+  .container-S p {
+    display: none;
+  }
+
+  #servicios .cartaServicios {
+    width: 100%;
+    margin: 20px 0px;
+    min-height: auto;
+  }
+  /*--FIN DE LOS ESTILOS DE SERVICIOS--*/
+
+  /*--ESTILOS DE TESTIMONIOS--*/
+
+  .testimonios_title{
+    font-size: 2.9rem;
+  }
+
+  .container-testimonios{
+    flex-direction: column;
+  }
+
+  .carta-Testimonios{
+    width: auto;
+  }
+  /*--FIN DE LOS ESTILOS DE TESTIMONIOS--*/
+
+  /*--ESTILOS DE CONTACTO--*/
+
+  .contacto {
+    display: flex;
+    flex-direction: column;
+  }
+  /*--FIN DE LOS ESTILOS DE CONTACTO--*/
+
+  /*--ESTILOS DE FOOTER--*/
+  .contenedorFooter .grupo1 {
+    width: 100%;
+
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    align-content: space-between;
+    padding: 35px 0px;
+  }
+  /*--FIN DE LOS ESTILOS DE FOOTER--*/
+}
