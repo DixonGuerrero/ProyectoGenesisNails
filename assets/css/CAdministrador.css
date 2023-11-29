@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap'); /*Arbutus slap*/
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@300&family=Arbutus+Slab&display=swap'); /*Anek Gurmukhi*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Anek Gurmukhi', sans-serif;
+}
+
+:root {
+    --c_primario: rgb(134, 35, 134);
+    --c_secundario: rgba(161, 10, 161, 0.877);
+    --c_terciario: rgb(255, 255, 255);
+    --c_auxiliar: rgb(40, 255, 244);
+    --l_menu: font-family: 'Arbutus Slab', serif;
+}
+
+
+/* -----------Header------------*/
+
+header {
+    position: relative;
+    width: 100%;
+    height: 13vh;
+    overflow: hidden;
+    background-color: var(--c_primario);
+}
+
+header .nav {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+header .nav .logo {
+    width: 50px;
+    margin-left: 70px;
+}
+
+header .nav .logo img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 10px 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+header .nav .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
+}
+
+header .nav .navigation li {
+    margin-left: 30px;
+    list-style: none;
+}
+
+header .nav .navigation li a {
+    color: var(--c_terciario);
+    text-decoration: none;
+    font-family: var(--l_menu);
+    font-size: 17px;
+}
+
+header .nav .navigation li a:hover {
+    font-weight: 600;
+    color: var(--c_auxiliar);
+    border-bottom: 2px solid var(--c_auxiliar);
+}
+
+/*--------------Main---------------*/
+
+/*------------Menú lateral---------*/
+
+main {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .menu_lateral {
+    width: 20%;
+    height: 75vh;
+    background-color: rgb(134, 139, 139);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+main .menu_lateral ul {
+    height: 100%;
+    padding: 40% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main .menu_lateral ul li {
+    list-style: none;
+}
+
+main .menu_lateral ul li a {
+    text-decoration: none;
+    color: var(--c_terciario);
+    font-family: var(--l_menu);
+    font-size: 17px;
+}
+
+main .menu_lateral ul li a:hover {
+    font-weight: 600;
+    border-bottom: 2px solid var(--c_terciario);
+}
+
+/*---------------Clientes----------------*/
+
+.menu {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(5, 20%);
+}
+
+.menu .div_titulo {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    align-items: start;
+    height: 100%;
+    padding-top: 10%;
+}
+
+.titulo {
+    font-size: 40px;
+    border-bottom: 2px solid black;
+}
+
+.menu form {
+    grid-column: 2 / 4;
+    grid-row: 2 / 6;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.menu_subtitulo {
+    font-size: 12pt;
+    margin-bottom: 2px;
+}
+
+.menu_input {
+    margin-bottom: 15px;
+    font-size: 12pt;
+    width: 63%;
+}
+
+.menu_output {
+    font-size: 12pt;
+    height: 60%;
+    width: 80%;
+}
+
+/*-----------------Citas----------------*/
+
+.menu_seleccionar {
+    margin-top: 10px;
+    width: 63%;
+    height: 18pt;
+    font-size: 12pt;
+    position: relative;
+    top: -13px;
+}
+
+/*---------------Agendar cita-------------*/
+
+.botones {
+    width: 67%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.botones .boton {
+    margin-right: 12px;
+    border: 2px solid black;
+    width: 35%;
+
+}
+
+.botones .b_aceptar {
+    background-color: red;
+    color: white;
+    font-size: 17px;
+}
+
+.botones .b_aceptar:hover {
+    height: 110%;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px 0 black;
+}
+
+.botones .b_limpiar {
+    background-color: rgb(111, 172, 196);
+    color: white;
+    font-size: 17px;
+}
+
+.botones .b_limpiar:hover {
+    height: 110%;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px 0 black;
+}
+
+/*---------------Modificar cita-------------*/
+
+
+
+/*---------------Eliminar cita-------------*/
+
+.citas, .Acitas, .Mcitas, .Ecitas {
+    display: none;
+}
+
+/*---------Recuadro de confirmación-------*/
+
+#confirmar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 100;
+    background-color: rgba(144, 155, 149, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmar div {
+    width: 35%;
+    height: 30%;
+    background-color: var(--c_terciario);
+}
+
+#alerta_confirmar, #alerta_enviado{
+    border: 3px solid black;
+}
+
+#confirmar div div, #confirmar div form {
+    width: 100%;
+}
+
+#confirmar div .conf_titulo {
+    background-color: rgb(237, 142, 121);
+    height: 18%;
+    padding-top: 8px;
+    padding-left: 5px;
+}
+
+#confirmar div .conf_texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conf_texto {
+    margin-top: 5%;
+}
+
+.conf_texto p {
+    font-size: 15pt;
+}
+
+#alerta_confirmar {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#confirmar div .botones {
+    margin-top: 6%;
+    display: flex;
+    justify-content: center;
+}
+
+#alerta_confirmar .botones input {
+    margin-left: 12px;
+    width: 18%;
+    height: 40%;
+}
+
+#alerta_confirmar .botones input:hover {
+    height: 45%;
+}
+
+#alerta_enviado{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#alerta_enviado .imagen_check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#alerta_enviado .imagen_check img {
+    width: 12%;
+    height: 88%;
+}
+
+#alerta_enviado .botones input {
+    margin-left: 12px;
+    width: 18%;
+    height: 80%;
+    position: relative;
+    top: -15px;
+}
+
+#alerta_enviado .botones input:hover {
+    height: 90%;
+}
+
+#confirmar {
+    display: none;
+}
+
+
+/*-----------------Footer-----------------*/
+
+footer {
+    width: 100%;
+    background-color: var(--c_primario);
+    height: 12vh;
+}
+
+footer div {
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    padding-top: 25px;
+}
+
+footer div h2 {
+    color: var(--c_terciario);
+    font-size: 12pt;
+}

@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/assets/images/home/logo .ico" />
-    <link rel="stylesheet" href="/assets/css/home.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Génesis Nails</title>
-  </head>
-  <body>
+
     <!--Agregamos el header-->
     <header class="hero">
       <nav class="nav container">
-        <img src="/assets/images/home/logo.png" alt="" class="img_nav" />
+        <img src="./assets/images/logo.png" alt="" class="img_nav" />
 
         <ul class="nav_list">
           <li><a href="" class="nav_link">Inicio</a></li>
@@ -29,15 +12,15 @@
           <li><a href="#contacto" class="nav_link">Contacto</a></li>
         </ul>
 
-        <a href="login.html" class="hero_btn">Ingresar</a>
+        <a href="index.php?vista=login" class="hero_btn">Ingresar</a>
 
         <a href="#menu" class="nav_menu">
-          <img src="/assets/images/home/menuIcon.svg" alt="" class="nav_icon" />
+          <img src="./assets/images/menuIcon.svg" alt="" class="nav_icon" />
         </a>
 
         <a href="#" class="nav_menu nav_menu--second">
           <img
-            src="/assets/images/home/closeMenuIcon.svg"
+            src="./assets/images/closeMenuIcon.svg"
             alt=""
             class="nav_icon"
           />
@@ -47,7 +30,7 @@
           <li class="dropdown_list">
             <a href="#" class="dropdown_link">
               <img
-                src="/assets/images/home/homeIcon.svg"
+                src="./assets/images/homeIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
@@ -58,7 +41,7 @@
           <li class="dropdown_list">
             <a href="#quienesSomos" class="dropdown_link">
               <img
-                src="/assets/images/home/nosotrosIcon.svg"
+                src="./assets/images/nosotrosIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
@@ -69,13 +52,13 @@
           <li class="dropdown_list">
             <a href="#" class="dropdown_link">
               <img
-                src="/assets/images/home/servicios.svg"
+                src="./assets/images/servicios.svg"
                 alt=""
                 class="dropdown_icon"
               />
               <span class="dropdown_span">Servicios</span>
               <img
-                src="/assets/images/home/flechaIcon.svg"
+                src="./assets/images/flechaIcon.svg"
                 alt=""
                 class="dropdown_arrow"
               />
@@ -122,7 +105,7 @@
           <li class="dropdown_list">
             <a href="#testimonios" class="dropdown_link">
               <img
-                src="/assets/images/home/comentariosIcon.svg"
+                src="./assets/images/comentariosIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
@@ -133,7 +116,7 @@
           <li class="dropdown_list">
             <a href="#contacto" class="dropdown_link">
               <img
-                src="/assets/images/home/contactoIcon.svg"
+                src="./assets/images/contactoIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
@@ -144,7 +127,7 @@
           <li class="dropdown_list list-ingresar">
             <a href="login.html" class="dropdown_link link_ingresar">
               <img
-                src="/assets/images/home/ingresarIcon.svg"
+                src="./assets/images/ingresarIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
@@ -166,7 +149,7 @@
 
         <figure class="hero_picture">
           <img
-            src="/assets/images/home/logo.png"
+            src="./assets/images/logo.png"
             alt="LogoPortadaPagina"
             class="hero_img"
           />
@@ -177,7 +160,7 @@
     <!--Agregamos sobre nosotros-->
     <section class="sobreNosotros container" id="quienesSomos">
       <img
-        src="/assets/images/home/salonBellezaImg.jpg"
+        src="./assets/images/salonBellezaImg.jpg"
         alt=""
         class="sb_img"
       />
@@ -265,7 +248,7 @@
       <div class="container-testimonios">
         <div class="carta-Testimonios">
           <img
-            src="/assets/images/home/Perfil 1.jpg"
+            src="./assets/images/Perfil 1.jpg"
             alt=""
             class="img_testimonios"
           />
@@ -286,7 +269,7 @@
         </div>
         <div class="carta-Testimonios">
           <img
-            src="/assets/images/home/Perfil 2.jpg"
+            src="./assets/images/Perfil 2.jpg"
             alt=""
             class="img_testimonios"
           />
@@ -309,7 +292,7 @@
         </div>
         <div class="carta-Testimonios">
           <img
-            src="/assets/images/home/perfil4.jpg"
+            src="./assets/images/perfil4.jpg"
             alt=""
             class="img_testimonios"
           />
@@ -420,7 +403,7 @@
             <figure class="container_img_footer">
               <a href="#"
                 ><img
-                  src="/assets/images/home/logo 4.png"
+                  src="./assets/images/logo 4.png"
                   alt="logo de Genesis Nails" class="footer_img"
               /></a>
             </figure>
@@ -451,6 +434,5 @@
       </div>
     </footer>
 
-    <script src="/assets/js/home.js"></script>
-  </body>
-</html>
+  
+

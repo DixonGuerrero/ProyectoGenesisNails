@@ -446,7 +446,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(/assets/images/home/CepilladoAlisado.jpeg);
+    url(../images/CepilladoAlisado.jpeg);
 }
 
 /* Seleccionamos el segundo hijo */
@@ -456,7 +456,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(/assets/images/home/uñasAcrilico.jpg);
+    url(../images/uñasAcrilico.jpg);
 }
 
 /* Seleccionamos el tercer hijo */
@@ -466,7 +466,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(/assets/images/home/Uñas\ Semis.jpg);
+    url(../images/Uñas\ Semis.jpg);
 }
 
 /* Seleccionamos el cuarto hijo */
@@ -476,7 +476,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(/assets/images/home/Manicure\ Pedicure.jpeg);
+    url(../images/Manicure\ Pedicure.jpeg);
 }
 
 /* Seleccionamos el quinto hijo */
@@ -486,7 +486,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(/assets/images/home/Cejas.jpg);
+    url(../images/Cejas.jpg);
 }
 
 /* Seleccionamos el sexto hijo */
@@ -496,7 +496,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(/assets/images/home/Cejas2.jpg);
+    url(../images/Cejas2.jpg);
 }
 
 /*--FIN DE ESTILOS DE SERVICIOS--*/
