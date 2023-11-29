@@ -6,7 +6,7 @@
             <ul class="navigation">
                 <li><a href="index.php?vista=MCliente">Inicio</a></li>
                 <li><a href="index.php?vista=ACliente">Actualizar datos</a></li>
-                <li><a href="#">Cerrar sesión</a></li>
+                <li><a href="index.php?vista=logout">Cerrar sesión</a></li>
             </ul>
         </nav>
     </header>

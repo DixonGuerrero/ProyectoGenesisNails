@@ -16,7 +16,7 @@
 
     //Validacion para cargar vistas
         if(!isset($_GET['vista']) || $_GET['vista']==""):
-            $_GET['vista']="login";
+            $_GET['vista']="Login";
         endif;
 
         if(is_file("./app/views/".$_GET['vista'].".php") && $_GET['vista']!="Login" &&  $_GET['vista']!="404" ):

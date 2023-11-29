@@ -22,7 +22,10 @@
         require_once"./inc/listaVistas.php";
 
 
-      //Validamos las vistas si no esta entonces cargamos los estilos del 404
+      /*Validamos la vista actual, si no esta en la lista de vistas
+      entonces vamos a cargar los estilos de la vista 404, ya en el index
+      hacemos la validacion y mostramos la vista 404 si no esta la vista 
+      que pongamos en la url */
       if(in_array(strtolower($_GET['vista']), array_map('strtolower', $vistas))):
         echo '<link rel="stylesheet" href="./assets/css/' . $_GET['vista'] . '.css">';
       else:

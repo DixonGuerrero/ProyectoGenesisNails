@@ -6,7 +6,7 @@
             <ul class="navigation">
                 <li><a href="index.php?vista=CAdministrador">Clientes y Citas</a></li>
                 <li><a href="index.php?vista=PAdministrador">Productos y Proveedores</a></li>
-                <li><a href="#">Cerrar sesión</a></li>
+                <li><a href="index.php?vista=logout">Cerrar sesión</a></li>
             </ul>
         </nav>
     </header>
