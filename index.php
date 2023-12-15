@@ -1,6 +1,16 @@
 <!--Incluimos la session---------->
     <?php
+        require_once"./config/app.php";
+        require_once"./autoload.php";
         include"./inc/sessionStar.php";
+
+        //Validamos la vista actual si no existe lo enviamos a login
+        if(isset($_GET['views'])){
+            $url = explode("/",$_GET['views']);
+        }else{
+            $url = ["login"];
+        }
+
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,29 +24,22 @@
     <!--Incluimos Barra de navegacion---------->
     <?php
 
-    //Validacion para cargar vistas
-        if(!isset($_GET['vista']) || $_GET['vista']==""):
-            $_GET['vista']="Login";
-        endif;
+    //Incluimos el controlador de las vista
+        use app\controllers\viewsController;
 
-        if(is_file("./app/views/".$_GET['vista'].".php") && $_GET['vista']!="Login" &&  $_GET['vista']!="404" ):
-            
+        $viewsController =  new viewsController();
+        $vista = $viewsController->obtenerVistaControlador($url[0]);
 
-            
-            //Cargamos la vista
-            include "./app/views/".$_GET['vista'].".php";
-            
-            //Incluimos es scritp de JS
-            include"./inc/script.php";
+    //Incluimos la vista
+        if($vista=="login" || $vista=="404"):
+            require_once "./app/views/".$vista.".php";
         else:
-            if($_GET['vista']=="login"):
-                include"./app/views/login.php";
-            else:
-                include"./app/views/404.php";
-            endif;
+            require_once $vista;
         endif;
         
-
+       
+        
+     include"./inc/script.php";
     ?>
 </body>
 </html>

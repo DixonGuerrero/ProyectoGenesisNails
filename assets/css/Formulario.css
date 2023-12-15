@@ -50,6 +50,7 @@ form fieldset {
     width: 80%;
     margin-left: 120px;
     margin-right: 120px;
+    font-size: 20px;
     }
     
     form fieldset > div { width: 50%;
@@ -68,9 +69,10 @@ div {
 
 
 
-.footer{
+.pieDePagina{
     text-align: center;
     padding: 50px;
     background-color:var(--color-fondo) ;
     margin: 10px 0px 10px 0px;
+    color: white;
 }

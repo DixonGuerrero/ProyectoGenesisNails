@@ -18,21 +18,34 @@
 
       <!--Importamos el array--->
       <?php
+// Incluye el archivo de lista de vistas
+require_once "./inc/listaVistas.php";
 
-        require_once"./inc/listaVistas.php";
+// Verifica si no se ha establecido la clave 'vista' o si es diferente de "Login" y "404"
+if (isset($_GET['views']) && $_GET['views']!="") {
 
-
-      /*Validamos la vista actual, si no esta en la lista de vistas
-      entonces vamos a cargar los estilos de la vista 404, ya en el index
-      hacemos la validacion y mostramos la vista 404 si no esta la vista 
-      que pongamos en la url */
-      if(in_array(strtolower($_GET['vista']), array_map('strtolower', $vistas))):
-        echo '<link rel="stylesheet" href="./assets/css/' . $_GET['vista'] . '.css">';
-      else:
+    // Validamos la vista actual, si no está en la lista de vistas
+    // cargamos los estilos de la vista 404
+    if ( in_array(strtolower($_GET['views']), array_map('strtolower', $vistas))) {
+        // Si la vista está en la lista, cargamos los estilos específicos de esa vista
+        echo '<link rel="stylesheet" href="./assets/css/' . $_GET['views'] . '.css">';
+    } else {
         
+        // Si la vista no está en la lista, cargamos los estilos de la vista 404
         echo '<link rel="stylesheet" href="./assets/css/404.css">';
         echo '<link rel="stylesheet" href="./assets/css/bulma.min.css">';
-      endif;
-      ?>
+    }
+
+} elseif (empty($_GET['views'])) {
+    // Si la clave 'vista' está establecida
+    echo '<link rel="stylesheet" href="./assets/css/Home.css">';
+    
+  } else {
+    echo '<link rel="stylesheet" href="./assets/css/404.css">';
+    echo '<link rel="stylesheet" href="./assets/css/bulma.min.css">';
+    // Si no se cumplen las condiciones anteriores, cargamos los estilos de la vista Home
+}
+?>
+
 
     <title>Génesis Nails</title>

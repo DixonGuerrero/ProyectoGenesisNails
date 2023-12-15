@@ -7,9 +7,9 @@ de las demas vistas */
     $vistas = [
         'ACliente',
         'CAdministrador',
+        'Formulario',
         'home',
         'Login',
-        'Formulario',
         'MCliente',
         'PAdministrador'
     ];

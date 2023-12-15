@@ -131,7 +131,7 @@
                 alt=""
                 class="dropdown_icon"
               />
-              <span class="dropdown_span">Ingresar</span>
+              <span class="dropdown_span" href="index.php?vista=login">Ingresar</span>
             </a>
           </li>
         </ul>
@@ -144,7 +144,7 @@
             Donde la Belleza se Transforma en una Experiencia Inolvidable:
             Encuentra tu Destino de Estilo en Nuestro Salón
           </p>
-          <a href="login.html" class="hero_cta">Ingresa Ya!</a>
+          <a href="index.php?vista=login" class="hero_cta" >Ingresa Ya!</a>
         </div>
 
         <figure class="hero_picture">
@@ -191,7 +191,7 @@
               profesional! Obtén un look suave y pulido al instante. ¡Reserva
               ahor
             </p>
-            <button class="btn-servicios">¡Reserva Ahora!</button>
+            <button href="index.php?vista=login" class="btn-servicios" >¡Reserva Ahora!</button>
           </div>
           <div class="cartaServicios" id="acrilico">
             <h3 class="servicio_title">Uñas en acrilico</h3>
@@ -200,16 +200,16 @@
               extensiones de uñas, hechas de polímeros, se esculpen y endurecen
               para un look fabuloso. ¡Reserva ahora!
             </p>
-            <button class="btn-servicios">¡Reserva Ahora!</button>
+            <button class="btn-servicios" href="index.php?vista=login">¡Reserva Ahora!</button>
           </div>
           <div class="cartaServicios" id="semipermanente">
-            <h3 class="servicio_title">Uñas en Semipermantente</h3>
+            <h3 class="servicio_title" >Uñas en Semipermantente</h3>
             <p>
               ¡Eleva tu estilo con nuestras uñas semipermanentes expertamente
               aplicadas para un look duradero y sofisticado! ¡Reserva tu cita
               hoy mismo!
             </p>
-            <button class="btn-servicios">¡Reserva Ahora!</button>
+            <button class="btn-servicios" href="index.php?vista=login">¡Reserva Ahora!</button>
           </div>
           <div class="cartaServicios" id="manicurePedicure">
             <h3 class="servicio_title">Manicure y Pedicure Tradicional</h3>
@@ -218,16 +218,16 @@
               Mimamos tus manos y pies para un look impecable y relajante.
               ¡Reserva ahora!
             </p>
-            <button class="btn-servicios">¡Reserva Ahora!</button>
+            <button class="btn-servicios" href="index.php?vista=login">¡Reserva Ahora!</button>
           </div>
           <div class="cartaServicios" id="extencionCejas">
-            <h3 class="servicio_title">Extension de Pestañas</h3>
+            <h3 class="servicio_title" >Extension de Pestañas</h3>
             <p>
               ¡Dale vida a tus ojos con nuestras extensiones de pestañas
               premium! Resalta tu belleza con pestañas largas y exuberantes.
               ¡Reserva ahora mismo tu cita!
             </p>
-            <button class="btn-servicios">¡Reserva Ahora!</button>
+            <button class="btn-servicios" href="index.php?vista=login">¡Reserva Ahora!</button>
           </div>
           <div class="cartaServicios" id="cejasdesing">
             <h3 class="servicio_title">Diseño de Cejas</h3>
@@ -236,7 +236,7 @@
               diseño de cejas resalta tu belleza natural. ¡Reserva tu cita
               ahora!
             </p>
-            <button class="btn-servicios">¡Reserva Ahora!</button>
+            <button class="btn-servicios" href="index.php?vista=login">¡Reserva Ahora!</button>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@
               type="text"
               name="nombre"
               placeholder="Nombre de usuario"
+              pattern="[a-zA-Z0-9]{3,20}"
               required
             />
             <i class="bx bxs-user"></i>
@@ -18,6 +19,7 @@
               type="password"
               name="nombre"
               placeholder="Password"
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}"
               required
             />
             <i class="bx bxs-lock-alt"></i>
@@ -31,7 +33,7 @@
           <button type="submit" class="btn">Login</button>
 
           <div class="register_link">
-            <p>No tienes una cuenta? <a href="#">Registrate</a></p>
+            <p>No tienes una cuenta? <a href="index.php?vista=Formulario">Registrate</a></p>
           </div>
         </form>
 

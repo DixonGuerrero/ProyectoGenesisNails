@@ -11,12 +11,7 @@
         </a>
 
         <nav>
-            <a href="index.php?vista=CAdministrador" class="link-menu">Inicio</a>
-            <a href="" class="link-menu">Perfil</a>
-            <a href="" class="link-menu">Datos personales</a>
-            <a href="../index.html" class="link-menu">Cerrar Sesion</a>
-
-
+            <a href="index.php?vista=home" class="hero_btn">Inicio</a>
 
         </nav>
 
@@ -25,9 +20,9 @@
 
     <section>
 
-        <article class="Formulario de Registro">
+        <article class="formulario_de_registro">
 
-            <h3 class="titulo-formulario">Formulario de Registro</h3>
+            <h1 class="titulo-formulario">Formulario de Registro</h1>
 
             <div class="formulario-registro" class="row">
 
@@ -39,33 +34,67 @@
                         <legend>Datos personales</legend>
 
                         <div>
-                            <label for="nombre"> Primer Nombre</label>
-                            <input type="text" id="nombre" />
+                            <label for="nombre">Nombres</label>
+                            <input type="text" id="nombres" 
+                            pattern="[a-zA-Z\s']{2,30}"
+                            name="nombre"/>
                         </div>
 
+                        
+
                         <div>
-                            <label for="apellido">Primer Apellido</label>
-                            <input type="text" id="apellido" />
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" id="apellido" 
+                            pattern="[a-zA-Z\s']{2,30}"
+                            name="apellidos" />
                         </div>
+
+                        
 
                         <div>
                             <label for="id">Cedula de ciudadania</label>
-                            <input type="text" id="id" />
+                            <input type="text" id="id" 
+                            pattern="\d{8,20}"
+                            name="id"/>
+                        </div>
+
+
+
+                        <div>
+                            <label for="telefono">Telefono</label>
+                            <input type="text" id="telefono" 
+                            pattern="[0-9\s+]+"
+                            name="telefono" />
                         </div>
 
                         <div>
-                            <label for="nombre">Segundo nombre</label>
-                            <input type="text" id="nombre" />
+                            <label for="usuario">Usuario</label>
+                            <input type="text" id="usuario"  
+                            pattern="[a-zA-Z0-9]{3,20}"
+                            name="usuario"/>
                         </div>
 
                         <div>
-                            <label for="apellido">Segundo apellido</label>
-                            <input type="text" id="apellido" />
+                            <label for="email">Correo Electronico</label>
+                            <input type="text" id="email"  
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}"
+                            name="email"/>
                         </div>
 
                         <div>
-                            <label for="fecha de nacimiento">Fecha de nacimiento</label>
-                            <input type="text" id="fecha de nacimiento" />
+                            <label for="id">Contraseña</label>
+                            <input type="text" id="clave1"  
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}"
+                            name="clave1"/>
+                        </div>
+
+
+
+                        <div>
+                            <label for="fecha de nacimiento">Confirmar Contraseña</label>
+                            <input type="text" id="clave2" 
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}"
+                            name="clave2" />
                         </div>
 
                     </fieldset>
@@ -92,7 +121,7 @@
     </section>
     <footer>
 
-        <h5 class="footer"> By Salón de Belleza Génesis Nails</h5>
+        <h3 class="pieDePagina"> By Salón de Belleza Génesis Nails</h3>
 
     </footer>
 
