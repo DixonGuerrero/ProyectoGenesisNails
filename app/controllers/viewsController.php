@@ -11,7 +11,7 @@
             if($vista!=""):
                 $respuesta=$this->obtenerVistaModelo($vista);
             else:
-                $respuesta = "login";
+                $respuesta = "Home";
             endif;
 
             return $respuesta;

@@ -8,7 +8,7 @@
         if(isset($_GET['views'])){
             $url = explode("/",$_GET['views']);
         }else{
-            $url = ["login"];
+            $url = ["home"];
         }
 
     ?>

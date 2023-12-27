@@ -39,8 +39,7 @@ if (isset($_GET['views']) && $_GET['views']!="") {
 } elseif (empty($_GET['views'])) {
     // Si la clave 'vista' está establecida
     echo '<link rel="stylesheet" href="./assets/css/Home.css">';
-    
-  } else {
+} else {
     echo '<link rel="stylesheet" href="./assets/css/404.css">';
     echo '<link rel="stylesheet" href="./assets/css/bulma.min.css">';
     // Si no se cumplen las condiciones anteriores, cargamos los estilos de la vista Home
