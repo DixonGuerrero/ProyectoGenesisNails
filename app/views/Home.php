@@ -12,7 +12,7 @@
           <li><a href="#contacto" class="nav_link">Contacto</a></li>
         </ul>
 
-        <a href="index.php?vista=login" class="hero_btn">Ingresar</a>
+        <a href="login" class="hero_btn">Ingresar</a>
 
         <a href="#menu" class="nav_menu">
           <img src="./assets/images/menuIcon.svg" alt="" class="nav_icon" />
@@ -125,13 +125,13 @@
           </li>
 
           <li class="dropdown_list list-ingresar">
-            <a href="login.html" class="dropdown_link link_ingresar">
+            <a href="login" class="dropdown_link link_ingresar">
               <img
                 src="./assets/images/ingresarIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
-              <span class="dropdown_span" href="index.php?vista=login">Ingresar</span>
+              <span class="dropdown_span" href="login">Ingresar</span>
             </a>
           </li>
         </ul>
@@ -144,7 +144,7 @@
             Donde la Belleza se Transforma en una Experiencia Inolvidable:
             Encuentra tu Destino de Estilo en Nuestro Salón
           </p>
-          <a href="index.php?vista=login" class="hero_cta" >Ingresa Ya!</a>
+          <a href="login" class="hero_cta" >Ingresa Ya!</a>
         </div>
 
         <figure class="hero_picture">

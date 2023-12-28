@@ -2,7 +2,7 @@
     <!--Login-->
     <div class="login">
       <div class="contendorLogin">
-        <form action="" class="formulario_login">
+        <form action="" class="formulario_login" method="POST">
           <h1>Login</h1>
           <div class="input_box">
             <input
@@ -33,7 +33,7 @@
           <button type="submit" class="btn">Login</button>
 
           <div class="register_link">
-            <p>No tienes una cuenta? <a href="index.php?vista=Formulario">Registrate</a></p>
+            <p>No tienes una cuenta? <a href="Formulario">Registrate</a></p>
           </div>
         </form>
 
