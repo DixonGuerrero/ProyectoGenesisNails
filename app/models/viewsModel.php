@@ -5,14 +5,15 @@
             
             
             $vistas = [
-        'ACliente',
-        'CAdministrador',
-        'Formulario',
-        'home',
-        'Login',
-        'MCliente',
-        'PAdministrador'
-    ];
+                'ACliente',
+                'CAdministrador',
+                'Formulario',
+                'home',
+                'Login',
+                'MCliente',
+                'PAdministrador',
+                'Pruebas'
+            ];
 
             if(in_array(strtolower($vista), array_map('strtolower', $vistas))):
                 if(is_file("./app/views/".$vista.".php")){

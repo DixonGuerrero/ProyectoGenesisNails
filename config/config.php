@@ -1,10 +1,10 @@
 <?php
 
 
-define('DB_HOST', getenv('DB_HOST'));
-define('DB_USER', getenv('DB_USER'));
-define('DB_PASS', getenv('DB_PASS'));
-define('DB_NAME', getenv('DB_NAME'));
+define('DB_HOST', 'bdtxfh2jiatyacr6uh1o-mysql.services.clever-cloud.com');
+define('DB_USER', 'uyzky7fzckuou9fw');
+define('DB_PASS', '2AbkRnIwXNXawvkncYfn');
+define('DB_NAME', 'bdtxfh2jiatyacr6uh1o');
 
 
 ?>
