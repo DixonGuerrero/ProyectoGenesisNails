@@ -1,46 +1,41 @@
-<?php 
-    
-    namespace php;
+<?php
 
-    class utils{
+namespace php;
 
-         public static function limpiarCadena(string $cadena){
+class utils
+{
 
-			$palabras=["<script>","</script>","<script src",
-            "<script type=","SELECT * FROM","SELECT "," SELECT ",
-            "DELETE FROM","INSERT INTO","DROP TABLE",
-            "DROP DATABASE","TRUNCATE TABLE","SHOW TABLES",
-            "SHOW DATABASES","<?php","?>","--","^","<",">",
-            "==","=",";","::"];
+    public static function limpiarCadena(string $cadena)
+    {
 
-			$cadena=trim($cadena);
-			$cadena=stripslashes($cadena);
+        $palabras = [
+            "<script>", "</script>", "<script src",
+            "<script type=", "SELECT * FROM", "SELECT ", " SELECT ",
+            "DELETE FROM", "INSERT INTO", "DROP TABLE",
+            "DROP DATABASE", "TRUNCATE TABLE", "SHOW TABLES",
+            "SHOW DATABASES", "<?php", "?>", "--", "^", "<", ">",
+            "==", "=", ";", "::"
+        ];
 
-			foreach($palabras as $palabra){
-				$cadena=str_ireplace($palabra, "", $cadena);
-			}
+        $cadena = trim($cadena);
+        $cadena = stripslashes($cadena);
 
-			$cadena=trim($cadena);
-			$cadena=stripslashes($cadena);
-
-			return $cadena;
-		}
-
-        protected static function verificarDatos(string $filtro,string $cadena){
-			if(preg_match("/^".$filtro."$/", $cadena)){
-				return false;
-            }else{
-                return true;
-            }
-		}
-
-        public static function creadorMarcadores(array $datos){
-            
-            
-
+        foreach ($palabras as $palabra) {
+            $cadena = str_ireplace($palabra, "", $cadena);
         }
 
+        $cadena = trim($cadena);
+        $cadena = stripslashes($cadena);
+
+        return $cadena;
     }
 
-
-?>
+    protected static function verificarDatos(string $filtro, string $cadena)
+    {
+        if (preg_match("/^" . $filtro . "$/", $cadena)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}

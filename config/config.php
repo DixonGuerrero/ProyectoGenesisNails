@@ -1,10 +1,17 @@
 <?php
 
+$envFile = __DIR__ . '/../.env';
 
-define('DB_HOST', 'bdtxfh2jiatyacr6uh1o-mysql.services.clever-cloud.com');
-define('DB_USER', 'uyzky7fzckuou9fw');
-define('DB_PASS', '2AbkRnIwXNXawvkncYfn');
-define('DB_NAME', 'bdtxfh2jiatyacr6uh1o');
+if (file_exists($envFile)) {
+    $envVariables = parse_ini_file($envFile);
+    
+    foreach ($envVariables as $key => $value) {
+      
+    }
+} else {
+    echo "El archivo .env no existe.";
+}
+
 
 
 ?>

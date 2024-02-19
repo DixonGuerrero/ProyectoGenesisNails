@@ -20,6 +20,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  
 }
 
 /*Añadimos efecto scroll*/
@@ -446,7 +447,7 @@ damos cursor pointer*/
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(../images/CepilladoAlisado.jpeg);
+    url(./assets/images/CepilladoAlisado.jpeg);
 }
 
 /* Seleccionamos el segundo hijo */

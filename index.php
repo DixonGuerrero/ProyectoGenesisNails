@@ -1,48 +1,18 @@
-<!--Incluimos la session---------->
-    <?php
-        require_once "./config/app.php";
-        require_once "./autoload.php";
-        include "./inc/sessionStar.php";
+<?php
+    error_reporting(E_ALL);
+    ini_set('ignore_repeated_errores', TRUE);
+    ini_set('display_errors', FALSE);
+    ini_set('log_errors', TRUE);
+    ini_set('error_log', 'C:\laragon\www\Proyectos\ProyectoGenesisNails2\php-errors.log');
+    error_log('Inicio de la aplicacion');
 
-        //Validamos la vista actual si no existe lo enviamos a login
-        if(isset($_GET['views'])){
-            $url = explode("/",$_GET['views']);
-        }else{
-            $url = ["home"];
-        }
+    //Incluimos algunos archivos
+    require_once 'libs/controller.php';
+    require_once 'libs/model.php';
+    require_once 'libs/view.php';
+    require_once 'libs/app.php';
 
-    ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php
-      //Incluimos el head
-      include "./inc/head.php";
-    ?>
-</head>
-<body>
-    <!--Incluimos Barra de navegacion---------->
-    <?php
+    require_once 'config/config.php';
 
-    //Incluimos el controlador de las vista
-        use app\controllers\viewsController;
+    $app = new App();
 
-
-        $viewsController =  new viewsController();
-        $vista = $viewsController->obtenerVistaControlador($url[0]);
-
-    //Incluimos la vista
-        if($vista=="login" || $vista=="404"):
-            require_once "./app/views/".$vista.".php";
-        elseif($vista=='prueba'):
-            require_once '';
-        
-        else:
-            require_once $vista;
-        endif;
-     
-        
-     include "./inc/script.php";
-    ?>
-</body>
-</html>
