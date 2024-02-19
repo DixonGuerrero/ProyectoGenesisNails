@@ -1,0 +1,28 @@
+[14-Feb-2024 19:13:10 UTC] Inicio de la aplicacion
+[14-Feb-2024 19:13:10 UTC] PHP Deprecated:  rtrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\app.php on line 9
+[14-Feb-2024 19:13:10 UTC] Controller::construct -> Inicio de Controller
+[14-Feb-2024 19:13:10 UTC] View::construct -> Inicio de View
+[14-Feb-2024 19:13:10 UTC] Home::construct -> Inicio de Home
+[14-Feb-2024 19:13:10 UTC] View::render -> Inicio de render
+[14-Feb-2024 19:13:44 UTC] Inicio de la aplicacion
+[14-Feb-2024 19:13:44 UTC] Controller::construct -> Inicio de Controller
+[14-Feb-2024 19:13:44 UTC] View::construct -> Inicio de View
+[14-Feb-2024 19:13:44 UTC] Login::construct -> Inicio de Login
+[14-Feb-2024 19:13:44 UTC] View::render -> Inicio de render
+[14-Feb-2024 19:14:01 UTC] Inicio de la aplicacion
+[14-Feb-2024 19:14:01 UTC] Controller::construct -> Inicio de Controller
+[14-Feb-2024 19:14:01 UTC] View::construct -> Inicio de View
+[14-Feb-2024 19:14:01 UTC] CAdministrador::construct -> Inicio de CAdministrador
+[14-Feb-2024 19:14:01 UTC] View::render -> Inicio de render
+[16-Feb-2024 22:50:20 UTC] Inicio de la aplicacion
+[16-Feb-2024 22:50:20 UTC] PHP Deprecated:  rtrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\app.php on line 9
+[16-Feb-2024 22:50:20 UTC] Controller::construct -> Inicio de Controller
+[16-Feb-2024 22:50:20 UTC] View::construct -> Inicio de View
+[16-Feb-2024 22:50:20 UTC] Home::construct -> Inicio de Home
+[16-Feb-2024 22:50:20 UTC] View::render -> Inicio de render
+[16-Feb-2024 22:50:20 UTC] Inicio de la aplicacion
+[16-Feb-2024 22:50:20 UTC] Controller::construct -> Inicio de Controller
+[16-Feb-2024 22:50:20 UTC] View::construct -> Inicio de View
+[16-Feb-2024 22:50:20 UTC] Errores::construct -> Inicio de Errores
+[16-Feb-2024 22:50:20 UTC] Errores::render -> Inicio de render
+[16-Feb-2024 22:50:20 UTC] View::render -> Inicio de render
