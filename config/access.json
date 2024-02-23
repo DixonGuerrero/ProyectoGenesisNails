@@ -1,0 +1,48 @@
+{
+    "sites":[
+        {
+            "site": "",
+            "access": "public",
+            "role": ""
+        },
+        {
+            "site": "formulario",
+            "access": "public",
+            "role": ""
+        },
+        {
+            "site": "login",
+            "access": "public",
+            "role": ""
+        },
+        {
+            "site": "logout",
+            "access": "public",
+            "role": ""
+        },{
+            "site": "mcliente",
+            "access": "private",
+            "role": "Cliente"
+        },
+        {
+            "site": "acliente",
+            "access": "private",
+            "role": "Cliente"
+        },
+        
+        {
+            "site": "cadministrador",
+            "access": "private",
+            "role": "Empleado"
+        },
+        {
+            "site": "padministrador",
+            "access": "private",
+            "role": "Empleado"
+        }
+    ],
+    "defaultSites":{
+        "Cliente": "mcliente",
+        "Empleado": "cadministrador"
+    }
+}

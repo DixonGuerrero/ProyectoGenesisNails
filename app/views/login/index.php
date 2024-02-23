@@ -5,20 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Genesis Nails</title>
   <link rel="stylesheet" href="./assets/css/Login.css">
+  <link rel="stylesheet" href="./assets/css/sweetalert2.min.css">
+  <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
 </head>
 <body>
-  
+  <p><?php $this->mostrarMensajes();?></p>
     <!--Login-->
     <div class="login">
       <div class="contendorLogin">
-        <form action="" class="formulario_login" method="POST">
+        <form action="<?php echo APP_URL;?>login/iniciarSesion" class="formulario_login" method="POST">
           <h1>Login</h1>
           <div class="input_box">
             <input
               type="text"
-              name="nombre"
+              name="usuario"
+              id="usuario"
               placeholder="Nombre de usuario"
-              pattern="[a-zA-Z0-9]{3,20}"
+             
               required
             />
             <i class="bx bxs-user"></i>
@@ -26,9 +29,10 @@
           <div class="input_box">
             <input
               type="password"
-              name="nombre"
+              name="password"
+              id="password"
               placeholder="Password"
-              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}"
+             
               required
             />
             <i class="bx bxs-lock-alt"></i>
@@ -42,7 +46,7 @@
           <button type="submit" class="btn">Login</button>
 
           <div class="register_link">
-            <p>No tienes una cuenta? <a href="Formulario">Registrate</a></p>
+            <p>No tienes una cuenta? <a href="formulario">Registrate</a></p>
           </div>
         </form>
 

@@ -1,11 +1,7 @@
 <?php
 
-namespace php;
 
-class utils
-{
-
-    public static function limpiarCadena(string $cadena)
+     function limpiarCadena(string $cadena)
     {
 
         $palabras = [
@@ -30,7 +26,7 @@ class utils
         return $cadena;
     }
 
-    protected static function verificarDatos(string $filtro, string $cadena)
+     function verificarDatos(string $filtro, string $cadena)
     {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {
             return false;
@@ -38,4 +34,4 @@ class utils
             return true;
         }
     }
-}
+

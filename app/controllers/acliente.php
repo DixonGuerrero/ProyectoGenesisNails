@@ -1,5 +1,5 @@
 <?php 
-    class ACliente extends Controller{
+    class ACliente extends SessionController{
         function __construct(){
             parent::__construct();
             error_log('ACliente::construct -> Inicio de ACliente');

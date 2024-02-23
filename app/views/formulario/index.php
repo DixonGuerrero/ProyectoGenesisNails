@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genesis Nails</title>
     <link rel="stylesheet" href="./assets/css/Formulario.css">
+    <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
 
-
-
+<?php $this->mostrarMensajes();?>
 
     <header>
 
@@ -37,32 +37,22 @@
 
             <div class="formulario-registro" class="row">
 
-
-
-                <form>
+                <form action="<?php echo APP_URL;?>formulario/nuevoUsuario"   method="POST">
 
                     <fieldset float="left" width="48%">
                         <legend>Datos personales</legend>
 
                         <div>
-                            <label for="nombre">Nombres</label>
-                            <input type="text" id="nombres" pattern="[a-zA-Z\s']{2,30}" name="nombre" />
+                            <label for="nombres">Nombres</label>
+                            <input type="text" id="nombres" pattern="[a-zA-Z\s']{2,30}" name="nombres" />
                         </div>
 
 
 
                         <div>
-                            <label for="apellido">Apellidos</label>
-                            <input type="text" id="apellido" pattern="[a-zA-Z\s']{2,30}" name="apellidos" />
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" id="apellidos" pattern="[a-zA-Z\s']{2,30}" name="apellidos" />
                         </div>
-
-
-
-                        <div>
-                            <label for="id">Cedula de ciudadania</label>
-                            <input type="text" id="id" pattern="\d{8,20}" name="id" />
-                        </div>
-
 
 
                         <div>
@@ -88,22 +78,16 @@
 
 
                         <div>
-                            <label for="fecha de nacimiento">Confirmar Contraseña</label>
+                            <label>Confirmar Contraseña</label>
                             <input type="text" id="clave2" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}" name="clave2" />
                         </div>
 
                     </fieldset>
-
-
+                    <input type="submit" value="Iniciar sesión" />
                 </form>
 
 
-                <div class="botones" text-align="center">
-
-                    <input type="submit" value="Aceptar" class="boton b_aceptar">
-                    <input type="reset" value="Limpiar" class="boton b_limpiar">
-
-                </div>
+               
 
 
 

@@ -11,7 +11,7 @@
     <section class="hero-body">
 	  	<div class="hero-body">
 		    <p class="title">
-		      Error 404
+		    	404
 		    </p>
 		    <p class="subtitle">
 		      Pagina no encontrada

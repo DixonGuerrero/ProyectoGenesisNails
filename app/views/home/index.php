@@ -21,7 +21,7 @@
           <li><a href="#contacto" class="nav_link">Contacto</a></li>
         </ul>
 
-        <a href="Login" class="hero_btn">Ingresar</a>
+        <a href="login" class="hero_btn">Ingresar</a>
 
         <a href="#menu" class="nav_menu">
           <img src="./assets/images/menuIcon.svg" alt="" class="nav_icon" />
@@ -134,13 +134,13 @@
           </li>
 
           <li class="dropdown_list list-ingresar">
-            <a href="Login" class="dropdown_link link_ingresar">
+            <a href="login" class="dropdown_link link_ingresar">
               <img
                 src="./assets/images/ingresarIcon.svg"
                 alt=""
                 class="dropdown_icon"
               />
-              <span class="dropdown_span" href="Login">Ingresar</span>
+              <span class="dropdown_span" href="login">Ingresar</span>
             </a>
           </li>
         </ul>
@@ -153,7 +153,7 @@
             Donde la Belleza se Transforma en una Experiencia Inolvidable:
             Encuentra tu Destino de Estilo en Nuestro Salón
           </p>
-          <a href="Login" class="hero_cta" >Ingresa Ya!</a>
+          <a href="login" class="hero_cta" >Ingresa Ya!</a>
         </div>
 
         <figure class="hero_picture">
@@ -200,7 +200,7 @@
               profesional! Obtén un look suave y pulido al instante. ¡Reserva
               ahor
             </p>
-            <a href="Login" class="btn-servicios" >¡Reserva Ahora!</a>
+            <a href="login" class="btn-servicios" >¡Reserva Ahora!</a>
           </div>
           <div class="cartaServicios" id="acrilico">
             <h3 class="servicio_title">Uñas en acrilico</h3>
@@ -209,7 +209,7 @@
               extensiones de uñas, hechas de polímeros, se esculpen y endurecen
               para un look fabuloso. ¡Reserva ahora!
             </p>
-            <a class="btn-servicios" href="Login">¡Reserva Ahora!</a>
+            <a class="btn-servicios" href="login">¡Reserva Ahora!</a>
           </div>
           <div class="cartaServicios" id="semipermanente">
             <h3 class="servicio_title" >Uñas en Semipermantente</h3>
@@ -218,7 +218,7 @@
               aplicadas para un look duradero y sofisticado! ¡Reserva tu cita
               hoy mismo!
             </p>
-            <a class="btn-servicios" href="Login">¡Reserva Ahora!</a>
+            <a class="btn-servicios" href="login">¡Reserva Ahora!</a>
           </div>
           <div class="cartaServicios" id="manicurePedicure">
             <h3 class="servicio_title">Manicure y Pedicure Tradicional</h3>
@@ -227,7 +227,7 @@
               Mimamos tus manos y pies para un look impecable y relajante.
               ¡Reserva ahora!
             </p>
-            <a class="btn-servicios" href="Login">¡Reserva Ahora!</a>
+            <a class="btn-servicios" href="login">¡Reserva Ahora!</a>
           </div>
           <div class="cartaServicios" id="extencionCejas">
             <h3 class="servicio_title" >Extension de Pestañas</h3>
@@ -236,7 +236,7 @@
               premium! Resalta tu belleza con pestañas largas y exuberantes.
               ¡Reserva ahora mismo tu cita!
             </p>
-            <a class="btn-servicios" href="Login">¡Reserva Ahora!</a>
+            <a class="btn-servicios" href="login">¡Reserva Ahora!</a>
           </div>
           <div class="cartaServicios" id="cejasdesing">
             <h3 class="servicio_title">Diseño de Cejas</h3>
@@ -245,7 +245,7 @@
               diseño de cejas resalta tu belleza natural. ¡Reserva tu cita
               ahora!
             </p>
-            <a class="btn-servicios" href="Login">¡Reserva Ahora!</a>
+            <a class="btn-servicios" href="login">¡Reserva Ahora!</a>
           </div>
         </div>
       </div>

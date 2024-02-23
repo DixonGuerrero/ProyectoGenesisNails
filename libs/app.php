@@ -5,14 +5,8 @@ class App{
 
     function __construct(){
 
-        $url = $_GET['url'] ?? null;
+        $url = isset($_GET['url']) ? $_GET['url']: null;
         $url = rtrim($url, '/');
-        //var_dump($url);
-        /*
-            controlador->[0]
-            method->[1]
-            parameter->[2]
-        */
         $url = explode('/', $url);
 
         // cuando se ingresa sin definir controlador
@@ -43,7 +37,7 @@ class App{
                         //crear un arreglo con los parametros
                         $params = [];
                         //iterar
-                        for($i = 0; $i < $nparam; $i++) {
+                        for($i = 0; $i < $nparam; $i++){
                             array_push($params, $url[$i + 2]);
                         }
                         //pasarlos al metodo   
@@ -52,7 +46,7 @@ class App{
                         $controller->{$url[1]}();    
                     }
                 }else{
-                    $controller = new Errores(); 
+                    $controller = new Errores();
                     $controller->render();
                 }
             }else{
@@ -60,7 +54,7 @@ class App{
             }
         }else{
             $controller = new Errores();
-            $controller->render();
+            $controller->render();  
         }
     }
 }

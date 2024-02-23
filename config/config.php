@@ -1,17 +1,13 @@
-<?php
+<?php 
+/*Creacion de constantes que ayudaran a 
+la navegacion del sitio */
 
-$envFile = __DIR__ . '/../.env';
+    const APP_URL = "http://localhost/Proyectos/ProyectoGenesisNails2/";
+    const APP_NAME = "PROYECTO GENESIS NAILS";
+    const APP_SESSION_NAME = "NAILS";
+    const URL_API = "localhost:3000/api/";
 
-if (file_exists($envFile)) {
-    $envVariables = parse_ini_file($envFile);
-    
-    foreach ($envVariables as $key => $value) {
-      
-    }
-} else {
-    echo "El archivo .env no existe.";
-}
+    const KEY_TOKEN = 'prueba123';
 
-
-
-?>
+    //Obtenemos zona horaria
+    date_default_timezone_set("America/Bogota");
