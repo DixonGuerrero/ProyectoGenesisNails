@@ -1,5 +1,5 @@
 <?php 
-    class PAdministrador extends Model{
+    class PAdministradorModel extends Model{
         function __construct(){
             error_log('PAdministrador::construct -> Inicio de PAdministrador');
         }

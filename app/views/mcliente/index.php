@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genesis Nails</title>
     <link rel="stylesheet" href="./assets/css/MCliente.css">
+    <link rel="stylesheet" href="./assets/css/sweetalert2.min.css">
+  <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
 </head>
 <body>
+<p><?php $this->mostrarMensajes();?></p>
     
     <!--Incluimos el header de Cliente------>
     <?php

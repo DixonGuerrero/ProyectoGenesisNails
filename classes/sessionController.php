@@ -140,6 +140,7 @@ class SessionController extends Controller{
         error_log('SessionController::getUserSessionData()');
         $id = $this->session->getCurrentUser();
         $this->user = new UserModel();
+        error_log("sessionController::getUserSessionData(): id: " . $id);
         $this->user->obtenerUno($id);
         error_log("sessionController::getUserSessionData(): " . $this->user->getNombres());
         return $this->user;
@@ -201,10 +202,10 @@ class SessionController extends Controller{
         error_log("sessionController::authorizeAccess(): role: $role");
         switch($role){
             case 'Cliente':
-                $this->redireccionar($this->defaultSites['Cliente']);
+                $this->redireccionar($this->defaultSites['Cliente'], ['mensaje' => '']);
             break;
             case 'Empleado':
-                $this->redireccionar($this->defaultSites['Empleado']);
+                $this->redireccionar($this->defaultSites['Empleado'], ['mensaje' => '']);
             break;
             default:
         }

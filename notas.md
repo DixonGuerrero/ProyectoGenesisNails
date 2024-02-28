@@ -18,6 +18,10 @@ Objetivos semana
         - Crear Usuarios Empleados
     
 
+    Cambios
+        - Actualizar vista
+        - Independizar cada vista
+        - Usar validacion de token para cerra la sesion actual
 
 
 

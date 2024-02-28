@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Génesis Nails</title>
     <link rel="stylesheet" href="./assets/css/CAdministrador.css">
+    <link rel="stylesheet" href="./assets/css/sweetalert2.min.css">
+  <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
 </head>
 <body>
+
     
     <!--Incluimos el header de admin------>
     <?php
             include "./inc/menuAdmin.php";
         ?>
-
+<p><?php $this->mostrarMensajes();?></p>
     <main>
         <section class="menu_lateral">
             <ul>

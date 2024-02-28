@@ -13,13 +13,13 @@
                     'password' => $password
                 ]);
 
-                if($respuesta['token']){
-                    error_log('LoginModel::iniciarSesion -> Exito al iniciar sesion');
-                    return $respuesta;
-                }
-                error_log('LoginModel::iniciarSesion -> Error al iniciar sesion');
+                if(!isset($respuesta['response']['token'])){
+                    error_log('LoginModel::iniciarSesion -> Error al iniciar sesion.'.json_encode($respuesta));
                 return $respuesta;
-
+                }
+                
+                error_log('LoginModel::iniciarSesion -> Exito al iniciar sesion');
+                return $respuesta;
                 
 
             } catch (Exception $e) {

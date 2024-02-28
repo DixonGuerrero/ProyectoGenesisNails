@@ -6,7 +6,7 @@
         }
 
         public function render(){
-            $this->view->render('cadministrador/index');
+            $this->view->render('cadministrador/index',[]);
         }
     }   
 ?>  

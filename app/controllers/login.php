@@ -28,13 +28,13 @@
                 $respuesta = $this->model->iniciarSesion($usuario, $contrasena);
 
 
-                if(!$respuesta['token']){
+                if($respuesta['status'] != 200){
                     error_log('Login::iniciarSesion -> Error al iniciar sesion'. json_encode($respuesta));
-                    $this->redireccionar('login', ['info' => InfoMensajes::encriptarMensaje($respuesta['message'])]);
+                    $this->redireccionar('login', ['info' => InfoMensajes::encriptarMensaje($respuesta['response']['message'])]);
                     return;
                 }
 
-                $token = $respuesta['token'];
+                $token = $respuesta['response']['token'];
                 $this->model->api->setToken($token);
                 error_log('Login::iniciarSesion -> Exito al iniciar sesion-> Actualizamos Token: ' . $token);
 
@@ -52,16 +52,20 @@
 
                 error_log('Login::iniciarSesion -> persona: ' . json_encode($persona));
 
-                if($persona['message']){
+                if($persona['status'] != 200){
                     error_log('Login::iniciarSesion -> Error al iniciar sesion -> No hay persona');
                     $this->redireccionar('login', ['error' => ErrorMensajes::ERROR_LOGIN_INICIARSESION_500]);
                     return;
                 }
 
+                $persona = (array)$persona['response'];
+
+
+
                  $user = new UserModel();
                  error_log('Login::iniciarSesion -> Nuevo Usuario');
 
-                 $user->asignacion($persona);
+                 $user->asignarDatos($persona);
                     error_log('Login::iniciarSesion -> Asignamos datos a nuevo Usuario: '. $user->getId());
 
                 if($user->getId() == NULL){
@@ -86,6 +90,12 @@
                 error_log('Login::iniciarSesion -> No existen parametros POST');
                 $this->redireccionar('login', ['error' => ErrorMensajes::ERROR_LOGIN_INICIARSESION_VACIO]);
             }
+        }
+
+        public function cerrarSesion(){
+            error_log('Login::cerrarSesion -> inicio de cerrarSesion');
+            $this->session->closeSession();
+            $this->redireccionar('login', ['info' => InfoMensajes::encriptarMensaje('Sesion cerrada')]);
         }
 
     }

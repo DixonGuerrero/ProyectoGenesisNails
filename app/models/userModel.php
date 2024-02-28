@@ -85,12 +85,7 @@
 
                error_log('UserModel::obtenerUno -> persona: ' . json_encode($persona));
 
-                $this->setId($persona['id_persona']);
-                $this->setNombres($persona['nombres']);
-                $this->setApellidos($persona['apellidos']);
-                $this->setEmail($persona['correo']);
-                $this->setTelefono($persona['telefono']);
-                $this->setRole($persona['rol']);
+                $this->asignarDatos($persona['response']);
 
                 return $this;
 
@@ -148,7 +143,7 @@
             }
         }
 
-        public function asignacion($data){
+        public function asignarDatos($data){
             $this->setId($data['id_persona']);
             $this->setNombres($data['nombres']);
             $this->setApellidos($data['apellidos']);

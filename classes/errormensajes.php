@@ -15,6 +15,11 @@
         const ERROR_LOGIN_INICIARSESION_500 = 
         'D360c45298fchc169afdf4c8996fb524';
 
+        const ERROR_PRODUCTO_NUEVOPRODUCTO_VACIO = '3Cb26g4293fc1c1493fb5f4c8996fZT21';
+
+        const ERROR_PRODUCTO_NUEVOPRODUCTO_500 = 'YcbH6gb2eNfc1ND493fb5f4c8be96fxT51';
+
+
         private $listaErrores = [];
 
         public function __construct(){
@@ -25,7 +30,9 @@
                 self::ERROR_FORMULARIO_NUEVOUSUARIO_VACIO => 'Todos los campos son obligatorios',
                 self::ERROR_FORMULARIO_NUEVOUSUARIO => 'Error al crear el usuario',
                 self::ERROR_FORMULARIO_NUEVOUSUARIO_PASSWORDS => 'Las contraseñas no coinciden',
-                self::ERROR_LOGIN_INICIARSESION_500 => 'Error al iniciar sesión'
+                self::ERROR_LOGIN_INICIARSESION_500 => 'Error al iniciar sesión',
+                self::ERROR_PRODUCTO_NUEVOPRODUCTO_VACIO => 'Todos los campos son obligatorios',
+                self::ERROR_PRODUCTO_NUEVOPRODUCTO_500 => 'Error al crear el producto'
             ];
         }  
         
