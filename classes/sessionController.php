@@ -204,8 +204,8 @@ class SessionController extends Controller{
             case 'Cliente':
                 $this->redireccionar($this->defaultSites['Cliente'], ['mensaje' => '']);
             break;
-            case 'Empleado':
-                $this->redireccionar($this->defaultSites['Empleado'], ['mensaje' => '']);
+            case 'Admin':
+                $this->redireccionar($this->defaultSites['Admin'], ['mensaje' => '']);
             break;
             default:
         }

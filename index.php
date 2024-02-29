@@ -26,10 +26,9 @@
 
     //Incluimos los modelos
     require_once 'app/models/usermodel.php';
-    require_once 'app/models/productoModel.php';
     require_once 'app/models/categoriaModel.php';
     require_once 'app/models/marcaModel.php';
-    require_once 'app/models/proveedorModel.php';
+
 
     //Iniciamos la aplicacion GO!!
     $app = new App();

@@ -1,0 +1,799 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+:root{
+    --color-barra-lateral:linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-tabla: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-th-tabla: #fff;
+
+    --color-texto:rgb(0,0,0);
+    --color-texto-menu:rgb(236, 236, 236);
+
+    --color-menu-hover:rgb(238,238,238);
+    --color-menu-hover-texto:rgb(0,0,0);
+
+    --color-boton:rgb(0,0,0);
+    --color-boton-texto:rgb(255,255,255);
+
+    --color-linea:rgb(180,180,180);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-switch-base :rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+    --color-main:rgb(255,255,255);
+    --color-sombras:rgb(0,0,0,0.2);
+}
+
+.dark-mode{
+    --color-barra-lateral: linear-gradient(to bottom,#736F6F 0%, #1B1919 100%);
+    --color-tabla: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(201, 201, 201);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-texto:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-switch-base :rgb(39,205,64);
+    --color-switch-circulo:rgb(255,255,255);
+
+    --color-scroll:rgb(68,69,74);
+    --color-scroll-hover:rgb(85,85,85);
+    --color-main:rgb(99, 98, 98);
+
+    --color-sombras:rgba(255, 255, 255, 1);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background-color:var(--color-main);
+}
+
+/*-----------------Menu*/
+.menu{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+    right: 15px;
+    top: 15px;
+    z-index: 100;
+}
+
+
+/*----------------Barra Lateral*/
+.barra-lateral{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 100%;
+    overflow: hidden;
+    padding: 20px 15px;
+    background-image: var(--color-barra-lateral);
+    transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
+    z-index: 50;
+}
+
+.mini-barra-lateral{
+    width: 80px;
+}
+.barra-lateral span{
+    width: 100px;
+    white-space: nowrap;
+    font-size: 18px;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 0.5s ease,width 0.5s ease;
+}
+.barra-lateral span.oculto{
+    opacity: 0;
+    width: 0;
+}
+
+/*------------> Nombre de la página */
+.barra-lateral .nombre-pagina{
+    width: 100%;
+    height: 45px;
+    color: var(--color-texto);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+.barra-lateral .nombre-pagina ion-icon{
+    min-width: 50px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.barra-lateral .nombre-pagina span{
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+/*------------> Logo*/
+.barra-lateral #logo{
+    width: 50px;
+}
+
+
+/*------------> Botón*/
+.barra-lateral .boton{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+}
+.barra-lateral .boton ion-icon{
+    min-width: 50px;
+    font-size: 25px;
+}
+
+
+/*--------------> Menu Navegación*/
+.barra-lateral .navegacion{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.barra-lateral .navegacion::-webkit-scrollbar{
+    width: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb{
+    background-color: var(--color-scroll);
+    border-radius: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-scroll-hover);
+}
+.barra-lateral .navegacion li{  
+    list-style: none;
+    display: flex;
+    margin-bottom: 5px;
+}
+.barra-lateral .navegacion a{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    color: var(--color-texto-menu);
+}
+.barra-lateral .navegacion a:hover{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+.barra-lateral .navegacion ion-icon{
+    min-width: 50px;
+    font-size: 20px;
+}
+
+/*-----------------> Linea*/
+.barra-lateral .linea{
+    width: 100%;
+    height: 1px;
+    margin-top: 15px;
+    background-color: var(--color-linea);
+}
+
+/*----------------> Modo Oscuro*/
+.barra-lateral .modo-oscuro{
+    width: 100%;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.barra-lateral .modo-oscuro .info{
+    width: 150px;
+    height: 45px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: var(--color-texto-menu);
+}
+.barra-lateral .modo-oscuro ion-icon{
+
+    width: 50px;
+    font-size: 20px;
+}
+
+/*--->switch*/
+.barra-lateral .modo-oscuro .switch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+.barra-lateral .modo-oscuro .base{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 20px;
+    background-color: var(--color-switch-base);
+    border-radius: 50px;
+}
+.barra-lateral .modo-oscuro .circulo{
+    position: absolute;
+    width: 18px;
+    height: 90%;
+    background-color: var(--color-switch-circulo);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.5s ease;
+}
+.barra-lateral .modo-oscuro .circulo.prendido{
+    left: 15px;
+}
+
+/*---------------> Usuario*/
+.barra-lateral .usuario{
+    width: 100%;
+    display: flex;
+}
+.barra-lateral .usuario img{
+    width: 50px;
+    min-width: 50px;
+    border-radius: 10px;
+}
+.barra-lateral .usuario .info-usuario{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto);
+    overflow: hidden;
+}
+.barra-lateral .usuario .nombre-email{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+.barra-lateral .usuario .nombre{
+    font-size: 15px;
+    font-weight: 600;
+}
+.barra-lateral .usuario .email{
+    font-size: 13px;
+}
+.barra-lateral .usuario ion-icon{
+    font-size: 20px;
+}
+
+
+
+/*-------------main*/
+
+#inbox{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+main{
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s ease;
+}
+main.min-main{
+    margin-left: 80px;
+}
+
+.barra-superior{
+   text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 20PX;
+    border-bottom: 2px solid var(--color-linea);
+    
+}
+
+.barra-superior .titulo-pagina{
+    font-size: 50px;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/*------------------>Tarjetas info*/
+
+main .tarjetas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+main .tarjeta {
+    width: 20%;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    color: var(--color-menu-hover-texto);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+
+}
+
+
+main .tarjetas .tarjeta:hover{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+.tarjeta .icono {
+    display: flex; 
+    align-items: center;
+    gap: 10px; 
+}
+
+.tarjeta .icono ion-icon {
+    font-size: 24px; 
+    color: #6FA999; 
+}
+
+.tarjeta .icono h2 {
+    margin: 0;
+    color: var(--color-texto);
+    font-size: 20px;
+}
+
+/* Estilo del contenedor de información */
+.tarjeta .info {
+    background-color: #fff;
+    border-top: 1px solid #eee; 
+    padding: 15px;
+    text-align: center; 
+}
+
+.tarjeta .info p {
+    margin: 0; 
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.tarjeta.primera{
+    border-left: #007bff 5px solid;
+
+}
+
+.tarjeta.segunda{
+    border-left: #B212C5 5px solid;
+
+}
+
+.tarjeta.tercera{
+    border-left:#4CA71F 5px solid;
+}
+
+.tarjeta.cuarta{
+    border-left: #12C5C0 5px solid;
+}
+
+/*------------------>Titulo*/
+
+main .titulo-sesion{
+    margin-left: 20px; 
+    margin-bottom: 30px;
+    color: var(--color-texto);
+    font-size: 40PX;
+    font-weight: 600;
+}
+
+main .titulo-sesion {
+    display: flex; 
+    align-items: center;
+    gap: 10px; 
+}
+
+/*------------------>Grafica*/
+main .grafica{
+    margin: 20PX;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    justify-content: space-around;
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+
+}
+
+main .grafica .titulo-grafica{
+    font-size: 50px;
+    color: var(--color-texto);
+  
+}
+
+/*------------------>Tarjeta mas servicio*/
+
+main .estadisticas-max-min{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px;
+
+}
+
+main .tarjeta-estadistica{
+    width: 48.8%;
+    margin-bottom: 20PX;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+}
+
+main .tarjeta-estadistica .servicio.max h2,
+main .tarjeta-estadistica .servicio.min h2,
+main .tarjeta-estadistica .producto.max h2,
+main .tarjeta-estadistica .producto.min h2{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; 
+}
+
+main .servicio h2,
+main .producto h2{
+    margin: 20px;
+    color: var(--color-texto);
+}
+
+main .servicio .info,
+main .producto .info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    color: var(--color-texto);
+    border-top: 2px solid var(--color-linea);
+}
+
+main .estadisticas-max-min .tarjeta-estadistica:hover{
+
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+main .estadisticas-max-min .tarjeta-estadistica .info{
+    padding: 20PX;
+    font-size: 20PX;
+}
+
+main .producto.max .info .estadistica,
+main .servicio.max .info .estadistica{
+
+    color : #27BE29;
+}
+
+main .producto.min .info .estadistica,
+main .servicio.min .info .estadistica{
+
+    color : #FF0000;
+}
+
+/*------------------>Tabla*/
+.table{
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+}
+
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-image: var(--color-barra-lateral);
+}
+
+.table-header p{
+    font-size: 25px;
+    color: var(--color-th-tabla);
+}
+
+button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 10px 20px;
+    color:#eee
+}
+td button.editar{
+    background-color: #007bff;
+}
+
+td button.eliminar{
+    background-color: #FF0000;
+}
+
+.add-new{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color:#2EC229 ;
+    color: #fff;
+}
+/*
+input.buscar{
+    padding: 10px 20px;
+    margin: 0 10px;
+    outline: none;
+    border: 1px solid #E256D2;
+    border-radius: 6px;
+    color:#E256D2 ;
+}
+*/
+
+.table-section{
+    height: 650px;
+    overflow: auto;
+    
+}
+
+table{
+    width: 100%;
+    table-layout: fixed;
+    min-width: 800px;
+}
+
+table th{
+    position: Sticky;
+    top: 0;
+    background-color: var(--color-texto-menu);
+    font-size: 15px;
+
+}
+
+th,td{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    word-break: break-all;
+    text-align: center;
+    color: var(--color-texto);
+}
+
+td img{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 5px solid var(--color-sombras);
+}
+
+tr:hover td{
+    color: var(--color-menu-hover);
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.pagination{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding:10px 20px;
+    background: var(--color-barra-lateral)
+}
+
+.pagination div{
+    padding:10px;
+    border: 2px solid var(--color-texto-menu);
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-main);
+    color: var(--color-texto);
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+/*---------------Tarjeta Porducto->*/
+
+.producto-max-min-stock{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px;
+
+}
+
+.tarjeta-producto{
+    width: 49%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+}
+
+.tarjeta-producto h2{
+    margin: 20px;
+    color: var(--color-texto);
+    font-size: 40px;
+    text-align: center;
+}
+
+.tarjeta-producto .info {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; 
+}
+
+.info .imagen-producto{
+    width: 100%;
+    height: 100%;
+    padding-top: 20PX;
+    border-radius: 15px;
+}
+
+.tarjeta-producto .info .titulo{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--color-texto);
+
+}
+
+.tarjeta-producto .info .estadistica{
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+.tarjeta-producto:hover{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+.tarjeta-producto .producto.min .info .estadistica{
+    color: #FF0000;
+
+}
+
+
+
+
+
+::placeholder{
+    color: #E256D2;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 5px var(--color-scroll);
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--color-scroll);
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px var(--color-scroll-hover);
+}
+
+
+/*------------------> Responsive*/
+@media (max-height: 660px){
+    .barra-lateral .nombre-pagina{
+        margin-bottom: 5px;
+    }
+    .barra-lateral .modo-oscuro{
+        margin-bottom: 3px;
+    }
+
+    
+}
+
+@media (max-width: 1000px){
+
+
+    main .tarjeta{
+        width: 45%;
+    }
+    .tarjeta-producto{
+        width: 100%;
+    
+    }
+    
+}
+
+@media (max-width: 800px){
+    .barra-lateral{
+        position: fixed;
+        left: -250px;
+    }
+    .max-barra-lateral{
+        left: 0;
+    }
+    .menu{
+        display: flex;
+    }
+    .menu ion-icon:nth-child(2){
+        display: none;
+    }
+    main{
+        margin-left: 0;
+    }
+    main.min-main{
+        margin-left: 0;
+    }
+
+    main .tarjetas{
+        display:flex;
+        flex-direction: column;
+    }
+
+    main .tarjeta{
+        width: 100%;
+    }
+
+    main .tarjeta-estadistica{
+        width: 100%;
+    }
+    
+}
+
+

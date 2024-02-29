@@ -1,5 +1,5 @@
 <?php 
-    class Producto extends SessionController{
+    class Producto extends sessionController{
 
         private $user;
 

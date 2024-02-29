@@ -1,16 +1,14 @@
 <?php 
-    class Home extends Controller{
+    class DashAdmin extends Controller{
         function __construct(){
             parent::__construct();
             error_log('Home::construct -> Inicio de Home');
         }
 
         public function render(){
-            $this->view->render('home/index');
+            $this->view->render('dashadmin/index');
         }
 
-        public function prueba(){
-           
-        }
+
     }
 ?>

@@ -1,0 +1,5 @@
+.env
+.idea
+.vscode
+.composer.lock
+.notas.md

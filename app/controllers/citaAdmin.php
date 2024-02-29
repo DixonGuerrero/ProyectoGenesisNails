@@ -1,16 +1,14 @@
 <?php 
-    class Home extends Controller{
+    class CitaAdmin extends Controller{
         function __construct(){
             parent::__construct();
             error_log('Home::construct -> Inicio de Home');
         }
 
         public function render(){
-            $this->view->render('home/index');
+            $this->view->render('citaAdmin/index');
         }
 
-        public function prueba(){
-           
-        }
+
     }
 ?>
