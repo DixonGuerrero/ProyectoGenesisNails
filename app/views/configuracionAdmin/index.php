@@ -1,5 +1,5 @@
 <?php 
-    require_once 'app/views/template/parteSuperior.php';
+    require_once 'app/views/template/parteSuperiorAdmin.php';
 ?>
 
 <div class="barra-superior">
@@ -18,7 +18,7 @@
 
             <div class="titulo-cerrar-sesion">
                 <h2>Sesion <ion-icon name="finger-print-outline"></ion-icon></h2>
-    
+
                 <div class="sesion">
                     <!-----------------Formulario para cerrar sesion----------------->    
                     <form class="FormularioAjax" action="<?php echo APP_URL;?>login/cerrarSesion" method="POST">
@@ -27,7 +27,7 @@
                         </button>
 
                     </form>
-                </div>     
+                </div>   
             </div>
         </div>
 
@@ -104,5 +104,5 @@
         </div>
 
 <?php 
-    require_once 'app/views/template/parteInferior.php';
+    require_once 'app/views/template/parteInferiorAdmin.php';
 ?>

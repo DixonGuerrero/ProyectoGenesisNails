@@ -17,6 +17,7 @@
     require_once 'classes/infomensajes.php';
     require_once 'classes/errormensajes.php';
     require_once 'classes/exitomensajes.php';
+    require_once 'classes/alertas.php';
    
     require_once 'libs/model.php';
     require_once 'libs/view.php';
@@ -25,7 +26,7 @@
     require_once 'config/config.php';
 
     //Incluimos los modelos
-    require_once 'app/models/usermodel.php';
+    require_once 'app/models/usuarioModel.php';
     require_once 'app/models/categoriaModel.php';
     require_once 'app/models/marcaModel.php';
 

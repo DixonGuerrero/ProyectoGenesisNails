@@ -37,49 +37,49 @@
 
             <div class="formulario-registro" class="row">
 
-                <form action="<?php echo APP_URL;?>formulario/nuevoUsuario"   method="POST">
+                <form class="FormularioAjax" action="<?php echo APP_URL;?>formulario/nuevoUsuario"   method="POST">
 
                     <fieldset float="left" width="48%">
                         <legend>Datos personales</legend>
 
                         <div>
                             <label for="nombres">Nombres</label>
-                            <input type="text" id="nombres" pattern="[a-zA-Z\s']{2,30}" name="nombres" />
+                            <input type="text" id="nombres" name="nombres" />
                         </div>
 
 
 
                         <div>
                             <label for="apellidos">Apellidos</label>
-                            <input type="text" id="apellidos" pattern="[a-zA-Z\s']{2,30}" name="apellidos" />
+                            <input type="text" id="apellidos" name="apellidos" />
                         </div>
 
 
                         <div>
                             <label for="telefono">Telefono</label>
-                            <input type="text" id="telefono" pattern="[0-9\s+]+" name="telefono" />
+                            <input type="text" id="telefono" name="telefono" />
                         </div>
 
                         <div>
                             <label for="usuario">Usuario</label>
-                            <input type="text" id="usuario" pattern="[a-zA-Z0-9]{3,20}" name="usuario" />
+                            <input type="text" id="usuario" " name="usuario" />
                         </div>
 
                         <div>
                             <label for="email">Correo Electronico</label>
-                            <input type="text" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}" name="email" />
+                            <input type="text" id="email"  name="email" />
                         </div>
 
                         <div>
                             <label for="id">Contraseña</label>
-                            <input type="text" id="clave1" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}" name="clave1" />
+                            <input type="text" id="clave1"  name="clave1" />
                         </div>
 
 
 
                         <div>
                             <label>Confirmar Contraseña</label>
-                            <input type="text" id="clave2" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}" name="clave2" />
+                            <input type="text" id="clave2"  name="clave2" />
                         </div>
 
                     </fieldset>
@@ -106,7 +106,7 @@
 
 
 
-
+    <script src="<?php echo APP_URL?>assets/js/ajax.js"></script>
 </body>
 
 </html>

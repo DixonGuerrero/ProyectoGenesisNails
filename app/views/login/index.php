@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="./assets/css/Login.css">
   <link rel="stylesheet" href="./assets/css/sweetalert2.min.css">
   <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
+  
 </head>
 <body>
   <p><?php $this->mostrarMensajes();?></p>
     <!--Login-->
     <div class="login">
       <div class="contendorLogin">
-        <form action="<?php echo APP_URL;?>login/iniciarSesion" class="formulario_login" method="POST">
+        <form action="<?php echo APP_URL;?>login/iniciarSesion" class="FormularioAjax formulario_login" method="POST">
           <h1>Login</h1>
           <div class="input_box">
             <input
@@ -58,6 +59,6 @@
       </div>
     </div>
 
-
+    <script src="<?php echo APP_URL?>assets/js/ajax.js"></script>
 </body>
 </html>

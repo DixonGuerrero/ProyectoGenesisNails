@@ -11,6 +11,7 @@ class SessionController extends Controller{
     public $session;
     private $sites;
 
+
     private $user;
  
     function __construct(){
@@ -67,6 +68,8 @@ class SessionController extends Controller{
         //Si existe la sesión
         if($this->existsSession()){
             $role = $this->getUserSessionData()->getRole();
+            $role = strtolower($role);
+
 
 
             if($this->isPublic()){
@@ -139,7 +142,7 @@ class SessionController extends Controller{
     function getUserSessionData(){
         error_log('SessionController::getUserSessionData()');
         $id = $this->session->getCurrentUser();
-        $this->user = new UserModel();
+        $this->user = new UsuarioModel();
         error_log("sessionController::getUserSessionData(): id: " . $id);
         $this->user->obtenerUno($id);
         error_log("sessionController::getUserSessionData(): " . $this->user->getNombres());
@@ -167,14 +170,9 @@ class SessionController extends Controller{
     }
 
     private function redirectDefaultSiteByRole($role){
-        $url = '';
-        for($i = 0; $i < sizeof($this->sites); $i++){
-            if($this->sites[$i]['role'] === $role){
-                $url = APP_URL.$this->sites[$i]['site'];
-            break;
-            }
-        }
-        header('location: '.$url);
+        $url = $this->defaultSites[$role];
+        error_log("sessionController::redirectDefaultSiteByRole(): role: $role, url: $url");
+        header('location: '. APP_URL . $url);
         
     }
 
@@ -201,18 +199,26 @@ class SessionController extends Controller{
     function authorizeAccess($role){
         error_log("sessionController::authorizeAccess(): role: $role");
         switch($role){
-            case 'Cliente':
-                $this->redireccionar($this->defaultSites['Cliente'], ['mensaje' => '']);
+            case 'cliente':
+                $this->alerta = new Alertas('Exito', 'Bienvenido al panel de cliente');
+                echo $this->alerta->redireccionar($this->defaultSites['cliente'])->exito()->getAlerta();
             break;
-            case 'Admin':
-                $this->redireccionar($this->defaultSites['Admin'], ['mensaje' => '']);
+            case 'admin':
+                $this->alerta = new Alertas('Exito', 'Bienvenido al panel de administración');
+                 echo $this->alerta->redireccionar($this->defaultSites['admin'])->exito()->getAlerta();
+                 error_log('SessionController::authorizeAccess() => admin');
             break;
             default:
         }
     }
 
     function logout(){
-        $this->session->closeSession();
+        error_log('Login::cerrarSesion -> inicio de cerrarSesion');
+            $this->session->closeSession();
+            $this->alerta = new Alertas('Exito', 'Sesión cerrada');
+            echo $this->alerta->redireccionar('home')->exito()->getAlerta();
+            
+            exit();
     }
 }
 

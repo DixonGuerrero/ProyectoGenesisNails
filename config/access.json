@@ -17,43 +17,38 @@
         },
         {
             "site":"cita",
-            "access":"plublic",
-            "role":""
+            "access":"private",
+            "role":"cliente"
         },
         {
             "site":"configuracion",
-            "access":"plublic",
+            "access":"private",
             "role":""
         },
         {
             "site":"dashboard",
-            "access":"plublic",
-            "role":""
+            "access":"private",
+            "role":"cliente"
         },
         {
             "site":"entrada",
-            "access":"plublic",
-            "role":""
+            "access":"private",
+            "role":"admin"
         },
         {
             "site":"producto",
-            "access":"plublic",
-            "role":""
+            "access":"private",
+            "role":"admin"
         },
         {
             "site":"salida",
-            "access":"plublic",
-            "role":""
+            "access":"private",
+            "role":"admin"
         },
         {
             "site":"usuario",
-            "access":"plublic",
-            "role":""
-        },
-        {
-            "site": "logout",
-            "access": "public",
-            "role": ""
+            "access":"private",
+            "role":"admin"
         },
         {
             "site": "dashadmin",
@@ -62,7 +57,7 @@
         }
     ],
     "defaultSites":{
-        "Cliente": "mcliente",
-        "Admin": "dashadmin"
+        "cliente": "dashboard",
+        "admin": "dashadmin"
     }
 }

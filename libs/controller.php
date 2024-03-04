@@ -3,6 +3,7 @@
     class Controller{
        public $view;
        public $model;
+       public $alerta; 
 
         function __construct(){
             error_log('Controller::construct -> Inicio de Controller');
@@ -13,7 +14,7 @@
             $url = 'app/models/' . $model . 'model.php';
 
             if(file_exists($url)){
-                require $url;
+                require_once $url;
 
                 $modelName = $model . 'Model';
                 $this->model = new $modelName();

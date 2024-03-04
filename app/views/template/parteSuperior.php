@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/dashadmin.css" />
 
     <link rel="stylesheet" href="assets/css/<?php echo $url[0];?>.css" />
+    <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
   </head>
   <body>
     <div class="menu">

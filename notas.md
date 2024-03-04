@@ -11,17 +11,26 @@ Objetivos semana
             Usuario logeado ⚠
         }
 
-    Semana 26 - 2 Marzo
-        - Agendar Cita 
-        - Eliminar Cita
+    Semana 26 - 2 Marzo ❌
+        - Agendar Cita ⚠
+        - Eliminar Cita ⚠
+        - Actualizar Cita ⚠
+        - Crear Usuarios Empleados ⚠
+
+    Semana 4 - 9 Marzo
+        - Ajax ✅
+        - Alertar Personalizables ✅
+        - Agendar Cita
         - Actualizar Cita
-        - Crear Usuarios Empleados
+        - Eliminar Cita
+        - Ver Citas
     
 
-    Cambios
+    Futuros Cambios
         - Actualizar vista
         - Independizar cada vista
         - Usar validacion de token para cerra la sesion actual
+        - Validar Token en la sesion
 
 
 

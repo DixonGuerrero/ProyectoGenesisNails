@@ -38,6 +38,7 @@
 
             switch($method){
                 case "GET" :
+                    error_log($this->token);
                 break;
                 case "POST":
                     curl_setopt($channel,CURLOPT_POST,TRUE);
