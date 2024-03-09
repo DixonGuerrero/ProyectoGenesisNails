@@ -227,7 +227,7 @@ main .configuraciones .formulario-datos-basicos form .grupo input{
 
 main .configuraciones .formulario-datos-basicos form .submit{
     text-decoration: none;
-  
+    font-size: 18px;
     display: flex;
     justify-content: space-around;
     align-items: center;

@@ -11,9 +11,14 @@
         }
 
         public function loadModel($model){
-            $url = 'app/models/' . $model . 'model.php';
 
+            error_log('Controller::loadModel -> Cargando modelo: '.$model);
+            $url = 'app/models/' . $model . 'Model.php';
+
+            error_log('Controller::loadModel -> URL: '.$url);
             if(file_exists($url)){
+                error_log('Controller::loadModel -> Existe el archivo: '.$url);
+
                 require_once $url;
 
                 $modelName = $model . 'Model';

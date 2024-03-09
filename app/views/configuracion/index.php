@@ -8,7 +8,7 @@
 
     <div class="configuraciones">
         <div class="foto-perfil">
-            <img src="<?php echo APP_URL?>assets/images/usuario/default.jpg" alt="">
+        <img src="<?php echo APP_URL; ?>assets/images/usuario/<?php echo $usuario->getImagen();?>" alt="" />
             <a class="cambiar-foto" href="#">
             <ion-icon name="camera-reverse-outline"></ion-icon> Cambiar foto
             </a>
@@ -22,7 +22,7 @@
                 <div class="sesion">
                     <!-----------------Formulario para cerrar sesion----------------->    
                     <form class="FormularioAjax" action="<?php echo APP_URL;?>login/cerrarSesion" method="POST">
-                        <button type="submit" class="cerrar-sesion" href="#">
+                        <button type="submit" class="cerrar-sesion" >
                         <ion-icon name="exit-outline"></ion-icon>Cerrar Session
                         </button>
 
@@ -40,23 +40,33 @@
         <form action="">
             <div class="grupo">
                 <label for="nombre">Nombres</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre" name="nombre" value="
+                <?php echo $usuario->getNombres();?>
+                ">
             </div>
             <div class="grupo">
                 <label for="nombre">Apellidos</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre" name="nombre" value="
+                <?php echo $usuario->getApellidos();?>
+                ">
             </div>
             <div class="grupo">
                 <label for="nombre">Telefono</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre" name="nombre" value="
+                <?php echo $usuario->getTelefono();?>
+                ">
             </div>
             <div class="grupo">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" value="
+                <?php echo $usuario->getEmail();?>
+                ">
             </div>
             <div class="grupo">
                 <label for="nombre">Usuario</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre" name="nombre" value="
+                <?php echo $usuario->getUsuario();?>
+                ">
             </div>
             
             <a class="submit" href="">

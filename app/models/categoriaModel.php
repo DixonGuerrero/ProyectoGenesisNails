@@ -31,14 +31,12 @@
         public function obtenerTodo(){
             $data = [];
             try {
-                $data = $this->api->obtenerTodo('categoria');
+                $respuesta = $this->api->obtenerTodo('categoria');
 
-                foreach ($data as $item) {
+                foreach ($respuesta as $item) {
                     $categoria = new CategoriaModel();
-                    $categoria->setIdCategoria($item['id_categoria']);
-                    $categoria->setNombre($item['nombre']);
-                    $categoria->setTipo($item['tipo']);
-                    array_push($data,$categoria);
+                    $categoria->asignarDatos($item);
+                    array_push($data, $categoria);
                 }
 
                 return $data;

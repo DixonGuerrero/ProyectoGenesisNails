@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 :root{
     --color-barra-lateral:linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    --color-tabla: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-tabla:linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+
+    --color-th-tabla: #fff;
 
     --color-texto:rgb(0,0,0);
     --color-texto-menu:rgb(236, 236, 236);
@@ -14,8 +16,6 @@
 
     --color-linea:rgb(180,180,180);
     --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-
-    --color-boton-agregar: #27BE29;
 
     --color-switch-base :rgb(201,202,206);
     --color-switch-circulo:rgb(241,241,241);
@@ -41,8 +41,6 @@
 
     --color-linea:rgb(90,90,90);
     --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-
-    --boton-color-agregar: #27BE29;
 
     --color-switch-base :rgb(39,205,64);
     --color-switch-circulo:rgb(255,255,255);

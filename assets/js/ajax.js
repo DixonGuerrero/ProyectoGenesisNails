@@ -49,7 +49,7 @@ formularios_ajax.forEach((formularios) => {
             Swal.fire({
               icon: 'error',
               title: 'Error del servidor',
-              text: 'Ha ocurrido un problema con el servidor o la respuesta está vacía.',
+              text: 'Ha ocurrido un problema con el servidor',
             });
           });
       }

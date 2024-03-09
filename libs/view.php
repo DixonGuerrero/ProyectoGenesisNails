@@ -12,7 +12,7 @@
             error_log('View::render -> Inicio de render');
             $this->d = $data;
 
-            $this->manejarMensajes();
+           
             require 'app/views/' . $nombre . '.php';
         }
 

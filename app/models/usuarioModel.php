@@ -1,5 +1,5 @@
 <?php 
-    class UsuarioModel extends Model{
+    class UsuarioModel extends Model implements IModel{
 
         private $id;
         private $nombres;
@@ -11,6 +11,7 @@
         private $cargo;
         private $usuario;
         private $password;
+        private $id_cliente;
 
         
         public function __construct(){
@@ -25,7 +26,7 @@
             $this->cargo = '';
             $this->usuario = '';
             $this->password = '';
-            
+            $this->id_cliente = 0;
 
         }
 
@@ -57,26 +58,19 @@
         }
 
         public function obtenerTodo(){
-            $data = [];
+            $usuarios = [];
             try {
-                $data = $this->api->obtenerTodo('personas');
+                $data = $this->api->obtenerTodo('persona');
 
-                foreach ($data as $item) {
+                error_log('UserModel::obtenerTodo -> data: ' . json_encode($data));
+                
+                foreach ($data['response'] as $item) {
                     $user = new UsuarioModel();
-                    $user->setId($item['id']);
-                    $user->setNombres($item['nombres']);
-                    $user->setApellidos($item['apellidos']);
-                    $user->setEmail($item['email']);
-                    $user->setTelefono($item['telefono']);
-                    $user->setImagen($item['imagen']);
-                    $user->setRole($item['rol']);
-                    $user->setCargo($item['cargo']);
-                    $user->setUsuario($item['usuario']);
-                    $user->setPassword($item['password']);
-                    array_push($data,$user);
+                    $user->asignarDatos($item);
+                    array_push($usuarios,$user);
                 }
 
-                return $data;
+                return $usuarios;
                 
             } catch (Exception $e) {
                 error_log('UserModel::obtenerTodo -> ERROR: ' . $e);
@@ -90,9 +84,12 @@
 
                error_log('UserModel::obtenerUno -> persona: ' . json_encode($persona));
 
+               
+
                 $this->asignarDatos($persona['response']);
 
                 return $this;
+
 
 
             } catch (Exception $e) {
@@ -121,32 +118,23 @@
                     'imagen' => $this->imagen,
                     'rol' => $this->role,
                     'cargo' => $this->cargo,
-                    'usuario' => $this->usuario,
-                    'password' => $this->password
+                    'usuario' => $this->usuario
                 ];
 
-                $data = json_encode($data);
-                $this->api->actualizar('persona',$data,$this->id);
+                
+                $respuesta = $this->api->actualizar('persona',$data,$this->id);
 
-                $datosA = $this->obtenerUno($this->id);
-                $user = new UsuarioModel();
-
-                $user->setId($datosA->getId());
-                $user->setNombres($datosA->getNombres());
-                $user->setApellidos($datosA->getApellidos());
-                $user->setEmail($datosA->getEmail());
-                $user->setTelefono($datosA->getTelefono());
-                $user->setRole($datosA->getRole());
-                $user->setImagen($datosA->getImagen());
-                $user->setCargo($datosA->getCargo());
-                $user->setUsuario($datosA->getUsuario());
-                $user->setPassword($datosA->getPassword());
+                error_log('UserModel::actualizar -> data: ' . json_encode($respuesta));
+ 
 
 
-                return true;
+                //TODO:Reasignar Datos al usuario actual
+
+
+                return $respuesta;
             } catch (Exception $e) {
                 error_log('UserModel::actualizar -> ERROR: ' . $e);
-                return false;
+                return NULL;
             }
         }
 
@@ -154,11 +142,27 @@
             $this->setId($data['id_persona']);
             $this->setNombres($data['nombres']);
             $this->setApellidos($data['apellidos']);
+            $this->setUsuario($data['usuario']);
+            $this->setPassword($data['password']);
             $this->setEmail($data['correo']);
             $this->setTelefono($data['telefono']);
             $this->setRole($data['rol']);
             $this->setImagen($data['imagen']);
+            $this->setIdCliente($data['id_cliente']);
+        }
 
+
+        public function actualizarPassword(){
+            try {
+
+                $respuesta = $this->api->actualizar('persona',['password' => $this->password],$this->id);
+
+                return $respuesta;
+
+            } catch (Exception $e) {
+                error_log('UserModel::actualizarPassword -> ERROR: ' . $e);
+                return NULL;
+            }
         }
         //Getters 
         public function getId(){ return $this->id;
@@ -189,6 +193,9 @@
         }
 
         public function getPassword(){ return $this->password;
+        }
+
+        public function getIdCliente(){ return $this->id_cliente;
         }
 
         //Setters
@@ -223,6 +230,9 @@
         public function setPassword($password){ $this->password = $password;
         }
 
+        public function setIdCliente($id_cliente){ $this->id_cliente = $id_cliente;
+        }
+      
 
 
 

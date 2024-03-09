@@ -5,12 +5,24 @@
         private $codigo;
         private $stock;
         private $precio;
+        private $imagen;
         private $proveedor;
         private $marca;
         private $categoria;
 
         public function __construct(){
             parent::__construct();
+
+            $this->id_producto = 0;
+            $this->nombre = '';
+            $this->codigo = '';
+            $this->stock = 0;
+            $this->precio = 0;
+            $this->proveedor = 0;
+            $this->imagen = '';
+            $this->marca = 0;
+            $this->categoria = 0;
+
         }
         //Methods
         
@@ -22,7 +34,9 @@
                     'cantidad' => $this->stock,
                     'precio' => $this->precio,
                     'proveedor' => $this->proveedor,
-                    'id_marca' => $this->marca
+                    'id_marca' => $this->marca,
+                    'id_categoria' => $this->categoria,
+                    'imagen' => $this->imagen
                 ];
 
                
@@ -37,24 +51,19 @@
         }
 
         public function obtenerTodo(){
-            $data = [];
+            $productos = [];
             try {
                 $data = $this->api->obtenerTodo('producto');
 
-                foreach ($data as $item) {
+                foreach ($data['response'] as $item) {
                     $producto = new ProductoModel();
-                    $producto->setIdProducto($item['id_producto']);
-                    $producto->setNombre($item['nombre']);
-                    $producto->setCodigo($item['codigo']);
-                    $producto->setStock($item['cantidad']);
-                    $producto->setPrecio($item['precio']);
-                    $producto->setProveedor($item['id_proveedor']);
-                    $producto->setMarca($item['id_marca']);
-                    $producto->setCategoria($item['id_categoria']);
-                    array_push($data,$producto);
+                    $producto->asignarDatos($item);
+                    array_push($productos,$producto);
                 }
 
-                return $data;
+               
+
+                return $productos;
                 
             } catch (Exception $e) {
                 error_log('ProductoModel::obtenerTodo -> ERROR: ' . $e);
@@ -68,7 +77,7 @@
 
                error_log('ProductoModel::obtenerUno -> producto: ' . json_encode($producto));
 
-                $this->asignarDatos($producto);
+                $this->asignarDatos($producto['response']);
                
                 return $this;
 
@@ -98,7 +107,8 @@
                     'precio' => $this->precio,
                     'id_proveedor' => $this->proveedor,
                     'id_marca' => $this->marca,
-                    
+                    'id_categoria' => $this->categoria,
+                    'id_imagen' => $this->imagen,
                 ];
 
                 $data = json_encode($data);
@@ -107,14 +117,7 @@
                 $datosA = $this->obtenerUno($this->id_producto);
                 
                 $producto = new ProductoModel();
-                $producto->setIdProducto($datosA->getIdProducto());
-                $producto->setNombre($datosA->getNombre());
-                $producto->setCodigo($datosA->getCodigo());
-                $producto->setStock($datosA->getStock());
-                $producto->setPrecio($datosA->getPrecio());
-                $producto->setProveedor($datosA->getProveedor());
-                $producto->setMarca($datosA->getMarca());
-                $producto->setCategoria($datosA->getCategoria());
+                $producto->asignarDatos($datosA['response']);
 
                 return true;
             } catch (Exception $e) {
@@ -127,11 +130,12 @@
             $this->setIdProducto($data['id_producto']);
             $this->setNombre($data['nombre']);
             $this->setCodigo($data['codigo']);
-            $this->setStock($data['cantidad']);
+            $this->setStock($data['stock']);
             $this->setPrecio($data['precio']);
-            $this->setProveedor($data['id_proveedor']);
-            $this->setMarca($data['id_marca']);
-            $this->setCategoria($data['id_categoria']);
+            $this->setProveedor($data['proveedor']);
+            $this->setImagen($data['imagen']);
+            $this->setMarca($data['marca']);
+            $this->setCategoria($data['categoria']);
             return $this;
 
         }
@@ -201,6 +205,7 @@
             }
         }
 
+
         //Setters and Getters
         public function setIdProducto($id_producto){
             $this->id_producto = $id_producto;
@@ -264,6 +269,14 @@
         
         public function getCategoria(){
             return $this->categoria;
+        }
+
+        public function setImagen($imagen){
+            $this->imagen = $imagen;
+        }
+
+        public function getImagen(){
+            return $this->imagen;
         }
 
         

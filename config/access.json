@@ -21,9 +21,19 @@
             "role":"cliente"
         },
         {
+            "site":"citaAdmin",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"configuracionAdmin",
+            "access":"private",
+            "role":"admin"
+        },
+        {
             "site":"configuracion",
             "access":"private",
-            "role":""
+            "role":"cliente"
         },
         {
             "site":"dashboard",
@@ -47,6 +57,21 @@
         },
         {
             "site":"usuario",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"proveedor",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"servicio",
+            "access":"private",
+            "role":"cliente"
+        },
+        {
+            "site":"servicioAdmin",
             "access":"private",
             "role":"admin"
         },

@@ -2,6 +2,10 @@
             $url = isset($_GET['url']) ? $_GET['url']: null;
             $url = rtrim($url, '/');
             $url = explode('/', $url);
+            $usuario;
+            if(isset($this->d)){
+                $usuario = $this->d['usuario'];
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +17,8 @@
 
     <link rel="stylesheet" href="assets/css/<?php echo $url[0];?>.css" />
     <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
+    <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script> 
   </head>
   <body>
     <div class="menu">
@@ -77,7 +83,7 @@
             </a>
           </li>
           <li>
-            <a href="Salida">
+            <a href="salida">
               <ion-icon name="exit-outline"></ion-icon>
               <span>Salida</span>
             </a>
@@ -101,11 +107,13 @@
         </div>
 
         <div class="usuario">
-          <img src="<?php echo APP_URL; ?>assets/images/usuario/default.jpg" alt="" />
+        <img src="<?php echo APP_URL; ?>assets/images/usuario/<?php echo $usuario->getImagen();?>" alt="" />
           <div class="info-usuario">
             <div class="nombre-email">
-              <span class="nombre">Usuario</span>
-              <span class="email">usuario@gmail.com</span>
+              <span class="nombre"><?php echo $usuario->getUsuario();?></span>
+              <span class="email">
+                <?php echo $usuario->getEmail();?>
+              </span>
             </div>
             <a class="configuracion" href="configuracionAdmin">
               <ion-icon name="settings-outline"></ion-icon>

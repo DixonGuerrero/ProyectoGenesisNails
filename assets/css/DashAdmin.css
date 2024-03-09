@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 :root{
     --color-barra-lateral:linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    --color-tabla: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-tabla:linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+
     --color-th-tabla: #fff;
 
     --color-texto:rgb(0,0,0);
@@ -27,7 +28,7 @@
 
 .dark-mode{
     --color-barra-lateral: linear-gradient(to bottom,#736F6F 0%, #1B1919 100%);
-    --color-tabla: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-tabla:linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%) ;
 
     --color-texto:rgb(255,255,255);
     --color-texto-menu:rgb(201, 201, 201);
@@ -98,6 +99,8 @@ body{
     z-index: 50;
 }
 
+
+
 .mini-barra-lateral{
     width: 80px;
 }
@@ -114,20 +117,25 @@ body{
     width: 0;
 }
 
+.barra-lateral span.mensajeTiempo{
+    width: 100%;
+    text-align: center;
+    color:#86e957 ;
+    margin-top: 10px;
+    margin-bottom: 10PX;
+
+}
+
 /*------------> Nombre de la página */
 .barra-lateral .nombre-pagina{
     width: 100%;
     height: 45px;
     color: var(--color-texto);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
 }
-.barra-lateral .nombre-pagina ion-icon{
-    min-width: 50px;
-    font-size: 40px;
-    cursor: pointer;
-}
+
 .barra-lateral .nombre-pagina span{
     margin-left: 5px;
     font-size: 25px;
@@ -160,6 +168,7 @@ body{
 
 /*--------------> Menu Navegación*/
 .barra-lateral .navegacion{
+    margin-top: 10px;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -304,7 +313,7 @@ body{
 
 main{
     margin-left: 250px;
-    padding: 20px;
+
     transition: margin-left 0.5s ease;
 }
 main.min-main{
@@ -335,9 +344,12 @@ main .tarjetas{
     flex-wrap: wrap;
     margin: 20px;
 }
-
-main .tarjeta {
+main .tarjeta{
     width: 20%;
+}
+
+main .tarjeta a {
+    width: 100%;
     height: 100px;
     margin-bottom: 20px;
     padding: 20px;
@@ -345,6 +357,7 @@ main .tarjeta {
     background-color: var(--color-main);
     color: var(--color-menu-hover-texto);
     display: flex;
+    text-decoration: none;
     flex-direction: row;
     justify-content: space-between;
     box-shadow: 0px 0px 10px 0px var(--color-sombras);
@@ -353,30 +366,47 @@ main .tarjeta {
 }
 
 
-main .tarjetas .tarjeta:hover{
+main .tarjetas .tarjeta a:hover{
     background-color: var(--color-menu-hover);
     color: var(--color-menu-hover-texto);
 }
 
-.tarjeta .icono {
+.tarjeta a .icono {
     display: flex; 
     align-items: center;
     gap: 10px; 
 }
 
-.tarjeta .icono ion-icon {
+
+
+.tarjeta.primera  .icono ion-icon {
     font-size: 24px; 
-    color: #6FA999; 
+    color: #007bff; 
 }
 
-.tarjeta .icono h2 {
+.tarjeta.segunda .icono ion-icon {
+    font-size: 24px; 
+    color: #B212C5; 
+}
+
+.tarjeta.tercera .icono ion-icon {
+    font-size: 24px; 
+    color: #4CA71F; 
+}
+
+.tarjeta.cuarta .icono ion-icon {
+    font-size: 24px; 
+    color: #12C5C0;
+}
+
+.tarjeta a .icono h2 {
     margin: 0;
     color: var(--color-texto);
     font-size: 20px;
 }
 
 /* Estilo del contenedor de información */
-.tarjeta .info {
+.tarjeta  .info {
     background-color: #fff;
     border-top: 1px solid #eee; 
     padding: 15px;
@@ -390,23 +420,25 @@ main .tarjetas .tarjeta:hover{
     color: #333;
 }
 
-.tarjeta.primera{
+.tarjeta.primera a{
     border-left: #007bff 5px solid;
 
 }
 
-.tarjeta.segunda{
+.tarjeta.segunda a{
     border-left: #B212C5 5px solid;
 
 }
 
-.tarjeta.tercera{
+.tarjeta.tercera a{
     border-left:#4CA71F 5px solid;
 }
 
-.tarjeta.cuarta{
+.tarjeta.cuarta a{
     border-left: #12C5C0 5px solid;
 }
+
+
 
 /*------------------>Titulo*/
 
@@ -518,10 +550,8 @@ main .servicio.min .info .estadistica{
 }
 
 /*------------------>Tabla*/
-.table{
-    width: 100%;
+.tabla{
     margin: 20px;
-    padding: 20px;
 }
 
 .table-header{
@@ -530,12 +560,11 @@ main .servicio.min .info .estadistica{
     align-items: center;
     flex-wrap: wrap;
     padding: 20px;
-    background-image: var(--color-barra-lateral);
 }
 
 .table-header p{
-    font-size: 25px;
-    color: var(--color-th-tabla);
+    font-size: 30px;
+    color: var(--color-texto);
 }
 
 button{
@@ -602,7 +631,6 @@ th,td{
     border-bottom: 1px solid #ddd;
     padding: 10px 20px;
     word-break: break-all;
-    text-align: center;
     color: var(--color-texto);
 }
 
@@ -620,7 +648,7 @@ tr:hover td{
     background-color: #ffffff;
 }
 
-.pagination{
+/* .pagination{
     display: flex;
     justify-content: end;
     width: 100%;
@@ -642,7 +670,7 @@ tr:hover td{
     box-shadow: 0px 0px 10px 0px var(--color-sombras);
     margin: 0 5px;
     cursor: pointer;
-}
+} */
 
 /*---------------Tarjeta Porducto->*/
 
@@ -744,6 +772,16 @@ tr:hover td{
         margin-bottom: 3px;
     }
 
+    
+}
+@media (max-width: 1450px){
+    main .tarjeta{
+        width: 45%;
+    }
+    .tarjeta-producto{
+        width: 100%;
+    
+    }
     
 }
 

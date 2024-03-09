@@ -12,7 +12,7 @@ class SessionController extends Controller{
     private $sites;
 
 
-    private $user;
+    public $usuario;
  
     function __construct(){
         parent::__construct();
@@ -140,13 +140,13 @@ class SessionController extends Controller{
     }
 
     function getUserSessionData(){
-        error_log('SessionController::getUserSessionData()');
+
         $id = $this->session->getCurrentUser();
-        $this->user = new UsuarioModel();
+        $this->usuario = new UsuarioModel();
         error_log("sessionController::getUserSessionData(): id: " . $id);
-        $this->user->obtenerUno($id);
-        error_log("sessionController::getUserSessionData(): " . $this->user->getNombres());
-        return $this->user;
+        $this->usuario->obtenerUno($id);
+        error_log("sessionController::getUserSessionData(): " . $this->usuario->getNombres());
+        return $this->usuario;
     }
 
     public function initialize($user,$token){
