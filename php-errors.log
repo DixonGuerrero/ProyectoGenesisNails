@@ -723,3 +723,372 @@ Stack trace:
 [18-Mar-2024 22:28:17 America/Bogota] CAdministrador::construct -> Inicio de CAdministrador
 [18-Mar-2024 22:28:17 America/Bogota] Model::construct -> Inicio de Model
 [18-Mar-2024 22:28:17 America/Bogota] View::render -> Inicio de render
+[19-Mar-2024 16:00:40 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:00:41 America/Bogota] PHP Deprecated:  rtrim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\app.php on line 9
+[19-Mar-2024 11:00:41 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:00:41 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:00:41 America/Bogota] Home::construct -> Inicio de Home
+[19-Mar-2024 11:00:41 America/Bogota] Controller::loadModel -> Cargando modelo: home
+[19-Mar-2024 11:00:41 America/Bogota] Controller::loadModel -> URL: app/models/homeModel.php
+[19-Mar-2024 11:00:41 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/homeModel.php
+[19-Mar-2024 11:00:41 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:00:41 America/Bogota] PHP Warning:  Undefined global variable $_SESSION in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\model.php on line 9
+[19-Mar-2024 11:00:41 America/Bogota] PHP Warning:  Trying to access array offset on value of type null in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\model.php on line 9
+[19-Mar-2024 11:00:41 America/Bogota] HomeModel::construct -> Inicio de HomeModel
+[19-Mar-2024 11:00:41 America/Bogota] View::render -> Inicio de render
+[19-Mar-2024 16:00:41 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:00:41 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:00:41 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:00:41 America/Bogota] Errores::construct -> Inicio de Errores
+[19-Mar-2024 11:00:41 America/Bogota] Errores::render -> Inicio de render
+[19-Mar-2024 11:00:41 America/Bogota] View::render -> Inicio de render
+[19-Mar-2024 16:00:43 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:00:43 America/Bogota] App::construct -> controlador encontrado: app/controllers/login.php
+[19-Mar-2024 11:00:43 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:00:43 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:00:43 America/Bogota] SessionController::validateSession() => no hay sesión
+[19-Mar-2024 11:00:43 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/login, url => login
+[19-Mar-2024 11:00:43 America/Bogota] sessionController::isPublic(): currentURL => login
+[19-Mar-2024 11:00:43 America/Bogota] SessionController::validateSession() => sitio público, lo deja pasar
+[19-Mar-2024 11:00:43 America/Bogota] Login::construct -> Inicio de Login
+[19-Mar-2024 11:00:43 America/Bogota] App::construct -> controlador cargado: login
+[19-Mar-2024 11:00:43 America/Bogota] Controller::loadModel -> Cargando modelo: login
+[19-Mar-2024 11:00:43 America/Bogota] Controller::loadModel -> URL: app/models/loginModel.php
+[19-Mar-2024 11:00:43 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/loginModel.php
+[19-Mar-2024 11:00:43 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:00:43 America/Bogota] PHP Warning:  Undefined array key "token" in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\model.php on line 9
+[19-Mar-2024 11:00:43 America/Bogota] LoginModel::construct -> Inicio de LoginModel
+[19-Mar-2024 11:00:43 America/Bogota] View::render -> Inicio de render
+[19-Mar-2024 16:00:48 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:00:48 America/Bogota] App::construct -> controlador encontrado: app/controllers/login.php
+[19-Mar-2024 11:00:48 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:00:48 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:00:48 America/Bogota] SessionController::validateSession() => no hay sesión
+[19-Mar-2024 11:00:48 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/login/iniciarSesion, url => login
+[19-Mar-2024 11:00:48 America/Bogota] sessionController::isPublic(): currentURL => login
+[19-Mar-2024 11:00:48 America/Bogota] SessionController::validateSession() => sitio público, lo deja pasar
+[19-Mar-2024 11:00:48 America/Bogota] Login::construct -> Inicio de Login
+[19-Mar-2024 11:00:48 America/Bogota] App::construct -> controlador cargado: login
+[19-Mar-2024 11:00:48 America/Bogota] Controller::loadModel -> Cargando modelo: login
+[19-Mar-2024 11:00:48 America/Bogota] Controller::loadModel -> URL: app/models/loginModel.php
+[19-Mar-2024 11:00:48 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/loginModel.php
+[19-Mar-2024 11:00:48 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:00:48 America/Bogota] PHP Warning:  Undefined array key "token" in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\model.php on line 9
+[19-Mar-2024 11:00:48 America/Bogota] LoginModel::construct -> Inicio de LoginModel
+[19-Mar-2024 11:00:48 America/Bogota] Login::iniciarSesion -> inicio de iniciarSesion
+[19-Mar-2024 11:00:48 America/Bogota] ExistPOST: Existen parámetros
+[19-Mar-2024 11:00:48 America/Bogota] Login::iniciarSesion -> Existen parametros POST
+[19-Mar-2024 11:00:48 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/login
+[19-Mar-2024 11:00:48 America/Bogota] API::callApi -> Datos:{"usuario":"admin","password":"admin"}
+[19-Mar-2024 11:01:47 America/Bogota] LoginModel::iniciarSesion -> Exito al iniciar sesion
+[19-Mar-2024 11:01:47 America/Bogota] Login::iniciarSesion -> respuesta: {"status":200,"response":{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzEwODY0MTA2LCJleHAiOjE3MTA5NTA1MDZ9.IiMotde-rJHQPuNd0E-L8cYfRlPv9HL1OVG36IExBmo"}}
+[19-Mar-2024 11:01:47 America/Bogota] API::setToken -> Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzEwODY0MTA2LCJleHAiOjE3MTA5NTA1MDZ9.IiMotde-rJHQPuNd0E-L8cYfRlPv9HL1OVG36IExBmo
+[19-Mar-2024 11:01:47 America/Bogota] API::actualizarHeader -> Token: ["Content-Type: application\/json","x-access-token:","x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzEwODY0MTA2LCJleHAiOjE3MTA5NTA1MDZ9.IiMotde-rJHQPuNd0E-L8cYfRlPv9HL1OVG36IExBmo"]
+[19-Mar-2024 11:01:47 America/Bogota] Login::iniciarSesion -> Exito al iniciar sesion-> Actualizamos Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzEwODY0MTA2LCJleHAiOjE3MTA5NTA1MDZ9.IiMotde-rJHQPuNd0E-L8cYfRlPv9HL1OVG36IExBmo
+[19-Mar-2024 11:01:47 America/Bogota] Session::validacionTokenq()
+[19-Mar-2024 11:01:47 America/Bogota] Session::validacionToken() -> decoded: {"id":6,"iat":1710864106,"exp":1710950506}
+[19-Mar-2024 11:01:47 America/Bogota] Session::validacionToken() -> id: 6
+[19-Mar-2024 11:01:47 America/Bogota] Login::iniciarSesion -> tokenId: 6
+[19-Mar-2024 11:01:47 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:01:47 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:01:47 America/Bogota] eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNzEwODY0MTA2LCJleHAiOjE3MTA5NTA1MDZ9.IiMotde-rJHQPuNd0E-L8cYfRlPv9HL1OVG36IExBmo
+[19-Mar-2024 11:01:48 America/Bogota] Login::iniciarSesion -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:01:48 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:48 America/Bogota] PHP Warning:  Undefined array key "token" in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\model.php on line 9
+[19-Mar-2024 11:01:48 America/Bogota] Login::iniciarSesion -> Nuevo Usuario
+[19-Mar-2024 11:01:48 America/Bogota] Login::iniciarSesion -> Asignamos datos a nuevo Usuario: 6
+[19-Mar-2024 11:01:48 America/Bogota] sessionController::authorizeAccess(): role: admin
+[19-Mar-2024 11:01:48 America/Bogota] Alertas::construct -> Inicio de Alertas
+[19-Mar-2024 11:01:48 America/Bogota] Alertas::redireccionar -> url: http://localhost/Proyectos/ProyectoGenesisNails2/dashadmin
+[19-Mar-2024 11:01:48 America/Bogota] Alertas::getAlerta -> alerta: {"titulo":"Exito","texto":"Bienvenido al panel de administraci\u00f3n","tipo":"redireccionar","url":"http:\/\/localhost\/Proyectos\/ProyectoGenesisNails2\/dashadmin","icono":"success"}
+[19-Mar-2024 11:01:48 America/Bogota] SessionController::authorizeAccess() => admin
+[19-Mar-2024 16:01:55 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:01:55 America/Bogota] App::construct -> controlador encontrado: app/controllers/dashadmin.php
+[19-Mar-2024 11:01:55 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:01:55 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:01:55 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:55 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:01:55 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:01:55 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:01:55 America/Bogota] 
+[19-Mar-2024 11:01:56 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:01:56 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:01:56 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:01:56 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:01:56 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:01:56 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:01:56 America/Bogota] Home::construct -> Inicio de Home
+[19-Mar-2024 11:01:56 America/Bogota] App::construct -> controlador cargado: dashadmin
+[19-Mar-2024 11:01:56 America/Bogota] Controller::loadModel -> Cargando modelo: dashadmin
+[19-Mar-2024 11:01:56 America/Bogota] Controller::loadModel -> URL: app/models/dashadminModel.php
+[19-Mar-2024 11:01:56 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/dashadminModel.php
+[19-Mar-2024 11:01:56 America/Bogota] CAdministrador::construct -> Inicio de CAdministrador
+[19-Mar-2024 11:01:56 America/Bogota] DashAdmin::numCitas -> Inicio de numCitas
+[19-Mar-2024 11:01:56 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:01:56 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:01:56 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:56 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:01:56 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:01:56 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:01:57 America/Bogota] 
+[19-Mar-2024 11:01:57 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:01:57 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:01:57 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:01:57 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:01:57 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:01:57 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:01:57 America/Bogota] Controller::loadModel -> Cargando modelo: CitaAdmin
+[19-Mar-2024 11:01:57 America/Bogota] Controller::loadModel -> URL: app/models/CitaAdminModel.php
+[19-Mar-2024 11:01:57 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/CitaAdminModel.php
+[19-Mar-2024 11:01:57 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:57 America/Bogota] Home::construct -> Inicio de Home
+[19-Mar-2024 11:01:57 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/cita
+[19-Mar-2024 11:01:57 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:01:57 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:01:57 America/Bogota] 
+[19-Mar-2024 11:01:58 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:58 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:58 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:58 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:58 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:58 America/Bogota] CitaAdmin::numCitas -> citas: [{"api":{"token":null}},{"api":{"token":null}},{"api":{"token":null}},{"api":{"token":null}},{"api":{"token":null}}]
+[19-Mar-2024 11:01:58 America/Bogota] CitaAdmin::numCitas -> numCitas: 5
+[19-Mar-2024 11:01:58 America/Bogota] DashAdmin::numUsuarios -> Inicio de numUsuarios
+[19-Mar-2024 11:01:58 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:01:58 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:01:58 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:01:58 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:01:58 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:01:58 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:01:58 America/Bogota] 
+[19-Mar-2024 11:02:00 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:00 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:00 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:00 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:02:00 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:00 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:00 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona
+[19-Mar-2024 11:02:00 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:00 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:00 America/Bogota] 
+[19-Mar-2024 11:02:00 America/Bogota] UserModel::obtenerTodo -> data: {"status":200,"response":[{"id_persona":1,"nombres":"Juan","apellidos":"P\u00e9rez","telefono":"123456789","correo":"juan.perez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"juanperez","password":"password","id_cliente":1},{"id_persona":2,"nombres":"Maria","apellidos":"Lopez","telefono":"987654321","correo":"maria.lopez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"marialopez","password":"password","id_cliente":2},{"id_persona":3,"nombres":"Carlos","apellidos":"Gomez","telefono":"123123123","correo":"carlos.gomez@example.com","rol":"Admin","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"carlosgomez","password":"password","id_cliente":null},{"id_persona":4,"nombres":"Ana","apellidos":"Martinez","telefono":"321321321","correo":"ana.martinez@example.com","rol":"Admin","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"anamartinez","password":"password","id_cliente":null},{"id_persona":5,"nombres":"Laura","apellidos":"Rodriguez","telefono":"456456456","correo":"laura.rodriguez@example.com","rol":null,"created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"laurarodriguez","password":"password","id_cliente":null},{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null},{"id_persona":7,"nombres":"cliente","apellidos":"asdfasdf","telefono":"345234234","correo":"cliente@gmail.com","rol":"Cliente","created_at":"2024-03-15T21:40:05.000Z","updated_at":"2024-03-15T21:40:05.000Z","imagen":"default.jpg","usuario":"cliente","password":"$2a$10$3XzsS.N8aXrk14sxFZk8yOcor8Zksq0Fs8pJenILi2yfHJSfzNIoe","id_cliente":3},{"id_persona":8,"nombres":"cliente","apellidos":"asdfasdf","telefono":"345234234","correo":"afffff@gmail.com","rol":"Cliente","created_at":"2024-03-19T00:10:51.000Z","updated_at":"2024-03-19T00:10:51.000Z","imagen":"default.jpg","usuario":"affff","password":"$2a$10$ioAtt920O34y7bmdvedntuwRh1YKyEtNHX3.4XyzBHsg4zAwkQNDu","id_cliente":4},{"id_persona":9,"nombres":"cliente","apellidos":"asdfasdf","telefono":"345234234","correo":"ass@gmail.com","rol":"Cliente","created_at":"2024-03-19T00:14:22.000Z","updated_at":"2024-03-19T00:14:22.000Z","imagen":"default.jpg","usuario":"ass","password":"$2a$10$CCHBeHxvzRvpyup4cCjo3Om08Q64jjSR5Hnaw70NjFFR2VYm7mQzy","id_cliente":5}]}
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] Usuario::numUsuarios -> numUsuarios: 9
+[19-Mar-2024 11:02:00 America/Bogota] DashAdmin::numProductos -> Inicio de numProductos
+[19-Mar-2024 11:02:00 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:02:00 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:02:00 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:00 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:02:00 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:00 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:00 America/Bogota] 
+[19-Mar-2024 11:02:01 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:01 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:01 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:01 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:02:01 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:01 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:01 America/Bogota] Controller::loadModel -> Cargando modelo: producto
+[19-Mar-2024 11:02:01 America/Bogota] Controller::loadModel -> URL: app/models/productoModel.php
+[19-Mar-2024 11:02:01 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/productoModel.php
+[19-Mar-2024 11:02:01 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:01 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/producto
+[19-Mar-2024 11:02:01 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:01 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:01 America/Bogota] 
+[19-Mar-2024 11:02:02 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:02 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:02 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:02 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:02 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:02 America/Bogota] Producto::numProductos -> productos: [{"api":{"token":null}},{"api":{"token":null}},{"api":{"token":null}},{"api":{"token":null}},{"api":{"token":null}}]
+[19-Mar-2024 11:02:02 America/Bogota] Producto::numProductos -> numProductos: 5
+[19-Mar-2024 11:02:02 America/Bogota] DashAdmin::numProveedores -> Inicio de numProveedores
+[19-Mar-2024 11:02:02 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:02:02 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:02:02 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:02 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:02:02 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:02 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:02 America/Bogota] 
+[19-Mar-2024 11:02:03 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:03 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:03 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:03 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:02:03 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:03 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:03 America/Bogota] Controller::loadModel -> Cargando modelo: Proveedor
+[19-Mar-2024 11:02:03 America/Bogota] Controller::loadModel -> URL: app/models/ProveedorModel.php
+[19-Mar-2024 11:02:03 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/ProveedorModel.php
+[19-Mar-2024 11:02:03 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:03 America/Bogota] Home::construct -> Inicio de Home
+[19-Mar-2024 11:02:03 America/Bogota] Proveedor::numProveedores -> inicio de numProveedores
+[19-Mar-2024 11:02:03 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/proveedor
+[19-Mar-2024 11:02:03 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:03 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:03 America/Bogota] 
+[19-Mar-2024 11:02:05 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:05 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:05 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:05 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:05 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:05 America/Bogota] Proveedor::numProveedores -> numProveedores: 5
+[19-Mar-2024 11:02:05 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:02:05 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:02:05 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:05 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:02:05 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:05 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:05 America/Bogota] 
+[19-Mar-2024 11:02:06 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:06 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:06 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:06 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:02:06 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:06 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:06 America/Bogota] Controller::loadModel -> Cargando modelo: producto
+[19-Mar-2024 11:02:06 America/Bogota] Controller::loadModel -> URL: app/models/productoModel.php
+[19-Mar-2024 11:02:06 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/productoModel.php
+[19-Mar-2024 11:02:06 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:06 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/producto
+[19-Mar-2024 11:02:06 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:06 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:06 America/Bogota] 
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:02:07 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:02:07 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:07 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:02:07 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:07 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:07 America/Bogota] 
+[19-Mar-2024 11:02:08 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:08 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:08 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:08 America/Bogota] sessionController::isPublic(): currentURL => dashadmin
+[19-Mar-2024 11:02:08 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/dashadmin, url => dashadmin
+[19-Mar-2024 11:02:08 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:08 America/Bogota] Controller::loadModel -> Cargando modelo: producto
+[19-Mar-2024 11:02:08 America/Bogota] Controller::loadModel -> URL: app/models/productoModel.php
+[19-Mar-2024 11:02:08 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/productoModel.php
+[19-Mar-2024 11:02:08 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:08 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/producto
+[19-Mar-2024 11:02:08 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:08 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:08 America/Bogota] 
+[19-Mar-2024 11:02:09 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:09 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:09 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:09 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:09 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:09 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:09 America/Bogota] View::render -> Inicio de render
+[19-Mar-2024 16:02:26 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:02:26 America/Bogota] App::construct -> controlador encontrado: app/controllers/citaAdmin.php
+[19-Mar-2024 11:02:26 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:02:26 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:02:26 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:26 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:02:26 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:26 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:26 America/Bogota] 
+[19-Mar-2024 11:02:27 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:27 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:27 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/citaAdmin, url => citaAdmin
+[19-Mar-2024 11:02:27 America/Bogota] sessionController::isPublic(): currentURL => citaAdmin
+[19-Mar-2024 11:02:27 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/citaAdmin, url => citaAdmin
+[19-Mar-2024 11:02:27 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:27 America/Bogota] Controller::loadModel -> Cargando modelo: CitaAdmin
+[19-Mar-2024 11:02:27 America/Bogota] Controller::loadModel -> URL: app/models/CitaAdminModel.php
+[19-Mar-2024 11:02:27 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/CitaAdminModel.php
+[19-Mar-2024 11:02:27 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:27 America/Bogota] Home::construct -> Inicio de Home
+[19-Mar-2024 11:02:27 America/Bogota] App::construct -> controlador cargado: citaAdmin
+[19-Mar-2024 11:02:27 America/Bogota] Controller::loadModel -> Cargando modelo: citaAdmin
+[19-Mar-2024 11:02:27 America/Bogota] Controller::loadModel -> URL: app/models/citaAdminModel.php
+[19-Mar-2024 11:02:27 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/citaAdminModel.php
+[19-Mar-2024 11:02:27 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:27 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/cita
+[19-Mar-2024 11:02:27 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:27 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:27 America/Bogota] 
+[19-Mar-2024 11:02:28 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:28 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:28 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:28 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:28 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:28 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/1
+[19-Mar-2024 11:02:28 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:28 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:28 America/Bogota] 
+[19-Mar-2024 11:02:29 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":1,"nombres":"Juan","apellidos":"P\u00e9rez","telefono":"123456789","correo":"juan.perez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"juanperez","password":"password","id_cliente":1}}
+[19-Mar-2024 11:02:29 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/2
+[19-Mar-2024 11:02:29 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:29 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:29 America/Bogota] 
+[19-Mar-2024 11:02:30 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":2,"nombres":"Maria","apellidos":"Lopez","telefono":"987654321","correo":"maria.lopez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"marialopez","password":"password","id_cliente":2}}
+[19-Mar-2024 11:02:30 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/1
+[19-Mar-2024 11:02:30 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:30 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:30 America/Bogota] 
+[19-Mar-2024 11:02:31 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":1,"nombres":"Juan","apellidos":"P\u00e9rez","telefono":"123456789","correo":"juan.perez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"juanperez","password":"password","id_cliente":1}}
+[19-Mar-2024 11:02:31 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/2
+[19-Mar-2024 11:02:31 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:31 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:31 America/Bogota] 
+[19-Mar-2024 11:02:32 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":2,"nombres":"Maria","apellidos":"Lopez","telefono":"987654321","correo":"maria.lopez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"marialopez","password":"password","id_cliente":2}}
+[19-Mar-2024 11:02:32 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/1
+[19-Mar-2024 11:02:32 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:32 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:32 America/Bogota] 
+[19-Mar-2024 11:02:32 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":1,"nombres":"Juan","apellidos":"P\u00e9rez","telefono":"123456789","correo":"juan.perez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"juanperez","password":"password","id_cliente":1}}
+[19-Mar-2024 11:02:32 America/Bogota] View::render -> Inicio de render
+[19-Mar-2024 16:02:49 UTC] Inicio de la aplicacion
+[19-Mar-2024 11:02:49 America/Bogota] App::construct -> controlador encontrado: app/controllers/usuario.php
+[19-Mar-2024 11:02:49 America/Bogota] Controller::construct -> Inicio de Controller
+[19-Mar-2024 11:02:49 America/Bogota] View::construct -> Inicio de View
+[19-Mar-2024 11:02:49 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:49 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona/6
+[19-Mar-2024 11:02:49 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:49 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:49 America/Bogota] 
+[19-Mar-2024 11:02:50 America/Bogota] UserModel::obtenerUno -> persona: {"status":200,"response":{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null}}
+[19-Mar-2024 11:02:50 America/Bogota] sessionController::getUserSessionData(): admin
+[19-Mar-2024 11:02:50 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/usuario, url => usuario
+[19-Mar-2024 11:02:50 America/Bogota] sessionController::isPublic(): currentURL => usuario
+[19-Mar-2024 11:02:50 America/Bogota] sessionController::getCurrentPage(): actualLink =>/Proyectos/ProyectoGenesisNails2/usuario, url => usuario
+[19-Mar-2024 11:02:50 America/Bogota] SessionController::validateSession() => autorizado, lo deja pasar
+[19-Mar-2024 11:02:50 America/Bogota] App::construct -> controlador cargado: usuario
+[19-Mar-2024 11:02:50 America/Bogota] Controller::loadModel -> Cargando modelo: usuario
+[19-Mar-2024 11:02:50 America/Bogota] Controller::loadModel -> URL: app/models/usuarioModel.php
+[19-Mar-2024 11:02:50 America/Bogota] Controller::loadModel -> Existe el archivo: app/models/usuarioModel.php
+[19-Mar-2024 11:02:50 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:50 America/Bogota] API::callApi -> URL: https://genesisnails.azurewebsites.net/api/persona
+[19-Mar-2024 11:02:50 America/Bogota] API::callApi -> Datos:null
+[19-Mar-2024 11:02:50 America/Bogota] PHP Deprecated:  error_log(): Passing null to parameter #1 ($message) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\libs\api.php on line 41
+[19-Mar-2024 11:02:50 America/Bogota] 
+[19-Mar-2024 11:02:51 America/Bogota] UserModel::obtenerTodo -> data: {"status":200,"response":[{"id_persona":1,"nombres":"Juan","apellidos":"P\u00e9rez","telefono":"123456789","correo":"juan.perez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"juanperez","password":"password","id_cliente":1},{"id_persona":2,"nombres":"Maria","apellidos":"Lopez","telefono":"987654321","correo":"maria.lopez@example.com","rol":"Cliente","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"marialopez","password":"password","id_cliente":2},{"id_persona":3,"nombres":"Carlos","apellidos":"Gomez","telefono":"123123123","correo":"carlos.gomez@example.com","rol":"Admin","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"carlosgomez","password":"password","id_cliente":null},{"id_persona":4,"nombres":"Ana","apellidos":"Martinez","telefono":"321321321","correo":"ana.martinez@example.com","rol":"Admin","created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"anamartinez","password":"password","id_cliente":null},{"id_persona":5,"nombres":"Laura","apellidos":"Rodriguez","telefono":"456456456","correo":"laura.rodriguez@example.com","rol":null,"created_at":"2024-03-14T18:29:57.000Z","updated_at":"2024-03-14T18:29:57.000Z","imagen":"default.jpg","usuario":"laurarodriguez","password":"password","id_cliente":null},{"id_persona":6,"nombres":"admin","apellidos":"asdfasdf","telefono":"345234234","correo":"admin@gmail.com","rol":"Admin","created_at":"2024-03-14T18:55:35.000Z","updated_at":"2024-03-14T18:55:35.000Z","imagen":"default.jpg","usuario":"admin","password":"$2a$10$aGh7gw2l2Cjch0\/Rb4d7heQTUg3H7iZSVNZz5\/mvJWLXo0pWe3QtG","id_cliente":null},{"id_persona":7,"nombres":"cliente","apellidos":"asdfasdf","telefono":"345234234","correo":"cliente@gmail.com","rol":"Cliente","created_at":"2024-03-15T21:40:05.000Z","updated_at":"2024-03-15T21:40:05.000Z","imagen":"default.jpg","usuario":"cliente","password":"$2a$10$3XzsS.N8aXrk14sxFZk8yOcor8Zksq0Fs8pJenILi2yfHJSfzNIoe","id_cliente":3},{"id_persona":8,"nombres":"cliente","apellidos":"asdfasdf","telefono":"345234234","correo":"afffff@gmail.com","rol":"Cliente","created_at":"2024-03-19T00:10:51.000Z","updated_at":"2024-03-19T00:10:51.000Z","imagen":"default.jpg","usuario":"affff","password":"$2a$10$ioAtt920O34y7bmdvedntuwRh1YKyEtNHX3.4XyzBHsg4zAwkQNDu","id_cliente":4},{"id_persona":9,"nombres":"cliente","apellidos":"asdfasdf","telefono":"345234234","correo":"ass@gmail.com","rol":"Cliente","created_at":"2024-03-19T00:14:22.000Z","updated_at":"2024-03-19T00:14:22.000Z","imagen":"default.jpg","usuario":"ass","password":"$2a$10$CCHBeHxvzRvpyup4cCjo3Om08Q64jjSR5Hnaw70NjFFR2VYm7mQzy","id_cliente":5}]}
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] Model::construct -> Inicio de Model
+[19-Mar-2024 11:02:51 America/Bogota] PHP Deprecated:  strtolower(): Passing null to parameter #1 ($string) of type string is deprecated in C:\laragon\www\Proyectos\ProyectoGenesisNails2\app\models\usuarioModel.php on line 183
+[19-Mar-2024 11:02:51 America/Bogota] View::render -> Inicio de render

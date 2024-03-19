@@ -1,5 +1,10 @@
-.env
-.idea
-.vscode
-.composer.lock
-.notas.md
+# Archivos de configuración de entorno
+.env/
+
+# Directorios de configuración del editor
+.idea/
+.vscode/
+php-errors.log/
+
+# Archivos de bloqueo de dependencias
+.composer.lock/
