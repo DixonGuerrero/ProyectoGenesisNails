@@ -31,6 +31,8 @@ class Session{
     }
 
     public function closeSession(){
+        error_log('Session::closeSession()' . $this->sessionName);
+
         session_unset();
         session_destroy();
     }

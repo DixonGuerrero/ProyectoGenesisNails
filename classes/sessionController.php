@@ -38,7 +38,6 @@ class SessionController extends Controller{
     private function init(){
         //se crea nueva sesión
         $this->session = new Session();
-        error_log('SessionController::init()' . $this->session->getCurrentToken());
         //se carga el archivo json con la configuración de acceso
         $json = $this->getJSONFileConfig();
         // se asignan los sitios
@@ -64,7 +63,6 @@ class SessionController extends Controller{
      * para entrar a las páginas
      */
     function validateSession(){
-        error_log('SessionController::validateSession()'. $this->session->getCurrentUser());
         //Si existe la sesión
         if($this->existsSession()){
             $role = $this->getUserSessionData()->getRole();
@@ -109,28 +107,12 @@ class SessionController extends Controller{
      * si es verdadero regresa el usuario actual
      */
     function existsSession(){
-        error_log('SessionController::existsSession() => Token: ' . $this->session->getCurrentToken());
 
 
         if(!$this->session->exists()){
-            error_log('SessionController::existsSession() => No existe sesión 1');
             return false;
         
         } 
-
-
-        if($this->session->getCurrentUser() == NULL){
-            error_log('SessionController::existsSession() => No existe sesión 2');
-            return false;
-        
-        } 
-
-
-        if($this->session->getCurrentToken() == NULL) {
-
-            error_log('SessionController::existsSession() => No existe sesión 3');
-            return false;
-        }
 
         $userid = $this->session->getCurrentUser();
 
@@ -143,7 +125,6 @@ class SessionController extends Controller{
 
         $id = $this->session->getCurrentUser();
         $this->usuario = new UsuarioModel();
-        error_log("sessionController::getUserSessionData(): id: " . $id);
         $this->usuario->obtenerUno($id);
         error_log("sessionController::getUserSessionData(): " . $this->usuario->getNombres());
         return $this->usuario;
@@ -152,7 +133,6 @@ class SessionController extends Controller{
     public function initialize($user,$token){
         
         $this->session->setCurrentUser($user->getId());
-        error_log("sessionController::initialize(): user: " . $this->session->getCurrentUser());
         $this->session->setCurrentToken($token);
         $this->authorizeAccess($user->getRole());
     }
@@ -213,12 +193,8 @@ class SessionController extends Controller{
     }
 
     function logout(){
-        error_log('Login::cerrarSesion -> inicio de cerrarSesion');
+        error_log('Login::cerrarSesion -> inicio de cerrarSesion desde SessionController');
             $this->session->closeSession();
-            $this->alerta = new Alertas('Exito', 'Sesión cerrada');
-            echo $this->alerta->redireccionar('home')->exito()->getAlerta();
-            
-            exit();
     }
 }
 

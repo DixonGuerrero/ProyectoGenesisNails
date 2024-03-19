@@ -21,7 +21,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 
             <div class="sesion">
                 <!-----------------Formulario para cerrar sesion----------------->
-                <form class="FormularioAjax" action="<?php echo APP_URL; ?>login/cerrarSesion" method="POST">
+                <form class="FormularioAjax 1" action="<?php echo APP_URL; ?>login/cerrarSesion" method="POST">
                     <button type="submit" class="cerrar-sesion">
                         <ion-icon name="exit-outline"></ion-icon>Cerrar Session
                     </button>
@@ -37,7 +37,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
                 <h2>Informacion Personal <ion-icon name="document-text-outline"></ion-icon></h2>
             </div>
 
-            <form class="FormularioAjax" action="<?php echo APP_URL; ?>usuario/actualizarUsuario" method="POST">
+            <form class="FormularioAjax 2" action="<?php echo APP_URL; ?>usuario/actualizarUsuario" method="POST">
                 <div class="grupo">
                     <label for="nombre">Nombres</label>
                     <input type="text" id="nombres" name="nombres" value="<?php echo $usuario->getNombres(); ?>
