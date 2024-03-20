@@ -22,9 +22,9 @@
                 $contrasena = limpiarCadena($this->obtenerPost('password'));
 
                 if($usuario == '' || $contrasena == ''){
-                   $this->alerta = new Alertas('ERROR', ErrorMensajes::ERROR_LOGIN_INICIARSESION_VACIO);
+                   $this->alerta = new Alertas('ERROR','Todos los campos son obligatorios');
 
-                     http_response_code(400);
+                    http_response_code(400);
 
                     header('Content-Type: application/json');
 
