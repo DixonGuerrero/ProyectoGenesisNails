@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+:root{
+    --color-barra-lateral:linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-tabla:linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+
+    --color-th-tabla: #fff;
+
+    --color-texto:rgb(0,0,0);
+    --color-texto-menu:rgb(236, 236, 236);
+
+    --color-menu-hover:rgb(238,238,238);
+    --color-menu-hover-texto:rgb(0,0,0);
+
+    --color-boton:rgb(0,0,0);
+    --color-boton-texto:rgb(255,255,255);
+
+    --color-linea:rgb(180,180,180);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-switch-base :rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+    --color-main:rgb(255,255,255);
+    --color-sombras:rgb(0,0,0,0.2);
+}
+
+.dark-mode{
+    --color-barra-lateral: linear-gradient(to bottom,#736F6F 0%, #1B1919 100%);
+    --color-tabla: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(201, 201, 201);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-texto:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-switch-base :rgb(39,205,64);
+    --color-switch-circulo:rgb(255,255,255);
+
+    --color-scroll:rgb(68,69,74);
+    --color-scroll-hover:rgb(85,85,85);
+    --color-main:rgb(99, 98, 98);
+
+    --color-sombras:rgba(255, 255, 255, 1);
+}
+
+
+/*---------------->Citas<-------------------*/
+
+
+/*----------------->TituloCitas*/
+main .titulo.citas{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+main .titulo.citas h2{
+    font-family: 'Outfit', sans-serif;
+    font-size: 2em;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+main .titulo.citas .boton{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    background-color: #27BE29;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+main .titulo.citas .boton:hover{
+    background-color: #1E9E1E;
+}
+
+main .titulo.citas .boton ion-icon{
+    margin-right: 0.5em;
+    font-size: 25PX;
+}
+
+main .contenedor-cita{
+    display:flex;
+    margin:40px;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--color-menu-hover-texto);
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+}
+
+main .contenedor-cita .tarjeta-cita{
+    width: 30%;
+    min-width: 300pX;    margin: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px var(--color-sombras);
+    transition: 0.3s;
+    background-color: rgb(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+main .contenedor-cita .tarjeta-cita:hover{
+    transform: scale(1.04);
+    box-shadow: 0px 0px 20px var(--color-sombras);
+}
+
+main .contenedor-cita .tarjeta-cita h2{
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 20PX;
+    color: var(--color-texto);
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100% ;
+    border-bottom: 1px solid var(--color-linea);
+}
+
+main .contenedor-cita .tarjeta-cita p{
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3em;
+    color: var(--color-texto);
+}
+
+ 
+main .contenedor-cita .tarjeta-cita .datos-cita{
+    font-size: 15px;
+    margin: 20PX;
+    padding: 10px;
+}
+
+main .contenedor-cita .tarjeta-cita .datos-cita p{
+    color: #7579ff;
+}
+
+main .contenedor-cita .tarjeta-cita .acciones{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+main .contenedor-cita .tarjeta-cita .acciones a,
+main .contenedor-cita .tarjeta-cita .acciones button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 10px 20px;
+    color:#eee;
+
+}
+
+
+
+main .contenedor-cita .tarjeta-cita .acciones .boton-editar{
+    background-color: #7579ff;
+}
+
+main .contenedor-cita .tarjeta-cita .acciones .boton-eliminar{
+    background-color: #FF3D57;
+}
+
+main .contenedor-cita .tarjeta-cita .acciones a:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px var(--color-sombras);
+}
+
+main .contenedor-cita .tarjeta-cita .acciones .boton-editar:hover{
+    background-color: #5f63ff;
+}
+
+main .contenedor-cita .tarjeta-cita .acciones .boton-eliminar:hover{
+    background-color: #FF3D57;
+}
+
+
+/*----------------->Recomendacion Servicios*/
+main .recomendacion-cita {
+    position: relative;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 750px;
+}
+
+main .recomendacion-cita .titulo-servicio-recomendacion{
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+    font-size: 2em;
+    font-weight: 500;
+    
+    color:#fffaff;
+}
+main .recomendacion-cita .logo-fondo-rc {
+    position: absolute;
+    top: 10px; /* Ajusta esto según necesites */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajuste fino para centrar exactamente */
+    height: 700px;
+    z-index: 1; /* Asegura que el logo esté por debajo de las tarjetas pero sobre el fondo */
+}
+
+main .recomendacion-cita .contener-tarjetas {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(0,0,0,0.2);
+    box-shadow: 0px 0px 10px var(--color-sombras);
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    height:500PX;
+    width: 30%;
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion:hover {
+    transform: scale(1.07);
+    box-shadow: 0px 0px 20px var(--color-sombras);
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion h2 {
+width: 100%;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2em;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10PX;
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion img {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5em;
+    color: #ffffff;
+    text-align: center;
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion .boton.boton-primario {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    background-image: linear-gradient(to top, #b224ef 0%, #7579ff 100%);
+    color: white;
+    cursor: pointer;
+    gap: 10px;
+    transition: background-color 0.3s;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion .boton.boton-primario:hover {
+    background-image: linear-gradient(to top, #7579ff 0%, #b224ef 100%);
+}
+
+main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion .boton.boton-primario ion-icon {
+    margin-right: 0.5em;
+    font-size: 25PX;
+}
+
+main .recomendacion-cita .contenedor-boton-vermas {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    margin-right: 40PX;
+}
+
+
+main .recomendacion-cita .boton-vermas {
+
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    background-image: linear-gradient(to top, #27d14f 0%, #59d0e2 100%);
+    color: white;
+    cursor: pointer;
+    margin-top:40px;
+    justify-content: center;
+    gap: 10PX;
+    transition: background-color 0.3s;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+main .recomendacion-cita .boton-vermas:hover {
+    background-image: linear-gradient(to top, #59d0e2 0%, #27d14f 100%);
+}
+
+/*------------------->Responsive*/
+@media (max-width: 768px) {
+    main .contenedor-cita .tarjeta-cita .datos-cita{
+        font-size: 15px;
+
+    }
+    
+    main .recomendacion-cita{
+        height: auto;
+    }
+
+    main .recomendacion-cita .titulo-servicio-recomendacion{
+        padding: 20px;
+        font-size: 1.5em;
+        color: #ffffff;
+    }
+
+    main .recomendacion-cita .logo-fondo-rc{
+        margin-top: 40px;
+        top: 25%;
+    }
+
+    main .recomendacion-cita .contener-tarjetas{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }   
+
+    main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion{
+        width: 90%;
+        padding: 20px;
+        height: 450px;
+    }
+
+    main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion h2{
+        font-size: 1.5em;
+    }
+
+    main .recomendacion-cita .contener-tarjetas .tarjeta-servicio-recomendacion p{
+        font-size: 1.1em;
+    }
+
+    main .recomendacion-cita .contenedor-boton-vermas{
+
+        justify-content: center;
+        margin: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

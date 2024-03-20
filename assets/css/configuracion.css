@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+:root{
+    --color-barra-lateral:linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-texto:rgb(0,0,0);
+    --color-texto-menu:rgb(236, 236, 236);
+
+    --color-menu-hover:rgb(238,238,238);
+    --color-menu-hover-texto:rgb(0,0,0);
+    --color-input:rgb(238,238,238);
+    --color-texto-input:rgb(0,0,0);
+
+    --color-boton:rgb(0,0,0);
+    --color-boton-texto:rgb(255,255,255);
+
+    --color-linea:rgb(180,180,180);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-boton-agregar: #27BE29;
+
+    --color-switch-base :rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+    --color-main:rgb(255,255,255);
+    --color-sombras:rgb(0,0,0,0.2);
+}
+
+.dark-mode{
+    --color-barra-lateral: linear-gradient(to bottom,#736F6F 0%, #1B1919 100%);
+    
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(201, 201, 201);
+    --color-input:rgb(238,238,238);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-texto:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --boton-color-agregar: #27BE29;
+
+    --color-switch-base :rgb(39,205,64);
+    --color-switch-circulo:rgb(255,255,255);
+
+    --color-scroll:rgb(68,69,74);
+    --color-scroll-hover:rgb(85,85,85);
+    --color-main:rgb(99, 98, 98);
+
+    --color-sombras:rgba(255, 255, 255, 1);
+}
+
+/*---------------->Configuraciones*/
+
+/*----------------->FotoConfiguraciones*/
+
+main .configuraciones .foto-perfil{
+    background-color: var(--color-main);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+
+main .configuraciones .foto-perfil img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+main .configuraciones .foto-perfil .cambiar-foto{
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-boton-agregar);
+    color: var(--color-boton-texto);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main .configuraciones .foto-perfil .cambiar-foto:hover{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+main .configuraciones .foto-perfil .cambiar-foto ion-icon{
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*----------------->Sesion*/
+
+main .configuraciones .sesion-sesion{
+    background-color: var(--color-main);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+main .configuraciones .titulo-cerrar-sesion{
+    width: 50%;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    color: var(--color-menu-hover-texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+}
+
+main .configuraciones .titulo-cerrar-sesion h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+main .configuraciones .sesion{
+    background-color: var(--color-main);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .configuraciones .cerrar-sesion{
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    align-items: center;
+    background-color:#24BDAF;
+    color: var(--color-boton-texto);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main .configuraciones .cerrar-sesion:hover{
+    background-color: #1E9E1E;
+    color: var(--color-menu-hover-texto);
+}
+
+main .configuraciones .cerrar-sesion ion-icon{
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*----------------->Informacion Personal*/
+
+main .configuraciones .datos-basicos{
+    background-color: var(--color-main);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .configuraciones .formulario-datos-basicos{
+    width: 50%;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    color: var(--color-menu-hover-texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+}
+
+main .configuraciones .titulo-sesion-confi h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 20PX;
+
+}
+
+main .configuraciones .formulario-datos-basicos form{
+    width: 100% ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .configuraciones .formulario-datos-basicos form .grupo{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+
+}
+
+main .configuraciones .formulario-datos-basicos form .grupo input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color-input);
+    color: var(--color-texto-input);
+}
+
+
+main .configuraciones .formulario-datos-basicos form .submit{
+    text-decoration: none;
+  
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#24BDAF;
+    color: var(--color-boton-texto);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main .configuraciones .formulario-datos-basicos form .submit:hover{
+    background-color: #1E9E1E;
+    color: var(--color-menu-hover-texto);
+}
+
+main .configuraciones .formulario-datos-basicos form .submit ion-icon{
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*----------------->Cambiar Contraseña*/
+
+main .configuraciones .contrasenia{
+    background-color: var(--color-main);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .configuraciones .cambiar-contrasenia{
+    width: 50%;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    color: var(--color-menu-hover-texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    transition: background-color 0.5s ease,color 0.5s ease;
+}
+
+main .configuraciones .cambiar-contrasenia form{
+    width: 100% ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+main .configuraciones .cambiar-contrasenia form .grupo{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+
+}
+
+main .configuraciones .cambiar-contrasenia form .grupo input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color-input);
+    color: var(--color-texto-input);
+}
+
+main .configuraciones .cambiar-contrasenia form .submit{
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#24BDAF;
+    color: var(--color-boton-texto);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main .configuraciones .cambiar-contrasenia form .submit:hover{
+    background-color: #1E9E1E;
+    color: var(--color-menu-hover-texto);
+}
+
+main .configuraciones .cambiar-contrasenia form .submit ion-icon{
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*----------------->Responsive*/
+@media screen and (max-width: 768px){
+    main .configuraciones .foto-perfil{
+        padding: 10px;
+    }
+
+    main .configuraciones .foto-perfil img{
+        width: 100px;
+        height: 100px;
+    }
+
+    main .configuraciones .foto-perfil .cambiar-foto{
+        padding: 5px 10px;
+    }
+
+    main .configuraciones .sesion-sesion{
+        padding: 10px;
+    }
+
+    main .configuraciones .titulo-cerrar-sesion{
+        width: 80%;
+        padding: 5px;
+        margin: 10px;
+    }
+
+    main .configuraciones .sesion{
+        padding: 10px;
+    }
+
+    main .configuraciones .cerrar-sesion{
+        padding: 5px 10px;
+    }
+
+    main .configuraciones .formulario-datos-basicos{
+        padding: 5px;
+        margin: 10px;
+        width: 100%;
+    }
+
+    main .configuraciones .formulario-datos-basicos form .grupo{
+        padding: 5px;
+        margin: 5px;
+    }
+
+    main .configuraciones .formulario-datos-basicos form .grupo input{
+        padding: 5px;
+    }
+
+    main .configuraciones .formulario-datos-basicos form .submit{
+        padding: 5px 10px;
+    }
+
+    main .configuraciones .cambiar-contrasenia{
+        width: 100%;
+        padding: 5px;
+        margin: 10px;
+    }
+
+    main .configuraciones .cambiar-contrasenia form .grupo{
+        padding: 5px;
+        margin: 5px;
+    }
+
+    main .configuraciones .cambiar-contrasenia form .grupo input{
+        padding: 5px;
+    }
+
+    main .configuraciones .cambiar-contrasenia form .submit{
+        padding: 5px 10px;
+    }
+}

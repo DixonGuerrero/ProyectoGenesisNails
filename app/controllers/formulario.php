@@ -27,16 +27,22 @@
                     $contrasena2 = limpiarCadena($this->obtenerPost('clave2'));
 
                     if($nombres == '' || $apellidos == '' || $telefono == '' || $correo == '' || $usuario == '' || $contrasena == '' || $contrasena2 == ''){
-                        $this->redireccionar('formulario', ['error' => ErrorMensajes::ERROR_FORMULARIO_NUEVOUSUARIO_VACIO]);
-                        return;
+                        $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+
+                        http_response_code(400);
+                        echo $this->alerta->simple()->error()->getAlerta();
+                        exit();
                     }
 
                     if($contrasena != $contrasena2){
-                        $this->redireccionar('formulario', ['error' => ErrorMensajes::ERROR_FORMULARIO_NUEVOUSUARIO_PASSWORDS]);
-                        return;
+                        $this->alerta = new Alertas('ERROR', 'Las contraseñas no coinciden');
+
+                        http_response_code(400);
+                        echo $this->alerta->simple()->error()->getAlerta();
+                        exit();
                     }
 
-                    $user = new UserModel();
+                    $user = new UsuarioModel();
                     $user->setNombres($nombres);
                     $user->setApellidos($apellidos);
                     $user->setTelefono($telefono);
@@ -46,13 +52,22 @@
 
                     $respuesta = $user->guardar();
                     error_log('Formulario::nuevoUsuario -> respuesta: ' . json_encode($respuesta));
-                    if($respuesta['message']){
-                        $this->redireccionar('formulario', ['info' => InfoMensajes::encriptarMensaje($respuesta['message'])]);
+                    if($respuesta['status'] != 200){
+                        $msg = $respuesta['response']['message'];
+                        $this->alerta = new Alertas('ERROR', $msg);
+                        http_response_code(400);
+                        echo $this->alerta->simple()->error()->getAlerta();
+                        exit();
                     }
 
-                    if($respuesta['token']){
-                        error_log('Formulario::nuevoUsuario -> Exito al crear el usuario');
-                        $this->redireccionar('login', ['exito' => ExitoMensajes::EXITO_FORMULARIO_NUEVOUSUARIO]);                
+                    if($respuesta['status'] == 200){
+                        //Redireccionamos al login
+                        $this->alerta = new Alertas('EXITO', 'Usuario creado correctamente, ahora puedes iniciar sesion');
+                        http_response_code(200);
+                        
+                        echo $this->alerta->redireccionar('login')->exito()->getAlerta();
+
+                        exit();
                     }
 
 

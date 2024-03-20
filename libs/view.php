@@ -12,7 +12,7 @@
             error_log('View::render -> Inicio de render');
             $this->d = $data;
 
-            $this->manejarMensajes();
+           
             require 'app/views/' . $nombre . '.php';
         }
 
@@ -24,7 +24,21 @@
 
             }else if(isset($_GET['info'])){
                 $this->manejarInformacion();
+            }else if(isset($_GET['mensaje'])){
+                $this->mensajeBienvenido();
             }
+        }
+
+        public function mensajeBienvenido(){
+           if(isset($_GET['mensaje'])){
+               echo '<script>Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Bienvenido!",
+                showConfirmButton: false,
+                timer: 1800
+              });</script>';
+           }
         }
 
         public function manejarInformacion(){
@@ -61,6 +75,7 @@
             $this->mostrarMensajeExito();
             $this->mostrarMensajeError();
             $this->mostrarMensajeInfo();
+            $this->MensajeBienvenido();
         }
 
         public function mostrarMensajeInfo(){
@@ -69,6 +84,7 @@
                     title: "Información",
                     text: "'.$this->d['mensajeInfo'].'",
                     icon: "warning",
+                    iconColor: "pink",
                   });</script>';
             }
         }

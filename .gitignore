@@ -1,0 +1,6 @@
+php-errors.log/
+.env/
+.idea/
+.vscode/
+.composer.lock/
+notas.md/

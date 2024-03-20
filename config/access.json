@@ -16,33 +16,73 @@
             "role": ""
         },
         {
-            "site": "logout",
-            "access": "public",
-            "role": ""
-        },{
-            "site": "mcliente",
-            "access": "private",
-            "role": "Cliente"
+            "site":"cita",
+            "access":"private",
+            "role":"cliente"
         },
         {
-            "site": "acliente",
-            "access": "private",
-            "role": "Cliente"
-        },
-        
-        {
-            "site": "cadministrador",
-            "access": "private",
-            "role": "Empleado"
+            "site":"citaAdmin",
+            "access":"private",
+            "role":"admin"
         },
         {
-            "site": "padministrador",
+            "site":"configuracionAdmin",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"configuracion",
+            "access":"private",
+            "role":"cliente"
+        },
+        {
+            "site":"dashboard",
+            "access":"private",
+            "role":"cliente"
+        },
+        {
+            "site":"entrada",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"producto",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"salida",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"usuario",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"proveedor",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site":"servicio",
+            "access":"private",
+            "role":"cliente"
+        },
+        {
+            "site":"servicioAdmin",
+            "access":"private",
+            "role":"admin"
+        },
+        {
+            "site": "dashadmin",
             "access": "private",
-            "role": "Empleado"
+            "role": "admin"
         }
     ],
     "defaultSites":{
-        "Cliente": "mcliente",
-        "Empleado": "cadministrador"
+        "cliente": "dashboard",
+        "admin": "dashadmin"
     }
 }

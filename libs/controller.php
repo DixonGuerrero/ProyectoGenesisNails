@@ -3,6 +3,7 @@
     class Controller{
        public $view;
        public $model;
+       public $alerta; 
 
         function __construct(){
             error_log('Controller::construct -> Inicio de Controller');
@@ -10,10 +11,15 @@
         }
 
         public function loadModel($model){
-            $url = 'app/models/' . $model . 'model.php';
 
+            error_log('Controller::loadModel -> Cargando modelo: '.$model);
+            $url = 'app/models/' . $model . 'Model.php';
+
+            error_log('Controller::loadModel -> URL: '.$url);
             if(file_exists($url)){
-                require $url;
+                error_log('Controller::loadModel -> Existe el archivo: '.$url);
+
+                require_once $url;
 
                 $modelName = $model . 'Model';
                 $this->model = new $modelName();

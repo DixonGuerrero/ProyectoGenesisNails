@@ -38,6 +38,7 @@
 
             switch($method){
                 case "GET" :
+                    error_log($this->token);
                 break;
                 case "POST":
                     curl_setopt($channel,CURLOPT_POST,TRUE);
@@ -64,7 +65,12 @@
 
             if(!$respuesta) return curl_error($channel);
 
+            $codigoEstado = curl_getinfo($channel,CURLINFO_HTTP_CODE);
+
             curl_close($channel);
+            //Agregamos el codigo de estado a la respuesta
+            $respuesta = json_encode(["status" => $codigoEstado, "response" => json_decode($respuesta,TRUE)]);
+
             return json_decode($respuesta,TRUE);
             
         }
