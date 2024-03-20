@@ -15,7 +15,8 @@ class Dashboard extends SessionController
             'usuario' => $this->usuario,
             'mensajeTiempo' => $this->mensajeTiempo(),
             'citas' => $this->citasReservadas(),
-            'servicioSemana' => $this->servicioSemana()
+            'servicioSemana' => $this->servicioSemana(),
+            'formularioCita' => $this->formularioCita()
         ]);
     }
 
@@ -108,7 +109,7 @@ class Dashboard extends SessionController
                         </div>
                         <div class="fecha">
                             <ion-icon name="calendar-number"></ion-icon>
-                            <p>' . $cita->getFecha() . '</p>
+                            <p>' . $cita->formatoFecha($cita->getFecha()) . '</p>
                         </div>
                 </div>';
             }
@@ -179,6 +180,65 @@ class Dashboard extends SessionController
             return $respuesta;
         } catch (Exception $e) {
             error_log('Dashboard::servicioSemana -> excepcion: ' . $e);
+        }
+    }
+
+    public function formularioCita(){
+        $citas = [];
+        try {
+            $citas = $this->cita->obtenerTodo();
+
+            $respuesta = '
+            <div class="modal_container">
+            <div class="encabezado">
+                <h1>Cita</h1>
+                <a href="#" class="modal_close">X</a>
+            </div>
+            
+            <img src="'.APP_URL.'assets/images/calendario_cita.png"  class="modal_img" alt="">
+            <h2 class="modal_title">Configure su Cita</h2>
+        
+            <p class="modal_text">
+                Por favor, complete el siguiente formulario para agendar su cita.
+            </p>
+            <form action="'.APP_URL.'cita/guardar" method="POST" class="form FormularioAjax">
+                
+
+                <div class="form_group">
+                    <label for="servicio">Servicio</label>
+                    <select name="id_servicio" id="servicio" class="form_input" >';
+
+        //Asignamos datos
+        foreach ($citas as $cita) {
+            $respuesta .= '<option value="' . $cita->getIdServicio() . '">' . $cita->getTipoServicio() . '</option>';
+        }
+
+
+            $respuesta.='
+                    </select>
+                </div>
+
+                <!-- <------Fecha y Hora------> 
+                <div class="form_group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form__input">
+                </div>
+
+                <div class="form_group">
+                    <label for="hora">Hora</label>
+                    <input type="time" name="hora" id="hora" class="form__input">
+                </div>
+
+                <button type="submit" class="enviar">
+                    Registrar
+                </button>
+            </form>
+
+            </div>';
+
+        return $respuesta;
+        } catch (Exception $e) {
+            error_log('Dashboard::formularioCita -> excepcion: ' . $e);
         }
     }
 }

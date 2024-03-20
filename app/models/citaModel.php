@@ -188,12 +188,13 @@
         }
 
         public function setFecha($fecha){
-            $this->fecha = $this->formatoFecha($fecha);
+            $this->fecha = $fecha;
         }
 
 
         public function formatoFecha($fecha){
             $fecha = explode('T',$fecha);
+            error_log('CitaModel::formatoFecha -> fecha: '.json_encode($fecha));
             return $fecha[0];
         }
 

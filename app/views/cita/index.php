@@ -20,7 +20,7 @@ require_once 'app/views/template/parteSuperior.php';
     </div>
 </section>
 
-<section class="recomendacion-cita">
+<!-- <section class="recomendacion-cita">
     <img src="<?php echo APP_URL ?>assets/images/logo.png" alt="" class="logo-fondo-rc">
     <h2 class="titulo-servicio-recomendacion">
         Servicios recomendados
@@ -74,7 +74,7 @@ require_once 'app/views/template/parteSuperior.php';
         </button>
     </div>
 
-</section>
+</section> -->
 
 
 <?php

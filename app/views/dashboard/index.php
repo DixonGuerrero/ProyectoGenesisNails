@@ -2,6 +2,7 @@
 require_once 'app/views/template/parteSuperior.php';
     $citas = $this->d['citas'];
     $servicioSemana = $this->d['servicioSemana'];
+    $formularioCita = $this->d['formularioCita'];
 ?>
 
 <div class="barra-superior">
@@ -28,6 +29,7 @@ require_once 'app/views/template/parteSuperior.php';
 </section>
 
 <section class="agendar-cita">
+
 
     <div class="contenedor-agendar-cita">
             <h2 class="titulo-sesion-actual">¿Aun no tienes una cita?</h2>
@@ -56,13 +58,17 @@ require_once 'app/views/template/parteSuperior.php';
         </div>
 
         <div class="contenedor-agendar">
-            <a href="<?php echo APP_URL ?>cita" class="agendar">
+            <a href="<?php echo APP_URL ?>cita" class="agendar add-new">
                 <ion-icon name="calendar"></ion-icon>
                 <span>Agendar Cita</span>
             </a>
         </div>
     </div>
 
+</section>
+
+<section class="modal ">
+    <?php echo $formularioCita?>
 </section>
 
 <section class="redes">

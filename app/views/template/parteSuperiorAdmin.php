@@ -13,9 +13,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Genesis Nails</title>
-    <link rel="stylesheet" href="assets/css/dashadmin.css" />
-
+    
     <link rel="stylesheet" href="assets/css/<?php echo $url[0];?>.css" />
+    <link rel="stylesheet" href="assets/css/dashadmin.css" />
     <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
     <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script> 

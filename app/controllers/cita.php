@@ -17,25 +17,43 @@
 
             if($this->existeParametrosPost([
                 'id_servicio',
-                'fecha'
+                'fecha',
+                'hora'
             ])){
 
-                $id_servicio = limpiarCadena($this->obtenerPost('id_servicio'));
+                $id_servicio =(int) limpiarCadena($this->obtenerPost('id_servicio'));
                 $fecha = limpiarCadena($this->obtenerPost('fecha'));
+                $hora = limpiarCadena($this->obtenerPost('hora'));
 
-                if($id_servicio == '' || $fecha == ''){
+                if($id_servicio == '' || $fecha == '' || $hora == ''){
                     $this->alerta = new Alertas('ERROR','Todos los campos son obligatorios');
                     http_response_code(400);
                     echo $this->alerta->simple()->error()->getAlerta();
                     exit();
                 }
+                
+                //Validar Fecha
+                $fechaActual = date('Y-m-d');
+                if($fecha < $fechaActual){
+                    $this->alerta = new Alertas('ERROR','La fecha no puede ser menor a la actual');
+                    http_response_code(400);
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                }
+
+                //Modificamos la fecha para que se guarde con la hora
+                $fecha1 = $fecha.'T'.$hora;
+                error_log('Cita::guardar -> fecha: '.$fecha);
+
                 $this->model->setIdServicio($id_servicio);
-                $this->model->setFecha($fecha);
-                $this->model->setIdCliente($this->usuario->getId());
+                $this->model->setFecha($fecha1);
+                $this->model->setIdCliente($this->usuario->getIdCliente());
 
                 $respuesta = $this->model->guardar();
                 error_log('Cita::guardar -> respuesta: '.json_encode($respuesta));
-                if($respuesta['status'] != 200){
+                if($respuesta['status'] > 300 ){
+                    error_log('Cita::guardar -> respuesta: Aqui tOY');
+
                     $msg = $respuesta['response']['message'];
                     $this->alerta = new Alertas('ERROR',$msg);
                     http_response_code(400);
@@ -43,7 +61,7 @@
                     exit();
                 }
                 $this->alerta = new Alertas('SUCCESS','Cita guardada correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+                echo $this->alerta->recargar()->exito()->getAlerta();
                 exit();
             }
         }
@@ -134,7 +152,7 @@
                         <p>'.$cita->getDescripcionServicio().'</p>
             
                         <div class="datos-cita">
-                            <p>Fecha: '.$cita->getFecha().'</p>
+                            <p>Fecha: '.$cita->formatoFecha($cita->getFecha()).'</p>
                             
                         </div>
                         <div class="acciones">

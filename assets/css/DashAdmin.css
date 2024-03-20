@@ -762,6 +762,237 @@ tr:hover td{
     box-shadow: inset 0 0 5px var(--color-scroll-hover);
 }
 
+/*----------------->Modal  */
+main .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s .9s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s .8s;
+}
+
+.modal.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+}
+
+
+main .modal_container{
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh; /* Esto limita la altura máxima del modal */
+    background-color: var(--color-main);
+    border-radius: 6px;
+    padding: 2em 2.5em;
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+    transform: var(--transform);
+    transition: var(--transform) .4s;
+    transition: var(--transition);
+    overflow-y: auto; /* Esto permite el scroll vertical si el contenido excede la altura máxima */
+}
+
+.modal_title{
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--color-texto);
+    text-align: center;
+}
+
+.modal_img{
+    width: 50%;
+    max-width: 300px;
+}
+
+.modal p{
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-texto);
+    text-align: center;
+
+}
+
+.encabezado{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.encabezado h1{
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+.modal_close{
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff000d;
+    padding: .5em 1em;
+    border: 1px solid ;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color 0.3s;
+
+}
+
+.modal_close:hover{
+    color: #ff000d;
+    background-color: #fff;
+}
+
+.modal .enviar {
+    text-decoration: none;
+    color: #fff;
+    background-color: #fa71cd;
+    padding: .5em 0.5em;
+    border: 1px solid ;
+    border-radius: 6px;
+    font-size: 20px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color 0.3s;
+}
+
+.enviar:hover{
+    color: #fa71cd;
+    background-color: #fff;
+}
+
+
+main .modal .form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 60%;
+    
+}
+
+
+main .modal .form .form_group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+main .modal .form .form_group label{
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+
+main .modal .form .form_group input,
+main .modal .form .form_group .form_input{
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--color-texto);
+    background-color: var(--color-main);
+    box-shadow: 0 0 0.5em var(--color-sombras);
+}
+
+main .modal .form .form_group input::placeholder{
+    color: var(--color-texto);
+}
+
+
+main .modal .form .container_foto{
+    background-color: var(--color-main);
+    width: 90%;
+    margin: 3.12em auto;
+    padding: 3em 1eM;
+    
+    position: relative;
+    border-radius: 0.43EM;
+    box-shadow: 0 0 0.5em var(--color-sombras);
+}
+
+input[type="file"]{
+    display: none;
+}
+
+main .modal .form .container_foto label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    position: relative;
+    background-color: #E963E9;
+    color: #fff;
+    font-size: 1.12em;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    padding: 1.12em 0;
+    margin: auto;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+main .modal .form .container_foto #num-of-files{
+    font-weight: 400;
+    text-align: center;
+    margin: 1.2em 0 1.87em 0;
+    color: #c471f5;
+}
+
+main .modal .form .container_foto ul{
+    list-style-type: none;
+}
+
+main .modal .form .container_foto #files-list li{
+    
+    background-color: #eff5ff;
+    margin-bottom: 1em;
+    padding: 1.1em 1em;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+main .modal .form .container_foto #files-list li p{
+    color: #c471f5;
+    font-weight: 500;
+}
+
+main .modal .modal_container .form .form_group textarea{
+    padding: 0.5em 1em;
+    border: none;
+    
+    border-radius: 0.5em;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--color-texto);
+    background-color: var(--color-main);
+    box-shadow: 0 0 0.5em var(--color-sombras);
+    resize: none;
+}
+
+
 
 /*------------------> Responsive*/
 @media (max-height: 660px){
@@ -830,6 +1061,22 @@ tr:hover td{
 
     main .tarjeta-estadistica{
         width: 100%;
+    }
+
+    main .modal_container{
+        padding: 1em 1.5em;
+    }
+
+    main .modal .modal_title{
+        font-size: 2rem;
+    }
+
+    main .modal .modal_img{
+        width: 60%;
+    }
+
+    main .modal .form{
+        width: 80%;
     }
     
 }
