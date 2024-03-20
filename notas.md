@@ -1,7 +1,3 @@
-
-Pruebas dos, estoy bajando los cambios del repositorio
-
-
 Objetivos semana 
 
     Semana 19 - 24 Febrero
