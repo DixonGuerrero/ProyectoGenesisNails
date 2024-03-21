@@ -48,6 +48,30 @@
 
                
                 
+                $respuesta =  $this->api->crear('persona',$data);
+
+                return $respuesta;
+            } catch (Exception $e) {
+                error_log('UserModel::guardar -> ERROR: ' . $e);
+                return false;
+            }
+        }
+        public function registrar(){
+            try {
+                $data = [
+                    'nombres' => $this->nombres,
+                    'apellidos' => $this->apellidos,
+                    'correo' => $this->email,
+                    'telefono' => $this->telefono,
+                    'imagen' => $this->imagen,
+                    'rol' => $this->role,
+                    'cargo' => $this->cargo,
+                    'usuario' => $this->usuario,
+                    'password' => $this->password
+                ];
+
+               
+                
                 $respuesta =  $this->api->crear('register',$data);
 
                 return $respuesta;

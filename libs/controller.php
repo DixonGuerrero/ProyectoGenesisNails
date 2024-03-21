@@ -73,6 +73,91 @@
 
             header('location:'.APP_URL.$ruta.$params);
         }
+
+        public function cargarImagen($nombre ,$carpeta,$nombreFoto)
+        {
+            $directorioImagenes = $_SERVER['DOCUMENT_ROOT'] . '/Proyectos/ProyectoGenesisNails2/assets/images/'.$carpeta.'/';
+
+
+            error_log('Controller::cargarImagen -> Directorio: '.$directorioImagenes);
+    
+            if (
+                $_FILES[$nombreFoto]['name'] != "" &&
+                $_FILES[$nombreFoto]['size'] > 0
+            ) {
+    
+                //Validar Directorio
+                if (!file_exists($directorioImagenes)) {
+                    if (!mkdir($directorioImagenes, 0777)) {
+                        $this->alerta = new Alertas('Error', 'No se pudo crear el directorio de imagenes');
+    
+                        http_response_code(400);
+                        header('Content-Type: application/json');
+                        echo $this->alerta->simple()->error()->getAlerta();
+                        exit();
+                    }
+                }
+    
+                //Validar formato de la imagen
+                #Verificando formato img#
+                if (
+                    mime_content_type($_FILES[$nombreFoto]['tmp_name']) != "image/jpeg" &&
+                    mime_content_type($_FILES[$nombreFoto]['tmp_name']) != "image/png"
+                ) {
+                    $this->alerta = new Alertas('Error', 'Formato de imagen no permitido');
+    
+                    http_response_code(400);
+                    header('Content-Type: application/json');
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                }
+    
+                //Validar tamaño de la imagen
+                #Verificando peso de la imagen#
+                if (($_FILES[$nombreFoto]['size'] / 1024) > 5120) {
+                    $this->alerta = new Alertas('Error', 'Tamaño de imagen no permitido');
+    
+                    http_response_code(400);
+                    header('Content-Type: application/json');
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                }
+    
+                //Crear Nombre de imagen
+                $imagen = str_ireplace(" ", "_", $nombre);
+                $imagen = $imagen . "_" . rand(0, 1000);
+    
+                #Extension de imagen#
+                switch (mime_content_type($_FILES[$nombreFoto]['tmp_name'])) {
+                    case "image/jpeg":
+                        $imagen = $imagen . ".jpg";
+                        break;
+                    case "image/png":
+                        $imagen = $imagen . ".png";
+                        break;
+                }
+    
+                chmod($directorioImagenes, 0777);
+    
+                #Moviendo imagenes al directorio#
+                if (!move_uploaded_file(
+                    $_FILES[$nombreFoto]['tmp_name'],
+                    $directorioImagenes . $imagen
+                )) {
+                    $this->alerta = new Alertas('Error', 'No se pudo subir la imagen');
+    
+                    http_response_code(400);
+                    header('Content-Type: application/json');
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                }
+    
+
+    
+    
+                return $imagen;
+            }
+        }
     }
 
 ?>

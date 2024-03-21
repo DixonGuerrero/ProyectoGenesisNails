@@ -27,7 +27,7 @@ $tabla = $this->d['tablaUsuarios'];
         <p class="modal_text">
             Por favor, complete el siguiente formulario para crear un usuario.
         </p>
-        <form action="" method="POST" class="form">
+        <form action="<?php echo APP_URL;?>/usuario/guardar" method="POST" class="form FormularioAjax">
 
             <!--  datos de usuario -->
             <div class="datos-basicos">
@@ -42,8 +42,8 @@ $tabla = $this->d['tablaUsuarios'];
                 <input type="text" name="apellidos" id="apellidos" class="form__input">
             </div>
             <div class="form_group">
-                <label for="apellidos">Email</label>
-                <input type="text" name="apellidos" id="apellidos" class="form__input" required>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" class="form__input" required>
             </div>
 
             <div class="form_group">
@@ -61,13 +61,13 @@ $tabla = $this->d['tablaUsuarios'];
             <h2 class="titulo-section-form">Password</h2>
             <!-- password -->
             <div class="form_group">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" class="form__input" required>
+                <label for="clave1">Contraseña</label>
+                <input type="password" name="clave1" id="clave1" class="form__input" required>
             </div>
 
             <div class="form_group">
-                <label for="password">Confirmar Contraseña</label>
-                <input type="password" name="password" id="password" class="form__input" required>
+                <label for="clave2">Confirmar Contraseña</label>
+                <input type="password" name="clave2" id="clave2" class="form__input" required>
 
             </div>
             </div>
@@ -94,7 +94,7 @@ $tabla = $this->d['tablaUsuarios'];
                 <div class="container_foto">
 
 
-                    <input type="file" id="file-input">
+                    <input type="file" id="file-input" name="imagen">
                     <label for="file-input">
                         <ion-icon name="cloud-upload"></ion-icon>
                         Carga una foto

@@ -1,7 +1,8 @@
 <?php
 require_once 'app/views/template/parteSuperiorAdmin.php';
 
-    $productos = $this->d['productos'];
+$productos = $this->d['productos'];
+$formularioCrear = $this->d['formularioProducto'];
 ?>
 
 <div class="barra-superior">
@@ -20,10 +21,14 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 
 <div class="tarjetas productos">
 
-    <?php echo $productos;?>
+    <?php echo $productos; ?>
 
 
 </div>
+
+<section class="modal ">
+    <?php echo $formularioCrear;?>
+</section>
 
 
 <?php

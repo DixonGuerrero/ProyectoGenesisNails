@@ -18,6 +18,93 @@ class Usuario extends SessionController
     }
 
 
+    public function guardar(){
+        error_log('Formulario::nuevoUsuario -> inicio de nuevoUsuario');
+            
+        if($this->existeParametrosPost(['nombres','apellidos','telefono','email','usuario','rol','clave1','clave2'])){
+
+            error_log('Formulario::nuevoUsuario -> Existen parametros POST');
+
+            $nombres = limpiarCadena($this->obtenerPost('nombres'));
+            $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
+            $telefono = limpiarCadena($this->obtenerPost('telefono'));
+            $correo = limpiarCadena($this->obtenerPost('email'));
+            $usuario = limpiarCadena($this->obtenerPost('usuario'));
+            $rol = strtolower(
+                limpiarCadena($this->obtenerPost('rol'))
+            );
+            $contrasena = limpiarCadena($this->obtenerPost('clave1'));
+            $contrasena2 = limpiarCadena($this->obtenerPost('clave2'));
+
+            if($nombres == '' || $apellidos == '' || $telefono == '' || $correo == '' || $usuario == '' || $contrasena == '' || $contrasena2 == '' || $rol == ''){
+                $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if($contrasena != $contrasena2){
+                $this->alerta = new Alertas('ERROR', 'Las contraseñas no coinciden');
+
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if(($_FILES['imagen'])):
+                $imagen = $this->cargarImagen($usuario,'usuario', 'imagen' );
+
+                if(isset($imagen)):
+                    $this->usuario->setImagen($imagen);
+                else:
+                    $this->alerta = new Alertas('ERROR', 'Error al cargar la imagen');
+                    http_response_code(400);
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                endif;
+            endif;
+
+            $this->usuario->setNombres($nombres);
+            $this->usuario->setApellidos($apellidos);
+            $this->usuario->setTelefono($telefono);
+            $this->usuario->setEmail($correo);
+            $this->usuario->setUsuario($usuario);
+            $this->usuario->setPassword($contrasena);
+            $this->usuario->setRole($rol);
+
+            $respuesta = $this->usuario->guardar();
+
+
+            error_log('Formulario::nuevoUsuario -> respuesta: ' . json_encode($respuesta));
+            if($respuesta['status'] > 300){
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR', $msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if($respuesta['status'] == 201){
+                //Redireccionamos al login
+                $this->alerta = new Alertas('EXITO', 'Usuario creado correctamente');
+                http_response_code(200);
+                
+                echo $this->alerta->recargar()->exito()->getAlerta();
+
+                exit();
+            }
+
+
+        }else{
+            $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        }
+    }
+
     public function actualizarUsuario()
     {
         error_log(
@@ -181,116 +268,6 @@ class Usuario extends SessionController
         }
     }
 
-
-
-    public function actualizarImagen()
-    {
-        $directorioImagenes = 'app/assets/images/usuario/';
-
-        if (
-            $_FILES['usuario_foto']['name'] != "" &&
-            $_FILES['usuario_foto']['size'] > 0
-        ) {
-
-            //Validar Directorio
-            if (!file_exists($directorioImagenes)) {
-                if (!mkdir($directorioImagenes, 0777)) {
-                    $this->alerta = new Alertas('Error', 'No se pudo crear el directorio de imagenes');
-
-                    http_response_code(400);
-                    header('Content-Type: application/json');
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-            }
-
-            //Validar formato de la imagen
-            #Verificando formato img#
-            if (
-                mime_content_type($_FILES['usuario_foto']['tmp_name']) != "image/jpeg" &&
-                mime_content_type($_FILES['usuario_foto']['tmp_name']) != "image/png"
-            ) {
-                $this->alerta = new Alertas('Error', 'Formato de imagen no permitido');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            //Validar tamaño de la imagen
-            #Verificando peso de la imagen#
-            if (($_FILES['usuario_foto']['size'] / 1024) > 5120) {
-                $this->alerta = new Alertas('Error', 'Tamaño de imagen no permitido');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            //Crear Nombre de imagen
-            $imagen = str_ireplace(" ", "_", $this->usuario->getNombres());
-            $imagen = $imagen . "_" . rand(0, 1000);
-
-            #Extension de imagen#
-            switch (mime_content_type($_FILES['usuario_foto']['tmp_name'])) {
-                case "image/jpeg":
-                    $imagen = $imagen . ".jpg";
-                    break;
-                case "image/png":
-                    $imagen = $imagen . ".png";
-                    break;
-            }
-
-            chmod($directorioImagenes, 0777);
-
-            #Moviendo imagenes al directorio#
-            if (!move_uploaded_file(
-                $_FILES['usuario_foto']['tmp_name'],
-                $directorioImagenes . $imagen
-            )) {
-                $this->alerta = new Alertas('Error', 'No se pudo subir la imagen');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-
-            //Actualizar imagen
-            $this->usuario->setImagen($imagen);
-            $respuesta = $this->usuario->guardar();
-
-            if (!$respuesta) {
-                $this->alerta = new Alertas('Error', 'No se pudo actualizar la imagen');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            if ($respuesta['status'] != 200) {
-                $this->alerta = new Alertas('Error', $respuesta['response']['message']);
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            $this->alerta = new Alertas('Exito', 'Imagen actualizada');
-
-            http_response_code(200);
-            header('Content-Type: application/json');
-            //Recargamos la pagina
-            echo $this->alerta->recargar()->exito()->getAlerta();
-            exit();
-        }
-    }
-
     public function numUsuarios()
     {
         try {
@@ -390,4 +367,7 @@ class Usuario extends SessionController
             return false;
         }
     }
+
+
+
 }

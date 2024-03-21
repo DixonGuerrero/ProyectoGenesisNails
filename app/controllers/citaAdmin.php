@@ -14,6 +14,7 @@ class CitaAdmin extends SessionController
         $this->view->render('citaAdmin/index', [
             'usuario' => $this->usuario,
             'tablaCitas' => $this->listaCitas(),
+            'formularioCita' => $this->formularioCita()
         ]);
     }
 
@@ -23,26 +24,44 @@ class CitaAdmin extends SessionController
 
         if ($this->existeParametrosPost([
             'id_servicio',
-            'fecha'
+            'fecha',
+            'usuario',
+            'hora'
         ])) {
 
 
-            $id_servicio = limpiarCadena($this->obtenerPost('id_servicio'));
+            $id_servicio =(int) limpiarCadena($this->obtenerPost('id_servicio'));
             $fecha = limpiarCadena($this->obtenerPost('fecha'));
+            $hora = limpiarCadena($this->obtenerPost('hora'));
+            $usuario =(int) limpiarCadena($this->obtenerPost('usuario'));
 
-            if ($id_servicio == '' || $fecha == '') {
+            if ($id_servicio == '' || $fecha == '' || $usuario == '') {
                 $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
                 http_response_code(400);
                 echo $this->alerta->simple()->error()->getAlerta();
                 exit();
             }
-            $this->model->setIdServicio($id_servicio);
-            $this->model->setFecha($fecha);
-            $this->model->setIdCliente($this->usuario->getId());
 
-            $respuesta = $this->model->guardar();
+
+            //Validar Fecha
+            $fechaActual = date('Y-m-d');
+            if($fecha < $fechaActual){
+                $this->alerta = new Alertas('ERROR','La fecha no puede ser menor a la actual');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            //Modificamos la fecha para que se guarde con la hora
+            $fecha1 = $fecha.'T'.$hora;
+            error_log('Cita::guardar -> fecha: '.$fecha);
+
+            $this->model->setIdServicio($id_servicio);
+            $this->model->setFecha($fecha1);
+
+            $respuesta = $this->model->guardar($usuario);
             error_log('CitaAdmin::guardar -> respuesta: ' . json_encode($respuesta));
-            if ($respuesta['status'] != 200) {
+            if ($respuesta['status'] > 300 ) {
                 $msg = $respuesta['response']['message'];
                 $this->alerta = new Alertas('ERROR', $msg);
                 http_response_code(400);
@@ -50,9 +69,16 @@ class CitaAdmin extends SessionController
                 exit();
             }
             $this->alerta = new Alertas('SUCCESS', 'Cita guardada correctamente');
-            echo $this->alerta->simple()->exito()->getAlerta();
+            echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+        }else{
+            $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
             exit();
         }
+
+
     }
 
     public function actualizar()
@@ -236,5 +262,81 @@ class CitaAdmin extends SessionController
         }
 
         return 'No se encontro el cliente';
+    }
+
+    public function formularioCita(){
+        $citas = [];
+        try {
+            $citas = $this->model->obtenerTodo();
+
+            $respuesta = '
+            <div class="modal_container">
+            <div class="encabezado">
+                <h1>Cita</h1>
+                <a href="#" class="modal_close">X</a>
+            </div>
+            
+            <img src="'.APP_URL.'assets/images/calendario_cita.png"  class="modal_img" alt="">
+            <h2 class="modal_title">Configure su Cita</h2>
+        
+            <p class="modal_text">
+                Por favor, complete el siguiente formulario para agendar su cita.
+            </p>
+            <form action="'.APP_URL.'citaAdmin/guardar" method="POST" class="form FormularioAjax">
+                
+
+                <div class="form_group">
+                    <label for="servicio">Servicio</label>
+                    <select name="id_servicio" id="servicio" class="form_input" >';
+
+        //Asignamos datos
+        foreach ($citas as $cita) {
+            $respuesta .= '<option value="' . $cita->getIdServicio() . '">' . $cita->getTipoServicio() . '</option>';
+        }
+
+
+            $respuesta.='
+                    </select>
+                </div>
+
+                <!-- <------Fecha y Hora------> 
+                <div class="form_group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form__input">
+                </div>
+
+                <div class="form_group">
+                    <label for="hora">Hora</label>
+                    <input type="time" name="hora" id="hora" class="form__input">
+                </div>
+                
+                <div class="form_group">
+                <label for="usuario">Usuario</label>
+                <select name="usuario" id="usuario" class="form_input" >
+                ';
+
+
+
+            $usuarios = $this->usuario->obtenerTodo();
+                foreach ($usuarios as $usuario) {
+                    $respuesta .= '<option value="' . $usuario->getId() . '">' . $usuario->getNombres() . '</option>';
+                }
+
+
+                $respuesta.='
+                </select>
+                </div>
+                
+                <button type="submit" class="enviar">
+                    Registrar
+                </button>
+            </form>
+
+            </div>';
+
+        return $respuesta;
+        } catch (Exception $e) {
+            error_log('Dashboard::formularioCita -> excepcion: ' . $e);
+        }
     }
 }

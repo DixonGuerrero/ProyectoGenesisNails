@@ -1,5 +1,5 @@
 <?php 
-    class CitaAdminModel extends Model implements IModel{
+    class CitaAdminModel extends Model{
 
         private $id_cita;
         private $id_servicio;
@@ -22,14 +22,16 @@
 
         }
 
-        public function guardar(){
+        public function guardar($id_cliente){
             try {
 
                 $data = [
                     'id_servicio' => $this->id_servicio,
-                    'id_cliente' => $this->id_cliente,
+                    'id_cliente' => $id_cliente,
                     'fecha' => $this->fecha
                 ];
+
+                error_log('CitaAdminModel::guardar -> data: '.json_encode($data));
 
                 $respuesta =  $this->api->crear('cita',$data);
 
@@ -184,7 +186,7 @@
         }
 
         public function setFecha($fecha){
-            $this->fecha = $this->formatoFecha($fecha);
+            $this->fecha = $fecha;
         }
 
         public function formatoFecha($fecha){

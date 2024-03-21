@@ -50,7 +50,7 @@
                     $user->setUsuario($usuario);
                     $user->setPassword($contrasena);
 
-                    $respuesta = $user->guardar();
+                    $respuesta = $user->registrar();
                     error_log('Formulario::nuevoUsuario -> respuesta: ' . json_encode($respuesta));
                     if($respuesta['status'] != 200){
                         $msg = $respuesta['response']['message'];

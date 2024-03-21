@@ -1,6 +1,8 @@
 <?php 
     class Producto extends sessionController{
-        
+        private $marca;
+        private $proveedor;
+        private $categoria;
 
         public function __construct(){
             parent::__construct();
@@ -10,7 +12,8 @@
         public function render(){
             $this->view->render('producto/index',[
                 'usuario' =>$this->usuario,
-                'productos' => $this->tarjetasProdutos()
+                'productos' => $this->tarjetasProdutos(),
+                'formularioProducto' => $this->formularioCrear()
 
             ]);
         }
@@ -293,6 +296,145 @@
             ]);
         } */
 
+        public function formularioCrear(){
+            $marcas = [];
+            $categorias = [];
+            $proveedores = [];
+
+
+            $this->marca = new marcaModel();
+            $this->proveedor = new proveedorModel();
+            $this->categoria = new categoriaModel();
+
+            try {
+                //Obteniendo Datos 
+                $marcas = $this->marca->obtenerTodo();
+
+                $proveedores = $this->proveedor->obtenerTodo();
+
+                $categorias = $this->categoria->obtenerTodo();
+
+                $respuesta = '
+                <div class="modal_container">
+                <div class="encabezado">
+                    <h1>Producto</h1>
+                    <a href="#" class="modal_close">X</a>
+                </div>
+        
+                <img src="'.APP_URL.'assets/images/producto_add.png" class="modal_img" alt="">
+                <h2 class="modal_title">Creando Producto</h2>
+        
+                <p class="modal_text">
+                    Por favor, complete el siguiente formulario para crear un Producto.
+                </p>
+                <form action="" method="POST" class="form">
+        
+                    <h2 class="titulo-section-form">Datos Basicos</h2>
+                    <div class="form_group">
+                        <label for="codigo">Codigo</label>
+                        <input type="text" name="codigo" id="codigo" class="form_input" required>
+                    </div>
+        
+                    <div class="form_group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form_input" required>
+                    </div>
+        
+        
+                    <div class="form_group">
+                        <label for="marca">Marca</label>
+                        <select name="marca" id="marca" class="form_input">
+                ';
+
+                foreach($marcas as $marca){
+                    $respuesta .= '<option value="'.$marca->getIdMarca().'">'.$marca->getNombre().'</option>';
+                }
+
+                $respuesta .= '
+                        </select>
+                    </div>
+                    
+                    
+                    <div class="form_group">
+                    <label for="stock">Stock</label>
+                    <input type="number" name="stock" id="stock" class="form_input" required>
+                </div>
+    
+                <div class="form_group">
+                    <label for="categoria">Categoria</label>
+                    <select name="categoria" id="categoria" class="form_input">    
+                ';
+        
+
+                foreach($categorias as $categoria){
+                    $respuesta .= '<option value="'.$categoria->getIdCategoria().'">'.$categoria->getNombre().'</option>';
+                }
+
+                $respuesta .= '
+                    </select>
+                </div> 
+                
+                <div class="form_group">
+                <label for="precio">Precio</label>
+                <input type="number" name="precio" id="precio" class="form_input" required>
+            </div>
+
+            <div class="form_group">
+                <label for="marca">Proveedor</label>
+                <select name="marca" id="marca" class="form_input">
+                ';
+
+                foreach ($proveedores  as $proveedor):
+                    $respuesta .= '<option value="'.$proveedor->getIdProveedor().'">'.$proveedor->getNombre().'</option>';
+                endforeach;
+                    
+
+                $respuesta .= '
+                </select>
+                </div>
+    
+                <div class="foto-perfil">
+    
+                    <h2 class="titulo-section-form">Foto Producto</h2>
+                    <p>La foto de Producto no es obligatoria,si no se provee una el sistema lo hara por usted</p>
+    
+                    <!-- Selector Imagen Perfil -->
+    
+                    <div class="container_foto">
+    
+    
+                        <input type="file" id="file-input">
+                        <label for="file-input">
+                            <ion-icon name="cloud-upload"></ion-icon>
+                            Carga una foto
+                        </label>
+    
+                        <div id="num-of-files">No hay archivos Cargados</div>
+                        <ul id="files-list"></ul>
+                    </div>
+                </div>
+    
+    
+    
+                <button type="submit" class="enviar">
+                    Registrar
+                </button>
+            </form>
+    
+        </div>
+                ';
+
+
+                return $respuesta;
+
+
+
+            } catch (Exception $e) {
+                error_log('Producto::formularioCrear -> ERROR: ' . $e);
+                return '';
+
+            }
+        }
         
     }
 
