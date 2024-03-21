@@ -187,6 +187,41 @@ class Usuario extends SessionController
         }
     }
 
+    public function eliminar(){
+        if($this->existeParametrosPost('id_usuario')):
+            $id_usuario =limpiarCadena($this->obtenerPost('id_usuario'));
+
+            if(!isset($id_usuario)):
+                $this->alerta = new Alertas('Error', 'No se pudo obtener el id del usuario');
+                
+                http_response_code(400);
+
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+
+            $respuesta = $this->model->eliminar($id_usuario);
+
+            if($respuesta['status'] != 201):
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('Error', $msg);
+                
+                http_response_code(400);
+
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+
+            error_log('Usuario::eliminar -> respuesta: ' . json_encode($respuesta));
+
+            $this->alerta = new Alertas('Exito', 'Usuario eliminado correctamente');
+            http_response_code(200);
+            echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+
+        endif;
+    }
+
 
 
     public function actualizarPassword()
@@ -343,13 +378,22 @@ class Usuario extends SessionController
                 <td>' . $usuario->getEmail() . '</td>
                 <td>' . $usuario->getTelefono() . '</td>
                 <td>' . $usuario->getRole() . '</td>
-                <td>
-                    <button class="editar">
-                        <ion-icon name="create"></ion-icon>
-                    </button>
-                    <button class="eliminar">
-                        <ion-icon name="trash"></ion-icon>
-                    </button>
+                <td >
+                   <div class="acciones">
+                   <button class="editar">
+                   <ion-icon name="create"></ion-icon>
+               </button>
+
+               <form  action="'.APP_URL.'usuario/eliminar" method="POST" class="form FormularioAjax">
+                
+               <button type="submit" class="eliminar">
+               <ion-icon name="trash-bin"></ion-icon></button>
+
+                  <input type="hidden" name="id_usuario" value="'.$usuario->getId().'"> 
+
+               </form>
+
+                   </div>
                 </td>
             </tr>';
             }

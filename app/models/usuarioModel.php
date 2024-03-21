@@ -124,8 +124,9 @@
 
         public function eliminar($id){
             try {
-                $this->api->eliminar('persona',$id);
-                return true;
+                $respuesta = $this->api->eliminar('persona',$id);
+                error_log('UserModel::eliminar -> respuesta: ' . json_encode($respuesta));
+                return $respuesta;
             } catch (Exception $e) {
                 error_log('UserModel::eliminar -> ERROR: ' . $e);
                 return false;

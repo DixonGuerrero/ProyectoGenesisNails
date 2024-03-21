@@ -579,8 +579,14 @@ td button.editar{
     background-color: #007bff;
 }
 
-td button.eliminar{
+td .acciones button.eliminar{
     background-color: #FF0000;
+}
+
+
+.tabla td .acciones{
+    display: flex;
+    gap: 10px;
 }
 
 .add-new{
