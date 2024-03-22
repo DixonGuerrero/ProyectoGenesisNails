@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const circulo = document.querySelector('.circulo');
+    const iconoModo = document.querySelector('.modo-oscuro ion-icon'); // Selecciona el ícono de modo
+    const textoModo = document.querySelector('.modo-oscuro .modo'); // Selecciona el texto del modo
     const logo = document.getElementById('logo');
     const barraLateral = document.querySelector('.barra-lateral');
     const spans = document.querySelectorAll('span');
@@ -14,10 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.add('dark-mode');
             circulo.classList.add('prendido');
             localStorage.setItem('darkMode', 'true');
+            iconoModo.name = 'moon'; 
+            textoModo.textContent = 'Oscuro'; // Cambia el texto a Claro cuando el modo oscuro está activo
         } else {
             body.classList.remove('dark-mode');
             circulo.classList.remove('prendido');
             localStorage.setItem('darkMode', 'false');
+            iconoModo.name = 'partly-sunny'; 
+            textoModo.textContent = 'Claro'; // Cambia el texto a Oscuro cuando el modo oscuro está inactivo
         }
     }
 

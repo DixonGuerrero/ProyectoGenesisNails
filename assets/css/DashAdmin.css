@@ -230,8 +230,9 @@ body{
     width: 150px;
     height: 45px;
     overflow: hidden;
+    padding-top: 12px;
     display: flex;
-    align-items: center;
+    justify-content: center;
     color: var(--color-texto-menu);
 }
 .barra-lateral .modo-oscuro ion-icon{

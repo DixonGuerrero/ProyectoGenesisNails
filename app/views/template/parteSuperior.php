@@ -74,7 +74,7 @@ if (isset($this->d['mensajeTiempo'])) {
       <div class="modo-oscuro">
         <div class="info">
           <ion-icon name="moon-outline"></ion-icon>
-          <span>Oscuro</span>
+          <span class="modo">Oscuro</span>
         </div>
         <div class="switch">
           <div class="base">
