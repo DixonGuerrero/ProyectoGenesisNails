@@ -52,7 +52,9 @@ class Usuario extends SessionController
                 exit();
             }
 
-            if(($_FILES['imagen'])):
+           
+
+            if(($_FILES['imagen']) && ($_FILES['imagen']['size'] > 0)):
                 $imagen = $this->cargarImagen($usuario,'usuario', 'imagen' );
 
                 if(isset($imagen)):
@@ -417,7 +419,9 @@ class Usuario extends SessionController
         if(isset($_FILES['imagen'])):
             $imagen = $this->cargarImagen($this->usuario->getUsuario(),'usuario', 'imagen' );
 
-            if(isset($imagen)):
+            error_log('Usuario::actualizarFoto -> imagen: ' . $imagen);
+
+            if($imagen != null):
 
                 //Vamos a eliminar la foto anterior
 
