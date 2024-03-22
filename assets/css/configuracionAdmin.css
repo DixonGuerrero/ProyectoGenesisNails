@@ -225,7 +225,8 @@ main .configuraciones .formulario-datos-basicos form .grupo input{
 }
 
 
-main .configuraciones .formulario-datos-basicos form .submit{
+main .configuraciones .formulario-datos-basicos form .submit,
+main .configuraciones .cambiar-contrasenia form .submit{
     text-decoration: none;
     font-size: 18px;
     display: flex;
@@ -238,12 +239,14 @@ main .configuraciones .formulario-datos-basicos form .submit{
     cursor: pointer;
 }
 
-main .configuraciones .formulario-datos-basicos form .submit:hover{
+main .configuraciones .formulario-datos-basicos form .submit:hover,
+main .configuraciones .cambiar-contrasenia form .submit:hover{
     background-color: #1E9E1E;
     color: var(--color-menu-hover-texto);
 }
 
-main .configuraciones .formulario-datos-basicos form .submit ion-icon{
+main .configuraciones .formulario-datos-basicos form .submit ion-icon,
+main .configuraciones .cambiar-contrasenia form .submit ion-icon{
     font-size: 1.2em;
     margin-right: 10px;
 }
@@ -320,6 +323,14 @@ main .configuraciones .cambiar-contrasenia form .submit:hover{
 main .configuraciones .cambiar-contrasenia form .submit ion-icon{
     font-size: 1.2em;
     margin-right: 10px;
+}
+
+main .modal_update .modal_img{
+    border-radius: 6px;
+}
+
+main .modal_update .foto-perfil{
+    margin: -30PX;
 }
 
 /*----------------->Responsive*/

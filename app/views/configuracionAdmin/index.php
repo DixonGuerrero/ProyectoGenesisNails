@@ -9,7 +9,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 <div class="configuraciones">
     <div class="foto-perfil">
         <img src="<?php echo APP_URL; ?>assets/images/usuario/<?php echo $usuario->getImagen(); ?>" alt="" />
-        <a class="cambiar-foto" href="#">
+        <a class="actualizar cambiar-foto " >
             <ion-icon name="camera-reverse-outline"></ion-icon> Cambiar foto
         </a>
     </div>
@@ -80,7 +80,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
                 <h2>Cambiar Contraseña <ion-icon name="document-lock-outline"></ion-icon></h2>
             </div>
 
-            <form action="">
+            <form action="<?php echo APP_URL;?>usuario/actualizarPassword" class="FormularioAjax" method="POST"> 
                 <div class="grupo">
                     <label for="nombre">Contraseña Actual</label>
                     <input type="password" id="password" name="password" >
@@ -93,9 +93,9 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
                     <label for="nombre">Confirmar Contraseña</label>
                     <input type="password" id="password_new" name="password_new">
                 </div>
-                <a class="submit">
+                <button type="submit" class="submit">
                     <ion-icon name="save-outline"></ion-icon>Guardar
-                </a>
+                </button>
             </form>
         </div>
     </div>
@@ -107,6 +107,51 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 
 
 </div>
+
+<section class="modal modal_update">
+    <div class="modal_container">
+        <div class="encabezado">
+            <h1>Usuario</h1>
+            <a href="#" class="modal_close">X</a>
+        </div>
+
+        <img src="<?php echo APP_URL; ?>assets/images/usuario/<?php echo $usuario->getImagen(); ?>" class="modal_img " alt="">
+
+
+        <h2 class="modal_title">Actualizar Foto</h2>
+
+ 
+        <form action="<?php echo APP_URL;?>/usuario/actualizarFoto" method="POST" class="form FormularioAjax">
+
+        
+            <div class="foto-perfil">
+
+               
+                <!-- Selector Imagen Perfil -->
+
+                <div class="container_foto">
+
+
+                    <input type="file" id="file-input" name="imagen">
+                    <label for="file-input">
+                        <ion-icon name="cloud-upload"></ion-icon>
+                        Carga una foto
+                    </label>
+
+                    <div id="num-of-files">No hay archivos Cargados</div>
+                    <ul id="files-list"></ul>
+                </div>
+            </div>
+
+
+
+            <button type="submit" class="enviar">
+                Actualizar
+            </button>
+        </form>
+
+    </div>
+</section>
 
 <?php
 require_once 'app/views/template/parteInferiorAdmin.php';

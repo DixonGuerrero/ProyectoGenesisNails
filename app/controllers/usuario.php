@@ -227,9 +227,9 @@ class Usuario extends SessionController
     public function actualizarPassword()
     {
         //Validar los campos del formulario
-        if ($this->existeParametrosPost(['usuario_password', 'usuario_password_new'])) {
-            $password = $this->obtenerPost('usuario_password');
-            $password_new = $this->obtenerPost('usuario_password_new');
+        if ($this->existeParametrosPost(['password', 'password_new'])) {
+            $password = $this->obtenerPost('password');
+            $password_new = $this->obtenerPost('password_new');
 
             if ($password == '' || $password_new == '') {
                 $this->alerta = new Alertas('Error', 'Campos vacios');
@@ -261,7 +261,8 @@ class Usuario extends SessionController
             }
 
             //Validar password
-            if (verificarDatos('^(?=.*[A-Z]).{8,20}$
+            //TODO: Descomentar cuando se vaya a implementar
+            /* if (verificarDatos('^(?=.*[A-Z]).{8,20}$
                 ', $password_new)) {
                 $this->alerta = new Alertas('Error', 'La contraseña debe tener al menos 8 caracteres, una mayuscula y un numero');
 
@@ -269,20 +270,12 @@ class Usuario extends SessionController
                 header('Content-Type: application/json');
                 echo $this->alerta->simple()->error()->getAlerta();
                 exit();
-            }
+            } */
 
             //Actualizar password
             $this->usuario->setPassword($password_new);
             $respuesta = $this->usuario->actualizarPassword();
 
-            if (!$respuesta) {
-                $this->alerta = new Alertas('Error', 'No se pudo actualizar la contraseña');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
 
             if ($respuesta['status'] != 200) {
                 $this->alerta = new Alertas('Error', $respuesta['response']['message']);
@@ -299,6 +292,13 @@ class Usuario extends SessionController
             header('Content-Type: application/json');
             //Recargamos la pagina
             echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+        }else{
+            $this->alerta = new Alertas('Error', 'Campos vacios');
+
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo $this->alerta->simple()->error()->getAlerta();
             exit();
         }
     }
@@ -410,6 +410,59 @@ class Usuario extends SessionController
             error_log('Usuario::listaUsuarios -> ERROR: ' . $e);
             return false;
         }
+    }
+
+
+    public function actualizarFoto(){
+        if(isset($_FILES['imagen'])):
+            $imagen = $this->cargarImagen($this->usuario->getUsuario(),'usuario', 'imagen' );
+
+            if(isset($imagen)):
+
+                //Vamos a eliminar la foto anterior
+
+                $fotoAnterior = $this->usuario->getImagen();
+
+                if($fotoAnterior != 'default.png'):
+                    $respuesta = $this->eliminarImagen( $fotoAnterior,'usuario');
+                    if (!$respuesta):
+                        $this->alerta = new Alertas('ERROR', 'Error al eliminar la imagen anterior');
+
+                        http_response_code(400);
+
+                        echo $this->alerta->simple()->error()->getAlerta();
+                        exit();
+                    endif;
+                endif;
+
+                $this->usuario->setImagen($imagen);
+            else:
+                $this->alerta = new Alertas('ERROR', 'Error al cargar la imagen');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+        endif;
+
+        //Actualizamos todo el perfil
+
+        $respuesta = $this->usuario->actualizar();
+
+        if($respuesta['status'] != 200):
+            $msg = $respuesta['response']['message'];
+            $this->alerta = new Alertas('ERROR', $msg);
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        endif;
+
+
+        
+
+        $this->alerta = new Alertas('EXITO', 'Imagen actualizada correctamente');
+        http_response_code(200);
+        echo $this->alerta->recargar()->exito()->getAlerta();
+        exit();
     }
 
 
