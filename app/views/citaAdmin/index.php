@@ -17,6 +17,8 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 </div>
 
 
+
+
 <section class="modal">
    <?php echo $formularioCita; ?>
 </section>

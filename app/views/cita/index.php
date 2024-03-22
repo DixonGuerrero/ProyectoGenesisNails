@@ -2,6 +2,7 @@
 require_once 'app/views/template/parteSuperior.php';
 
     $citas = $this->d['citas'];
+    $formularioActualizarCita = $this->d['formularioActualizarCita'];
 ?>
 
 <div class="barra-superior">
@@ -18,6 +19,10 @@ require_once 'app/views/template/parteSuperior.php';
     <div class="contenedor-cita">
         <?php echo $citas?>
     </div>
+</section>
+
+<section class="modal modal_update" id="modalEditarCita">
+    <?php echo $formularioActualizarCita; ?>
 </section>
 
 <!-- <section class="recomendacion-cita">
@@ -77,6 +82,10 @@ require_once 'app/views/template/parteSuperior.php';
 </section> -->
 
 
-<?php
+
+<!-- Incluimos javascript para rellenar modal update
+ -->
+ <script src="<?php echo APP_URL?>assets/js/cita.js"></script>
+ <?php
 require_once 'app/views/template/parteInferior.php';
 ?>

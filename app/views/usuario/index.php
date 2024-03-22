@@ -14,7 +14,7 @@ $tabla = $this->d['tablaUsuarios'];
 
 </div>
 
-<section class="modal ">
+<section class="modal modal_update">
     <div class="modal_container">
         <div class="encabezado">
             <h1>Usuario</h1>

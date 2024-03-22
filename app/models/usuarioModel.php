@@ -172,7 +172,7 @@
             $this->setEmail($data['correo']);
             $this->setTelefono($data['telefono']);
             $this->setRole($data['rol']);
-            $this->setImagen($data['imagen']);
+            $this->setImagen($this->validarImagen($data['imagen']));
             $this->setIdCliente($data['id_cliente']);
         }
 
@@ -243,7 +243,27 @@
         public function setRole($role){ $this->role = $role;
         }
 
-        public function setImagen($imagen){ $this->imagen = $imagen;
+        public function setImagen($imagen){ 
+
+           $this->imagen = $imagen;
+        }
+
+        public function validarImagen($imagen){
+
+            error_log('UserModel::validarImagen -> imagen: ' . $imagen);
+            $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Proyectos/ProyectoGenesisNails2/assets/images/usuario/'.$imagen.'';
+
+
+            error_log('UserModel::validarImagen -> directorio: ' . $directorio);
+            if(file_exists($directorio)){
+
+                error_log('UserModel::validarImagen -> Imagen si existe ' . $imagen);
+                return $imagen;
+
+            }else{
+                error_log('UserModel::validarImagen -> Imagen no existe ' . $imagen);
+                return $imagen = 'default.jpg';
+            }
         }
 
         public function setCargo($cargo){ $this->cargo = $cargo;

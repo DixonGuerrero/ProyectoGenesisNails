@@ -8,7 +8,8 @@
         public function render(){
             $this->view->render('cita/index',[
                 'usuario' =>$this->usuario,
-                'citas' => $this->citasReservadas()
+                'citas' => $this->citasReservadas(),
+                'formularioActualizarCita' => $this->formularioActualizarCita()
             ]);
         }
 
@@ -67,7 +68,61 @@
         }
 
         public function actualizar(){
-            error_log('Cita::actualizar -> inicio de actualizar');
+           if (
+            $this->existeParametrosPost([
+                'id_servicio',
+                'fecha',
+                'hora',
+                'id_cita'
+            ])
+           ):
+
+            $id_servicio = limpiarCadena($this->obtenerPost('id_servicio'));
+            $fecha = limpiarCadena($this->obtenerPost('fecha'));
+            $hora = limpiarCadena($this->obtenerPost('hora'));
+            $id_cita = limpiarCadena($this->obtenerPost('id_cita'));
+
+            if($id_servicio == '' || $fecha == '' || $hora == '' || $id_cita == ''){
+                $this->alerta = new Alertas('ERROR','Todos los campos son obligatorios');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            //Validar Fecha
+            $fechaActual = date('Y-m-d');
+            if($fecha < $fechaActual){
+                $this->alerta = new Alertas('ERROR','La fecha no puede ser menor a la actual');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            //Modificamos la fecha para que se guarde con la hora
+            $fecha1 = $fecha.'T'.$hora;
+            error_log('Cita::actualizar -> fecha: '.$fecha);
+
+            $this->model->setIdServicio($id_servicio);
+            $this->model->setFecha($fecha1);
+            $this->model->setIdCliente($this->usuario->getIdCliente());
+            $this->model->setIdCita($id_cita);
+
+            $respuesta = $this->model->actualizar();
+            error_log('Cita::actualizar -> respuesta: '.json_encode($respuesta));
+            if($respuesta['status'] > 300 ){
+                error_log('Cita::actualizar -> respuesta: Aqui tOY');
+
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR',$msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+            $this->alerta = new Alertas('SUCCESS','Cita actualizada correctamente');
+            echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+
+        endif;
         
         }
 
@@ -101,6 +156,7 @@
         public function citasReservadas(){
             try {
                 $citas = $this->model->obtenerTodo();
+                error_log('Cita::citasReservadas -> Todas: '.json_encode($citas));
 
                 $fechaActual = date('Y-m-d');
 
@@ -146,18 +202,24 @@
                 foreach($citasReservada as $cita){
                     $respuesta .= ' 
                     <div class="tarjeta-cita">
-                        <h2>'.$cita->getTipoServicio().'
+                        <h2 class="servicio">'.$cita->getTipoServicio().'
                             <ion-icon name="storefront"></ion-icon>
                         </h2>
                         <p>'.$cita->getDescripcionServicio().'</p>
             
                         <div class="datos-cita">
-                            <p>Fecha: '.$cita->formatoFecha($cita->getFecha()).'</p>
+                            <p class="fecha">Fecha: '.$cita->formatoFecha($cita->getFecha()).'</p>
+
+                            <p >Hora: '.$cita->formatoHora($cita->obtenerSoloHora($cita->getFecha())).'</p>
                             
                         </div>
+
+                        <input type="hidden" class="hora" value="'.$cita->obtenerSoloHora($cita->getfecha()).'">
+
+                        
                         <div class="acciones">
 
-                            <button class="boton-editar">
+                            <button class="boton-editar  ">
                             <ion-icon name="create"></ion-icon>
                             </button>
                             
@@ -167,7 +229,7 @@
                             <button type="submit" class="boton-eliminar">
                             <ion-icon name="trash-bin"></ion-icon></button>
 
-                            <input type="hidden" name="id_cita" value="'.$cita->getIdCita().'">
+                            <input type="hidden" class="id_cita" name="id_cita" value="'.$cita->getIdCita().'">
 
                             </form>
                         </div>
@@ -180,6 +242,69 @@
                 error_log('Cita::citasReservadas -> error: '.$e);
             }
         }
+
+        
+    public function formularioActualizarCita(){
+        $citas = [];
+        $servicio = new ServicioModel();
+        try {
+            $servicios = $servicio->obtenerTodo();
+
+            $respuesta = '
+            <div class="modal_container">
+            <div class="encabezado">
+                <h1>Actualizar Cita</h1>
+                <a href="#" class="modal_close">X</a>
+            </div>
+            
+            <img src="'.APP_URL.'assets/images/calendario_cita.png"  class="modal_img" alt="">
+            <h2 class="modal_title">Configure su Cita</h2>
+        
+            <p class="modal_text">
+                Edite los campos que crea necesarios
+            </p>
+            <form action="'.APP_URL.'cita/actualizar" method="POST" class="form FormularioAjax">
+                
+
+                <div class="form_group">
+                    <label for="servicio">Servicio</label>
+                    <select name="id_servicio" id="servicio" class="form_input servicio" >';
+
+        //Asignamos datos
+        foreach ($servicios as $servicio) {
+            $respuesta .= '<option value="' . $servicio->getIdServicio() . '">' . $servicio->getTipoServicio() . '</option>';
+        }
+
+
+            $respuesta.='
+                    </select>
+                </div>
+
+                <!-- <------Fecha y Hora------> 
+                <div class="form_group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form__input fecha">
+                </div>
+
+                <div class="form_group">
+                    <label for="hora">Hora</label>
+                    <input type="time" name="hora" id="hora" class="form__input hora">
+                </div>
+
+                <input type="hidden" name="id_cita" id="id_cita" value="">
+
+                <button type="submit" class="enviar">
+                    Actualizar
+                </button>
+            </form>
+
+            </div>';
+
+        return $respuesta;
+        } catch (Exception $e) {
+            error_log('Dashboard::formularioCita -> excepcion: ' . $e);
+        }
+    }
 
     }
 ?>

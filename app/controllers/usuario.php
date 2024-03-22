@@ -423,7 +423,7 @@ class Usuario extends SessionController
 
                 $fotoAnterior = $this->usuario->getImagen();
 
-                if($fotoAnterior != 'default.png'):
+                if($fotoAnterior != 'default.jpg'):
                     $respuesta = $this->eliminarImagen( $fotoAnterior,'usuario');
                     if (!$respuesta):
                         $this->alerta = new Alertas('ERROR', 'Error al eliminar la imagen anterior');
