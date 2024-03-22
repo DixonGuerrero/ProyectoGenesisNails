@@ -11,6 +11,8 @@
     --color-menu-hover:rgb(238,238,238);
     --color-menu-hover-texto:rgb(0,0,0);
 
+    --color-menu-selected:rgb(238,238,238);
+
     --color-boton:rgb(0,0,0);
     --color-boton-texto:rgb(255,255,255);
 
@@ -35,6 +37,8 @@
 
     --color-menu-hover:rgb(0,0,0);
     --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-menu-selected:#E14AE1;
 
     --color-boton:rgb(255,255,255);
     --color-boton-texto:rgb(0,0,0);
@@ -306,10 +310,10 @@ body{
 
 /*-------------main*/
 
-#inbox{
+/* #inbox{
     background-color: var(--color-menu-hover);
     color: var(--color-menu-hover-texto);
-}
+} */
 
 main{
     margin-left: 250px;
@@ -334,6 +338,12 @@ main.min-main{
     font-weight: 600;
     color: var(--color-texto);
 }
+
+.navegacion a.active {
+    background-color: var(--color-menu-selected);
+    color: var(--color-menu-hover-texto);
+  }
+  
 
 /*------------------>Tarjetas info*/
 

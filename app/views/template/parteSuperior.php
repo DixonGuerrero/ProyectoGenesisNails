@@ -46,26 +46,26 @@ if (isset($this->d['mensajeTiempo'])) {
       <?php echo $mensajeTiempo ?>
     </span>
     <nav class="navegacion">
-      <ul>
-        <li>
-          <a id="inbox" href="dashboard">
-            <ion-icon name="home-outline"></ion-icon>
-            <span>Principal</span>
-          </a>
-        </li>
-        <li>
-          <a href="cita">
-            <ion-icon name="calendar-outline"></ion-icon>
-            <span>Citas</span>
-          </a>
-        </li>
-        <li>
-          <a href="servicio">
-            <ion-icon name="storefront"></ion-icon>
-            <span>Servicios</span>
-          </a>
-        </li>
-      </ul>
+     <ul>
+    <li>
+      <a id="inbox" href="dashboard" class="<?php echo $url[0] == 'dashboard' ? 'active' : ''; ?>">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Principal</span>
+      </a>
+    </li>
+    <li>
+      <a href="cita" class="<?php echo $url[0] == 'cita' ? 'active' : ''; ?>">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <span>Citas</span>
+      </a>
+    </li>
+    <li>
+      <a href="servicio" class="<?php echo $url[0] == 'servicio' ? 'active' : ''; ?>">
+        <ion-icon name="storefront"></ion-icon>
+        <span>Servicios</span>
+      </a>
+    </li>
+  </ul>
     </nav>
 
     <div>
