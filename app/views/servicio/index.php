@@ -2,6 +2,7 @@
 require_once 'app/views/template/parteSuperior.php';
 
     $tarjetasServicios = $this->d['servicios'];
+    $formularioCita = $this->d['formularioCita'];
 ?>
 
 <div class="barra-superior">
@@ -21,6 +22,13 @@ require_once 'app/views/template/parteSuperior.php';
     </div>
 </section>
 
+<section class="modal">
+    <?php echo $formularioCita?>
+</section>
+
+<!-- 
+incluimos el js de servicio -->
+<script src="<?php echo APP_URL?>assets/js/servicio.js"></script>
 
 <?php
 require_once 'app/views/template/parteInferior.php';
