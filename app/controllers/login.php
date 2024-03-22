@@ -152,13 +152,14 @@
         }
 
         public function cerrarSesion(){
-            error_log('Login::cerrarSesion -> inicio de cerrarSesion');
 
             $this->logout();
             
             $this->alerta = new Alertas('Exito', 'Sesión cerrada');
             
-            echo $this->alerta->recargar()->exito()->getAlerta();
+            http_response_code(200);
+
+            echo $this->alerta->redireccionar('home')->exito()->getAlerta();
             
             exit();
 
