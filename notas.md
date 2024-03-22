@@ -1,61 +1,15 @@
 
 
-
-
--------------
-HOLA ANA
--------------
-=============
-
-
-
-
-
 Objetivos semana 
 
-    Semana 19 - 24 Febrero
-        - Conectar API ✅
-        - Login ✅
-        - Registrar Clientes ✅
-
-        Pendientes Semana ☮ {
-            - Revisar Enrutador y Roles ⚠
-            - Convertir Home en Visible para
-            Usuario logeado ⚠
-        }
-
-    Semana 26 - 2 Marzo ❌
-        - Agendar Cita ⚠
-        - Eliminar Cita ⚠
-        - Actualizar Cita ⚠
-        - Crear Usuarios Empleados ⚠
-
-    Semana 4 - 9 Marzo
-        - Ajax ✅
-        - Alertar Personalizables ✅
-        - Agendar Cita
-        - Actualizar Cita
-        - Eliminar Cita ✅
-        - Ver Citas ✅
-        - Registrar Clientes ✅
-        - Login ✅
-        - Cerrar Sesion ✅
-        - Tabla Citas ✅
-        - Tabla Usuarios ✅
-        - Tabla Proveedores ✅
-        - Tabla Servicios ✅
-
-        Pendientes semana {
-            -Agendar Cita
-            -Editar Cita
+        Objetivos 21 Marzo {
+            Eliminar Usuario✅
+            Corregir bug Cerrar sesion✅
+            Agregar actualizar Foto Perfil⏱
         }
 
 
-    Semana 11 - 16 Marzo
-        - Ventana Model {
-            - Formulario de Registro 
-            - Formulario de Actualizar
-        }
+        try-catch ->Moviendo archivos🧨
 
     Pendientes
         - Actualizar vista principal
