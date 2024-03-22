@@ -48,7 +48,7 @@ if (isset($this->d['mensajeTiempo'])) {
     <nav class="navegacion">
      <ul>
     <li>
-      <a id="inbox" href="dashboard" class="<?php echo $url[0] == 'dashboard' ? 'active' : ''; ?>">
+      <a  href="dashboard" class="<?php echo $url[0] == 'dashboard' ? 'active' : ''; ?>">
         <ion-icon name="home-outline"></ion-icon>
         <span>Principal</span>
       </a>
