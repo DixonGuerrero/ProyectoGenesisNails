@@ -26,7 +26,7 @@
                         <ion-icon name="exit-outline"></ion-icon>Cerrar Session
                     </button>
 
-                </form>
+            </form>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="grupo">
                     <label for="nombre">Confirmar Contraseña</label>
-                    <input type="password" id="password_new" name="password_new">
+                    <input type="password" id="password_new" name="password_new_confir">
                 </div>
                 <button type="submit" class="submit">
                     <ion-icon name="save-outline"></ion-icon>Guardar

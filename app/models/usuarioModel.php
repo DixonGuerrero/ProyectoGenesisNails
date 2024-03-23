@@ -8,7 +8,7 @@
         private $telefono;
         private $role;
         private $imagen;
-        private $cargo;
+
         private $usuario;
         private $password;
         private $id_cliente;
@@ -23,7 +23,7 @@
             $this->telefono = '';
             $this->role = '';
             $this->imagen = '';
-            $this->cargo = '';
+
             $this->usuario = '';
             $this->password = '';
             $this->id_cliente = 0;
@@ -41,7 +41,6 @@
                     'telefono' => $this->telefono,
                     'imagen' => $this->imagen,
                     'rol' => $this->role,
-                    'cargo' => $this->cargo,
                     'usuario' => $this->usuario,
                     'password' => $this->password
                 ];
@@ -65,7 +64,6 @@
                     'telefono' => $this->telefono,
                     'imagen' => $this->imagen,
                     'rol' => $this->role,
-                    'cargo' => $this->cargo,
                     'usuario' => $this->usuario,
                     'password' => $this->password
                 ];
@@ -142,7 +140,6 @@
                     'telefono' => $this->telefono,
                     'imagen' => $this->imagen,
                     'rol' => $this->role,
-                    'cargo' => $this->cargo,
                     'usuario' => $this->usuario
                 ];
 
@@ -211,8 +208,7 @@
         public function getImagen(){ return $this->imagen;
         }
 
-        public function getCargo(){ return $this->cargo;
-        }
+
 
         public function getUsuario(){ return $this->usuario;
         }
@@ -264,9 +260,6 @@
                 error_log('UserModel::validarImagen -> Imagen no existe ' . $imagen);
                 return $imagen = 'default.jpg';
             }
-        }
-
-        public function setCargo($cargo){ $this->cargo = $cargo;
         }
 
         public function setUsuario($usuario){ $this->usuario = $usuario;
