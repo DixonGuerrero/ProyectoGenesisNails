@@ -138,7 +138,7 @@
                 $data = [
                     'nombres' => $this->nombres,
                     'apellidos' => $this->apellidos,
-                    'email' => $this->email,
+                    'correo' => $this->email,
                     'telefono' => $this->telefono,
                     'imagen' => $this->imagen,
                     'rol' => $this->role,

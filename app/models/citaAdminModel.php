@@ -49,6 +49,7 @@
             try {
 
                 $respuesta = $this->api->obtenerTodo('cita');
+                error_log('CitaAdminModel::obtenerTodo -> respuesta: '.json_encode($respuesta));
                 
                 foreach($respuesta['response'] as $row){
                     $item = new CitaAdminModel();
@@ -192,6 +193,28 @@
         public function formatoFecha($fecha){
             $fecha = explode('T',$fecha);
             return $fecha[0];
+        }
+
+        
+        public function obtenerSoloHora($fecha){
+            $fecha = explode('T',$fecha);
+            error_log('CitaModel::formatoHora -> fecha: '.json_encode($fecha));
+            return $fecha[1];
+        }
+
+        public function formatoHora($hora){
+            //Ejemplo de hora : 17:00:00.000Z vamos a transformarla a esto 5:00 PM
+
+            error_log('CitaModel::formatoHora -> hora: '.json_encode($hora));
+
+            $hora = explode(':',$hora);
+            $hora = $hora[0].':'.$hora[1];
+
+            $hora = date('g:i a', strtotime($hora));
+
+            error_log('CitaModel::formatoHora -> hora: '.json_encode($hora));
+
+            return $hora;
         }
 
 

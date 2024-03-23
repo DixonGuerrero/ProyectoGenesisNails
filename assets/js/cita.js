@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (botonEditar) {
       botonEditar.addEventListener("click", function (e) {
         e.preventDefault();
+        
 
         // Extraer el servicio
         const servicio = tarjeta.querySelector(".servicio").innerText;

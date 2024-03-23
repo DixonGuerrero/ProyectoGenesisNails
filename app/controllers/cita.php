@@ -257,7 +257,7 @@
                 <a href="#" class="modal_close">X</a>
             </div>
             
-            <img src="'.APP_URL.'assets/images/calendario_cita.png"  class="modal_img" alt="">
+            <img src="'.APP_URL.'assets/images/calendario_edit.png"  class="modal_img" alt="">
             <h2 class="modal_title">Configure su Cita</h2>
         
             <p class="modal_text">
