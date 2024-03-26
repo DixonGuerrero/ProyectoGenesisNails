@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const apellido = fila.cells[3].textContent;
         const correo = fila.cells[4].textContent;
         const telefono = fila.cells[5].textContent;
-        const rol = fila.cells[6].textContent;
-        //Transformar la primera letra del rol a mayúscula
-        const rolMayuscula = rol.charAt(0).toUpperCase() + rol.slice(1);
+  
 
         const usuario = fila.cells[7].textContent;
 
@@ -34,17 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const usuarioInput = modal.querySelector("#usuario");
         usuarioInput.value = usuario;
-
-
-        const rolSelect = modal.querySelector("#rol");
-
-        // Iterar sobre las opciones del select para encontrar y seleccionar el servicio correcto
-        Array.from(rolSelect.options).forEach(function (option) {
-          if (option.text == rolMayuscula) {
-            rolSelect.value = option.value;
-
-          }
-        });
 
 
         //Vamos a inyectar el id

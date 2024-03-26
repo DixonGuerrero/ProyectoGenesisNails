@@ -120,6 +120,8 @@
             }
         }
 
+        
+
         public function eliminar($id){
             try {
                 $respuesta = $this->api->eliminar('persona',$id);
@@ -251,15 +253,16 @@
 
 
             error_log('UserModel::validarImagen -> directorio: ' . $directorio);
-            if(file_exists($directorio)){
+
+            if($imagen == ''){
+                error_log('UserModel::validarImagen -> Imagen no existe ' . $imagen);
+                return $imagen = 'default.jpg';
+            }else if(file_exists($directorio)){
 
                 error_log('UserModel::validarImagen -> Imagen si existe ' . $imagen);
                 return $imagen;
 
-            }else{
-                error_log('UserModel::validarImagen -> Imagen no existe ' . $imagen);
-                return $imagen = 'default.jpg';
-            }
+            } 
         }
 
         public function setUsuario($usuario){ $this->usuario = $usuario;

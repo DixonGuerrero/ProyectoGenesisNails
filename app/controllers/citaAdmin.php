@@ -361,6 +361,7 @@ class CitaAdmin extends SessionController
                 </select>
                 </div>
                 
+                
                 <button type="submit" class="enviar">
                     Registrar
                 </button>

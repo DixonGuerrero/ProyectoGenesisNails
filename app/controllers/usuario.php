@@ -2,10 +2,12 @@
 class Usuario extends SessionController
 {
 
+    public $user;
 
     function __construct()
     {
         parent::__construct();
+        $this->user = new UsuarioModel();
     }
 
     public function render()
@@ -15,6 +17,8 @@ class Usuario extends SessionController
             'usuario' => $this->usuario,
             'tablaUsuarios' => $this->listaUsuarios()
         ]);
+
+        
     }
 
 
@@ -55,6 +59,9 @@ class Usuario extends SessionController
            
 
             if(($_FILES['imagen']) && ($_FILES['imagen']['size'] > 0)):
+
+                error_log('Formulario::nuevoUsuario -> Existe imagen' . $_FILES['imagen']['name']);
+
                 $imagen = $this->cargarImagen($usuario,'usuario', 'imagen' );
 
                 if(isset($imagen)):
@@ -66,6 +73,8 @@ class Usuario extends SessionController
                     exit();
                 endif;
             endif;
+
+            $this->usuario = new UsuarioModel();
 
             $this->usuario->setNombres($nombres);
             $this->usuario->setApellidos($apellidos);
@@ -118,14 +127,15 @@ class Usuario extends SessionController
             'apellidos',
             'correo',
             'telefono',
-            'usuario',
+            'usuario'
+
         )) {
             $nombres = limpiarCadena($this->obtenerPost('nombres'));
             $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
             $correo = limpiarCadena($this->obtenerPost('correo'));
             $telefono = limpiarCadena($this->obtenerPost('telefono'));
             $usuario = limpiarCadena($this->obtenerPost('usuario'));
-
+    
 
             if ($nombres == '' || $apellidos == '' || $correo == '' || $telefono == '' || $usuario == '') {
                 $this->alerta = new Alertas('Error', 'Campos vacios');
@@ -135,8 +145,8 @@ class Usuario extends SessionController
                 echo $this->alerta->simple()->error()->getAlerta();
                 exit();
             }
-
-
+          
+            
             $this->usuario->setNombres($nombres);
             $this->usuario->setApellidos($apellidos);
             $this->usuario->setEmail($correo);
@@ -187,6 +197,107 @@ class Usuario extends SessionController
             echo $this->alerta->simple()->error()->getAlerta();
             exit();
         }
+    } 
+
+    public function actualizarUsuarioAdmin()
+    {
+        error_log(
+            'Usuario::actulizarUsuario -> inicio de actulizarUsuario'
+        );
+
+        if ($this->existeParametrosPost(
+            'nombres',
+            'apellidos',
+            'email',
+            'telefono',
+            'usuario',
+            'password',
+            'password_new',
+            'password_new_confirm',
+            'id_usuario'
+
+        )) {
+            $nombres = limpiarCadena($this->obtenerPost('nombres'));
+            $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
+            $correo = limpiarCadena($this->obtenerPost('email'));
+            $telefono = limpiarCadena($this->obtenerPost('telefono'));
+            $usuario = limpiarCadena($this->obtenerPost('usuario'));
+            $claveActual = limpiarCadena($this->obtenerPost('password'));
+            $clave1 = limpiarCadena($this->obtenerPost('password_new'));
+            $clave2 = limpiarCadena($this->obtenerPost('password_new_confirm'));
+
+
+            if ($nombres == '' || $apellidos == '' || $correo == '' || $telefono == '' || $usuario == '') {
+                $this->alerta = new Alertas('Error', 'Campos vacios');
+
+                http_response_code(400);
+                header('Content-Type: application/json');
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+            
+            $this->user->obtenerUno($this->obtenerPost('id_usuario'));
+
+            
+         
+
+           
+            //Validamos si la password vienen definidas, si es asi pasamos a actualizar
+            if($claveActual != '' && $clave1 != '' && $clave2 != ''):
+                $this->actualizarPassword($this->user);
+
+            endif;
+
+            //Validamos si la imagen viene definida, si es asi pasamos a actualizar
+
+            error_log('Usuario::actulizarUsuario -> Existe imagen->>>>>>' . $_FILES['imagen']['name']);
+
+            if($_FILES['imagen'] && $_FILES['imagen']['size'] > 0):;
+                $this->actualizarFoto($this->user);
+            endif;
+
+            $respuesta = $this->user->actualizar();
+
+            error_log('Usuario::actulizarUsuario -> respuesta: ' . json_encode($respuesta));
+
+            if (!isset($respuesta)) {
+                $this->alerta = new Alertas('Error', 'No se pudo actualizar el usuario');
+
+                http_response_code(400);
+                header('Content-Type: application/json');
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if ($respuesta['status'] > 300) {
+                $this->alerta = new Alertas('Error', $respuesta['response']['message']);
+
+                http_response_code(400);
+                header('Content-Type: application/json');
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            
+
+
+
+
+            $this->alerta = new Alertas('Exito', 'Usuario actualizado');
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            //Recargamos la pagina
+            echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+        } else {
+            $this->alerta = new Alertas('Error', 'Campos vacios');
+
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        }
     }
 
     public function eliminar(){
@@ -203,6 +314,8 @@ class Usuario extends SessionController
             endif;
 
             $respuesta = $this->model->eliminar($id_usuario);
+
+            error_log('Usuario::eliminar -> respuesta: ' . json_encode($respuesta));
 
             if($respuesta['status'] != 201):
                 $msg = $respuesta['response']['message'];
@@ -226,10 +339,10 @@ class Usuario extends SessionController
 
 
 
-    public function actualizarPassword()
+    public function actualizarPassword(UsuarioModel $usuario)
     {
         //Validar los campos del formulario
-        if ($this->existeParametrosPost(['password', 'password_new'])) {
+        if ($this->existeParametrosPost(['password', 'password_new', 'password_new_confirm'])) {
             $password = $this->obtenerPost('password');
             $password_new = $this->obtenerPost('password_new');
 
@@ -253,7 +366,7 @@ class Usuario extends SessionController
             }
 
             //Validar password actual
-            if (!password_verify($password, $this->usuario->getPassword())) {
+            if (!password_verify($password, $usuario->getPassword())) {
                 $this->alerta = new Alertas('Error', 'Contraseña actual incorrecta');
 
                 http_response_code(400);
@@ -275,8 +388,8 @@ class Usuario extends SessionController
             } */
 
             //Actualizar password
-            $this->usuario->setPassword($password_new);
-            $respuesta = $this->usuario->actualizarPassword();
+            $usuario->setPassword($password_new);
+            $respuesta = $usuario->actualizarPassword();
 
 
             if ($respuesta['status'] != 200) {
@@ -364,6 +477,7 @@ class Usuario extends SessionController
                             <th>Email</th>
                             <th>Telefono</th>
                             <th>Rol</th>
+                            <th>Usuario</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -380,11 +494,14 @@ class Usuario extends SessionController
                 <td>' . $usuario->getEmail() . '</td>
                 <td>' . $usuario->getTelefono() . '</td>
                 <td>' . $usuario->getRole() . '</td>
+                <td>' . $usuario->getUsuario() . '</td>
                 <td >
                    <div class="acciones">
-                   <button class="editar">
+                   <button class="editar boton-editar">
                    <ion-icon name="create"></ion-icon>
                </button>
+
+
 
                <form  action="'.APP_URL.'usuario/eliminar" method="POST" class="form FormularioAjax">
                 
@@ -415,9 +532,11 @@ class Usuario extends SessionController
     }
 
 
-    public function actualizarFoto(){
+    public function actualizarFoto(UsuarioModel $usuario = null ){
+        $usuario = $usuario ?? $this->usuario;
+
         if(isset($_FILES['imagen'])):
-            $imagen = $this->cargarImagen($this->usuario->getUsuario(),'usuario', 'imagen' );
+            $imagen = $this->cargarImagen($usuario->getUsuario(),'usuario', 'imagen' );
 
             error_log('Usuario::actualizarFoto -> imagen: ' . $imagen);
 
@@ -425,9 +544,10 @@ class Usuario extends SessionController
 
                 //Vamos a eliminar la foto anterior
 
-                $fotoAnterior = $this->usuario->getImagen();
+                $fotoAnterior = $usuario->getImagen();
+                error_log('Usuario::actualizarFoto -> fotoAnterior: ' . $fotoAnterior);
 
-                if($fotoAnterior != 'default.jpg'):
+                if($fotoAnterior != 'default.jpg' ):
                     $respuesta = $this->eliminarImagen( $fotoAnterior,'usuario');
                     if (!$respuesta):
                         $this->alerta = new Alertas('ERROR', 'Error al eliminar la imagen anterior');
@@ -439,7 +559,7 @@ class Usuario extends SessionController
                     endif;
                 endif;
 
-                $this->usuario->setImagen($imagen);
+                $usuario->setImagen($imagen);
             else:
                 $this->alerta = new Alertas('ERROR', 'Error al cargar la imagen');
                 http_response_code(400);
@@ -450,7 +570,7 @@ class Usuario extends SessionController
 
         //Actualizamos todo el perfil
 
-        $respuesta = $this->usuario->actualizar();
+        $respuesta = $usuario->actualizar();
 
         if($respuesta['status'] != 200):
             $msg = $respuesta['response']['message'];
@@ -468,6 +588,8 @@ class Usuario extends SessionController
         echo $this->alerta->recargar()->exito()->getAlerta();
         exit();
     }
+
+
 
 
 

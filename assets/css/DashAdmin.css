@@ -970,7 +970,7 @@ main .modal .form .container_foto label{
 
 }
 
-main .modal .form .container_foto #num-of-files{
+main .modal .form .container_foto .numero-archivos{
     font-weight: 400;
     text-align: center;
     margin: 1.2em 0 1.87em 0;
@@ -981,7 +981,7 @@ main .modal .form .container_foto ul{
     list-style-type: none;
 }
 
-main .modal .form .container_foto #files-list li{
+main .modal .form .container_foto .lista-archivos li{
     
     background-color: #eff5ff;
     margin-bottom: 1em;
@@ -992,7 +992,7 @@ main .modal .form .container_foto #files-list li{
 
 }
 
-main .modal .form .container_foto #files-list li p{
+main .modal .form .container_foto .lista-archivos li p{
     color: #c471f5;
     font-weight: 500;
 }
