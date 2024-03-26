@@ -75,7 +75,7 @@
                     'email' => $this->email,
                     'nit' => $this->nit
                 ];
-                $respuesta =  $this->api->actualizar('proveedor',$this->id_proveedor,$data);
+                $respuesta =  $this->api->actualizar('proveedor',$data,$this->id_proveedor);
                 return $respuesta;
             } catch (Exception $e) {
                 error_log('ProveedorModel::actualizar -> ERROR: ' . $e);
@@ -84,11 +84,11 @@
         }
         public function eliminar($id){
             try {
-                $this->api->eliminar('proveedor',$id);
-                return true;
+                $response = $this->api->eliminar('proveedor',$id);
+                return $response;
             } catch (Exception $e) {
                 error_log('ProveedorModel::eliminar -> ERROR: ' . $e);
-                return false;
+                return null;
             }
 
         }

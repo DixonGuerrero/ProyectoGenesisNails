@@ -47,7 +47,7 @@
 
                 $respuesta = $this->model->guardar();
                 error_log('Proveedor::nuevoProveedor -> respuesta: ' . json_encode($respuesta));
-                if ($respuesta['status'] != 200) {
+                if ($respuesta['status'] != 201) {
                     $msg = $respuesta['response']['message'];
                     $this->alerta = new Alertas('ERROR', $msg);
                     http_response_code(400);
@@ -55,12 +55,12 @@
                     exit();
                 }
                 $this->alerta = new Alertas('SUCCESS', 'Proveedor guardado correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+                echo $this->alerta->redireccionar('proveedor')->exito()->getAlerta();
                 exit();
             }
         }
 
-        public function actualizarProducto(){
+        public function actualizar(){
            
             error_log('Proveedor::actualizarProveedor -> inicio de actualizarProveedor');
 
@@ -102,12 +102,12 @@
                     exit();
                 }
                 $this->alerta = new Alertas('SUCCESS', 'Proveedor actualizado correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+                echo $this->alerta->redireccionar('proveedor')->exito()->getAlerta();
                 exit();
             }
         }
 
-        public function eliminarProducto(){
+        public function eliminarProveedor(){
           
             error_log('Proveedor::eliminarProveedor -> inicio de eliminarProveedor');
 
@@ -132,7 +132,7 @@
                     exit();
                 }
                 $this->alerta = new Alertas('SUCCESS', 'Proveedor eliminado correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+                echo $this->alerta->redireccionar('proveedor')->exito()->getAlerta();
                 exit();
             }
         }
@@ -209,12 +209,20 @@
                 <td>' . $proveedor->getNit() . '</td>
                 <td>' . $proveedor->getDireccion() . '</td>
                 <td>
-                    <button class="editar">
-                        <ion-icon name="create"></ion-icon>
-                    </button>
-                    <button class="eliminar">
-                        <ion-icon name="trash"></ion-icon>
-                    </button>
+                    <div class="acciones">
+                        <button class="editar boton-editar">
+                            <ion-icon name="create"></ion-icon>
+                        </button>
+                        <form class="FormularioAjax" action="'.APP_URL.'proveedor/eliminarProveedor" method="POST">
+
+                                <button type="submit" class="eliminar">
+                                <ion-icon name="trash-bin"></ion-icon>
+                                </button>
+
+                                <input type="hidden" class="id_cita" name="id_proveedor" value="'.$proveedor->getIdProveedor().'">
+
+                        </form>
+                    </div>
                 </td>
             </tr>';
             }
@@ -232,5 +240,9 @@
             return false;
         } 
         }
+
+
+
+        
     }
 ?>
