@@ -91,7 +91,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
                 </div>
                 <div class="grupo">
                     <label for="nombre">Confirmar Contraseña</label>
-                    <input type="password" id="password_new" name="password_new">
+                    <input type="password" id="password_new" name="password_new_confirm">
                 </div>
                 <button type="submit" class="submit">
                     <ion-icon name="save-outline"></ion-icon>Guardar

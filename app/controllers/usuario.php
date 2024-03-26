@@ -338,9 +338,10 @@ class Usuario extends SessionController
     }
 
 
-
-    public function actualizarPassword(UsuarioModel $usuario)
+    public function actualizarPassword(UsuarioModel $usuario = null)
     {
+
+        $usuario = $usuario ?? $this->usuario;
         //Validar los campos del formulario
         if ($this->existeParametrosPost(['password', 'password_new', 'password_new_confirm'])) {
             $password = $this->obtenerPost('password');
