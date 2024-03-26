@@ -23,11 +23,10 @@ class Usuario extends SessionController
 
 
     public function guardar(){
-        error_log('Formulario::nuevoUsuario -> inicio de nuevoUsuario');
             
         if($this->existeParametrosPost(['nombres','apellidos','telefono','email','usuario','rol','clave1','clave2'])){
 
-            error_log('Formulario::nuevoUsuario -> Existen parametros POST');
+
 
             $nombres = limpiarCadena($this->obtenerPost('nombres'));
             $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
@@ -65,7 +64,7 @@ class Usuario extends SessionController
                 $imagen = $this->cargarImagen($usuario,'usuario', 'imagen' );
 
                 if(isset($imagen)):
-                    $this->usuario->setImagen($imagen);
+                    $this->user->setImagen($imagen);
                 else:
                     $this->alerta = new Alertas('ERROR', 'Error al cargar la imagen');
                     http_response_code(400);
@@ -74,17 +73,15 @@ class Usuario extends SessionController
                 endif;
             endif;
 
-            $this->usuario = new UsuarioModel();
+            $this->user->setNombres($nombres);
+            $this->user->setApellidos($apellidos);
+            $this->user->setTelefono($telefono);
+            $this->user->setEmail($correo);
+            $this->user->setUsuario($usuario);
+            $this->user->setPassword($contrasena);
+            $this->user->setRole($rol);
 
-            $this->usuario->setNombres($nombres);
-            $this->usuario->setApellidos($apellidos);
-            $this->usuario->setTelefono($telefono);
-            $this->usuario->setEmail($correo);
-            $this->usuario->setUsuario($usuario);
-            $this->usuario->setPassword($contrasena);
-            $this->usuario->setRole($rol);
-
-            $respuesta = $this->usuario->guardar();
+            $respuesta = $this->user->guardar();
 
 
             error_log('Formulario::nuevoUsuario -> respuesta: ' . json_encode($respuesta));
@@ -238,13 +235,18 @@ class Usuario extends SessionController
             
             $this->user->obtenerUno($this->obtenerPost('id_usuario'));
 
-            
-         
+            //Seteamos los datos de el formulario al nuevo usuario
+            $this->user->setNombres($nombres);
+            $this->user->setApellidos($apellidos);
+            $this->user->setEmail($correo);
+            $this->user->setTelefono($telefono);
+            $this->user->setUsuario($usuario);
+
 
            
             //Validamos si la password vienen definidas, si es asi pasamos a actualizar
             if($claveActual != '' && $clave1 != '' && $clave2 != ''):
-                $this->actualizarPassword($this->user);
+                $this->actualizarPassword($this->user,$this->usuario->getPassword());
 
             endif;
 
@@ -338,7 +340,7 @@ class Usuario extends SessionController
     }
 
 
-    public function actualizarPassword(UsuarioModel $usuario = null)
+    public function actualizarPassword(UsuarioModel $usuario = null,$passwordAdmin)
     {
 
         $usuario = $usuario ?? $this->usuario;
@@ -367,7 +369,7 @@ class Usuario extends SessionController
             }
 
             //Validar password actual
-            if (!password_verify($password, $usuario->getPassword())) {
+            if (!password_verify($password, $passwordAdmin)) {
                 $this->alerta = new Alertas('Error', 'Contraseña actual incorrecta');
 
                 http_response_code(400);

@@ -5,8 +5,7 @@ class CitaAdmin extends SessionController
     function __construct()
     {
         parent::__construct();
-        $this->loadModel('CitaAdmin');
-        error_log('Home::construct -> Inicio de Home');
+        
     }
 
     public function render()
@@ -289,7 +288,8 @@ class CitaAdmin extends SessionController
 
     public function getNombreClietne($idCliente)
     {
-        $cliente = $this->usuario->obtenerUno($idCliente);
+        $user = new UsuarioModel();
+        $cliente = $user->obtenerUno($idCliente);
 
         if ($cliente) {
             return $cliente->getNombres();
