@@ -950,6 +950,13 @@ input[type="file"]{
     display: none;
 }
 
+main .modal .modal_container .form .titulo-section-form{
+    font-size: 1.5em;
+    margin: 1em 0;
+    color: var(--color-texto);
+}
+
+
 main .modal .form .container_foto label{
     display: flex;
     justify-content: center;

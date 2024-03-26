@@ -5,6 +5,7 @@ class CitaAdmin extends SessionController
     function __construct()
     {
         parent::__construct();
+        $this->loadModel('CitaAdmin');
         
     }
 
