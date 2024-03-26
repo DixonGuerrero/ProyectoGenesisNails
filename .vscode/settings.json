@@ -1,7 +1,0 @@
-{
-    "liveServer.settings.port": 5501,
-    "phpserver.port": 9001,
-    "phpserver.phpPath": "C:\\laragon\\bin\\php\\php-8.1.10-Win32-vs16-x64\\php.exe",
-    "intelephense.environment.phpVersion": "8.1.0",
-    "html.format.templating": true
-}
