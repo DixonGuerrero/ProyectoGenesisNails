@@ -658,10 +658,11 @@ td img{
     width: 60px;
     object-fit: cover;
     border-radius: 15px;
-    border: 5px solid var(--color-sombras);
+    border: 2px solid #736F6F;
 }
 
 tr:hover td{
+    transition: .4s;
     color: var(--color-menu-hover);
     cursor: pointer;
     background-color: #ffffff;
