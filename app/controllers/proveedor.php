@@ -16,8 +16,6 @@
         }
 
         public function nuevoProveedor(){
-           
-            error_log('Proveedor::nuevoProveedor -> inicio de nuevoProveedor');
 
             if ($this->existeParametrosPost([
                 'nombre',

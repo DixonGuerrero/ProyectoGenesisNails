@@ -14,11 +14,138 @@
             ]);
         }
 
-        public function nuevoServicio(){}
+        public function nuevoServicio(){
+            if($this->existeParametrosPost(
+                'nombre',
+                'descripcion'
+            )):
+              
+            $nombre = limpiarCadena($this->obtenerPost('nombre'));
+            $descripcion = limpiarCadena($this->obtenerPost('descripcion'));
 
-        public function editarServicio(){}
+            if($nombre == '' || $descripcion == ''):
+                $this->alerta = new Alertas('ERROR','Todos los campos son obligatorios');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
 
-        public function eliminarServicio(){}
+            endif;
+
+            $this->model->setTipoServicio($nombre);
+            $this->model->setDescripcionServicio($descripcion);
+
+            if($_FILES['imagen'] && $_FILES['imagen']['size'] > 0):
+                $imagen = $this->cargarImagen($nombre,'servicios','imagen');
+
+                if(!$imagen):
+                    $this->alerta = new Alertas('ERROR','No se pudo subir la imagen');
+                    http_response_code(400);
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                endif;
+
+
+                $this->model->setImagen($imagen);
+            endif;
+
+
+            $respuesta = $this->model->guardar();
+
+            if($respuesta['status'] != 201):
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR',$msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+
+
+            $this->alerta = new Alertas('SUCCESS','Servicio guardado correctamente');
+            http_response_code(201);
+            echo $this->alerta->redireccionar('servicioAdmin')->exito()->getAlerta();
+
+            endif;
+
+        }
+
+        public function editarServicio(){
+
+        if ($this->existeParametrosPost('id_servicio', 'nombre', 'descripcion')):
+
+            $id_servicio = limpiarCadena($this->obtenerPost('id_servicio'));
+            $nombre = limpiarCadena($this->obtenerPost('nombre'));
+            $descripcion = limpiarCadena($this->obtenerPost('descripcion'));
+
+            if ($id_servicio == '' || $nombre == '' || $descripcion == ''):
+
+                $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+
+            endif;
+
+            $this->model->setTipoServicio($nombre);
+            $this->model->setDescripcionServicio($descripcion);
+            $this->model->setIdServicio($id_servicio);
+
+            if ($_FILES['imagen'] && $_FILES['imagen']['size'] > 0):
+                $imagen = $this->cargarImagen($nombre, 'servicios', 'imagen');
+
+                if (!$imagen):
+                    $this->alerta = new Alertas('ERROR', 'No se pudo subir la imagen');
+                    http_response_code(400);
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                endif;
+
+                $this->model->setImagen($imagen);
+            endif;
+
+            $respuesta = $this->model->actualizar();
+
+            if ($respuesta['status'] != 200):
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR', $msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+
+            $this->alerta = new Alertas('SUCCESS', 'Servicio actualizado correctamente');
+            http_response_code(200);
+            echo $this->alerta->redireccionar('servicioAdmin')->exito()->getAlerta();
+            exit();
+
+        endif;
+
+        }
+
+        public function eliminar(){
+            error_log('ServicioAdmin::eliminar -> inicio de eliminar');
+
+            if ($this->existeParametrosPost('id_servicio')):
+                $id_servicio = $this->obtenerPost('id_servicio');
+
+                
+
+                $respuesta = $this->model->eliminar($id_servicio);
+
+                if ($respuesta['status'] != 200):
+                    $msg = $respuesta['response']['message'];
+                    $this->alerta = new Alertas('ERROR', $msg);
+                    http_response_code(400);
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                endif;
+
+                $this->alerta = new Alertas('SUCCESS', 'Servicio eliminado correctamente');
+                http_response_code(200);
+                echo $this->alerta->redireccionar('servicioAdmin')->exito()->getAlerta();
+                exit();
+            endif;
+
+        }
 
         public function listarServicios(){
         try {
@@ -71,12 +198,20 @@
                 <td>' . $servicio->getTipoServicio() . '</td>
                 <td>' . $servicio->getDescripcionServicio() . '</td>
                 <td>
-                    <button class="editar">
-                        <ion-icon name="create"></ion-icon>
-                    </button>
-                    <button class="eliminar">
-                        <ion-icon name="trash"></ion-icon>
-                    </button>
+                <div class="acciones">
+                <button class="editar boton-editar">
+                    <ion-icon name="create"></ion-icon>
+                </button>
+                <form class="FormularioAjax" action="'.APP_URL.'servicioAdmin/eliminar" method="POST">
+
+                        <button type="submit" class="eliminar">
+                        <ion-icon name="trash-bin"></ion-icon>
+                        </button>
+
+                        <input type="hidden" class="id_servicio" name="id_servicio" value="'.$servicio->getIdServicio().'">
+
+                </form>
+            </div>
                 </td>
             </tr>';
             }

@@ -41,6 +41,8 @@
             try {
 
                 $respuesta = $this->api->obtenerTodo('servicio');
+
+                error_log('ServicioAdminModel::obtenerTodo -> respuesta: ' . json_encode($respuesta));
                 
                 foreach($respuesta['response'] as $row){
                     $item = new ServicioAdminModel();
@@ -68,8 +70,8 @@
         }
         public function eliminar($id){
             try {
-                $this->api->eliminar('servicio',$id);
-                return true;
+                $respuesta = $this->api->eliminar('servicio',$id);
+                return $respuesta;
             } catch (Exception $e) {
                 error_log('ServicioAdminModel::eliminar -> ERROR: ' . $e);
                 return false;
@@ -83,7 +85,7 @@
                     'imagen' => $this->imagen,
                     'descripcion_servicio' => $this->descripcion_servicio
                 ];
-                $respuesta =  $this->api->actualizar('servicio',$this->id_servicio,$data);
+                $respuesta =  $this->api->actualizar('servicio',$data,$this->id_servicio);
                 return $respuesta;
             } catch (Exception $e) {
                 error_log('ServicioAdminModel::actualizar -> ERROR: ' . $e);
@@ -94,6 +96,7 @@
             $this->setIdServicio($datos['id_servicio']);
             $this->setTipoServicio($datos['tipo_servicio']);
             $this->setImagen($datos['imagen']);
+    
             $this->setDescripcionServicio($datos['descripcion_servicio']);
             
         }
@@ -121,8 +124,12 @@
             $this->tipo_servicio = $tipo_servicio;
         }
         public function setImagen($imagen){
+            // Asigna 'default.png' si $imagen está vacío o es null.
+            $imagen = empty($imagen) ? 'default.png' : $imagen;
+            error_log('ServicioAdminModel::setImagen -> imagen: ' . $imagen);
             $this->imagen = $imagen;
         }
+        
         public function setDescripcionServicio($descripcion_servicio){
             $this->descripcion_servicio = $descripcion_servicio;
         }
