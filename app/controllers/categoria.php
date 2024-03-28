@@ -129,5 +129,18 @@
                 exit();
             }
         }
+
+        public function idByNombre($nombre){
+            $categorias = $this->categoria->obtenerTodo();
+
+            if ($categorias) {
+                foreach ($categorias as $categoria) {
+                    if ($categoria->getNombre() == $nombre) {
+                        return $categoria->getIdCategoria();
+                    }
+                }
+            }
+            return null;
+        }
     }
 ?>

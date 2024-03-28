@@ -31,9 +31,9 @@
                 $data = [
                     'nombre' => $this->nombre,
                     'codigo' => $this->codigo,
-                    'cantidad' => $this->stock,
+                    'stock' => $this->stock,
                     'precio' => $this->precio,
-                    'proveedor' => $this->proveedor,
+                    'id_proveedor' => $this->proveedor,
                     'id_marca' => $this->marca,
                     'id_categoria' => $this->categoria,
                     'imagen' => $this->imagen
@@ -42,7 +42,7 @@
                
                 
                 $respuesta =  $this->api->crear('producto',$data);
-
+                error_log('ProductoModel::guardar -> respuesta: ' . json_encode($respuesta));
                 return $respuesta;
             } catch (Exception $e) {
                 error_log('ProductoModel::guardar -> ERROR: ' . $e);
@@ -54,7 +54,7 @@
             $productos = [];
             try {
                 $data = $this->api->obtenerTodo('producto');
-
+                error_log('ProductoModel::obtenerTodo -> data: ' . json_encode($data));
                 foreach ($data['response'] as $item) {
                     $producto = new ProductoModel();
                     $producto->asignarDatos($item);
@@ -90,11 +90,11 @@
 
         public function eliminar($id){
             try {
-                $this->api->eliminar('producto',$id);
-                return true;
+                $res = $this->api->eliminar('producto',$id);
+                return $res;
             } catch (Exception $e) {
                 error_log('ProductoModel::eliminar -> ERROR: ' . $e);
-                return false;
+                return null;
             }
         }
 
@@ -103,23 +103,24 @@
                 $data = [
                     'nombre' => $this->nombre,
                     'codigo' => $this->codigo,
-                    'cantidad' => $this->stock,
+                    'stock' => $this->stock,
                     'precio' => $this->precio,
                     'id_proveedor' => $this->proveedor,
                     'id_marca' => $this->marca,
                     'id_categoria' => $this->categoria,
-                    'id_imagen' => $this->imagen,
+                    'imagen' => $this->imagen,
                 ];
 
-                $data = json_encode($data);
-                $this->api->actualizar('producto',$data,$this->id_producto);
 
-                $datosA = $this->obtenerUno($this->id_producto);
-                
-                $producto = new ProductoModel();
-                $producto->asignarDatos($datosA['response']);
+                $response = $this->api->actualizar('producto',$data,$this->id_producto);
 
-                return true;
+                error_log('ProductoModel::actualizar -> response: ' . json_encode($response));
+
+                if ($response['status'] == 200): 
+                    return true;
+                endif;
+
+                return false;
             } catch (Exception $e) {
                 error_log('ProductoModel::actualizar -> ERROR: ' . $e);
                 return false;
@@ -272,12 +273,16 @@
         }
 
         public function setImagen($imagen){
+            error_log('ProductoModel::setImagen -> imagen: ' . $imagen);
+            $imagen = !empty($imagen) ? $imagen : 'default.png';
             $this->imagen = $imagen;
         }
 
         public function getImagen(){
             return $this->imagen;
         }
+
+
 
         
 

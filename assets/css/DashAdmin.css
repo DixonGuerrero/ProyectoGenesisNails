@@ -585,11 +585,16 @@ button{
     border: none;
     cursor: pointer;
     border-radius: 6px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     color:#eee
 }
 td button.editar{
     background-color: #007bff;
+}
+
+td button.editar:hover{
+    background-color: #0056b3;
+    scale: 1.1;
 }
 
 td .acciones button.eliminar{

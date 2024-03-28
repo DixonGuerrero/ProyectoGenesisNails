@@ -130,5 +130,15 @@ class Marca extends SessionController
                 exit();
             }
         }
+
+        public function idByNombre($nombre){
+            $marcas = $this->marca->obtenerTodo();
+
+            foreach ($marcas as $marca) {
+                if ($marca->getNombre() == $nombre) {
+                    return $marca->getIdMarca();
+                }
+            }
+        }
     
 }

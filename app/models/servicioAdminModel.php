@@ -126,7 +126,6 @@
         public function setImagen($imagen){
             // Asigna 'default.png' si $imagen está vacío o es null.
             $imagen = empty($imagen) ? 'default.png' : $imagen;
-            error_log('ServicioAdminModel::setImagen -> imagen: ' . $imagen);
             $this->imagen = $imagen;
         }
         
