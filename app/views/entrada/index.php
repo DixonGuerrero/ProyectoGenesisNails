@@ -7,7 +7,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
     <h1 class="titulo-pagina">Entradas</h1>
 </div>
 
-<div class="tabla">
+<!-- <div class="tabla">
     <div class="table-header">
         <p>Citas Detalles</p>
         <div>
@@ -61,7 +61,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
                 <ion-icon name="chevron-forward-outline"></ion-icon>
             </i></div>
     </div>
-</div>
+</div> -->
 
 
 

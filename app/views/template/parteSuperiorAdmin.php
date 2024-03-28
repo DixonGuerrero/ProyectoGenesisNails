@@ -87,6 +87,18 @@
               <span>Salida</span>
             </a>
           </li>
+          <li>
+            <a href="marca"  class="<?php echo $url[0] == 'marca' ? 'active' : ''; ?>">
+            <ion-icon name="ribbon"></ion-icon>
+              <span>Marcas</span>
+            </a>
+          </li>
+          <li>
+            <a href="categoria"  class="<?php echo $url[0] == 'categoria' ? 'active' : ''; ?>">
+            <ion-icon name="file-tray-full"></ion-icon>
+              <span>Categorias</span>
+            </a>
+          </li>
         </ul>
       </nav>
 

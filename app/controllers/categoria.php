@@ -7,12 +7,12 @@
             error_log('Categoria::construct -> Inicio de Categoria');
         }
 
-        /* public function render(){
-            $categorias = $this->categoria->obtenerTodo();
+         public function render(){
+            
             $this->view->render('categoria/index',[
-                'categorias' => $categorias
+                'usuario' =>$this->usuario
             ]);
-        } */
+        } 
 
         public function guardar(){
             if ($this->existeParametrosPost(['nombre','tipo'])) {

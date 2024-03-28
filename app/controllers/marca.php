@@ -10,13 +10,12 @@ class Marca extends SessionController
         error_log('Marca::construct -> Inicio de Marca');
     }
 
-    /* public function render(){
-            $marcas = $this->marca->obtenerTodo();
+    public function render(){
             $this->view->render('marca/index',[
-                'marcas' => $marcas
+                'usuario' =>$this->usuario
             ]);
-        }
-         */
+    }
+         
 
     public function guardar()
     {
