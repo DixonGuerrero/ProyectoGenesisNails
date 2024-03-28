@@ -471,17 +471,34 @@ class Usuario extends SessionController
             </div>
             <div class="table-section">
                 <table id="tablaDatos">
-                    <thead>
+                    <thead id="encabezado-tabla">
                         <tr>
-                            <th>Id</th>
-                            <th>Perfil</th>
-                            <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Email</th>
-                            <th>Telefono</th>
-                            <th>Rol</th>
-                            <th>Usuario</th>
-                            <th>Acciones</th>
+                            <th>
+                            <ion-icon name="id-card"></ion-icon>
+                            Id
+                            </th>
+                            <th>
+                            <ion-icon name="person-circle"></ion-icon>
+                            Perfil
+                            </th>
+                            <th>
+                            <ion-icon name="people-circle"></ion-icon>
+                            Nombres</th>
+                            <th>
+                            <ion-icon name="people-circle"></ion-icon>
+                            Apellidos</th>
+                            <th>
+                            <ion-icon name="mail"></ion-icon>
+                            Email</th>
+                            <th>
+                            <ion-icon name="call"></ion-icon>
+                            Telefono</th>
+                            <th>
+                            <ion-icon name="layers"></ion-icon>
+                            Rol</th>
+                            <th>
+                            <ion-icon name="build"></ion-icon>
+                            Acciones</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -490,19 +507,20 @@ class Usuario extends SessionController
 
             foreach ($usuarios as $usuario) {
                 $tabla .= '<tr>
-                <td>' . $usuario->getId() . '</td>
-                <td><img src="' . APP_URL . 'assets/images/usuario/' . $usuario->getImagen() . '" alt=""></td>
+                <td class="id">' . $usuario->getId() . '</td>
+                <td class="perfil"><img src="' . APP_URL . 'assets/images/usuario/' . $usuario->getImagen() . '" alt="">'.$usuario->getUsuario().'</td>
                 <td>' . $usuario->getNombres() . '</td>
                 <td>' . $usuario->getApellidos() . '</td>
                 <td>' . $usuario->getEmail() . '</td>
                 <td>' . $usuario->getTelefono() . '</td>
                 <td>' . $usuario->getRole() . '</td>
-                <td>' . $usuario->getUsuario() . '</td>
                 <td >
                    <div class="acciones">
                    <button class="editar boton-editar">
                    <ion-icon name="create"></ion-icon>
                </button>
+
+            <input type="hidden"  name="usuario_tabla" class="usuario_tabla" value="'.$usuario->getUsuario().'" id="usuario">
 
 
 

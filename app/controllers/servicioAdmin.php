@@ -178,13 +178,23 @@
             </div>
             <div class="table-section">
                 <table id="tablaDatos">
-                    <thead>
+                    <thead id="encabezado-tabla">
                         <tr>
-                            <th>Id</th>
-                            <th>Imagen</th>
-                            <th>Servicio</th>
-                            <th>Descripcion</th>
-                            <th>Acciones</th>
+                            <th>
+                            <ion-icon name="id-card"></ion-icon>
+                            Id</th>
+                            <th>
+                            <ion-icon name="image"></ion-icon>
+                            Imagen</th>
+                            <th>
+                            <ion-icon name="storefront"></ion-icon>
+                            Servicio</th>
+                            <th>
+                            <ion-icon name="reader"></ion-icon>
+                            Descripcion</th>
+                            <th>
+                            <ion-icon name="build"></ion-icon>
+                            Acciones</th>
                         </tr>
                     </thead>
                     <tbody>';

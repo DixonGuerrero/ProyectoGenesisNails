@@ -226,15 +226,29 @@ class CitaAdmin extends SessionController
             </div>
             <div class="table-section">
                 <table id="tablaDatos">
-                    <thead>
+                    <thead id="encabezado-tabla">
                         <tr>
-                            <th>Id</th>
-                            <th>servicio</th>
-                            <th>Tipo Servicio</th>
-                            <th>cliente</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Acciones</th>
+                            <th>
+                            <ion-icon name="id-card"></ion-icon>
+                            Id</th>
+                            <th>
+                            <ion-icon name="storefront"></ion-icon>
+                            Servicio</th>
+                            <th>
+                            <ion-icon name="reorder-three"></ion-icon>
+                            Tipo Servicio</th>
+                            <th>
+                            <ion-icon name="person"></ion-icon>
+                            Cliente</th>
+                            <th>
+                            <ion-icon name="person"></ion-icon>
+                            Fecha</th>
+                            <th>
+                            <ion-icon name="alarm"></ion-icon>
+                            Hora</th>
+                            <th>
+                            <ion-icon name="build"></ion-icon>
+                            Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="citas">';

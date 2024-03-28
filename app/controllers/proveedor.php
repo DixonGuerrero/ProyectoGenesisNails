@@ -191,15 +191,29 @@ class Proveedor extends SessionController
             </div>
             <div class="table-section">
                 <table id="tablaDatos">
-                    <thead>
+                    <thead id="encabezado-tabla">
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Nit</th>
-                            <th>Direccion</th>
-                            <th>Acciones</th>
+                            <th>
+                            <ion-icon name="id-card"></ion-icon>
+                            Id</th>
+                            <th>
+                            <ion-icon name="person-circle"></ion-icon>
+                            Nombre</th>
+                            <th>
+                            <ion-icon name="call"></ion-icon>
+                            Telefono</th>
+                            <th>
+                            <ion-icon name="mail"></ion-icon>
+                            Email</th>
+                            <th>
+                            <ion-icon name="document-text"></ion-icon>
+                            Nit</th>
+                            <th>
+                            <ion-icon name="compass"></ion-icon>
+                            Direccion</th>
+                            <th>
+                            <ion-icon name="build"></ion-icon>
+                            Acciones</th>
                         </tr>
                     </thead>
                     <tbody>';

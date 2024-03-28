@@ -32,10 +32,7 @@
           <img id="logo" src="<?php echo APP_URL?>assets/images/logo2.ico" alt="Imagen" />
           <span>Genesis Nails</span>
         </div>
-        <button class="boton">
-          <ion-icon name="add-outline"></ion-icon>
-          <span>Nuevo</span>
-        </button>
+  
       </div>
 
       <nav class="navegacion">
@@ -44,25 +41,25 @@
             <a id="inbox" href="dashadmin"
             class="<?php echo $url[0] == 'dashadmin' ? 'active' : ''; ?>"
             >
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon name="home"></ion-icon>
               <span>Principal</span>
             </a>
           </li>
           <li>
             <a href="citaAdmin"  class="<?php echo $url[0] == 'citaAdmin' ? 'active' : ''; ?>">
-              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-icon name="calendar"></ion-icon>
               <span>Citas</span>
             </a>
           </li>
           <li>
             <a href="usuario"  class="<?php echo $url[0] == 'usuario' ? 'active' : ''; ?>">
-              <ion-icon name="people-outline"></ion-icon>
+              <ion-icon name="people"></ion-icon>
               <span>Usuarios</span>
             </a>
           </li>
           <li>
             <a href="proveedor"  class="<?php echo $url[0] == 'proveedor' ? 'active' : ''; ?>">
-              <ion-icon name="document-text-outline"></ion-icon>
+              <ion-icon name="document-text"></ion-icon>
               <span>Proveedores</span>
             </a>
           </li>
@@ -74,19 +71,19 @@
           </li>
           <li>
             <a href="producto"  class="<?php echo $url[0] == 'producto' ? 'active' : ''; ?>">
-              <ion-icon name="bag-handle-outline"></ion-icon>
+              <ion-icon name="bag-handle"></ion-icon>
               <span>Productos</span>
             </a>
           </li>
           <li>
             <a href="entrada"  class="<?php echo $url[0] == 'entrada' ? 'active' : ''; ?>">
-              <ion-icon name="enter-outline"></ion-icon>
+              <ion-icon name="enter"></ion-icon>
               <span>Entrada</span>
             </a>
           </li>
           <li>
             <a href="salida"  class="<?php echo $url[0] == 'salida' ? 'active' : ''; ?>">
-              <ion-icon name="exit-outline"></ion-icon>
+              <ion-icon name="exit"></ion-icon>
               <span>Salida</span>
             </a>
           </li>
