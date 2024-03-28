@@ -79,7 +79,19 @@
             "site": "dashadmin",
             "access": "private",
             "role": "admin"
+        },
+        {
+            "site": "categoria",
+            "access": "private",
+            "role": "admin"
+        },
+        {
+            "site": "marca",
+            "access": "private",
+            "role": "admin"
         }
+        
+        
     ],
     "defaultSites":{
         "cliente": "dashboard",
