@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const correo = fila.cells[4].textContent;
         const telefono = fila.cells[5].textContent;
   
-        const usuario = document.querySelector("input[name='usuario_tabla']").value.trim();
+        const usuario = fila.querySelector("input[name='usuario_tabla']").value.trim();
 
         
 
