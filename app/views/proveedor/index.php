@@ -121,7 +121,7 @@ $listaProveedores = $this->d['listaProveedores'];
     </div>
 </section>
 
-
+<script src="<?php echo APP_URL;?>assets/js/tabla.js"></script>
 <script src="<?php echo APP_URL?>assets/js/proveedor.js"></script>
 
 <?php

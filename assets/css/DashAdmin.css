@@ -584,7 +584,7 @@ main .servicio.min .info .estadistica{
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px 0px;
 }
 
 .table-header p{
@@ -621,21 +621,18 @@ td .acciones button.eliminar{
     display: flex;
     gap: 10px;
 }
-
-.add-new{
-    width: 100%;
-    height: 50px;
-    margin-bottom: 10px;
+.btn-agregar{
+    text-decoration: none;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    margin: 20PX 0PX;
-    font-size: 20px;
-    border: none;
-    border-radius: 10px;
-    background-color:#2EC229 ;
-    color: #fff;
+    align-items: center;
+    background-color: #c471f5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    gap: 2px;
+    font-size: 20PX;
 }
 
 /* input.buscar{
@@ -658,6 +655,13 @@ td .acciones button.eliminar{
 .table-section{
     min-height: 500px;
     overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+.dataTable-top{
+    padding: 10px 0px;
     
 }
 

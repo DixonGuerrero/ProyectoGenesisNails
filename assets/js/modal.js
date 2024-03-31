@@ -1,4 +1,4 @@
-const openModel = document.querySelector('.add-new',);
+const openModel = document.querySelector('.add-new ,#add-new');
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.modal_close');
 

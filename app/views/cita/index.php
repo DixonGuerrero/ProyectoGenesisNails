@@ -85,6 +85,7 @@ require_once 'app/views/template/parteSuperior.php';
 
 <!-- Incluimos javascript para rellenar modal update
  -->
+
  <script src="<?php echo APP_URL?>assets/js/cita.js"></script>
  <?php
 require_once 'app/views/template/parteInferior.php';

@@ -139,7 +139,7 @@ $listaServicios = $this->d['listaServicios'];
 </section>
 
 
-    
+     <script src="<?php echo APP_URL;?>assets/js/tabla.js"></script>
     <script src="<?php echo APP_URL?>assets/js/servicioAdmin.js"></script>
 <?php
 require_once 'app/views/template/parteInferiorAdmin.php';

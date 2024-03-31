@@ -195,6 +195,9 @@ $tabla = $this->d['tablaUsuarios'];
     </div>
 </section>
 
+
+<script src="<?php echo APP_URL;?>assets/js/tabla.js"></script>
+<script src="<?php echo APP_URL;?>assets/js/files.js"></script>
 <script src="<?php APP_URL ?>assets/js/usuario.js"></script>
 
 <?php

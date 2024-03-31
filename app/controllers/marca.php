@@ -1,18 +1,14 @@
 <?php
-class Marca extends SessionController
-{
-    private $marca;
+class Marca extends SessionController{
     function __construct()
     {
         parent::__construct();
-        $this->loadModel('MarcaModel');
-        $this->marca = new MarcaModel();
-        error_log('Marca::construct -> Inicio de Marca');
     }
 
     public function render(){
             $this->view->render('marca/index',[
-                'usuario' =>$this->usuario
+                'usuario' =>$this->usuario,
+                'marcas' => $this->lista()
             ]);
     }
          
@@ -26,30 +22,32 @@ class Marca extends SessionController
             if ($nombre == '') {
 
                 $this->alerta = new Alertas('error', 'El nombre de la marca no puede estar vacío');
-
+                http_response_code(400);
                 echo $this->alerta->simple()->error()->getAlerta();
 
                 exit();
             }
 
-            $this->marca->setNombre($nombre);
+            $this->model->setNombre($nombre);
 
-            $respuesta = $this->marca->guardar();
+            $respuesta = $this->model->guardar();
+
+            error_log('Marca::Guardar '.json_encode($respuesta));
 
             if ($respuesta['status'] > 300) {
 
                 $msg = $respuesta['response']['message'];
 
                 $this->alerta = new Alertas('error', $msg);
-
+                http_response_code(400);
                 echo $this->alerta->simple()->error()->getAlerta();
 
                 exit();
             }
 
             $this->alerta = new Alertas('success', 'Marca guardada correctamente');
-
-            echo $this->alerta->simple()->exito()->getAlerta();
+            http_response_code(200);
+            echo $this->alerta->recargar()->exito()->getAlerta();
 
             exit();
         }
@@ -64,31 +62,31 @@ class Marca extends SessionController
             if ($nombre == '' || $id_marca == '') {
 
                 $this->alerta = new Alertas('error', 'El nombre de la marca no puede estar vacío');
-
+                http_response_code(400);
                 echo $this->alerta->simple()->error()->getAlerta();
 
                 exit();
             }
 
-            $this->marca->setIdMarca($id_marca);
-            $this->marca->setNombre($nombre);
+            $this->model->setIdMarca($id_marca);
+            $this->model->setNombre($nombre);
 
-            $respuesta = $this->marca->actualizar();
+            $respuesta = $this->model->actualizar();
 
             if ($respuesta['status'] > 300) {
 
                 $msg = $respuesta['response']['message'];
 
                 $this->alerta = new Alertas('error', $msg);
-
+                http_response_code(400);
                 echo $this->alerta->simple()->error()->getAlerta();
 
                 exit();
             }
 
             $this->alerta = new Alertas('success', 'Marca actualizada correctamente');
-
-            echo $this->alerta->simple()->exito()->getAlerta();
+            http_response_code(200);
+            echo $this->alerta->recargar()->exito()->getAlerta();
 
             exit();
         }
@@ -103,19 +101,20 @@ class Marca extends SessionController
                 if ($id_marca == '') {
 
                     $this->alerta = new Alertas('error', 'El id de la marca no puede estar vacío');
-
+                    http_response_code(400);
                     echo $this->alerta->simple()->error()->getAlerta();
 
                     exit();
                 }
 
-                $respuesta = $this->marca->eliminar($id_marca);
+                $respuesta = $this->model->eliminar($id_marca);
 
                 if ($respuesta['status'] > 300) {
 
                     $msg = $respuesta['response']['message'];
 
                     $this->alerta = new Alertas('error', $msg);
+                    http_response_code(400);
 
                     echo $this->alerta->simple()->error()->getAlerta();
 
@@ -123,21 +122,54 @@ class Marca extends SessionController
                 }
 
                 $this->alerta = new Alertas('success', 'Marca eliminada correctamente');
-
-                echo $this->alerta->simple()->exito()->getAlerta();
+                http_response_code(200);
+                echo $this->alerta->recargar()->exito()->getAlerta();
 
                 exit();
             }
         }
 
-        public function idByNombre($nombre){
-            $marcas = $this->marca->obtenerTodo();
+        public function lista(){
+            $marcas = $this->model->obtenerTodo();
 
-            foreach ($marcas as $marca) {
-                if ($marca->getNombre() == $nombre) {
-                    return $marca->getIdMarca();
-                }
-            }
-        }
+            $respuesta = '';
+
+            if(count($marcas) > 0){
+                foreach ($marcas as $marca) {
+                    $respuesta .= '
+                    <div class="tarjeta-marca">
+                        <div class="nombre-marca">'.$marca->getNombre().'</div>
+                        <div class="acciones">
+
+
+
+                            <button class="btn-editar"><ion-icon name="create"></ion-icon></button>
+                            
+                            
+
+                            <form class="FormularioAjax" action="' . APP_URL . 'marca/eliminar" method="POST">
+
+                            <input type="hidden" name="id_marca" value="' . $marca->getIdMarca() . '">
     
-}
+                            <button type="submit" class="eliminar btn-eliminar boton-eliminar">
+                            <ion-icon name="trash-bin"></ion-icon></button>
+    
+                      
+    
+                        </form>
+
+
+                        </div>
+                    </div>
+                    ';
+                }
+        }
+
+        return $respuesta;
+    }
+
+}   
+
+        
+    
+

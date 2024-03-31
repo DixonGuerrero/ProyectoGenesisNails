@@ -13,7 +13,7 @@ $formularioActualizar = $this->d['formularioActualizar'];
 <div class="header-productos-main">
     <p>Productos</p>
     <div>
-        <button class="add-new">
+        <button class="add-new btn-agregar">
             <ion-icon name="add-circle"></ion-icon>
             Nuevo
         </button>
@@ -35,7 +35,7 @@ $formularioActualizar = $this->d['formularioActualizar'];
     <?php echo $formularioActualizar?>
 </section>
 
-
+<script src="<?php echo APP_URL;?>assets/js/files.js"></script>
 <script src="<?php echo APP_URL?>assets/js/producto.js"></script>
 <?php
 require_once 'app/views/template/parteInferiorAdmin.php';

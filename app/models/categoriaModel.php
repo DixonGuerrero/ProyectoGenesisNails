@@ -68,7 +68,7 @@
                     'nombre' => $this->nombre
                 ];
                 
-                $respuesta =  $this->api->actualizar('categoria',$this->id_categoria,$data);
+                $respuesta =  $this->api->actualizar('categoria',$data,$this->id_categoria);
 
                 return $respuesta;
             } catch (Exception $e) {

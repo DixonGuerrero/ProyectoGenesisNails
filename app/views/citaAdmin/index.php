@@ -28,7 +28,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
     <?php echo $formularioActualizarCita?>
 </section>
 
-
+<script src="<?php echo APP_URL;?>assets/js/tabla.js"></script>
 <script src="<?php echo APP_URL?>assets/js/citaAdmin.js"></script>
 
 <?php

@@ -56,7 +56,8 @@
                     'id_marca' => $this->id_marca,
                     'nombre' => $this->nombre
                 ];
-                $respuesta =  $this->api->actualizar('marca',$this->id_marca,$data);
+                $respuesta =  $this->api->actualizar('marca',$data,$this->id_marca);
+                error_log('MarcaModel::actualizar -> Respuesta: ' . $respuesta);
                 return $respuesta;
             } catch (Exception $e) {
                 error_log('MarcaModel::actualizar -> ERROR: ' . $e);
@@ -65,11 +66,11 @@
         }
         public function eliminar($id){
             try {
-                $this->api->eliminar('marca',$id);
-                return true;
+                $respuesta = $this->api->eliminar('marca',$id);
+                return $respuesta;
             } catch (Exception $e) {
                 error_log('MarcaModel::eliminar -> ERROR: ' . $e);
-                return false;
+                return null;
             }
         }
         public function asignarDatos($datos)
