@@ -261,15 +261,15 @@ class Proveedor extends SessionController
         }
     }
 
-    public function idByNombre($nombre){
-        $proveedores = $this->model->obtenerTodo();
-
-        foreach ($proveedores as $proveedor) {
-            if ($proveedor->getNombre() == $nombre) {
-                return $proveedor->getIdProveedor();
+    public function nameById($id_proveedor){
+        try {
+            $proveedor = $this->model->obtenerUno($id_proveedor);
+            if ($proveedor) {
+                return $proveedor->getNombre();
             }
+        } catch (Exception $e) {
+            error_log('Proveedor::nameById -> ERROR: ' . $e);
+            return false;
         }
-
-        return null;
-    }
+    }      
 }

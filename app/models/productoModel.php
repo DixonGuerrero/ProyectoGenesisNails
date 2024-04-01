@@ -4,6 +4,7 @@
         private $nombre;
         private $codigo;
         private $stock;
+        private $cantidad;
         private $precio;
         private $imagen;
         private $proveedor;
@@ -22,6 +23,7 @@
             $this->imagen = '';
             $this->marca = 0;
             $this->categoria = 0;
+            $this->cantidad = 0;
 
         }
         //Methods
@@ -280,6 +282,14 @@
 
         public function getImagen(){
             return $this->imagen;
+        }
+
+        public function setCantidad($cantidad){
+            $this->cantidad = $cantidad;
+        }
+
+        public function getCantidad(){
+            return $this->cantidad;
         }
 
 
