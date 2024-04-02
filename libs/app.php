@@ -31,6 +31,7 @@ class App{
 
             // si hay un método que se requiere cargar
             if(isset($url[1])){
+                error_log('App::construct -> metodo encontrado: ' . json_encode($url));
                 if(method_exists($controller, $url[1])){
                     if(isset($url[2])){
                         //el método tiene parámetros

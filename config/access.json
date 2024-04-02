@@ -16,6 +16,11 @@
             "role": ""
         },
         {
+            "site":"nuevaSalida",
+            "access": "private",
+            "role": "admin"
+        },
+        {
             "site":"cita",
             "access":"private",
             "role":"cliente"

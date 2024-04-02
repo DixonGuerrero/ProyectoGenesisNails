@@ -44,7 +44,7 @@
         public function guardar(){
             try {
                 $data = [
-                    'id_admin' => $this->fecha,
+                    'id_admin' => $this->id_admin,
                     'productos' => $this->productos
                 ];
                 $respuesta =  $this->api->crear('salida',$data);
@@ -77,9 +77,8 @@
 
             //Asignamos datos al array de productos
             foreach ($data['productos'] as $item):
-
-                $this->producto->setNombre($item['producto']);
-                $this->producto->setIdProducto($item['id_producto']);
+                $this->producto = new ProductoModel();
+                $this->producto->obtenerUno($item['id_producto']);
                 $this->producto->setCodigo($item['codigo']);
                 $this->producto->setCantidad($item['cantidad']);
                 $this->producto->setPrecio($item['precio']);

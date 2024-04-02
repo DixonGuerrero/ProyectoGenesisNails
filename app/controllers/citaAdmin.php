@@ -218,7 +218,7 @@ class CitaAdmin extends SessionController
             <div class="table-header">
                 <p>Lista Citas</p>
                 <div>
-                    <button class="add-new">
+                    <button class="add-new btn-agregar">
                         <ion-icon name="add-circle"></ion-icon>
                         Nuevo
                     </button>

@@ -22,8 +22,7 @@ if (isset($this->d['mensajeTiempo'])) {
 
   <link rel="stylesheet" href="assets/css/<?php echo $url[0]; ?>.css" />
   <script src="<?php echo APP_URL ?>/assets/js/sweetalert2.all.min.js"></script>
-  <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
-  <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
+
 </head>
 
 <body>
