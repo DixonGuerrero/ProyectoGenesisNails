@@ -18,6 +18,7 @@
                 $data = $this->api->obtenerTodo('salida');
 
                 foreach ($data['response'] as $item) {
+                    error_log('SalidaModel::obtenerTodo -> item: ' . json_encode($item));
                     $salida = new SalidaModel();
                     $salida->asignarDatos($item);
                     array_push($salidas, $salida);
@@ -33,8 +34,17 @@
         public function obtenerUno($id){
             try {
                 $data = $this->api->obtenerUno('salida',$id);
-                $this->asignarDatos($data['response']);
-                return $this;
+                error_log('SalidaModel::obtenerUno -> data: ' . json_encode($data['response']));
+                
+                $salida = new SalidaModel();
+
+                foreach ($data['response'] as $item) {
+                    error_log('SalidaModel::obtenerTodo -> item: ' . json_encode($item));
+                    
+                    $salida->asignarDatos($item);
+                    
+                }
+                return $salida;
             } catch (Exception $e) {
                 error_log('SalidaModel::obtenerUno -> ERROR: ' . $e);
                 return [];
@@ -72,11 +82,13 @@
 
 
         public function asignarDatos($data){
+ 
             $this->id_salida = $data['id_salida'];
-            $this->fecha = $data['fecha'];
+            $this->fecha = $this->formatearFecha($data['created_at']);
 
             //Asignamos datos al array de productos
             foreach ($data['productos'] as $item):
+
                 $this->producto = new ProductoModel();
                 $this->producto->obtenerUno($item['id_producto']);
                 $this->producto->setCodigo($item['codigo']);
@@ -85,10 +97,19 @@
                 $this->producto->setMarca($item['id_marca']);
                 $this->producto->setCategoria($item['id_categoria']);
 
+                
+
                 array_push($this->productos,$this->producto);
             endforeach;
 
             return $this;
+        }
+
+        public function formatearFecha($fecha){
+            error_log('CitaModel::formatoFecha -> fecha: '.json_encode($fecha));
+            $fecha = explode('T',$fecha);
+           
+            return $fecha[0];
         }
 
         //Getters

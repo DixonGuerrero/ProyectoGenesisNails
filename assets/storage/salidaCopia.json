@@ -1,0 +1,17 @@
+{
+    "id_salida": "14",
+    "productos": [
+        {
+            "id_producto": 11,
+            "cantidad": 126
+        },
+        {
+            "id_producto": 13,
+            "cantidad": 47
+        },
+        {
+            "id_producto": 9,
+            "cantidad": 21
+        }
+    ]
+}

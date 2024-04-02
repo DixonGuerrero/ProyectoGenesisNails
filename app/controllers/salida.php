@@ -2,11 +2,13 @@
 class Salida extends SessionController
 {
     private $directorio;
+    private $directorioCopiaEditar;
     function __construct()
     {
         parent::__construct();
         // Asegúrate de que la ruta relativa esté bien formada.
         $this->directorio = $_SERVER['DOCUMENT_ROOT'] . '/Proyectos/ProyectoGenesisNails2/assets/storage/salida.json';
+        $this->directorioCopiaEditar = $_SERVER['DOCUMENT_ROOT'] . '/Proyectos/ProyectoGenesisNails2/assets/storage/salidaCopia.json';
 
 
         error_log('Salida::construct -> Inicio de Salida');
@@ -22,6 +24,35 @@ class Salida extends SessionController
     public function nuevaSalida()
     {
         $this->view->render('salida/nueva', [
+            'usuario' => $this->usuario,
+            'formularioProducto' => $this->formularioAgregarProducto(),
+            'productos' => $this->listaProductosParaSalir(),
+            'formularioActualizarProducto' => $this->formularioActualizarProducto()
+        ]);
+    }
+
+    public function editarSalida()
+    {
+        //Obtenemos el id de la salida
+        if ($this->existeParametrosPost(['id_salida'])) {
+            $id_salida = $this->obtenerPost('id_salida');
+            $salida = new SalidaModel();
+            $salida = $salida->obtenerUno($id_salida);
+
+            //Vamos a limpiar el archivo
+            if (file_exists($this->directorio)) {
+                unlink($this->directorio);
+                unlink($this->directorioCopiaEditar);
+            }
+
+            $this->asignarDatosArchivo($salida->getProductos(),$id_salida);
+        }
+    }
+
+    //Llamamos a la vista de editar 
+    public function editar()
+    {
+        $this->view->render('salida/editar', [
             'usuario' => $this->usuario,
             'formularioProducto' => $this->formularioAgregarProducto(),
             'productos' => $this->listaProductosParaSalir(),
@@ -49,23 +80,23 @@ class Salida extends SessionController
                 ];
             }
 
-            
+
             error_log('Salida::guardar -> Productos: ' . json_encode($productosNuevos));
 
-                         //Creamos la salida
+            //Creamos la salida
             $salida = new SalidaModel();
             $salida->setIdAdmin($this->usuario->getId());
             $salida->setProductos($productosNuevos);
-
+            $response = $salida->guardar();
             //Guardamos la salida
-            if($salida->guardar()){
+            if ($response['status'] == 201) {
                 //Lanzamos alerta
-                $this->alerta = new Alertas('success', 'Salida guardada correctamente');
+                $this->alerta = new Alertas('Exito', 'Salida guardada correctamente');
                 http_response_code(200);
                 echo $this->alerta->redireccionar('salida')->exito()->getAlerta();
 
                 //Eliminamos el archivo
-                if (!unlink($this->directorio)):
+                if (!unlink($this->directorio)) :
                     //Lanzamos alerta
                     $this->alerta = new Alertas('error', 'No se pudo eliminar el archivo');
                     http_response_code(400);
@@ -73,7 +104,7 @@ class Salida extends SessionController
                     exit();
                 endif;
                 exit();
-            }else{
+            } else {
                 //Lanzamos alerta
                 $this->alerta = new Alertas('error', 'No se pudo guardar la salida');
                 http_response_code(400);
@@ -89,6 +120,69 @@ class Salida extends SessionController
         }
     }
 
+    //Funcion para actualizar en BD
+    public function actualizar()
+    {
+        //En esta funcion se va a comparar el archivo salida.json con el archivo salidaCopia.json para asi poder mirar que cambios se realizaron y solo enviar a la base de datos los productos que fueron modificados
+        // Decodificar los contenidos de ambos archivos JSON a arrays de PHP
+        $contenidoSalida = json_decode(file_get_contents($this->directorio), true);
+        $contenidoSalidaCopia = json_decode(file_get_contents($this->directorioCopiaEditar), true);
+
+        // Asumiendo que ambos archivos tienen una estructura similar y contienen un array bajo la clave 'productos'
+        $productosSalida = $contenidoSalida['productos'];
+        $productosSalidaCopia = $contenidoSalidaCopia['productos'];
+
+        // Identificar productos modificados
+        $productosModificados = [];
+        foreach ($productosSalida as $producto) {
+            $idProducto = $producto['id_producto'];
+            // Buscar el producto en salidaCopia por id_producto
+            $productoCopia = array_filter($productosSalidaCopia, function ($item) use ($idProducto) {
+                return $item['id_producto'] == $idProducto;
+            });
+
+            // Si el producto no existe en salidaCopia o si la cantidad es diferente, se considera modificado
+            if (empty($productoCopia) || $producto['cantidad'] !== array_values($productoCopia)[0]['cantidad']) {
+                $productosModificados[] = $producto;
+            }
+        }
+
+        
+
+        //Actualizamos la salida actual
+        $salida = new SalidaModel();
+        $salida->setIdSalida($contenidoSalida['id_salida']);
+        $salida->setProductos($productosModificados);
+
+        //Guardamos la salida
+        $response = $salida->actualizar();
+
+        if ($response['status'] == 200) :
+            //Lanzamos alerta
+            $this->alerta = new Alertas('success', 'Salida actualizada correctamente');
+            http_response_code(200);
+            echo $this->alerta->redireccionar('salida')->exito()->getAlerta();
+
+            //Eliminamos el archivo
+            if (!unlink($this->directorio) || !unlink($this->directorioCopiaEditar)) :
+                //Lanzamos alerta
+                $this->alerta = new Alertas('error', 'No se pudo eliminar el archivo');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+        else:
+            //Lanzamos alerta
+            $this->alerta = new Alertas('error', 'No se pudo actualizar la salida');
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        endif;
+
+
+    }
+
+    //Funcion para guardar los productos que se van agregando al archivo temporal
     public function guardarProductos()
     {
         if ($this->existeParametrosPost(['id_producto', 'cantidad'])) {
@@ -142,6 +236,7 @@ class Salida extends SessionController
         }
     }
 
+    //Funcion para listar las salidas
     public function listaSalidas()
     {
 
@@ -179,9 +274,17 @@ class Salida extends SessionController
                     </div>
             
                     <div class="acciones">
-                        <button class="btn-editar">Editar <ion-icon name="create"></ion-icon></button>
-                    </div>
-            
+
+                    <form action="' . APP_URL . 'salida/editarSalida" method="POST" class="form FormularioAjax">
+
+
+                        <button type="submit" class="btn-editar">Editar <ion-icon name="create"></ion-icon></button>
+                   
+
+                    <input type="hidden" name="id_salida" value="' . $salida->getIdSalida() . '">
+
+                    </form>
+             </div>
                 </div>
                     ';
         endforeach;
@@ -190,6 +293,7 @@ class Salida extends SessionController
         return $respuesta;
     }
 
+    //Funcion para obtener la cantidad de productos de una salida
     public function cantidadProductos($productos)
     {
         $cantidad = 0;
@@ -201,6 +305,7 @@ class Salida extends SessionController
         return $cantidad;
     }
 
+    //Funcion para obtener el formulario de agregar producto
     public function formularioAgregarProducto()
     {
         $productos = new ProductoModel();
@@ -259,6 +364,7 @@ class Salida extends SessionController
         }
     }
 
+    //Funcion para obtener el formulario de actualizar producto
     public function formularioActualizarProducto()
     {
         $productos = new ProductoModel();
@@ -305,7 +411,7 @@ class Salida extends SessionController
                 </div>
 
                 <button type="submit" class="enviar">
-                    Agregar
+                    Actualizar
                 </button>
             </form>
 
@@ -319,6 +425,7 @@ class Salida extends SessionController
         }
     }
 
+    //Funcion para actualizar los productos que se van agregando al archivo temporal
     public function listaProductosParaSalir()
     {
         try {
@@ -392,16 +499,29 @@ class Salida extends SessionController
                    <ion-icon name="create"></ion-icon>
                </button>
 
-               <form  action="' . APP_URL . 'salida/eliminarProducto" method="POST" class="form FormularioAjax">
-                
-               <button type="submit" class="eliminar">
-               <ion-icon name="trash-bin"></ion-icon></button>
+               ';
 
-                  <input type="hidden" name="id_producto" value="' . $productoFila->getIdProducto() . '"> 
 
-                  <input type="hidden" name="cantidad" value="' . $producto['cantidad'] . '">
+                $url = isset($_GET['url']) ? $_GET['url'] : null;
+                $url = rtrim($url, '/');
+                $url = explode('/', $url);
 
-               </form>
+                if ($url[1] == 'nuevaSalida') :
+
+                    $tabla .= '
+                            <form  action="' . APP_URL . 'salida/eliminarProducto" method="POST" class="form FormularioAjax">
+
+                        
+                        <button type="submit" class="eliminar">
+                        <ion-icon name="trash-bin"></ion-icon></button>
+
+                            <input type="hidden" name="id_producto" value="' . $productoFila->getIdProducto() . '"> 
+
+                            <input type="hidden" name="cantidad" value="' . $producto['cantidad'] . '">
+
+                        </form>';
+                endif;
+                $tabla .= '
 
                    </div>
                 </td>
@@ -422,6 +542,7 @@ class Salida extends SessionController
         }
     }
 
+    //Funcion para eliminar un producto del archivo temporal
     public function eliminarProducto()
     {
 
@@ -466,6 +587,7 @@ class Salida extends SessionController
         }
     }
 
+    //Funcion para eliminar todos los productos del archivo temporal
     public function eliminarProductosAgregados()
     {
         //Eliminar el archivo
@@ -480,6 +602,7 @@ class Salida extends SessionController
         exit();
     }
 
+    //Funcion para actualizar un producto del archivo temporal
     public function actualizarProducto()
     {
         //Obtenemos los datos
@@ -526,6 +649,59 @@ class Salida extends SessionController
         } else {
             // Lanzar una alerta de error por falta de datos
             $this->alerta = new Alertas('error', 'No se han recibido los datos necesarios');
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        }
+    }
+
+    //Funcion para asignar los datos al archivo
+    function asignarDatosArchivo($productos,$salida): void
+    {
+        $productosTransformados = array_map(function ($producto) {
+            return [
+                'id_producto' => $producto->getIdProducto(),
+                'cantidad' => $producto->getCantidad()
+            ];
+        }, $productos);
+
+        // La estructura inicial en caso de que el archivo no exista o no tenga el formato correcto
+        $estructura = ['id_salida' => $salida, 'productos' => []];
+     
+
+        if (file_exists($this->directorio)) {
+            // Leer el contenido existente si el archivo ya existe
+            $contenidoExistente = file_get_contents($this->directorio);
+            $estructura = json_decode($contenidoExistente, true);
+            if (!is_array($estructura) || !isset($estructura['productos'])) {
+                // Reiniciar la estructura si el contenido no es válido
+                $estructura = ['productos' => []];
+            }
+        }
+
+        // Añadir los productos transformados al array 'productos'. Esto combina los arrays en vez de añadir uno dentro del otro
+        foreach ($productosTransformados as $producto) {
+            $estructura['productos'][] = $producto;
+        }
+
+        // Codificar la estructura completa a JSON
+        $datos = json_encode($estructura, JSON_PRETTY_PRINT);
+
+        // Guardar los datos en el archivo, reemplazando el contenido anterior
+
+        error_log('Salida::asignarDatosArchivo -> Datos: Antes de crear el archivo');
+        if (file_put_contents($this->directorio, $datos)  && file_put_contents($this->directorioCopiaEditar, $datos)) {
+            // Lanzar una alerta de éxito
+
+            error_log('Salida::asignarDatosArchivo -> Exito');
+            $this->alerta = new Alertas('success', 'Productos cargados correctamente');
+            http_response_code(200);
+            echo $this->alerta->redireccionar('salida/editar')->exito()->getAlerta();
+            exit();
+        } else {
+            // Lanzar una alerta de error
+            error_log('Salida::asignarDatosArchivo -> Error');
+            $this->alerta = new Alertas('error', 'No se pudo agregar el producto');
             http_response_code(400);
             echo $this->alerta->simple()->error()->getAlerta();
             exit();
