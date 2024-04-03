@@ -3,110 +3,111 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Genesis Nails</title>
     <link rel="stylesheet" href="./assets/css/Formulario.css">
-    <script src="<?php echo APP_URL?>/assets/js/sweetalert2.all.min.js"></script>
+    <script src="<?php echo APP_URL ?>/assets/js/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
-
-<?php $this->mostrarMensajes();?>
-
-    <header>
-
-        <a href="#" class="logo">
-
-            <img src="./assets/images/logo.png" alt="">
-
-        </a>
-
-        <nav>
-            <a href="Home" class="hero_btn">Inicio</a>
-
-        </nav>
-
-    </header>
-
-
-    <section>
-
-        <article class="formulario_de_registro">
-
-            <h1 class="titulo-formulario">Formulario de Registro</h1>
-
-            <div class="formulario-registro" class="row">
-
-                <form class="FormularioAjax" action="<?php echo APP_URL;?>formulario/nuevoUsuario"   method="POST">
-
-                    <fieldset float="left" width="48%">
-                        <legend>Datos personales</legend>
-
-                        <div>
-                            <label for="nombres">Nombres</label>
-                            <input type="text" id="nombres" name="nombres" />
-                        </div>
-
-
-
-                        <div>
-                            <label for="apellidos">Apellidos</label>
-                            <input type="text" id="apellidos" name="apellidos" />
-                        </div>
-
-
-                        <div>
-                            <label for="telefono">Telefono</label>
-                            <input type="text" id="telefono" name="telefono" />
-                        </div>
-
-                        <div>
-                            <label for="usuario">Usuario</label>
-                            <input type="text" id="usuario" " name="usuario" />
-                        </div>
-
-                        <div>
-                            <label for="email">Correo Electronico</label>
-                            <input type="text" id="email"  name="email" />
-                        </div>
-
-                        <div>
-                            <label for="id">Contraseña</label>
-                            <input type="text" id="clave1"  name="clave1" />
-                        </div>
-
-
-
-                        <div>
-                            <label>Confirmar Contraseña</label>
-                            <input type="text" id="clave2"  name="clave2" />
-                        </div>
-
-                    </fieldset>
-                    <input type="submit" value="Iniciar sesión" />
-                </form>
-
-
-               
-
-
-
+    <div class="container-form login ">
+        <div class="information">
+            <div class="info-childs">
+                <h2>¡¡Bienvenido nuevamente!!</h2>
+                <p>Para ingresar al sistema, llene los datos</p>
+                <input type="button" value="Registrarse" id="sign-up">
             </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Iniciar Sesión</h2>
 
-        </article>
+                <p>Por favor llene los datos a continuacion</p>
+                <form class="form form-login FormularioAjax" method="POST" action="<?php echo APP_URL;?>login/iniciarSesion">
+                    <div>
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" required />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-lock-alt'></i>
+                            <input type="password" name="password" id="password" placeholder="Password" required />
+                        </label>
+                    </div>
+                    <input type="submit" value="Iniciar Sesión">
+                    <div class="alerta-error">Todos los campos son obligatorios</div>
+                    <div class="alerta-exito">Te registraste correctamente</div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    <div class="container-form register hide">
+        <div class="information">
+            <div class="info-childs">
+                <h2>Bienvenido</h2>
+                <p>Para unirte a nuestra comunidad por favor Registre sus datos</p>
+                <input type="button" value="Iniciar Sesión" id="sign-in">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Crear una Cuenta</h2>
 
+                <p>Por favor ingrese los datos aqui abajo</p>
+                <form class="form form-register FormularioAjax" method="POST" action="<?php echo APP_URL;?>formulario/nuevoUsuario">
+                    <div>
+                        <label>
+                            <i class='bx bxs-user-circle'></i>
+                            <input type="text" placeholder="Nombre" name="nombres">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input type="text" placeholder="Nombre Usuario" name="usuario">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-envelope'></i>
+                            <input type="email" placeholder="Correo Electronico" name="email">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bxs-phone-call'></i> <input type="number" placeholder="Telefono" name="telefono">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-lock-alt'></i>
+                            <input type="password" placeholder="Contraseña" name="clave1">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-lock-alt'></i>
+                            <input type="password" placeholder="Confirmar Contraseña" name="clave2">
+                        </label>
+                    </div>
 
-    </section>
-    <footer>
+                    <input type="submit" value="Registrarse">
 
-        <h3 class="pieDePagina"> By Salón de Belleza Génesis Nails</h3>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    </footer>
-
-
-
-    <script src="<?php echo APP_URL?>assets/js/ajax.js"></script>
+    <script src="<?= APP_URL ?>assets/js/formulario.js"></script>
 </body>
+<script src="<?php echo APP_URL ?>assets/js/ajax.js"></script>
 
 </html>

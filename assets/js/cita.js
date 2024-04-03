@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
         /*                 Vamos a inyectar los valores al formulario
          */
 
-        const formulario = document.querySelector(".FormularioAjax");
+        const formulario = document.querySelector(".modal_update");
 
 
-        const servicioSelect = document.querySelector("#servicio");
+        const servicioSelect = formulario.querySelector("#servicio");
 
         // Iterar sobre las opciones del select para encontrar y seleccionar el servicio correcto
         Array.from(servicioSelect.options).forEach(function (option) {
@@ -45,18 +45,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Inyectar la fecha
-        const fechaInput = document.querySelector("#fecha");
+        const fechaInput = formulario.querySelector("#fecha");
 
         fechaInput.value = fecha;
 
         // Inyectar la hora
 
-        const horaInput = document.querySelector("#hora"); 
+        const horaInput = formulario.querySelector("#hora"); 
 
         horaInput.value = hora;
 
         //Vamos a inyectar el id
-        const idInput = document.querySelector("#id_cita");
+        const idInput = formulario.querySelector("#id_cita");
 
         idInput.value = id;
 
@@ -65,6 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modal.classList.add("modal--show");
 
+        //Cerrar el modal
+        const cerrarModal = modal.querySelector(".modal_close");
+        cerrarModal.addEventListener("click", function () {
+          modal.classList.remove("modal--show");
+          
+        });
       });
     }
   });

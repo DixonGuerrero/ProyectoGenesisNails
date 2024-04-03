@@ -14,7 +14,7 @@ $salidas =  $this->d['salidas'];
         <input type="text" class="busqueda" placeholder="Buscar">
         <button class="btn-buscar"><ion-icon name="search-circle" role="img" class="md hydrated"></ion-icon></button>
     </div>
-    <a href="<?php echo APP_URL; ?>salida/nuevaSalida" id="" class="btn-agregar-salida">
+    <a href="<?= APP_URL; ?>salida/nuevaSalida" id="" class="btn-agregar-salida">
         <ion-icon name="add-circle" role="img" class="md hydrated"></ion-icon>
         Nueva
     </a>

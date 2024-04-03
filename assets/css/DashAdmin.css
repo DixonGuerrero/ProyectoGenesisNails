@@ -1200,6 +1200,14 @@ main .modal .modal_container .form .form_group textarea{
         width: 80%;
     }
 
+    main .titulo-sesion{
+        font-size: 25PX;
+    }
+
+    .barra-superior .titulo-pagina{
+        font-size: 35px;
+    }
+
    
     
 }

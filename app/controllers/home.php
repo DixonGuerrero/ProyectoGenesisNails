@@ -9,8 +9,5 @@
             $this->view->render('home/index');
         }
 
-        public function prueba(){
-           
-        }
     }
 ?>

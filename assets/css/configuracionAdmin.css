@@ -83,7 +83,7 @@ main .configuraciones .foto-perfil .cambiar-foto{
     justify-content: space-around;
     align-items: center;
     background-color: var(--color-boton-agregar);
-    color: var(--color-boton-texto);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -148,7 +148,7 @@ main .configuraciones .cerrar-sesion{
     font-size: 18px;
     align-items: center;
     background-color:#24BDAF;
-    color: var(--color-boton-texto);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -233,7 +233,7 @@ main .configuraciones .cambiar-contrasenia form .submit{
     justify-content: space-around;
     align-items: center;
     background-color:#24BDAF;
-    color: var(--color-boton-texto);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -309,7 +309,7 @@ main .configuraciones .cambiar-contrasenia form .submit{
     justify-content: space-around;
     align-items: center;
     background-color:#24BDAF;
-    color: var(--color-boton-texto);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;

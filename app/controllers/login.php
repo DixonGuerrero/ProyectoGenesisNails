@@ -7,9 +7,6 @@
             error_log('Login::construct -> Inicio de Login');
         }
 
-        public function render(){
-            $this->view->render('login/index',[]);
-        }
 
         public function iniciarSesion(){
             error_log('Login::iniciarSesion -> inicio de iniciarSesion');

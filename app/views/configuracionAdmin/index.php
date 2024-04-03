@@ -9,7 +9,7 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 <div class="configuraciones">
     <div class="foto-perfil">
         <img src="<?php echo APP_URL; ?>assets/images/usuario/<?php echo $usuario->getImagen(); ?>" alt="" />
-        <a class="actualizar cambiar-foto " >
+        <a class="actualizar cambiar-foto ">
             <ion-icon name="camera-reverse-outline"></ion-icon> Cambiar foto
         </a>
     </div>
@@ -80,10 +80,10 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
                 <h2>Cambiar Contraseña <ion-icon name="document-lock-outline"></ion-icon></h2>
             </div>
 
-            <form action="<?php echo APP_URL;?>usuario/actualizarPassword" class="FormularioAjax" method="POST"> 
+            <form action="<?php echo APP_URL; ?>usuario/actualizarPassword" class="FormularioAjax" method="POST">
                 <div class="grupo">
                     <label for="nombre">Contraseña Actual</label>
-                    <input type="password" id="password" name="password" >
+                    <input type="password" id="password" name="password">
                 </div>
                 <div class="grupo">
                     <label for="nombre">Nueva Contraseña</label>
@@ -120,13 +120,13 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 
         <h2 class="modal_title">Actualizar Foto</h2>
 
- 
-        <form action="<?php echo APP_URL;?>/usuario/actualizarFoto" method="POST" class="form FormularioAjax">
 
-        
+        <form action="<?php echo APP_URL; ?>/usuario/actualizarFoto" method="POST" class="form FormularioAjax">
+
+
             <div class="foto-perfil">
 
-               
+
                 <!-- Selector Imagen Perfil -->
 
                 <div class="container_foto">
@@ -152,6 +152,8 @@ require_once 'app/views/template/parteSuperiorAdmin.php';
 
     </div>
 </section>
+
+<script src="<?= APP_URL ?>assets/js/files.js"></script>
 
 <?php
 require_once 'app/views/template/parteInferiorAdmin.php';

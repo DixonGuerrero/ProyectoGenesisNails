@@ -363,18 +363,6 @@ class Producto extends sessionController
         }
     }
 
-
-
-    /* public function crear (){
-            $marcas = new MarcaModel();
-            $proveedores = new ProveedorModel();
-            $this->view->render('producto/crear',[
-                'marcas' => $marcas->obtenerTodo(),
-                'proveedores' => $proveedores->obtenerTodo(),
-                'user' => $this->usuario
-            ]);
-        } */
-
     public function formularioCrear()
     {
         $marcas = [];

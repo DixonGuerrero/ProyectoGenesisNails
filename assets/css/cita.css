@@ -55,6 +55,37 @@
 
 /*---------------->Citas<-------------------*/
 
+.header-sesion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.header-sesion .titulo-sesion{
+    
+    margin: 0px 20px; 
+}
+
+.boton-agendar-cita {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+    transition: 0.3s;
+    font-size: 20PX;
+    gap: 10px;
+}
+
+.boton-agendar-cita:hover {
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
 
 /*----------------->TituloCitas*/
 main .titulo.citas{
@@ -174,6 +205,8 @@ main .contenedor-cita .tarjeta-cita .acciones button{
     color:#eee;
 
 }
+
+
 
 
 
@@ -395,6 +428,21 @@ main .recomendacion-cita .boton-vermas:hover {
 
         justify-content: center;
         margin: 0;
+    }
+
+    .boton-agendar-cita {
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 15PX;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background-color: var(--color-boton);
+        color: var(--color-boton-texto);
+        transition: 0.3s;
+    
+        gap: 10px;
     }
 }
 

@@ -132,14 +132,14 @@
                 <div class="container_foto">
 
 
-                    <input type="file" id="file-input" name="imagen">
-                    <label for="file-input">
+                    <input type="file" id="file-input-1" name="imagen">
+                    <label for="file-input-1">
                         <ion-icon name="cloud-upload"></ion-icon>
                         Carga una foto
                     </label>
 
-                    <div id="num-of-files">No hay archivos Cargados</div>
-                    <ul id="files-list"></ul>
+                    <div class="numero-archivos" id="num-of-files-1">No hay archivos Cargados</div>
+                    <ul class="lista-archivos" id="files-list-1"></ul>
                 </div>
             </div>
 
@@ -153,6 +153,8 @@
     </div>
 </section>
 
+
+<script src="<?= APP_URL?>assets/js/files.js"></script>
 
 <?php 
     require_once 'app/views/template/parteInferior.php';

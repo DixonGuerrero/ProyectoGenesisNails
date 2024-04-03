@@ -169,12 +169,21 @@ class SessionController extends Controller{
     }
 
     private function getCurrentPage(){
-        
-        $actual_link = trim("$_SERVER[REQUEST_URI]");
-        $url = explode('/', $actual_link);
-        error_log("sessionController::getCurrentPage(): actualLink =>" . $actual_link . ", url => " . $url[3]);
-        return $url[3];
+        $actual_link = trim($_SERVER['REQUEST_URI']);
+        $urlSegments = explode('/', $actual_link);
+    
+        // Encontrar el índice del segmento que contiene "ProyectoGenesisNails2"
+        $projectIndex = array_search('ProyectoGenesisNails2', $urlSegments);
+    
+        // Verificar si "ProyectoGenesisNails2" se encontró y tiene un segmento siguiente
+        if ($projectIndex !== false && isset($urlSegments[$projectIndex + 1])) {
+            return $urlSegments[$projectIndex + 1];
+        }
+    
+        // Retornar un valor por defecto o null si "ProyectoGenesisNails2" no se encuentra o no tiene un segmento siguiente
+        return null;
     }
+    
 
     function authorizeAccess($role){
         error_log("sessionController::authorizeAccess(): role: $role");

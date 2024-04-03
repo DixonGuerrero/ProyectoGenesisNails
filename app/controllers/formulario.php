@@ -14,19 +14,18 @@
         function nuevoUsuario(){
             error_log('Formulario::nuevoUsuario -> inicio de nuevoUsuario');
             
-                if($this->existeParametrosPost(['nombres','apellidos','telefono','email','usuario','clave1','clave2'])){
+                if($this->existeParametrosPost(['nombres','telefono','email','usuario','clave1','clave2'])){
 
                     error_log('Formulario::nuevoUsuario -> Existen parametros POST');
 
                     $nombres = limpiarCadena($this->obtenerPost('nombres'));
-                    $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
                     $telefono = limpiarCadena($this->obtenerPost('telefono'));
                     $correo = limpiarCadena($this->obtenerPost('email'));
                     $usuario = limpiarCadena($this->obtenerPost('usuario'));
                     $contrasena = limpiarCadena($this->obtenerPost('clave1'));
                     $contrasena2 = limpiarCadena($this->obtenerPost('clave2'));
 
-                    if($nombres == '' || $apellidos == '' || $telefono == '' || $correo == '' || $usuario == '' || $contrasena == '' || $contrasena2 == ''){
+                    if($nombres == '' || $telefono == '' || $correo == '' || $usuario == '' || $contrasena == '' || $contrasena2 == ''){
                         $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
 
                         http_response_code(400);
@@ -44,7 +43,6 @@
 
                     $user = new UsuarioModel();
                     $user->setNombres($nombres);
-                    $user->setApellidos($apellidos);
                     $user->setTelefono($telefono);
                     $user->setEmail($correo);
                     $user->setUsuario($usuario);
@@ -65,7 +63,7 @@
                         $this->alerta = new Alertas('EXITO', 'Usuario creado correctamente, ahora puedes iniciar sesion');
                         http_response_code(200);
                         
-                        echo $this->alerta->redireccionar('login')->exito()->getAlerta();
+                        echo $this->alerta->redireccionar('formulario')->exito()->getAlerta();
 
                         exit();
                     }

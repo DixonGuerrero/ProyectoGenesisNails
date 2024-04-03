@@ -64,16 +64,16 @@ $productoMinStock = $this->d['producto_min_stock'];
   </div>
 </div>
 
-<h2 class="titulo-sesion">
+<!-- <h2 class="titulo-sesion">
   <ion-icon name="bar-chart"></ion-icon>
   Estadisticas
-</h2>
+</h2> -->
 
-<div class="grafica">
+<!-- <div class="grafica">
   <h2 class="titulo-grafica">Grafica</h2>
-</div>
+</div> -->
 
-<div class="estadisticas-max-min">
+<!-- <div class="estadisticas-max-min">
   <div class="tarjeta-estadistica">
     <div class="servicio max">
       <h2>Servicio mas reservado
@@ -121,7 +121,7 @@ $productoMinStock = $this->d['producto_min_stock'];
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <h2 class="titulo-sesion">
   <ion-icon name="cart"></ion-icon>

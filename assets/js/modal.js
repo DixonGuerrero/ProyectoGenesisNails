@@ -52,6 +52,13 @@ if(openModelProveedor) {
     })
 }
 
+if(openModalUpdate) {
+    openModalUpdate.addEventListener('click',(e)=> {
+        e.preventDefault();
+        modalUpdate.classList.add('modal--show');
+    })
+}
+
 
 //Agregamos el evento para abrir el model de actualizar
 if(openModelProveedorUpdate) {
