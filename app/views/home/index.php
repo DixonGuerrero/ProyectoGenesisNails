@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Genesis Nails</title>
-  <link rel="stylesheet" href="<?= APP_URL?>assets/css/Home.css">
+  <link rel="stylesheet" href="<?= APP_URL?>assets/css/home.css">
 </head>
 
 <body>
