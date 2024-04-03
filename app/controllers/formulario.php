@@ -1,7 +1,7 @@
 <?php 
 
 
-    class Formulario extends SessionController{
+    class Formulario extends Controller{
         function __construct(){
             parent::__construct();
             error_log('Formulario::construct -> Inicio de Formulario');
