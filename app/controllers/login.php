@@ -7,9 +7,6 @@
             error_log('Login::construct -> Inicio de Login');
         }
 
-        public function render(){
-            $this->view->render('login/index',[]);
-        }
 
         public function iniciarSesion(){
             error_log('Login::iniciarSesion -> inicio de iniciarSesion');
@@ -152,13 +149,14 @@
         }
 
         public function cerrarSesion(){
-            error_log('Login::cerrarSesion -> inicio de cerrarSesion');
 
             $this->logout();
             
             $this->alerta = new Alertas('Exito', 'Sesión cerrada');
             
-            echo $this->alerta->recargar()->exito()->getAlerta();
+            http_response_code(200);
+
+            echo $this->alerta->redireccionar('home')->exito()->getAlerta();
             
             exit();
 

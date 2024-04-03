@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+:root{
+    --color-barra-lateral:linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    --color-tabla:linear-gradient(to top, #dfe9f3 0%, white 100%);
+
+    --color-th-tabla:#c01ea7;
+    --color-texto-th: #d4ece9;
+
+    --color-header-busquedad: #899ca2;
+
+    --color-texto:rgb(0,0,0);
+    --color-texto-menu:rgb(236, 236, 236);
+
+    --color-menu-hover:rgb(238,238,238);
+    --color-menu-hover-texto:rgb(0,0,0);
+
+    --color-menu-selected:rgb(238,238,238);
+
+    --color-boton:rgb(0,0,0);
+    --color-boton-texto:rgb(255,255,255);
+
+    --color-linea:rgb(180,180,180);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-switch-base :rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+    --color-main:rgb(255,255,255);
+    --color-sombras:rgb(0,0,0,0.2);
+}
+
+.dark-mode{
+    --color-barra-lateral: linear-gradient(to bottom,#736F6F 0%, #1B1919 100%);
+    --color-tabla:linear-gradient(to right, #868f96 0%, #596164 100%) ;
+
+    --color-th-tabla:#56C6BD;
+    --color-texto-th: #fff;
+
+      --color-header-busquedad: #323131;
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(201, 201, 201);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-menu-selected:#E14AE1;
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-texto:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+    --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+    --color-switch-base :rgb(39,205,64);
+    --color-switch-circulo:rgb(255,255,255);
+
+    --color-scroll:rgb(68,69,74);
+    --color-scroll-hover:rgb(85,85,85);
+    --color-main:rgb(99, 98, 98);
+
+    --color-sombras:rgba(255, 255, 255, 1);
+}
+
+
+.header-marcas{
+      display: flex;
+      min-height: 70px;
+      background-color: var(--color-fondo);
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: ROW;
+      padding: 20px;
+      border-bottom: 2px solid #fff;
+}
+
+.barra-busqueda{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-header-busquedad);
+      border-radius: 10px;
+}
+
+.barra-busqueda input{
+   border: none;
+   background: none;
+   color: white;
+   padding-left: 5px;
+   font-size: 15px;
+}
+
+.barra-busqueda button{
+     
+      color: white;
+      border: none;
+      display: flex;
+      padding: 1px;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 4px;
+      font-size: 30px;
+      cursor: pointer;
+      background-color: var(--color-header-busquedad);
+}
+
+.barra-busqueda button:hover{
+      background-color: #fa71cd;
+}
+.barra-busqueda input::placeholder {
+   color: #ffffff; /* Cambia #909090 al color que prefieras */
+   /* Puedes añadir más estilos al placeholder aquí si lo necesitas */
+}
+
+
+.btn-agregar-marca{
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #c471f5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      gap: 2px;
+      font-size: 20PX;
+}
+
+.barra-busqueda input:focus {
+   outline: none;
+ }
+
+/*  Section tarjetas
+ */ 
+
+.contenedor-marcas{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20PX;
+}
+
+.contenedor-marcas .tarjeta-marca{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 230px;
+      position: relative;
+      flex-direction: column;
+      width: 200px;
+      padding: 10px;
+      background-color: rgba(171, 208, 233, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+      backdrop-filter: blur(30px);
+      overflow: hidden;
+
+}
+
+.contenedor-marcas .tarjeta-marca:hover{
+      background-color: rgba(233, 220, 171, 0.7);
+      scale: 1.1;
+}
+
+.contenedor-marcas .tarjeta-marca .nombre-marca{
+      font-size: 40px;
+      color: white;
+      font-family: 'Outfit', sans-serif;
+}
+
+.tarjeta-marca .acciones {
+   position: absolute; 
+   right: 0; 
+   bottom: 0; 
+   padding: 10px;
+   display: flex;
+   gap: 10px;
+}
+
+.tarjeta-marca .acciones button{
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.tarjeta-marca .acciones .btn-editar{
+   background-color: #c471f5;
+
+}
+
+.tarjeta-marca .acciones .btn-eliminar{
+   background-color: #ce352d;
+}
+
+.tarjeta-marca .acciones button:hover{
+   background-color: #fa71cd;
+}
+
+.tarjeta-marca .acciones button:active{
+   background-color: #c471f5;
+}
+
+/*  Section Responsive
+ */
+
+@media screen and (max-width: 768px){
+      .header-marcas{
+            flex-direction: column;
+            padding: 10px;
+            gap: 10px;
+            border-bottom: 2px solid #323131;
+      }
+
+
+
+      .contenedor-marcas{
+            justify-content: center;
+      }
+      .contenedor-marcas .tarjeta-marca{
+            width: 46%;
+      }
+      .contenedor-marcas .tarjeta-marca .nombre-marca{
+            font-size: 30px;
+      }
+      .tarjeta-marca .acciones {
+            padding: 5px;
+      }
+      .tarjeta-marca .acciones button{
+            font-size: 15px;
+      }
+}
+
+
+

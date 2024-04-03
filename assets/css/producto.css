@@ -83,16 +83,24 @@
 
 /*----------------->Tarjetas*/
 
-main .tarjetas.productos{
+main .tarjetas.productos {
     background-color: var(--color-main);
     padding: 20px;
-    margin: 20px 0px;
+    margin: 20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Ajuste aquí */
+    border-radius: 10px;
+    overflow-y: auto;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
+
 
 main .tarjetas.productos .producto{
     padding: 10px;
     margin: 20px;
+    width: 250px;
     border-radius: 10px;
     background-color: var(--color-main);
     color: var(--color-menu-hover-texto);
@@ -106,13 +114,14 @@ main .tarjetas.productos .producto{
 main .tarjetas.productos .producto .imagen{
     width: 100%;
     height: 200px;
-    border-radius: 5PX;
+    padding: 10px;
+    border-radius: 20PX;
     justify-content: center;
     align-items: center;
 }
 
 main .tarjetas.productos .producto .nombre{
-    font-size: 20PX;
+    font-size:25PX;
     font-weight: 500;
     text-align: center;
     margin: 5px 0px;
@@ -122,58 +131,103 @@ main .tarjetas.productos .producto .nombre{
 main .tarjetas.productos .producto .precio{
     font-weight: 500;
     text-align: center;
-    margin: 10px 0px;
+    margin: 5px 0px;
+}
+
+main .tarjetas.productos .producto .precio span{
+    font-size: 20px;
+    font-weight: 500;
+    color: #21c523;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+main .tarjetas.productos .producto .stock{
+    font-weight: 500;
+    text-align: center;
+    margin: 5px 0px;
+}
+
+main .tarjetas.productos .producto .stock span{
+    font-size: 20px;
+    font-weight: 500;
+    color: #21afc5;
+    gap: 5px;
 }
 
 main .tarjetas.productos .producto .acciones{
-    margin-top:10px;
+    margin: 10px auto;
     display: flex;
+    padding: 10px;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 50px;
+    box-shadow: 0px 0px 10px 0px var(--color-sombras);
+    border-radius: 10px;
+    background-color:var(--color-boton);
+    transition: background-color 0.5s ease,color 0.5s ease;
+
+
 }
 
 main .tarjetas.productos .producto .acciones .editar{
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 20PX;
+    font-size: 18PX;
     background-color: var(--color-boton-agregar);
-    color: var(--color-boton-texto);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 main .tarjetas.productos .producto .acciones .editar:hover{
     background-color: #27BE29;
+    scale: 1.1;
 }
 
 main .tarjetas.productos .producto .acciones .eliminar{
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: 20PX;
+    font-size: 18PX;
     background-color: #E74C3C;
-    color: var(--color-boton-texto);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 main .tarjetas.productos .producto .acciones .eliminar:hover{
     background-color: #E74C3C;
+    scale: 1.1;
 }
 
+/*----------------->Modal*/
+main #formulario-actualizar-producto{
+/*     Centrar el contenido de este div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+/*----------------->Media Queries*/
 @media (max-width: 1200px){
     main .tarjetas.productos{
         flex-direction: row;
+        justify-content: center;
     }
 
     main .tarjetas.productos .producto{
-        width: 40%;
+        width: 36%;
     }
 }
 
 @media (max-width: 800px){
 
     main .tarjetas.productos .producto{
-        width: 40%;
+        width: 30%;
     }
 }
 

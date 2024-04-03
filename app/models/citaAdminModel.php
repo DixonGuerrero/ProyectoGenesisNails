@@ -1,5 +1,5 @@
 <?php 
-    class CitaAdminModel extends Model implements IModel{
+    class CitaAdminModel extends Model{
 
         private $id_cita;
         private $id_servicio;
@@ -22,14 +22,16 @@
 
         }
 
-        public function guardar(){
+        public function guardar($id_cliente){
             try {
 
                 $data = [
                     'id_servicio' => $this->id_servicio,
-                    'id_cliente' => $this->id_cliente,
+                    'id_cliente' => $id_cliente,
                     'fecha' => $this->fecha
                 ];
+
+                error_log('CitaAdminModel::guardar -> data: '.json_encode($data));
 
                 $respuesta =  $this->api->crear('cita',$data);
 
@@ -47,6 +49,7 @@
             try {
 
                 $respuesta = $this->api->obtenerTodo('cita');
+                error_log('CitaAdminModel::obtenerTodo -> respuesta: '.json_encode($respuesta));
                 
                 foreach($respuesta['response'] as $row){
                     $item = new CitaAdminModel();
@@ -184,12 +187,34 @@
         }
 
         public function setFecha($fecha){
-            $this->fecha = $this->formatoFecha($fecha);
+            $this->fecha = $fecha;
         }
 
         public function formatoFecha($fecha){
             $fecha = explode('T',$fecha);
             return $fecha[0];
+        }
+
+        
+        public function obtenerSoloHora($fecha){
+            $fecha = explode('T',$fecha);
+            error_log('CitaModel::formatoHora -> fecha: '.json_encode($fecha));
+            return $fecha[1];
+        }
+
+        public function formatoHora($hora){
+            //Ejemplo de hora : 17:00:00.000Z vamos a transformarla a esto 5:00 PM
+
+            error_log('CitaModel::formatoHora -> hora: '.json_encode($hora));
+
+            $hora = explode(':',$hora);
+            $hora = $hora[0].':'.$hora[1];
+
+            $hora = date('g:i a', strtotime($hora));
+
+            error_log('CitaModel::formatoHora -> hora: '.json_encode($hora));
+
+            return $hora;
         }
 
 

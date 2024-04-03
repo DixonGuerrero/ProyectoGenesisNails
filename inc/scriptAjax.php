@@ -1,1 +1,0 @@
-<script src="<?php echo APP_URL?>assets/js/ajax.js"></script>

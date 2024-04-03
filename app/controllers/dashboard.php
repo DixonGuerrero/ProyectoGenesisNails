@@ -131,7 +131,8 @@ class Dashboard extends SessionController
 
             $citas =  $this->cita->obtenerTodo();
             
-
+            if (isset($citas) && count($citas) > 0):
+                
             $servicios = array();
 
             //Obtener id de servicios de las citas y mirar cual es el que mas se repite
@@ -178,6 +179,9 @@ class Dashboard extends SessionController
             }
 
             return $respuesta;
+            else:
+                return $respuesta = '';
+            endif;
         } catch (Exception $e) {
             error_log('Dashboard::servicioSemana -> excepcion: ' . $e);
         }
@@ -185,8 +189,9 @@ class Dashboard extends SessionController
 
     public function formularioCita(){
         $citas = [];
+        $servicio = new ServicioModel();
         try {
-            $citas = $this->cita->obtenerTodo();
+            $servicios = $servicio->obtenerTodo();
 
             $respuesta = '
             <div class="modal_container">
@@ -209,8 +214,8 @@ class Dashboard extends SessionController
                     <select name="id_servicio" id="servicio" class="form_input" >';
 
         //Asignamos datos
-        foreach ($citas as $cita) {
-            $respuesta .= '<option value="' . $cita->getIdServicio() . '">' . $cita->getTipoServicio() . '</option>';
+        foreach ($servicios as $servicio) {
+            $respuesta .= '<option value="' . $servicio->getIdServicio() . '">' . $servicio->getTipoServicio() . '</option>';
         }
 
 

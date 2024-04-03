@@ -8,7 +8,7 @@
         private $telefono;
         private $role;
         private $imagen;
-        private $cargo;
+
         private $usuario;
         private $password;
         private $id_cliente;
@@ -23,7 +23,7 @@
             $this->telefono = '';
             $this->role = '';
             $this->imagen = '';
-            $this->cargo = '';
+
             $this->usuario = '';
             $this->password = '';
             $this->id_cliente = 0;
@@ -41,7 +41,29 @@
                     'telefono' => $this->telefono,
                     'imagen' => $this->imagen,
                     'rol' => $this->role,
-                    'cargo' => $this->cargo,
+                    'usuario' => $this->usuario,
+                    'password' => $this->password
+                ];
+
+               
+                
+                $respuesta =  $this->api->crear('persona',$data);
+
+                return $respuesta;
+            } catch (Exception $e) {
+                error_log('UserModel::guardar -> ERROR: ' . $e);
+                return false;
+            }
+        }
+        public function registrar(){
+            try {
+                $data = [
+                    'nombres' => $this->nombres,
+                    'apellidos' => $this->apellidos,
+                    'correo' => $this->email,
+                    'telefono' => $this->telefono,
+                    'imagen' => $this->imagen,
+                    'rol' => $this->role,
                     'usuario' => $this->usuario,
                     'password' => $this->password
                 ];
@@ -98,10 +120,13 @@
             }
         }
 
+        
+
         public function eliminar($id){
             try {
-                $this->api->eliminar('persona',$id);
-                return true;
+                $respuesta = $this->api->eliminar('persona',$id);
+                error_log('UserModel::eliminar -> respuesta: ' . json_encode($respuesta));
+                return $respuesta;
             } catch (Exception $e) {
                 error_log('UserModel::eliminar -> ERROR: ' . $e);
                 return false;
@@ -113,11 +138,10 @@
                 $data = [
                     'nombres' => $this->nombres,
                     'apellidos' => $this->apellidos,
-                    'email' => $this->email,
+                    'correo' => $this->email,
                     'telefono' => $this->telefono,
                     'imagen' => $this->imagen,
                     'rol' => $this->role,
-                    'cargo' => $this->cargo,
                     'usuario' => $this->usuario
                 ];
 
@@ -147,7 +171,7 @@
             $this->setEmail($data['correo']);
             $this->setTelefono($data['telefono']);
             $this->setRole($data['rol']);
-            $this->setImagen($data['imagen']);
+            $this->setImagen($this->validarImagen($data['imagen']));
             $this->setIdCliente($data['id_cliente']);
         }
 
@@ -186,8 +210,7 @@
         public function getImagen(){ return $this->imagen;
         }
 
-        public function getCargo(){ return $this->cargo;
-        }
+
 
         public function getUsuario(){ return $this->usuario;
         }
@@ -218,10 +241,28 @@
         public function setRole($role){ $this->role = $role;
         }
 
-        public function setImagen($imagen){ $this->imagen = $imagen;
+        public function setImagen($imagen){ 
+
+           $this->imagen = $imagen;
         }
 
-        public function setCargo($cargo){ $this->cargo = $cargo;
+        public function validarImagen($imagen){
+
+            error_log('UserModel::validarImagen -> imagen: ' . $imagen);
+            $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Proyectos/ProyectoGenesisNails2/assets/images/usuario/'.$imagen.'';
+
+
+            error_log('UserModel::validarImagen -> directorio: ' . $directorio);
+
+            if($imagen == ''){
+                error_log('UserModel::validarImagen -> Imagen no existe ' . $imagen);
+                return $imagen = 'default.jpg';
+            }else if(file_exists($directorio)){
+
+                error_log('UserModel::validarImagen -> Imagen si existe ' . $imagen);
+                return $imagen;
+
+            } 
         }
 
         public function setUsuario($usuario){ $this->usuario = $usuario;

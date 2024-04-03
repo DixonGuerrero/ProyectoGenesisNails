@@ -1,24 +1,46 @@
 <?php
 require_once 'app/views/template/parteSuperior.php';
 
-    $citas = $this->d['citas'];
+$citas = $this->d['citas'];
+$formularioActualizarCita = $this->d['formularioActualizarCita'];
+$formularioAgendarCita = $this->d['formularioCita'];
 ?>
 
 <div class="barra-superior">
     <h1 class="titulo-pagina">Cita</h1>
 </div>
 
-<h2 class="titulo-sesion">
-    <ion-icon name="calendar"></ion-icon>
-    Citas
-</h2>
+<div class="header-sesion">
+
+    <h2 class="titulo-sesion">
+        <ion-icon name="calendar"></ion-icon>
+        Citas
+    </h2>
+
+    <button class="boton-agendar-cita add-new">
+        Agendar cita
+        <ion-icon name="arrow-forward-circle"></ion-icon>
+    </button>
+</div>
+
 
 <section class="citas-reservadas">
 
     <div class="contenedor-cita">
-        <?php echo $citas?>
+        <?php echo $citas ?>
     </div>
 </section>
+
+<section class="modal " id="modalAgendarCita">
+    <?= $formularioAgendarCita; ?>
+</section>
+
+<section class="modal modal_update" id="modalEditarCita">
+    <?= $formularioActualizarCita; ?>
+</section>
+
+
+
 
 <!-- <section class="recomendacion-cita">
     <img src="<?php echo APP_URL ?>assets/images/logo.png" alt="" class="logo-fondo-rc">
@@ -77,6 +99,11 @@ require_once 'app/views/template/parteSuperior.php';
 </section> -->
 
 
+
+<!-- Incluimos javascript para rellenar modal update
+ -->
+
+<script src="<?php echo APP_URL ?>assets/js/cita.js"></script>
 <?php
 require_once 'app/views/template/parteInferior.php';
 ?>

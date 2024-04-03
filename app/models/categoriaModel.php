@@ -3,7 +3,7 @@
     class CategoriaModel extends Model{
         private $id_categoria;
         private $nombre;
-        private $tipo;
+ 
 
         public function __construct(){
             parent::__construct();
@@ -13,8 +13,7 @@
         public function guardar(){
             try {
                 $data = [
-                    'nombre' => $this->nombre,
-                    'tipo' => $this->tipo
+                    'nombre' => $this->nombre
                 ];
 
                
@@ -33,11 +32,13 @@
             try {
                 $respuesta = $this->api->obtenerTodo('categoria');
 
-                foreach ($respuesta as $item) {
+                foreach ($respuesta['response'] as $item) {
                     $categoria = new CategoriaModel();
                     $categoria->asignarDatos($item);
                     array_push($data, $categoria);
                 }
+
+                error_log('CategoriaModel::obtenerTodo -> EXITO'.json_encode($data));
 
                 return $data;
                 
@@ -64,11 +65,10 @@
         public function actualizar(){
             try {
                 $data = [
-                    'nombre' => $this->nombre,
-                    'tipo' => $this->tipo,
+                    'nombre' => $this->nombre
                 ];
                 
-                $respuesta =  $this->api->actualizar('categoria',$this->id_categoria,$data);
+                $respuesta =  $this->api->actualizar('categoria',$data,$this->id_categoria);
 
                 return $respuesta;
             } catch (Exception $e) {
@@ -92,7 +92,6 @@
         public function asignarDatos($data){
             $this->setIdCategoria($data['id_categoria']);
             $this->setNombre($data['nombre']);
-            $this->setTipo($data['tipo']);
         }
 
         //Getters and Setters
@@ -112,13 +111,7 @@
             return $this->nombre;
         }
 
-        public function setTipo($tipo){
-            $this->tipo = $tipo;
-        }
 
-        public function getTipo(){
-            return $this->tipo;
-        }
 
 
        

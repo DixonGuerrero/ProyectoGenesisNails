@@ -9,9 +9,9 @@
     ></script>
     <script src="<?php echo APP_URL;?>assets/js/dashAdmin.js"></script>
     <script src="<?php echo APP_URL?>assets/js/ajax.js"></script>
-    <script src="<?php echo APP_URL;?>assets/js/tabla.js"></script>
     <script src="<?php echo APP_URL;?>assets/js/modal.js"></script>
-    <script src="<?php echo APP_URL;?>assets/js/files.js"></script>
+    <
+
 
   </body>
 </html>

@@ -1,160 +1,166 @@
-<?php 
-    class Proveedor extends SessionController{
+<?php
+class Proveedor extends SessionController
+{
 
 
-        function __construct(){
-            parent::__construct();
-           $this->loadModel('Proveedor');
-            error_log('Home::construct -> Inicio de Home');
-        }
+    function __construct()
+    {
+        parent::__construct();
+        $this->loadModel('Proveedor');
+        error_log('Home::construct -> Inicio de Home');
+    }
 
-        public function render(){
-            $this->view->render('proveedor/index',[
-                'usuario' =>$this->usuario,
-                'listaProveedores' => $this->listaProveedores()
-            ]);
-        }
+    public function render()
+    {
+        $this->view->render('proveedor/index', [
+            'usuario' => $this->usuario,
+            'listaProveedores' => $this->listaProveedores()
+        ]);
+    }
 
-        public function nuevoProveedor(){
-           
-            error_log('Proveedor::nuevoProveedor -> inicio de nuevoProveedor');
+    public function nuevoProveedor()
+    {
 
-            if ($this->existeParametrosPost([
-                'nombre',
-                'direccion',
-                'telefono',
-                'email',
-                'nit'
-            ])) {
-                $nombre = limpiarCadena($this->obtenerPost('nombre'));
-                $direccion = limpiarCadena($this->obtenerPost('direccion'));
-                $telefono = limpiarCadena($this->obtenerPost('telefono'));
-                $email = limpiarCadena($this->obtenerPost('email'));
-                $nit = limpiarCadena($this->obtenerPost('nit'));
+        if ($this->existeParametrosPost([
+            'nombre',
+            'direccion',
+            'telefono',
+            'email',
+            'nit'
+        ])) {
+            $nombre = limpiarCadena($this->obtenerPost('nombre'));
+            $direccion = limpiarCadena($this->obtenerPost('direccion'));
+            $telefono = limpiarCadena($this->obtenerPost('telefono'));
+            $email = limpiarCadena($this->obtenerPost('email'));
+            $nit = limpiarCadena($this->obtenerPost('nit'));
 
-                if ($nombre == '' || $direccion == '' || $telefono == '' || $email == '' || $nit == '') {
-                    $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
-                    http_response_code(400);
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-                
-                $this->model->setNombre($nombre);
-                $this->model->setDireccion($direccion);
-                $this->model->setTelefono($telefono);
-                $this->model->setEmail($email);
-                $this->model->setNit($nit);
-
-                $respuesta = $this->model->guardar();
-                error_log('Proveedor::nuevoProveedor -> respuesta: ' . json_encode($respuesta));
-                if ($respuesta['status'] != 200) {
-                    $msg = $respuesta['response']['message'];
-                    $this->alerta = new Alertas('ERROR', $msg);
-                    http_response_code(400);
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-                $this->alerta = new Alertas('SUCCESS', 'Proveedor guardado correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+            if ($nombre == '' || $direccion == '' || $telefono == '' || $email == '' || $nit == '') {
+                $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
                 exit();
             }
-        }
 
-        public function actualizarProducto(){
-           
-            error_log('Proveedor::actualizarProveedor -> inicio de actualizarProveedor');
+            $this->model->setNombre($nombre);
+            $this->model->setDireccion($direccion);
+            $this->model->setTelefono($telefono);
+            $this->model->setEmail($email);
+            $this->model->setNit($nit);
 
-            if ($this->existeParametrosPost([
-                'id_proveedor',
-                'nombre',
-                'direccion',
-                'telefono',
-                'email',
-                'nit'
-            ])) {
-                $id_proveedor = limpiarCadena($this->obtenerPost('id_proveedor'));
-                $nombre = limpiarCadena($this->obtenerPost('nombre'));
-                $direccion = limpiarCadena($this->obtenerPost('direccion'));
-                $telefono = limpiarCadena($this->obtenerPost('telefono'));
-                $email = limpiarCadena($this->obtenerPost('email'));
-                $nit = limpiarCadena($this->obtenerPost('nit'));
-
-                if ($id_proveedor == '' || $nombre == '' || $direccion == '' || $telefono == '' || $email == '' || $nit == '') {
-                    $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
-                    http_response_code(400);
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-                $this->model->setIdProveedor($id_proveedor);
-                $this->model->setNombre($nombre);
-                $this->model->setDireccion($direccion);
-                $this->model->setTelefono($telefono);
-                $this->model->setEmail($email);
-                $this->model->setNit($nit);
-
-                $respuesta = $this->model->actualizar();
-                error_log('Proveedor::actualizarProveedor -> respuesta: ' . json_encode($respuesta));
-                if ($respuesta['status'] != 200) {
-                    $msg = $respuesta['response']['message'];
-                    $this->alerta = new Alertas('ERROR', $msg);
-                    http_response_code(400);
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-                $this->alerta = new Alertas('SUCCESS', 'Proveedor actualizado correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+            $respuesta = $this->model->guardar();
+            error_log('Proveedor::nuevoProveedor -> respuesta: ' . json_encode($respuesta));
+            if ($respuesta['status'] != 201) {
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR', $msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
                 exit();
             }
+            $this->alerta = new Alertas('SUCCESS', 'Proveedor guardado correctamente');
+            echo $this->alerta->redireccionar('proveedor')->exito()->getAlerta();
+            exit();
         }
+    }
 
-        public function eliminarProducto(){
-          
-            error_log('Proveedor::eliminarProveedor -> inicio de eliminarProveedor');
+    public function actualizar()
+    {
 
-            if ($this->existeParametrosPost([
-                'id_proveedor'
-            ])) {
-                $id_proveedor = limpiarCadena($this->obtenerPost('id_proveedor'));
+        error_log('Proveedor::actualizarProveedor -> inicio de actualizarProveedor');
 
-                if ($id_proveedor == '') {
-                    $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
-                    http_response_code(400);
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-                $respuesta = $this->model->eliminar($id_proveedor);
-                error_log('Proveedor::eliminarProveedor -> respuesta: ' . json_encode($respuesta));
-                if ($respuesta['status'] != 200) {
-                    $msg = $respuesta['response']['message'];
-                    $this->alerta = new Alertas('ERROR', $msg);
-                    http_response_code(400);
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-                $this->alerta = new Alertas('SUCCESS', 'Proveedor eliminado correctamente');
-                echo $this->alerta->simple()->exito()->getAlerta();
+        if ($this->existeParametrosPost([
+            'id_proveedor',
+            'nombre',
+            'direccion',
+            'telefono',
+            'email',
+            'nit'
+        ])) {
+            $id_proveedor = limpiarCadena($this->obtenerPost('id_proveedor'));
+            $nombre = limpiarCadena($this->obtenerPost('nombre'));
+            $direccion = limpiarCadena($this->obtenerPost('direccion'));
+            $telefono = limpiarCadena($this->obtenerPost('telefono'));
+            $email = limpiarCadena($this->obtenerPost('email'));
+            $nit = limpiarCadena($this->obtenerPost('nit'));
+
+            if ($id_proveedor == '' || $nombre == '' || $direccion == '' || $telefono == '' || $email == '' || $nit == '') {
+                $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
                 exit();
             }
-        }
+            $this->model->setIdProveedor($id_proveedor);
+            $this->model->setNombre($nombre);
+            $this->model->setDireccion($direccion);
+            $this->model->setTelefono($telefono);
+            $this->model->setEmail($email);
+            $this->model->setNit($nit);
 
-        public function numProveedores(){
-            error_log('Proveedor::numProveedores -> inicio de numProveedores');
-
-            try {
-                $proveedores = $this->model->obtenerTodo();
-
-                if ($proveedores) {
-                    $numProveedores = count($proveedores);
-                    error_log('Proveedor::numProveedores -> numProveedores: ' . $numProveedores);
-                    return $numProveedores;
-                }
-            } catch (Exception $e) {
-                error_log('Proveedor::numProveedores -> ERROR: ' . $e);
-                return false;
+            $respuesta = $this->model->actualizar();
+            error_log('Proveedor::actualizarProveedor -> respuesta: ' . json_encode($respuesta));
+            if ($respuesta['status'] != 200) {
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR', $msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
             }
+            $this->alerta = new Alertas('SUCCESS', 'Proveedor actualizado correctamente');
+            echo $this->alerta->redireccionar('proveedor')->exito()->getAlerta();
+            exit();
         }
+    }
 
-        public function listaProveedores(){
+    public function eliminarProveedor()
+    {
+
+        error_log('Proveedor::eliminarProveedor -> inicio de eliminarProveedor');
+
+        if ($this->existeParametrosPost([
+            'id_proveedor'
+        ])) {
+            $id_proveedor = limpiarCadena($this->obtenerPost('id_proveedor'));
+
+            if ($id_proveedor == '') {
+                $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+            $respuesta = $this->model->eliminar($id_proveedor);
+            error_log('Proveedor::eliminarProveedor -> respuesta: ' . json_encode($respuesta));
+            if ($respuesta['status'] != 200) {
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR', $msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+            $this->alerta = new Alertas('SUCCESS', 'Proveedor eliminado correctamente');
+            echo $this->alerta->redireccionar('proveedor')->exito()->getAlerta();
+            exit();
+        }
+    }
+
+    public function numProveedores()
+    {
+        error_log('Proveedor::numProveedores -> inicio de numProveedores');
+
+        try {
+            $proveedores = $this->model->obtenerTodo();
+
+            if ($proveedores) {
+                $numProveedores = count($proveedores);
+                error_log('Proveedor::numProveedores -> numProveedores: ' . $numProveedores);
+                return $numProveedores;
+            }
+        } catch (Exception $e) {
+            error_log('Proveedor::numProveedores -> ERROR: ' . $e);
+            return false;
+        }
+    }
+
+    public function listaProveedores()
+    {
         try {
             //Obtener Datos
             $proveedores = $this->model->obtenerTodo();
@@ -177,7 +183,7 @@
             <div class="table-header">
                 <p>Lista Proveedores</p>
                 <div>
-                    <button class="add-new">
+                    <button class="add-new btn-agregar">
                         <ion-icon name="add-circle"></ion-icon>
                         Nuevo
                     </button>
@@ -185,15 +191,29 @@
             </div>
             <div class="table-section">
                 <table id="tablaDatos">
-                    <thead>
+                    <thead id="encabezado-tabla">
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Nit</th>
-                            <th>Direccion</th>
-                            <th>Acciones</th>
+                            <th>
+                            <ion-icon name="id-card"></ion-icon>
+                            Id</th>
+                            <th>
+                            <ion-icon name="person-circle"></ion-icon>
+                            Nombre</th>
+                            <th>
+                            <ion-icon name="call"></ion-icon>
+                            Telefono</th>
+                            <th>
+                            <ion-icon name="mail"></ion-icon>
+                            Email</th>
+                            <th>
+                            <ion-icon name="document-text"></ion-icon>
+                            Nit</th>
+                            <th>
+                            <ion-icon name="compass"></ion-icon>
+                            Direccion</th>
+                            <th>
+                            <ion-icon name="build"></ion-icon>
+                            Acciones</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -203,18 +223,26 @@
             foreach ($proveedores as $proveedor) {
                 $tabla .= '<tr>
                 <td>' . $proveedor->getIdProveedor() . '</td>
-                <td>'.$proveedor->getNombre().'</td>
+                <td>' . $proveedor->getNombre() . '</td>
                 <td>' . $proveedor->getTelefono() . '</td>
                 <td>' . $proveedor->getEmail() . '</td>
                 <td>' . $proveedor->getNit() . '</td>
                 <td>' . $proveedor->getDireccion() . '</td>
                 <td>
-                    <button class="editar">
-                        <ion-icon name="create"></ion-icon>
-                    </button>
-                    <button class="eliminar">
-                        <ion-icon name="trash"></ion-icon>
-                    </button>
+                    <div class="acciones">
+                        <button class="editar boton-editar">
+                            <ion-icon name="create"></ion-icon>
+                        </button>
+                        <form class="FormularioAjax" action="' . APP_URL . 'proveedor/eliminarProveedor" method="POST">
+
+                                <button type="submit" class="eliminar">
+                                <ion-icon name="trash-bin"></ion-icon>
+                                </button>
+
+                                <input type="hidden" class="id_cita" name="id_proveedor" value="' . $proveedor->getIdProveedor() . '">
+
+                        </form>
+                    </div>
                 </td>
             </tr>';
             }
@@ -230,7 +258,18 @@
         } catch (Exception $e) {
             error_log('Usuario::listaUsuarios -> ERROR: ' . $e);
             return false;
-        } 
         }
     }
-?>
+
+    public function nameById($id_proveedor){
+        try {
+            $proveedor = $this->model->obtenerUno($id_proveedor);
+            if ($proveedor) {
+                return $proveedor->getNombre();
+            }
+        } catch (Exception $e) {
+            error_log('Proveedor::nameById -> ERROR: ' . $e);
+            return false;
+        }
+    }      
+}

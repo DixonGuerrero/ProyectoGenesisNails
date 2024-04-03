@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap");
+:root {
+  --color-barra-lateral: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+  --color-tabla: linear-gradient(to top, #dfe9f3 0%, white 100%);
+
+  --color-th-tabla: #c01ea7;
+  --color-texto-th: #d4ece9;
+
+  --color-header-busquedad: #899ca2;
+
+  --color-texto: rgb(0, 0, 0);
+  --color-texto-menu: rgb(236, 236, 236);
+
+  --color-menu-hover: rgb(238, 238, 238);
+  --color-menu-hover-texto: rgb(0, 0, 0);
+
+  --color-menu-selected: rgb(238, 238, 238);
+
+  --color-boton: rgb(0, 0, 0);
+  --color-boton-texto: rgb(255, 255, 255);
+
+  --color-linea: rgb(180, 180, 180);
+  --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+  --color-switch-base: rgb(201, 202, 206);
+  --color-switch-circulo: rgb(241, 241, 241);
+
+  --color-scroll: rgb(192, 192, 192);
+  --color-scroll-hover: rgb(134, 134, 134);
+  --color-main: rgb(255, 255, 255);
+  --color-sombras: rgb(0, 0, 0, 0.2);
+}
+
+.dark-mode {
+  --color-barra-lateral: linear-gradient(to bottom, #736f6f 0%, #1b1919 100%);
+  --color-tabla: linear-gradient(to right, #868f96 0%, #596164 100%);
+
+  --color-th-tabla: #56c6bd;
+  --color-texto-th: #fff;
+
+  --color-header-busquedad: #323131;
+
+  --color-texto: rgb(255, 255, 255);
+  --color-texto-menu: rgb(201, 201, 201);
+
+  --color-menu-hover: rgb(0, 0, 0);
+  --color-menu-hover-texto: rgb(238, 238, 238);
+
+  --color-menu-selected: #e14ae1;
+
+  --color-boton: rgb(255, 255, 255);
+  --color-boton-texto: rgb(0, 0, 0);
+
+  --color-linea: rgb(90, 90, 90);
+  --color-linea-secundario: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+
+  --color-switch-base: rgb(39, 205, 64);
+  --color-switch-circulo: rgb(255, 255, 255);
+
+  --color-scroll: rgb(68, 69, 74);
+  --color-scroll-hover: rgb(85, 85, 85);
+  --color-main: rgb(99, 98, 98);
+
+  --color-sombras: rgba(255, 255, 255, 1);
+}
+
+.header-entrada {
+  display: flex;
+  min-height: 70px;
+  background-color: var(--color-fondo);
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: ROW;
+  padding: 20px;
+  border-bottom: 2px solid #e38bea;
+}
+
+.barra-busqueda {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-header-busquedad);
+  border-radius: 10px;
+}
+
+.barra-busqueda input {
+  border: none;
+  background: none;
+  color: white;
+  padding-left: 5px;
+  font-size: 15px;
+}
+
+.barra-busqueda button {
+  color: white;
+  border: none;
+  display: flex;
+  padding: 1px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: var(--color-header-busquedad);
+}
+
+.barra-busqueda button:hover {
+  background-color: #fa71cd;
+}
+.barra-busqueda input::placeholder {
+  color: #ffffff; /* Cambia #909090 al color que prefieras */
+  /* Puedes añadir más estilos al placeholder aquí si lo necesitas */
+}
+
+.btn-agregar-entrada {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c471f5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  gap: 2px;
+  font-size: 20px;
+}
+
+.barra-busqueda input:focus {
+  outline: none;
+}
+
+/*  Section tarjetas
+ */
+
+.contenedor-entradas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.contenedor-entradas .tarjeta {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--color-header-busquedad);
+  border-radius: 10px;
+  padding: 20px;
+  width: 600px;
+  max-height: 600px;
+}
+
+.contenedor-entradas .tarjeta-header {
+  width: 100%;
+  color: white;
+  padding: 10px;
+  background-color: var(--color-linea-secundario);
+  border-bottom: 1px solid #fff;
+
+  text-align: left;
+}
+
+.contenedor-entradas .tarjeta .info-entrada {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.contenedor-entradas .tarjeta .info-entrada p {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.contenedor-entradas .tarjeta .productos .titulo-producto {
+  width: 100%;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  background-color: var(--color-linea-secundario);
+  margin: 10px;
+  text-align: left;
+}
+
+.contenedor-entradas .tarjeta .productos .contenedor-imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+
+  border: 1px solid #b8b5b5;
+  background-color: rgba(188, 156, 211, 0.1);
+  backdrop-filter: blur(5px);
+  margin: 10px;
+}
+
+.contenedor-entradas .tarjeta .productos .contenedor-imagenes img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.contenedor-entradas .tarjeta .acciones {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.contenedor-entradas .tarjeta .acciones button {
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: #49e1e8;
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  gap: 5px;
+}
+
+/* Barra Superior
+ */
+
+.barra-superior-nuevaEntrada {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--color-linea);
+}
+
+.titulo-contenedor {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.titulo-pagina {
+  margin: 0; /* Remueve los márgenes por defecto del título */
+}
+
+.btn-regresar,
+.espaciador {
+  flex-basis: 50px; /* Ajusta según el ancho deseado para el botón y el espaciador */
+  flex-shrink: 0; /* Evita que se reduzca */
+}
+
+.espaciador {
+  /* No necesita estilos adicionales, solo ocupa espacio */
+}
+
+.barra-superior-nuevaEntrada .btn-regresar {
+  background-color: var(--color-boton);
+  color: var(--color-boton-texto);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-new-proveedor.btn-agregar {
+  background-color: #5832ef;
+}
+
+.add-new-proveedor.btn-agregar:hover {
+  background-color: #3a1f9b;
+}
+.proveedor h2 {
+  color: var(--color-texto);
+  padding: 5px;
+}
+
+.proveedor-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #9E8BEA;
+}
+
+.proveedor-info h3 {
+  color:#fff;
+}
+
+.proveedor-info button {
+  background-color: #31e290;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Contenido
+ */
+
+main .acciones-entrada {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px;
+}
+
+main .acciones-entrada button {
+  background-color: var(--color-boton);
+  color: var(--color-texto);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+main .acciones-entrada .btn-guardar {
+  background-color: #49e1e8;
+}
+
+main .acciones-entrada .btn-guardar:hover {
+  background-color: #2e9fa3;
+}
+
+main .acciones-entrada .btn-cancelar {
+  background-color: #e14ae1;
+}
+
+main .acciones-entrada .btn-cancelar:hover {
+  background-color: #a63aa6;
+}
+/* Fin Section NuevaSalida
+    */
+
+/*  Section Responsive
+ */
+
+@media screen and (max-width: 768px) {
+  .header-entrada {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    border-bottom: 2px solid #323131;
+  }
+
+  .contenedor-entradas .tarjeta .info-entrada {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .contenedor-entradas .tarjeta .titulo-entrada,
+  .contenedor-entradas .tarjeta .titulo-producto {
+    font-size: 20px;
+  }
+  .contenedor-entradas .info-entrada p {
+    font-size: 12px;
+  }
+
+  .contenedor-entradas .tarjeta .productos .contenedor-imagenes {
+    padding: 5px;
+    justify-content: center;
+  }
+
+  .acciones-entrada {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}

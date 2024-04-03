@@ -5,8 +5,8 @@ la navegacion del sitio */
     const APP_URL = "http://localhost/Proyectos/ProyectoGenesisNails2/";
     const APP_NAME = "PROYECTO GENESIS NAILS";
     const APP_SESSION_NAME = "NAILS";
-    //const URL_API = "https://genesisnails.azurewebsites.net/api/";
-    const URL_API = "localhost:3000/api/";
+    const URL_API = "https://genesisnails.azurewebsites.net/api/";
+    //const URL_API = "localhost:3000/api/";
 
     const KEY_TOKEN = 'prueba123';
 

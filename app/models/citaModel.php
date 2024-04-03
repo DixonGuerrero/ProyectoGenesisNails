@@ -48,17 +48,22 @@
 
                 $respuesta = $this->api->obtenerTodo('cita');
 
+
   
                 
                 foreach($respuesta['response'] as $row){
+                    error_log('CitaModel::obtenerTodo -> row: '.json_encode($row));
 
                     $item = new CitaModel();
                     $item->asignarDatos($row);
+
+                    error_log('CitaModel::obtenerTodo -> item: '.json_encode($item->getFecha()));
 
                     array_push($datos, $item);
 
                 }
 
+                error_log('CitaModel::obtenerTodo -> datos: '.json_encode($datos));
 
                 return $datos;
 
@@ -197,6 +202,29 @@
             error_log('CitaModel::formatoFecha -> fecha: '.json_encode($fecha));
             return $fecha[0];
         }
+
+        public function obtenerSoloHora($fecha){
+            $fecha = explode('T',$fecha);
+            error_log('CitaModel::formatoHora -> fecha: '.json_encode($fecha));
+            return $fecha[1];
+        }
+
+        public function formatoHora($hora){
+            //Ejemplo de hora : 17:00:00.000Z vamos a transformarla a esto 5:00 PM
+
+            error_log('CitaModel::formatoHora -> hora: '.json_encode($hora));
+
+            $hora = explode(':',$hora);
+            $hora = $hora[0].':'.$hora[1];
+
+            $hora = date('g:i a', strtotime($hora));
+
+            error_log('CitaModel::formatoHora -> hora: '.json_encode($hora));
+
+            return $hora;
+        }
+
+        
 
 
     }

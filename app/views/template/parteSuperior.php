@@ -22,8 +22,7 @@ if (isset($this->d['mensajeTiempo'])) {
 
   <link rel="stylesheet" href="assets/css/<?php echo $url[0]; ?>.css" />
   <script src="<?php echo APP_URL ?>/assets/js/sweetalert2.all.min.js"></script>
-  <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
-  <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -46,26 +45,26 @@ if (isset($this->d['mensajeTiempo'])) {
       <?php echo $mensajeTiempo ?>
     </span>
     <nav class="navegacion">
-      <ul>
-        <li>
-          <a id="inbox" href="dashboard">
-            <ion-icon name="home-outline"></ion-icon>
-            <span>Principal</span>
-          </a>
-        </li>
-        <li>
-          <a href="cita">
-            <ion-icon name="calendar-outline"></ion-icon>
-            <span>Citas</span>
-          </a>
-        </li>
-        <li>
-          <a href="servicio">
-            <ion-icon name="storefront"></ion-icon>
-            <span>Servicios</span>
-          </a>
-        </li>
-      </ul>
+     <ul>
+    <li>
+      <a  href="dashboard" class="<?php echo $url[0] == 'dashboard' ? 'active' : ''; ?>">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Principal</span>
+      </a>
+    </li>
+    <li>
+      <a href="cita" class="<?php echo $url[0] == 'cita' ? 'active' : ''; ?>">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <span>Citas</span>
+      </a>
+    </li>
+    <li>
+      <a href="servicio" class="<?php echo $url[0] == 'servicio' ? 'active' : ''; ?>">
+        <ion-icon name="storefront"></ion-icon>
+        <span>Servicios</span>
+      </a>
+    </li>
+  </ul>
     </nav>
 
     <div>
@@ -74,7 +73,7 @@ if (isset($this->d['mensajeTiempo'])) {
       <div class="modo-oscuro">
         <div class="info">
           <ion-icon name="moon-outline"></ion-icon>
-          <span>Oscuro</span>
+          <span class="modo">Oscuro</span>
         </div>
         <div class="switch">
           <div class="base">

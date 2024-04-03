@@ -16,6 +16,11 @@
             "role": ""
         },
         {
+            "site":"nuevaSalida",
+            "access": "private",
+            "role": "admin"
+        },
+        {
             "site":"cita",
             "access":"private",
             "role":"cliente"
@@ -79,7 +84,19 @@
             "site": "dashadmin",
             "access": "private",
             "role": "admin"
+        },
+        {
+            "site": "categoria",
+            "access": "private",
+            "role": "admin"
+        },
+        {
+            "site": "marca",
+            "access": "private",
+            "role": "admin"
         }
+        
+        
     ],
     "defaultSites":{
         "cliente": "dashboard",

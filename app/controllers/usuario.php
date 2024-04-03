@@ -2,10 +2,12 @@
 class Usuario extends SessionController
 {
 
+    public $user;
 
     function __construct()
     {
         parent::__construct();
+        $this->user = new UsuarioModel();
     }
 
     public function render()
@@ -15,8 +17,101 @@ class Usuario extends SessionController
             'usuario' => $this->usuario,
             'tablaUsuarios' => $this->listaUsuarios()
         ]);
+
+        
     }
 
+
+    public function guardar(){
+            
+        if($this->existeParametrosPost(['nombres','apellidos','telefono','email','usuario','rol','clave1','clave2'])){
+
+
+
+            $nombres = limpiarCadena($this->obtenerPost('nombres'));
+            $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
+            $telefono = limpiarCadena($this->obtenerPost('telefono'));
+            $correo = limpiarCadena($this->obtenerPost('email'));
+            $usuario = limpiarCadena($this->obtenerPost('usuario'));
+            $rol = strtolower(
+                limpiarCadena($this->obtenerPost('rol'))
+            );
+            $contrasena = limpiarCadena($this->obtenerPost('clave1'));
+            $contrasena2 = limpiarCadena($this->obtenerPost('clave2'));
+
+            if($nombres == '' || $apellidos == '' || $telefono == '' || $correo == '' || $usuario == '' || $contrasena == '' || $contrasena2 == '' || $rol == ''){
+                $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if($contrasena != $contrasena2){
+                $this->alerta = new Alertas('ERROR', 'Las contraseñas no coinciden');
+
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+           
+
+            if(($_FILES['imagen']) && ($_FILES['imagen']['size'] > 0)):
+
+                error_log('Formulario::nuevoUsuario -> Existe imagen' . $_FILES['imagen']['name']);
+
+                $imagen = $this->cargarImagen($usuario,'usuario', 'imagen' );
+
+                if(isset($imagen)):
+                    $this->user->setImagen($imagen);
+                else:
+                    $this->alerta = new Alertas('ERROR', 'Error al cargar la imagen');
+                    http_response_code(400);
+                    echo $this->alerta->simple()->error()->getAlerta();
+                    exit();
+                endif;
+            endif;
+
+            $this->user->setNombres($nombres);
+            $this->user->setApellidos($apellidos);
+            $this->user->setTelefono($telefono);
+            $this->user->setEmail($correo);
+            $this->user->setUsuario($usuario);
+            $this->user->setPassword($contrasena);
+            $this->user->setRole($rol);
+
+            $respuesta = $this->user->guardar();
+
+
+            error_log('Formulario::nuevoUsuario -> respuesta: ' . json_encode($respuesta));
+            if($respuesta['status'] > 300){
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('ERROR', $msg);
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if($respuesta['status'] == 201){
+                //Redireccionamos al login
+                $this->alerta = new Alertas('EXITO', 'Usuario creado correctamente');
+                http_response_code(200);
+                
+                echo $this->alerta->recargar()->exito()->getAlerta();
+
+                exit();
+            }
+
+
+        }else{
+            $this->alerta = new Alertas('ERROR', 'Todos los campos son obligatorios');
+
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        }
+    }
 
     public function actualizarUsuario()
     {
@@ -29,14 +124,15 @@ class Usuario extends SessionController
             'apellidos',
             'correo',
             'telefono',
-            'usuario',
+            'usuario'
+
         )) {
             $nombres = limpiarCadena($this->obtenerPost('nombres'));
             $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
             $correo = limpiarCadena($this->obtenerPost('correo'));
             $telefono = limpiarCadena($this->obtenerPost('telefono'));
             $usuario = limpiarCadena($this->obtenerPost('usuario'));
-
+    
 
             if ($nombres == '' || $apellidos == '' || $correo == '' || $telefono == '' || $usuario == '') {
                 $this->alerta = new Alertas('Error', 'Campos vacios');
@@ -46,8 +142,8 @@ class Usuario extends SessionController
                 echo $this->alerta->simple()->error()->getAlerta();
                 exit();
             }
-
-
+          
+            
             $this->usuario->setNombres($nombres);
             $this->usuario->setApellidos($apellidos);
             $this->usuario->setEmail($correo);
@@ -98,16 +194,160 @@ class Usuario extends SessionController
             echo $this->alerta->simple()->error()->getAlerta();
             exit();
         }
+    } 
+
+    public function actualizarUsuarioAdmin()
+    {
+        error_log(
+            'Usuario::actulizarUsuario -> inicio de actulizarUsuario'
+        );
+
+        if ($this->existeParametrosPost(
+            'nombres',
+            'apellidos',
+            'email',
+            'telefono',
+            'usuario',
+            'password',
+            'password_new',
+            'password_new_confirm',
+            'id_usuario'
+
+        )) {
+            $nombres = limpiarCadena($this->obtenerPost('nombres'));
+            $apellidos = limpiarCadena($this->obtenerPost('apellidos'));
+            $correo = limpiarCadena($this->obtenerPost('email'));
+            $telefono = limpiarCadena($this->obtenerPost('telefono'));
+            $usuario = limpiarCadena($this->obtenerPost('usuario'));
+            $claveActual = limpiarCadena($this->obtenerPost('password'));
+            $clave1 = limpiarCadena($this->obtenerPost('password_new'));
+            $clave2 = limpiarCadena($this->obtenerPost('password_new_confirm'));
+
+
+            if ($nombres == '' || $apellidos == '' || $correo == '' || $telefono == '' || $usuario == '') {
+                $this->alerta = new Alertas('Error', 'Campos vacios');
+
+                http_response_code(400);
+                header('Content-Type: application/json');
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+            
+            $this->user->obtenerUno($this->obtenerPost('id_usuario'));
+
+            //Seteamos los datos de el formulario al nuevo usuario
+            $this->user->setNombres($nombres);
+            $this->user->setApellidos($apellidos);
+            $this->user->setEmail($correo);
+            $this->user->setTelefono($telefono);
+            $this->user->setUsuario($usuario);
+
+
+           
+            //Validamos si la password vienen definidas, si es asi pasamos a actualizar
+            if($claveActual != '' && $clave1 != '' && $clave2 != ''):
+                $this->actualizarPassword($this->user,$this->usuario->getPassword());
+
+            endif;
+
+            //Validamos si la imagen viene definida, si es asi pasamos a actualizar
+
+            error_log('Usuario::actulizarUsuario -> Existe imagen->>>>>>' . $_FILES['imagen']['name']);
+
+            if($_FILES['imagen'] && $_FILES['imagen']['size'] > 0):;
+                $this->actualizarFoto($this->user);
+            endif;
+
+            $respuesta = $this->user->actualizar();
+
+            error_log('Usuario::actulizarUsuario -> respuesta: ' . json_encode($respuesta));
+
+            if (!isset($respuesta)) {
+                $this->alerta = new Alertas('Error', 'No se pudo actualizar el usuario');
+
+                http_response_code(400);
+                header('Content-Type: application/json');
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            if ($respuesta['status'] > 300) {
+                $this->alerta = new Alertas('Error', $respuesta['response']['message']);
+
+                http_response_code(400);
+                header('Content-Type: application/json');
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            }
+
+            
+
+
+
+
+            $this->alerta = new Alertas('Exito', 'Usuario actualizado');
+
+            http_response_code(200);
+            header('Content-Type: application/json');
+            //Recargamos la pagina
+            echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+        } else {
+            $this->alerta = new Alertas('Error', 'Campos vacios');
+
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        }
+    }
+
+    public function eliminar(){
+        if($this->existeParametrosPost('id_usuario')):
+            $id_usuario =limpiarCadena($this->obtenerPost('id_usuario'));
+
+            if(!isset($id_usuario)):
+                $this->alerta = new Alertas('Error', 'No se pudo obtener el id del usuario');
+                
+                http_response_code(400);
+
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+
+            $respuesta = $this->model->eliminar($id_usuario);
+
+            error_log('Usuario::eliminar -> respuesta: ' . json_encode($respuesta));
+
+            if($respuesta['status'] != 201):
+                $msg = $respuesta['response']['message'];
+                $this->alerta = new Alertas('Error', $msg);
+                
+                http_response_code(400);
+
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+
+            error_log('Usuario::eliminar -> respuesta: ' . json_encode($respuesta));
+
+            $this->alerta = new Alertas('Exito', 'Usuario eliminado correctamente');
+            http_response_code(200);
+            echo $this->alerta->recargar()->exito()->getAlerta();
+            exit();
+
+        endif;
     }
 
 
-
-    public function actualizarPassword()
+    public function actualizarPassword(UsuarioModel $usuario = null,$passwordAdmin)
     {
+
+        $usuario = $usuario ?? $this->usuario;
         //Validar los campos del formulario
-        if ($this->existeParametrosPost(['usuario_password', 'usuario_password_new'])) {
-            $password = $this->obtenerPost('usuario_password');
-            $password_new = $this->obtenerPost('usuario_password_new');
+        if ($this->existeParametrosPost(['password', 'password_new', 'password_new_confirm'])) {
+            $password = $this->obtenerPost('password');
+            $password_new = $this->obtenerPost('password_new');
 
             if ($password == '' || $password_new == '') {
                 $this->alerta = new Alertas('Error', 'Campos vacios');
@@ -129,7 +369,7 @@ class Usuario extends SessionController
             }
 
             //Validar password actual
-            if (!password_verify($password, $this->usuario->getPassword())) {
+            if (!password_verify($password, $passwordAdmin)) {
                 $this->alerta = new Alertas('Error', 'Contraseña actual incorrecta');
 
                 http_response_code(400);
@@ -139,7 +379,8 @@ class Usuario extends SessionController
             }
 
             //Validar password
-            if (verificarDatos('^(?=.*[A-Z]).{8,20}$
+            //TODO: Descomentar cuando se vaya a implementar
+            /* if (verificarDatos('^(?=.*[A-Z]).{8,20}$
                 ', $password_new)) {
                 $this->alerta = new Alertas('Error', 'La contraseña debe tener al menos 8 caracteres, una mayuscula y un numero');
 
@@ -147,20 +388,12 @@ class Usuario extends SessionController
                 header('Content-Type: application/json');
                 echo $this->alerta->simple()->error()->getAlerta();
                 exit();
-            }
+            } */
 
             //Actualizar password
-            $this->usuario->setPassword($password_new);
-            $respuesta = $this->usuario->actualizarPassword();
+            $usuario->setPassword($password_new);
+            $respuesta = $usuario->actualizarPassword();
 
-            if (!$respuesta) {
-                $this->alerta = new Alertas('Error', 'No se pudo actualizar la contraseña');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
 
             if ($respuesta['status'] != 200) {
                 $this->alerta = new Alertas('Error', $respuesta['response']['message']);
@@ -178,115 +411,12 @@ class Usuario extends SessionController
             //Recargamos la pagina
             echo $this->alerta->recargar()->exito()->getAlerta();
             exit();
-        }
-    }
+        }else{
+            $this->alerta = new Alertas('Error', 'Campos vacios');
 
-
-
-    public function actualizarImagen()
-    {
-        $directorioImagenes = 'app/assets/images/usuario/';
-
-        if (
-            $_FILES['usuario_foto']['name'] != "" &&
-            $_FILES['usuario_foto']['size'] > 0
-        ) {
-
-            //Validar Directorio
-            if (!file_exists($directorioImagenes)) {
-                if (!mkdir($directorioImagenes, 0777)) {
-                    $this->alerta = new Alertas('Error', 'No se pudo crear el directorio de imagenes');
-
-                    http_response_code(400);
-                    header('Content-Type: application/json');
-                    echo $this->alerta->simple()->error()->getAlerta();
-                    exit();
-                }
-            }
-
-            //Validar formato de la imagen
-            #Verificando formato img#
-            if (
-                mime_content_type($_FILES['usuario_foto']['tmp_name']) != "image/jpeg" &&
-                mime_content_type($_FILES['usuario_foto']['tmp_name']) != "image/png"
-            ) {
-                $this->alerta = new Alertas('Error', 'Formato de imagen no permitido');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            //Validar tamaño de la imagen
-            #Verificando peso de la imagen#
-            if (($_FILES['usuario_foto']['size'] / 1024) > 5120) {
-                $this->alerta = new Alertas('Error', 'Tamaño de imagen no permitido');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            //Crear Nombre de imagen
-            $imagen = str_ireplace(" ", "_", $this->usuario->getNombres());
-            $imagen = $imagen . "_" . rand(0, 1000);
-
-            #Extension de imagen#
-            switch (mime_content_type($_FILES['usuario_foto']['tmp_name'])) {
-                case "image/jpeg":
-                    $imagen = $imagen . ".jpg";
-                    break;
-                case "image/png":
-                    $imagen = $imagen . ".png";
-                    break;
-            }
-
-            chmod($directorioImagenes, 0777);
-
-            #Moviendo imagenes al directorio#
-            if (!move_uploaded_file(
-                $_FILES['usuario_foto']['tmp_name'],
-                $directorioImagenes . $imagen
-            )) {
-                $this->alerta = new Alertas('Error', 'No se pudo subir la imagen');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-
-            //Actualizar imagen
-            $this->usuario->setImagen($imagen);
-            $respuesta = $this->usuario->guardar();
-
-            if (!$respuesta) {
-                $this->alerta = new Alertas('Error', 'No se pudo actualizar la imagen');
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            if ($respuesta['status'] != 200) {
-                $this->alerta = new Alertas('Error', $respuesta['response']['message']);
-
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo $this->alerta->simple()->error()->getAlerta();
-                exit();
-            }
-
-            $this->alerta = new Alertas('Exito', 'Imagen actualizada');
-
-            http_response_code(200);
+            http_response_code(400);
             header('Content-Type: application/json');
-            //Recargamos la pagina
-            echo $this->alerta->recargar()->exito()->getAlerta();
+            echo $this->alerta->simple()->error()->getAlerta();
             exit();
         }
     }
@@ -333,7 +463,7 @@ class Usuario extends SessionController
             <div class="table-header">
                 <p>Lista Usuarios</p>
                 <div>
-                    <button class="add-new">
+                    <button class="add-new btn-agregar">
                         <ion-icon name="add-circle"></ion-icon>
                         Nuevo
                     </button>
@@ -341,16 +471,34 @@ class Usuario extends SessionController
             </div>
             <div class="table-section">
                 <table id="tablaDatos">
-                    <thead>
+                    <thead id="encabezado-tabla">
                         <tr>
-                            <th>Id</th>
-                            <th>Perfil</th>
-                            <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Email</th>
-                            <th>Telefono</th>
-                            <th>Rol</th>
-                            <th>Acciones</th>
+                            <th>
+                            <ion-icon name="id-card"></ion-icon>
+                            Id
+                            </th>
+                            <th>
+                            <ion-icon name="person-circle"></ion-icon>
+                            Perfil
+                            </th>
+                            <th>
+                            <ion-icon name="people-circle"></ion-icon>
+                            Nombres</th>
+                            <th>
+                            <ion-icon name="people-circle"></ion-icon>
+                            Apellidos</th>
+                            <th>
+                            <ion-icon name="mail"></ion-icon>
+                            Email</th>
+                            <th>
+                            <ion-icon name="call"></ion-icon>
+                            Telefono</th>
+                            <th>
+                            <ion-icon name="layers"></ion-icon>
+                            Rol</th>
+                            <th>
+                            <ion-icon name="build"></ion-icon>
+                            Acciones</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -359,20 +507,33 @@ class Usuario extends SessionController
 
             foreach ($usuarios as $usuario) {
                 $tabla .= '<tr>
-                <td>' . $usuario->getId() . '</td>
-                <td><img src="' . APP_URL . 'assets/images/usuario/' . $usuario->getImagen() . '" alt=""></td>
+                <td class="id">' . $usuario->getId() . '</td>
+                <td class="perfil"><img src="' . APP_URL . 'assets/images/usuario/' . $usuario->getImagen() . '" alt="">'.$usuario->getUsuario().'</td>
                 <td>' . $usuario->getNombres() . '</td>
                 <td>' . $usuario->getApellidos() . '</td>
                 <td>' . $usuario->getEmail() . '</td>
                 <td>' . $usuario->getTelefono() . '</td>
                 <td>' . $usuario->getRole() . '</td>
-                <td>
-                    <button class="editar">
-                        <ion-icon name="create"></ion-icon>
-                    </button>
-                    <button class="eliminar">
-                        <ion-icon name="trash"></ion-icon>
-                    </button>
+                <td >
+                   <div class="acciones">
+                   <button class="editar boton-editar">
+                   <ion-icon name="create"></ion-icon>
+               </button>
+
+            <input type="hidden"  name="usuario_tabla" class="usuario_tabla" value="'.$usuario->getUsuario().'" id="usuario">
+
+
+
+               <form  action="'.APP_URL.'usuario/eliminar" method="POST" class="form FormularioAjax">
+                
+               <button type="submit" class="eliminar">
+               <ion-icon name="trash-bin"></ion-icon></button>
+
+                  <input type="hidden" name="id_usuario" value="'.$usuario->getId().'"> 
+
+               </form>
+
+                   </div>
                 </td>
             </tr>';
             }
@@ -390,4 +551,67 @@ class Usuario extends SessionController
             return false;
         }
     }
+
+
+    public function actualizarFoto(UsuarioModel $usuario = null ){
+        $usuario = $usuario ?? $this->usuario;
+
+        if(isset($_FILES['imagen'])):
+            $imagen = $this->cargarImagen($usuario->getUsuario(),'usuario', 'imagen' );
+
+            error_log('Usuario::actualizarFoto -> imagen: ' . $imagen);
+
+            if($imagen != null):
+
+                //Vamos a eliminar la foto anterior
+
+                $fotoAnterior = $usuario->getImagen();
+                error_log('Usuario::actualizarFoto -> fotoAnterior: ' . $fotoAnterior);
+
+                if($fotoAnterior != 'default.jpg' ):
+                    $respuesta = $this->eliminarImagen( $fotoAnterior,'usuario');
+                    if (!$respuesta):
+                        $this->alerta = new Alertas('ERROR', 'Error al eliminar la imagen anterior');
+
+                        http_response_code(400);
+
+                        echo $this->alerta->simple()->error()->getAlerta();
+                        exit();
+                    endif;
+                endif;
+
+                $usuario->setImagen($imagen);
+            else:
+                $this->alerta = new Alertas('ERROR', 'Error al cargar la imagen');
+                http_response_code(400);
+                echo $this->alerta->simple()->error()->getAlerta();
+                exit();
+            endif;
+        endif;
+
+        //Actualizamos todo el perfil
+
+        $respuesta = $usuario->actualizar();
+
+        if($respuesta['status'] != 200):
+            $msg = $respuesta['response']['message'];
+            $this->alerta = new Alertas('ERROR', $msg);
+            http_response_code(400);
+            echo $this->alerta->simple()->error()->getAlerta();
+            exit();
+        endif;
+
+
+        
+
+        $this->alerta = new Alertas('EXITO', 'Imagen actualizada correctamente');
+        http_response_code(200);
+        echo $this->alerta->recargar()->exito()->getAlerta();
+        exit();
+    }
+
+
+
+
+
 }

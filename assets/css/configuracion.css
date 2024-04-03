@@ -83,7 +83,7 @@ main .configuraciones .foto-perfil .cambiar-foto{
     justify-content: space-around;
     align-items: center;
     background-color: var(--color-boton-agregar);
-    color: var(--color-boton-texto);
+    color:#fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -148,7 +148,7 @@ main .configuraciones .cerrar-sesion{
     font-size: 18px;
     align-items: center;
     background-color:#24BDAF;
-    color: var(--color-boton-texto);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -225,25 +225,28 @@ main .configuraciones .formulario-datos-basicos form .grupo input{
 }
 
 
-main .configuraciones .formulario-datos-basicos form .submit{
+main .configuraciones .formulario-datos-basicos form .submit,
+main .configuraciones .cambiar-contrasenia form .submit{
     text-decoration: none;
-  
+    font-size: 18px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color:#24BDAF;
-    color: var(--color-boton-texto);
+    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-main .configuraciones .formulario-datos-basicos form .submit:hover{
+main .configuraciones .formulario-datos-basicos form .submit:hover,
+main .configuraciones .cambiar-contrasenia form .submit:hover{
     background-color: #1E9E1E;
     color: var(--color-menu-hover-texto);
 }
 
-main .configuraciones .formulario-datos-basicos form .submit ion-icon{
+main .configuraciones .formulario-datos-basicos form .submit ion-icon,
+main .configuraciones .cambiar-contrasenia form .submit ion-icon{
     font-size: 1.2em;
     margin-right: 10px;
 }
@@ -306,7 +309,7 @@ main .configuraciones .cambiar-contrasenia form .submit{
     justify-content: space-around;
     align-items: center;
     background-color:#24BDAF;
-    color: var(--color-boton-texto);
+    color:#fff;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -320,6 +323,14 @@ main .configuraciones .cambiar-contrasenia form .submit:hover{
 main .configuraciones .cambiar-contrasenia form .submit ion-icon{
     font-size: 1.2em;
     margin-right: 10px;
+}
+
+main .modal_update .modal_img{
+    border-radius: 6px;
+}
+
+main .modal_update .foto-perfil{
+    margin: -30PX;
 }
 
 /*----------------->Responsive*/
