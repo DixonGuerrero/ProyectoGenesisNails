@@ -173,7 +173,12 @@ class SessionController extends Controller{
         $urlSegments = explode('/', $actual_link);
     
         // Encontrar el índice del segmento que contiene "ProyectoGenesisNails2"
-        $projectIndex = array_search('ProyectoGenesisNails2', $urlSegments);
+        $projectIndex = array_search('proyectogenesisnails2', $urlSegments);
+
+        error_log("sessionController::getCurrentPage(): actual_link => " . $actual_link);
+        error_log("sessionController::getCurrentPage(): urlSegments => " .$urlSegments[2]);
+
+        error_log("sessionController::getCurrentPage(): projectIndex => " . $projectIndex);
     
         // Verificar si "ProyectoGenesisNails2" se encontró y tiene un segmento siguiente
         if ($projectIndex !== false && isset($urlSegments[$projectIndex + 1])) {
@@ -181,7 +186,7 @@ class SessionController extends Controller{
         }
     
         // Retornar un valor por defecto o null si "ProyectoGenesisNails2" no se encuentra o no tiene un segmento siguiente
-        return null;
+        return $urlSegments[3];
     }
     
 
