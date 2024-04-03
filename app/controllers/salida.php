@@ -3,6 +3,7 @@ class Salida extends SessionController
 {
     private $directorio;
     private $directorioCopiaEditar;
+    
     function __construct()
     {
         parent::__construct();

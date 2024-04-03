@@ -2,18 +2,19 @@
 
 require_once 'app/views/template/parteSuperiorAdmin.php';
 
-$formularioAgregarProducto = $this->d['formularioProducto'];
-$tabla = $this->d['productos'];
+
 $formularioActualizarProducto = $this->d['formularioActualizarProducto'];
+$tabla = $this->d['productos'];
+$formularioActualizarProveedor = $this->d['formularioActualizarProveedor'];
 ?>
 
 
-<div class="barra-superior-nuevaSalida">
-   <a href="<?php echo APP_URL; ?>salida" class="btn-regresar">
+<div class="barra-superior-nuevaEntrada">
+   <a href="<?php echo APP_URL; ?>entrada" class="btn-regresar">
       <ion-icon name="arrow-back-outline" role="img" class="md hydrated" aria-label="arrow-back-outline"></ion-icon>
    </a>
    <div class="titulo-contenedor">
-       <h1 class="titulo-pagina">Nueva Salida</h1>
+       <h1 class="titulo-pagina">Editar Entrada</h1>
    </div>
    <div class="espaciador"></div> <!-- Espaciador para empujar el título al centro -->
 </div>
@@ -25,12 +26,7 @@ $formularioActualizarProducto = $this->d['formularioActualizarProducto'];
  <div class="tabla">
  <div class="table-header">
                 <p>Lista Productos</p>
-                <div>
-                    <button class="add-new btn-agregar">
-                        <ion-icon name="add-circle"></ion-icon>
-                        Nuevo
-                    </button>
-                </div>
+               
             </div>
     <?php echo $tabla ?>
 
@@ -43,16 +39,16 @@ if (!is_numeric($posicion)):
 
 ?>
 
-   <section class="acciones-salida">
-      <form action="<?php echo APP_URL?>salida/guardar" class="FormularioAjax">
+   <section class="acciones-entrada">
+      <form action="<?php echo APP_URL?>entrada/actualizar" class="FormularioAjax">
          <button class="btn-guardar">
             <ion-icon name="save"></ion-icon>
-            Guardar
+            Actualizar
          </button>
       </form>
             
 
-         <form action="<?php echo APP_URL?>salida/eliminarProductosAgregados" class="Form FormularioAjax">
+         <form action="<?php echo APP_URL?>entrada/eliminarProductosAgregados" class="Form FormularioAjax">
 
          <button type="submit" class="btn-cancelar">
          <ion-icon name="close-circle"></ion-icon>
@@ -65,15 +61,17 @@ if (!is_numeric($posicion)):
 <?php endif;?>
 
  <!--  Modal Agregar Producto -->
-<section class="modal">
-      <?php echo $formularioAgregarProducto;?>
-</section>
+
 
 <section class="modal modal_update">
       <?php echo $formularioActualizarProducto;?>
 </section>
 
 
+
+<section class="modal modal_update_proveedor">
+      <?php echo $formularioActualizarProveedor;?>
+</section>
  
 
 <!-- Llamamos a el script para la tabla

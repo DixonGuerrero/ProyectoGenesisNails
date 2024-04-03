@@ -69,7 +69,7 @@ if (!is_numeric($posicion)) :
 
 <!-- Llamamos a el script para la tabla
  -->
-<script src="<?php echo APP_URL ?>assets/js/salidaAP.js"></script>
+<script src="<?php echo APP_URL ?>assets/js/movimientos.js"></script>
 <script src="<?php echo APP_URL; ?>assets/js/tabla2.js"></script>
 <?php
 require_once 'app/views/template/parteInferiorAdmin.php';

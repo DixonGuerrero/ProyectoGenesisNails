@@ -10,14 +10,15 @@ $entradas = $this->d['entradas'];
 
 <section class="header-entrada">
 
-        <div class="barra-busqueda">
-            <input type="text" class="busqueda" placeholder="Buscar">
-            <button class="btn-buscar"><ion-icon name="search-circle"></ion-icon></button>
-        </div>
-            <button id="add-new" class="btn-agregar-entrada">
-            <ion-icon name="add-circle"></ion-icon>    
-            Nueva
-            </button>
+    <div class="barra-busqueda">
+        <input type="text" class="busqueda" placeholder="Buscar">
+        <button class="btn-buscar"><ion-icon name="search-circle" role="img" class="md hydrated"></ion-icon></button>
+    </div>
+    <a href="<?php echo APP_URL; ?>entrada/nuevaEntrada" id="" class="btn-agregar-entrada">
+        <ion-icon name="add-circle" role="img" class="md hydrated"></ion-icon>
+        Nueva
+    </a>
+
 
 </section>
 

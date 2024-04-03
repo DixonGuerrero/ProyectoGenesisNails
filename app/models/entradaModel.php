@@ -6,6 +6,8 @@
         private $id_proveedor;
         private $productos = [];
         public $producto ;
+        private $precio;
+        private $id_admin;
         
 
 
@@ -35,8 +37,14 @@
         public function obtenerUno($id){
             try {
                 $data = $this->api->obtenerUno('entrada',$id);
-                $this->asignarDatos($data['response']);
-                return $this;
+                $entrada = new EntradaModel();
+                foreach ($data['response'] as $item) {
+                    error_log('SalidaModel::obtenerTodo -> item: ' . json_encode($item));
+                    
+                    $entrada->asignarDatos($item);
+                    
+                }
+                return $entrada;
             } catch (Exception $e) {
                 error_log('EntradaModel::obtenerUno -> ERROR: ' . $e);
                 return [];
@@ -46,7 +54,7 @@
         public function guardar(){
             try {
                 $data = [
-                    'fecha' => $this->fecha,
+                    'id_admin' => $this->getIdAdmin(),
                     'id_proveedor' => $this->id_proveedor,
                     'productos' => $this->productos
                 ];
@@ -76,13 +84,13 @@
             $this->id_entrada = $datos['id_entrada'];
             $this->fecha = $this->formatearFecha($datos['created_at']);
             $this->id_proveedor = $datos['proveedor'];
-            $this->productos = [];
         
             foreach($datos['productos'] as $productoDatos){
                 // Crear una nueva instancia de producto para cada producto en el array
                 $producto = new ProductoModel();
                 $producto->obtenerUno($productoDatos['id_producto']);
                 $producto->setCantidad($productoDatos['cantidad_entrada']);
+                $producto->setPrecio($productoDatos['precio']);
         
                 array_push($this->productos, $producto);
             }   
@@ -116,6 +124,14 @@
             return $this->productos;
         }
 
+        public function getPrecio(){
+            return $this->precio;
+        }
+
+        public function getIdAdmin(){
+            return $this->id_admin;
+        }
+
         //Setters
 
         public function setIdEntrada($id_entrada){
@@ -132,6 +148,14 @@
 
         public function setProductos($productos){
             $this->productos = $productos;
+        }
+
+        public function setPrecio($precio){
+            $this->precio = $precio;
+        }
+
+        public function setIdAdmin($id_admin){
+            $this->id_admin = $id_admin;
         }
 
 
