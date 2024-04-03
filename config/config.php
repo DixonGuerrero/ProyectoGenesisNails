@@ -2,7 +2,7 @@
 /*Creacion de constantes que ayudaran a 
 la navegacion del sitio */
 
-    const APP_URL = "http://localhost/Proyectos/ProyectoGenesisNails2/";
+    const APP_URL = "https://genesisnails.zeabur.app/";
     const APP_NAME = "PROYECTO GENESIS NAILS";
     const APP_SESSION_NAME = "NAILS";
     const URL_API = "https://genesisnails.azurewebsites.net/api/";
