@@ -8,6 +8,7 @@
 
     //Incluimos algunos archivos
     require_once 'vendor/autoload.php';
+    require_once 'loadenv.php';
 
     require_once 'libs/api.php'; 
     require_once 'php/utils.php';

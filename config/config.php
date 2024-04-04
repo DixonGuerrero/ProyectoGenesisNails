@@ -1,9 +1,10 @@
 <?php 
+
+
 /*Creacion de constantes que ayudaran a 
 la navegacion del sitio */
-
-    const APP_URL = "http://localhost/Proyectos/ProyectoGenesisNails2/";
-    const APP_NAME = "PROYECTO GENESIS NAILS";
+    define('APP_URL',getenv('APP_URL'));
+    define('APP_NAME',getenv('APP_NAME'));
     const APP_SESSION_NAME = "NAILS";
     const URL_API = "https://genesisnails.azurewebsites.net/api/";
     //const URL_API = "localhost:3000/api/";
