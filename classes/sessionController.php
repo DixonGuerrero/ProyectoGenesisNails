@@ -175,12 +175,8 @@ class SessionController extends Controller{
     
         // Encontrar el índice del segmento que contiene "ProyectoGenesisNails2"
 
-        error_log("sessionController::getCurrentPage(): urlSegments => " . print_r($urlSegments, true));
-
         $projectIndex = array_search(APP_NAME, $urlSegments);
-
-        error_log("sessionController::getCurrentPage(): projectIndex => " . $projectIndex. " APP_NAME => " . APP_NAME);
-
+      
     
         // Verificar si "ProyectoGenesisNails2" se encontró y tiene un segmento siguiente
         if ($projectIndex !== false && isset($urlSegments[$projectIndex + 1])) {

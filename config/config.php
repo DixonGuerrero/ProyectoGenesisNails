@@ -12,4 +12,6 @@ la navegacion del sitio */
     const KEY_TOKEN = 'prueba123';
 
     //Obtenemos zona horaria
-    date_default_timezone_set("America/Bogota");
+    date_default_timezone_set("America/Bogota");// En un archivo de configuración inicial o en el index.php principal
+    define('BASE_PATH', dirname(__DIR__)); // Esto sube un nivel desde la carpeta 'public'
+    
