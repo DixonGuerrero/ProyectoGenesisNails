@@ -269,6 +269,7 @@
                 return 'default.jpg';
             }
         }
+        
 
         public function setUsuario($usuario){ $this->usuario = $usuario;
         }
