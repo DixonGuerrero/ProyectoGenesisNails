@@ -8,6 +8,7 @@
     require_once ('loadenv.php');
     require_once 'config/config.php';
     //Incluimos algunos archivos
+
     require_once ('vendor/autoload.php');
     
       
@@ -44,7 +45,6 @@
     require_once ('app/models/proveedorModel.php');
     require_once ('app/controllers/proveedor.php');
     require_once ('app/models/servicioModel.php');
-
 
     //Iniciamos la aplicacion GO!!
     $app = new App();
