@@ -7,7 +7,9 @@
     error_log('Inicio de la aplicacion');
 
     //Incluimos algunos archivos
-    require_once APP_URL.'vendor/autoload.php';
+    require_once 'vendor/autoload.php';
+    require_once 'loadenv.php';
+      
 
     require_once APP_URL.'$libs/api.php'; 
     require_once APP_URL.'php/utils.php';
