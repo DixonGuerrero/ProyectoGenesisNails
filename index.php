@@ -5,6 +5,9 @@
     ini_set('log_errors', TRUE);
     ini_set('error_log', 'C:\laragon\www\Proyectos\ProyectoGenesisNails2\php-errors.log');
     error_log('Inicio de la aplicacion');
+
+    define('APP_URL',__DIR__.'/');
+
     require_once (__DIR__.'/loadenv.php');
     require_once (__DIR__.'/config/config.php');
     //Incluimos algunos archivos
