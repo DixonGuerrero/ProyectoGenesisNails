@@ -8,7 +8,7 @@
         private $telefono;
         private $role;
         private $imagen;
-
+        
         private $usuario;
         private $password;
         private $id_cliente;
