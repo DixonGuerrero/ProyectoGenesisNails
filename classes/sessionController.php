@@ -174,7 +174,9 @@ class SessionController extends Controller{
         $urlSegments = explode('/', $actual_link);
     
         // Encontrar el índice del segmento que contiene "ProyectoGenesisNails2"
+
         $projectIndex = array_search(APP_NAME, $urlSegments);
+      
     
         // Verificar si "ProyectoGenesisNails2" se encontró y tiene un segmento siguiente
         if ($projectIndex !== false && isset($urlSegments[$projectIndex + 1])) {

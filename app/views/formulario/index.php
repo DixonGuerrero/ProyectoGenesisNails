@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Genesis Nails</title>
-    <link rel="stylesheet" href="./assets/css/Formulario.css">
-    <script src="<?php echo APP_URL ?>/assets/js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="<?= APP_URL?>assets/css/formulario.css">
+    <script src="<?= APP_URL ?>assets/js/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
