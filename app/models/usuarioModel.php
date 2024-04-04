@@ -246,23 +246,28 @@
            $this->imagen = $imagen;
         }
 
-        public function validarImagen($imagen){
-
+        public function validarImagen($imagen) {
             error_log('UserModel::validarImagen -> imagen: ' . $imagen);
-            $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Proyectos/ProyectoGenesisNails2/assets/images/usuario/'.$imagen.'';
+            
+            // Ajusta la ruta según sea necesario para que coincida con la estructura de tu proyecto
+            $directorio = __DIR__ . '/../../assets/images/usuario/' . $imagen;
+
 
 
             error_log('UserModel::validarImagen -> directorio: ' . $directorio);
 
-            if($imagen == ''){
-                error_log('UserModel::validarImagen -> Imagen no existe ' . $imagen);
-                return $imagen = 'default.jpg';
-            }else if(file_exists($directorio)){
-
-                error_log('UserModel::validarImagen -> Imagen si existe ' . $imagen);
+            
+        
+            if ($imagen == '') {
+                error_log('UserModel::validarImagen -> Imagen no especificada');
+                return 'default.jpg';
+            } else if (file_exists($directorio)) {
+                error_log('UserModel::validarImagen -> Imagen existe: ' . $imagen);
                 return $imagen;
-
-            } 
+            } else {
+                error_log('UserModel::validarImagen -> Imagen no existe: ' . $imagen);
+                return 'default.jpg';
+            }
         }
 
         public function setUsuario($usuario){ $this->usuario = $usuario;
