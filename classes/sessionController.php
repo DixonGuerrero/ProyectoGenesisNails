@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Controlador que también maneja las sesiones
@@ -173,6 +174,7 @@ class SessionController extends Controller{
         $urlSegments = explode('/', $actual_link);
     
         // Encontrar el índice del segmento que contiene "ProyectoGenesisNails2"
+
         $projectIndex = array_search(APP_NAME, $urlSegments);
 
     
