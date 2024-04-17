@@ -41,7 +41,7 @@
                             <input type="password" name="password" id="password" placeholder="Password" required />
                         </label>
                     </div>
-                    <input type="submit" value="Iniciar Sesión">
+                    <input id="login-btn" type="submit" value="Iniciar Sesión">
                     <div class="alerta-error">Todos los campos son obligatorios</div>
                     <div class="alerta-exito">Te registraste correctamente</div>
                 </form>

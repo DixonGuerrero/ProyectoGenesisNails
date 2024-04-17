@@ -64,7 +64,7 @@ if (!is_numeric($posicion)):
       </form>
             
 
-         <form action="<?php echo APP_URL?>salida/eliminarProductosAgregados" class="Form FormularioAjax">
+         <form action="<?php echo APP_URL?>entrada/eliminarProductosAgregados" class="Form FormularioAjax">
 
          <button type="submit" class="btn-cancelar">
          <ion-icon name="close-circle"></ion-icon>

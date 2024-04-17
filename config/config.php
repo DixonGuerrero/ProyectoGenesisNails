@@ -3,7 +3,7 @@
 
 /*Creacion de constantes que ayudaran a 
 la navegacion del sitio */
-    define('APP_URL', 'https://genesisnails.zeabur.app/');
+    define('APP_URL',getenv('APP_URL'));
 
     define('APP_NAME',getenv('APP_NAME'));
     const APP_SESSION_NAME = "NAILS";

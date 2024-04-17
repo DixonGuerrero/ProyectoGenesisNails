@@ -946,6 +946,7 @@ class Entrada extends SessionController
             exit();
         }
     }
+    
     function asignarDatosArchivo($productos, $entrada, $proveedor): void
     {
         $productosTransformados = array_map(function ($producto) {
